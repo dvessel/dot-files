@@ -1,0 +1,37 @@
+# Ignore base directory files and folders.
+/[a-zA-Z0-9]*
+
+# Dot files not to track.
+.bundle
+.cache
+.CFUserTextEncoding
+.chatgpt
+.colima
+.conda
+.config/gh
+.config/shell-gpt
+.ddev
+.diffusionbee
+.docker
+.ipython
+.irssi
+.jupyter
+.lesshst
+.lima
+.lldb
+.local
+.mutagen
+.ngrok2
+.npm
+.python_history
+.ssh
+.swiftpm
+.tldrc
+.Trash
+.vscode
+.vim
+.viminfo
+.zcompcache
+.zcompdump
+.zsh_history
+.zsh_sessions
