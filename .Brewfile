@@ -25,20 +25,12 @@ brew "diffoscope"
 brew "docker"
 # Generate documentation for several programming languages
 brew "doxygen"
-# Useful examples at the command-line
-brew "eg-examples"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Low-level access to audio, keyboard, mouse, joystick, and graphics
-brew "sdl2"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU database manager
-brew "gdbm"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -47,8 +39,6 @@ brew "git"
 brew "git-delta"
 # Small git utilities
 brew "git-extras"
-# Image processing tools collection
-brew "graphicsmagick"
 # Command-line tool for generating regular expressions
 brew "grex"
 # Convert source code to formatted text with syntax highlighting
@@ -75,8 +65,6 @@ brew "perceptualdiff"
 brew "periscope"
 # PNG image optimizing utility
 brew "pngquant"
-# Command-line YAML and XML processor that wraps jq
-brew "python-yq"
 # Cross-platform application and UI framework
 brew "qt"
 # Tools for Multiple Arcade Machine Emulator
