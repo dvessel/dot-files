@@ -15,7 +15,7 @@ alias hide.extension='SetFile -a E'
 alias show.extension='SetFile -a e'
 alias unquarantine='xattr -d com.apple.quarantine'
 
-alias ql='qlmanage -p 1>/dev/null'
+alias ql='qlmanage -p 2>/dev/null'
 
 alias tag.list='tag -ctm "*" *(n)'
 alias tag.usage='tag --usage -c ./'
