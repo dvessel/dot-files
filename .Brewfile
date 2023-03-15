@@ -25,6 +25,8 @@ brew "diffoscope"
 brew "docker"
 # Generate documentation for several programming languages
 brew "doxygen"
+# Select default apps for documents and URL schemes on macOS
+brew "duti"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Monitor a directory for changes and run a shell command
