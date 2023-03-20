@@ -2,6 +2,7 @@ tap "drud/ddev"
 tap "dvessel/oetools"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "local/versions"
@@ -93,6 +94,8 @@ brew "zsh-completions"
 brew "drud/ddev/ddev"
 # ROM updater and validation tool for OpenEmu's MAME core.
 brew "dvessel/oetools/oeadvscan"
+# Developer targeted fonts with a high number of glyphs
+cask "font-anonymice-nerd-font"
 # Minimal installer for conda
 cask "miniconda"
 # Standalone cli for the Soulver calculation engine
