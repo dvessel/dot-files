@@ -29,6 +29,8 @@ brew "doxygen"
 brew "duti"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
 # Command-line fuzzy finder written in Go
@@ -67,8 +69,6 @@ brew "perceptualdiff"
 brew "periscope"
 # PNG image optimizing utility
 brew "pngquant"
-# Cross-platform application and UI framework
-brew "qt"
 # Tools for Multiple Arcade Machine Emulator
 brew "rom-tools"
 # Assigns custom icons to webloc files
