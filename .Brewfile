@@ -58,6 +58,8 @@ brew "irssi"
 brew "jp2a"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# No Nonsense Neovim Client in Rust
+brew "neovide"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Platform built on V8 to build network applications
