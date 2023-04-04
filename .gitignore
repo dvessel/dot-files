@@ -9,7 +9,7 @@
 .colima
 .conda
 .config/gh
-.config/shell-gpt
+.config/shell_gpt
 .ddev
 .diffusionbee
 .docker
