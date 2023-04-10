@@ -3,53 +3,20 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-p10k_cpath="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 [ ! -f $p10k_cpath ] || source $p10k_cpath
 
-# Source zinit. It's available in homebrew but it's not officially supported.
-# Install manually: https://github.com/zdharma-continuum/zinit
-zinit_home="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
-[ ! -f $zinit_home/zinit.zsh ] || source $zinit_home/zinit.zsh
-
 if type brew &>/dev/null; then
-
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
-  fpath+=`brew --prefix`/share/zsh/site-functions
-
-  # zsh-completions: https://github.com/zsh-users/zsh-completions
-  fpath+=`brew --prefix`/share/zsh-completions
-
-  # Auto completion. Set after fpath.
-  autoload -Uz compinit; compinit
-
-  source `brew --prefix`/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source `brew --prefix`/opt/git-extras/share/git-extras/git-extras-completion.zsh
-
+  # `autoload -Uz compinit; compinit` handled by .zsh_plugins.txt:`belak/zsh-utils path:completion`.
+  fpath=( `brew --prefix`/share/zsh/site-functions $fpath )
 fi
 
-if type zinit &>/dev/null; then
-
-  # https://github.com/romkatv/powerlevel10k
-  zinit ice depth"1"; zinit light romkatv/powerlevel10k
-  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  [ ! -f $HOME/.p10k.zsh ] || source $HOME/.p10k.zsh
-
-  # https://github.com/Aloxaf/fzf-tab
-  # NOTE: fzf-tab needs to be loaded after compinit, but before plugins which
-  # will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting!!
-  zinit ice depth"1"; zinit light Aloxaf/fzf-tab
-
-  # https://github.com/zdharma-continuum/fast-syntax-highlighting
-  zinit ice depth"1"; zinit light zdharma-continuum/fast-syntax-highlighting
-
-  # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
-  zinit snippet OMZ::plugins/extract
-  zinit snippet OMZ::plugins/fancy-ctrl-z
-  zinit snippet OMZ::plugins/transfer
-  zinit snippet OMZ::plugins/universalarchive
-
-  # https://github.com/zdharma-continuum/zinit-packages
-
+antidote_path=/opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+if [ -f $antidote_path ]; then
+  source $antidote_path
+  zstyle ':antidote:bundle' use-friendly-names 'yes'
+  antidote load
 fi
 
 # Shows all paths with `/usr/libexec/path_helper`.

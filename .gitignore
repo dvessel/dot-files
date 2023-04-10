@@ -27,10 +27,11 @@
 .swiftpm
 .tldrc
 .Trash
-.vscode
 .vim
 .viminfo
+.vscode
 .zcompcache
 .zcompdump
 .zsh_history
+.zsh_plugins.zsh
 .zsh_sessions

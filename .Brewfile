@@ -6,6 +6,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "local/versions"
+# Plugin manager for zsh, inspired by antigen and antibody
+brew "antidote"
 # Archival front-end
 brew "atool"
 # Basis Universal GPU texture codec command-line compression tool
@@ -42,8 +44,6 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Small git utilities
-brew "git-extras"
 # Command-line tool for generating regular expressions
 brew "grex"
 # Convert source code to formatted text with syntax highlighting
@@ -88,10 +88,6 @@ brew "tldr"
 brew "tree"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
-# Fish-like fast/unobtrusive autosuggestions for zsh
-brew "zsh-autosuggestions"
-# Additional completion definitions for zsh
-brew "zsh-completions"
 # DDEV
 brew "drud/ddev/ddev"
 # ROM updater and validation tool for OpenEmu's MAME core.
