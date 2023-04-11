@@ -21,21 +21,3 @@ if type antidote &>/dev/null; then
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
 fi
-
-# Shows all paths with `/usr/libexec/path_helper`.
-path+=$HOME/.local/bin
-export path
-
-# Editors
-editor='code -w'
-git_editor='code -w'
-
-# Case insensitive autocomplete and globbing.
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-setopt no_case_glob
-
-export HISTSIZE=100000
-export SAVEHIST=$HISTSIZE
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt share_history
