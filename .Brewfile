@@ -64,8 +64,6 @@ brew "jq"
 brew "neovide"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Platform built on V8 to build network applications
-brew "node"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Perceptual image comparison tool
