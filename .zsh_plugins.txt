@@ -19,7 +19,6 @@ romkatv/powerlevel10k
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-ohmyzsh/ohmyzsh path:plugins/git-extras
 ohmyzsh/ohmyzsh path:plugins/transfer
 ohmyzsh/ohmyzsh path:plugins/universalarchive
 

@@ -44,6 +44,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Small git utilities
+brew "git-extras"
 # Command-line tool for generating regular expressions
 brew "grex"
 # Convert source code to formatted text with syntax highlighting
