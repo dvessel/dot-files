@@ -6,15 +6,18 @@
 p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 [ ! -f $p10k_cpath ] || source $p10k_cpath
 
+# Shows all paths with `/usr/libexec/path_helper`.
+path+=~/.local/bin; export path
+
+for zs in ~/.zshrc-source/*.zsh; source $zs
+
 if type brew &>/dev/null; then
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
-  # `autoload -Uz compinit; compinit` handled by .zsh_plugins.txt:`belak/zsh-utils path:completion`.
+  # `autoload -Uz compinit; compinit` handled by antidote plugin:`belak/zsh-utils path:completion`.
   fpath=( `brew --prefix`/share/zsh/site-functions $fpath )
 fi
 
-antidote_path=/opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-if [ -f $antidote_path ]; then
-  source $antidote_path
+if type antidote &>/dev/null; then
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
 fi
@@ -36,5 +39,3 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt share_history
-
-for sh in `find $HOME/.zshrc-source -name '*.sh'`; source $sh
