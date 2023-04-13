@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-( type fzf &>/dev/null; type git &>/dev/null ) || return 1
+type fzf &>/dev/null && type git &>/dev/null || return 1
 
 # GIT heart FZF
 # https://junegunn.kr/2016/07/fzf-git/

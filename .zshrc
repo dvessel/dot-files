@@ -14,7 +14,7 @@ for zs in ~/.zshrc-source/*.zsh; source $zs
 if type brew &>/dev/null; then
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
   # `autoload -Uz compinit; compinit` handled by antidote plugin:`belak/zsh-utils path:completion`.
-  fpath=( `brew --prefix`/share/zsh/site-functions $fpath )
+  fpath+=`brew --prefix`/share/zsh/site-functions
 fi
 
 if type antidote &>/dev/null; then
