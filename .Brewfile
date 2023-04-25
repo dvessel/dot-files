@@ -60,6 +60,8 @@ brew "irssi"
 brew "jp2a"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
 # No Nonsense Neovim Client in Rust
 brew "neovide"
 # Small build system for use with gyp or CMake

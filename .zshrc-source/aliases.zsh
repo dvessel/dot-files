@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-alias ll='ls -lhGL'
-alias la='ls -lhGA'
+alias ll='lsd -lL'
+alias la='lsd -lA'
 alias cl='clear'
 
 alias vs='code'
