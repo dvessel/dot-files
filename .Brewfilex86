@@ -1,0 +1,15 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "local/versions"
+# Cross-platform make
+brew "cmake"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Compiler for SIMD programming on the CPU
+brew "ispc"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Tool to enforce Swift style and conventions
+brew "swiftlint"
