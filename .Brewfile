@@ -96,6 +96,7 @@ brew "drud/ddev/ddev"
 brew "dvessel/oetools/oeadvscan"
 # Developer targeted fonts with a high number of glyphs
 cask "font-anonymice-nerd-font"
+cask "font-ia-writer-duo"
 # Minimal installer for conda
 cask "miniconda"
 # Standalone cli for the Soulver calculation engine
