@@ -9,6 +9,7 @@
 .conda
 .config/gh
 .config/shell_gpt
+.cups
 .ddev
 .diffusionbee
 .docker
