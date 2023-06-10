@@ -13,8 +13,6 @@ brew "atool"
 brew "basis_universal"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
-# Insanely fast image printing in your terminal
-brew "catimg"
 # Anti-virus software
 brew "clamav"
 # Cross-platform make
@@ -49,14 +47,8 @@ brew "git-extras"
 brew "grex"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
-# Command-line benchmarking tool
-brew "hyperfine"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# Modular IRC client
-brew "irssi"
-# Convert JPG images to ASCII
-brew "jp2a"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
