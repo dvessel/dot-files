@@ -19,6 +19,8 @@ brew "clamav"
 brew "cmake"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
+# Zsh completion for conda
+brew "conda-zsh-completion"
 # In-depth comparison of files, archives, and directories
 brew "diffoscope"
 # Pack, ship and run any application as a lightweight container
