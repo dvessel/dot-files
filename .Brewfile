@@ -5,7 +5,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "local/versions"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
 # Archival front-end
