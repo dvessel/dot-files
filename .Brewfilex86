@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "local/versions"
 # Cross-platform make
 brew "cmake"
 # Simple, fast and user-friendly alternative to find
