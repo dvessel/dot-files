@@ -25,6 +25,10 @@ alias tm.excluded='mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"'
 
 alias brew.tree='brew leaves | xargs brew deps --include-build --tree'
 
+alias sync.emulation='rsync -avL --itemize-changes --delete ~/Games/Emulation /Volumes/980Pro'
+alias sync.storage='rsync -avzL --itemize-changes --delete /Volumes/Storage/* dvessel-ds.local:/volume1/storage'
+alias sync.all='sync.emulation && sync.storage'
+
 alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
 
