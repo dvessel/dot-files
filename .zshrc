@@ -1,15 +1,13 @@
-#!/usr/bin/env zsh
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 [ ! -f $p10k_cpath ] || source $p10k_cpath
 
-# Shows all paths with `/usr/libexec/path_helper`.
-path+=~/.local/bin; export path
+# Prevent duplicate paths.
+typeset -aU path; path+=~/.local/bin
 
-for zs in ~/.zshrc-source/*.zsh; source $zs
+for zsh in ~/.zshrc-source/*.zsh; source $zsh
 
 if type brew &>/dev/null; then
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion

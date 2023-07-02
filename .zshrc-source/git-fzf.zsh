@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 type fzf &>/dev/null && type git &>/dev/null || return 1
 
 # GIT heart FZF

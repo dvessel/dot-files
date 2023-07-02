@@ -18,13 +18,17 @@
 .lesshst
 .lima
 .lldb
-.local
+.local/**
+# Track support scripts.
+!.local/*/
+!.local/bin/_*
 .mutagen
 .ngrok2
 .npm
 .python_history
 .ssh
 .swiftpm
+.thumbnails
 .tldrc
 .Trash
 .vim

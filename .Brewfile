@@ -79,8 +79,6 @@ brew "switchaudio-osx"
 brew "tag"
 # Simplified and community-driven man pages
 brew "tldr"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # DDEV

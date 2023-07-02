@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+# Helper function. Not to be called directly. Use aliases instead.
+#
+# Everything after `exe` is optional.
+# example:
+#   alias foo='_fzf-send-paths-to exe --type file ./search_dir'
+#
+# @see man fd
+if _brew_check fd fzf; then
+  local command=${1:?'command argument required.'}
+  shift
+  if type "$command" &>/dev/null; then
+    local files=( "${(f)$(fd $@ | fzf)}" )
+    [[ ! -z $files ]] && $command $files
+  else
+    printf  "\`%s\` does not exist.\n" $command >&2
+  fi
+fi

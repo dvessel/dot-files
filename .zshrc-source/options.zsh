@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # Case insensitive autocomplete and globbing.
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt no_case_glob

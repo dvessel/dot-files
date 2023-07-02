@@ -1,6 +1,4 @@
-#!/usr/bin/env zsh
-
-type brew &>/dev/null && type fzf &>/dev/null || return 1
+type brew &>/dev/null && _brew_check fzf || return
 
 # Auto-completion
 # ---------------
@@ -16,9 +14,9 @@ FZF_DEFAULT_OPTS='--reverse --scroll-off 10 --info inline --prompt "❯ " --poin
 FZF_DEFAULT_OPTS+=' --marker ▶︎ --ellipsis … --preview-window noborder'
 FZF_DEFAULT_OPTS+=' --color gutter:-1,hl+:underline,hl:underline'
 export FZF_DEFAULT_OPTS
-export FZF_COMPLETION_TRIGGER='`'
+export FZF_COMPLETION_TRIGGER='..'
 
-if type fd &>/dev/null; then
+if _brew_check fd; then
   export FZF_DEFAULT_COMMAND='fd --type f'
   _fzf_compgen_path() { fd --follow . "$1" }
   _fzf_compgen_dir() { fd --type d --follow . "$1" }

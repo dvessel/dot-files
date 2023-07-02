@@ -1,9 +1,10 @@
-#!/usr/bin/env zsh
 
+# Jump to previous directory.
 function .. {
   builtin cd $OLDPWD
 }
 
+# Send to LaunchBar.
 function lb {
   local sent=${@-:} && [[ ${sent[1]} != / ]] && sent=`pwd`/$sent
   if [[ -a $sent ]]; then
@@ -11,10 +12,6 @@ function lb {
   else
     open "x-launchbar:select?string=$sent"
   fi
-}
-
-function dir.sortbysize {
-  du -sh ${@:-*} | sort -rh
 }
 
 function tm.log {
@@ -31,18 +28,20 @@ function brew.executables {
 }
 
 function prfzf {
-  GH_FORCE_TTY=100%
-  gh pr list |
-    fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 |
-      awk '{print $1}' |
-        xargs gh pr checkout
+  if _brew_check gh fzf; then
+    GH_FORCE_TTY=100%
+    gh pr list |
+      fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 |
+        awk '{print $1}' |
+          xargs gh pr checkout
+  fi
 }
 
 # Encode/decode url's.
 function url.decode {
   echo "$@" | sed -E 's/%([0-9a-fA-F]{2})/\\x\1/g;s/\+/ /g'
 }
-# Conforme RFC 3986
+# Conforms to RFC 3986
 function url.encode {
   echo "$@" | sed \
   -e 's/ /%20/g'  \

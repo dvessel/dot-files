@@ -1,19 +1,22 @@
-#!/usr/bin/env zsh
-
 alias ll='lsd -lL'
 alias la='lsd -lA'
+alias lt='lsd --tree'
 alias cl='clear'
 
 alias vs='code'
-alias vs.send='_fzf_paths_to code f'
-alias sl='subl'
-alias sl.send='_fzf_paths_to subl f'
+alias vs.select='_fzf_send_paths_to code'
+alias st='subl'
+alias st.select='_fzf_send_paths_to subl'
 
 alias hide='chflags hidden'
 alias show='chflags nohidden'
 alias hide.extension='SetFile -a E'
 alias show.extension='SetFile -a e'
 alias unquarantine='xattr -d com.apple.quarantine'
+
+# Use `exit` to undo the switch.
+alias switch.x86='arch -d PATH --x86_64 /bin/zsh -l'
+alias switch.arm='arch -d PATH --arm64 /bin/zsh -l'
 
 alias ql='qlmanage -p 2>/dev/null'
 
