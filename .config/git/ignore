@@ -1,3 +1,4 @@
 # Global ignore file.
 
 .DS_Store
+build*.noindex
