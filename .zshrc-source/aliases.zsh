@@ -36,17 +36,19 @@ alias decimal2hex='printf "0x0%x\n"'
 alias metal-hud.enable='launchctl setenv MTL_HUD_ENABLED 1'
 alias metal-hud.disable='launchctl setenv MTL_HUD_ENABLED 0'
 
-alias capture.3/4-left='screencapture -vpdR 29,43,964.5,1286 \
+alias capture.fullscreen='screencapture -vpdR 0,0,1728,1117 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
-alias capture.3/4-center='screencapture -vpdR 546,43,964.5,1286 \
+alias capture.no-menu='screencapture -vpdR 0,37,1728,1080 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
-alias capture.3/4-right='screencapture -vpdR 1063,43,964.5,1286 \
+alias capture.4/3-center='screencapture -vpdR 144,37,1440,1080 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
-alias capture.4/3-center='screencapture -vpdR 171,43,1715,1286 \
+alias capture.left='screencapture -vpdR 0,37,864,1080 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
-alias capture.no-menu='screencapture -vpdR 0,43,2056,1286 \
+alias capture.right='screencapture -vpdR 864,37,864,1080 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
-alias capture.left='screencapture -vpdR 0,43,1028,1286 \
+alias capture.3/4-left='screencapture -vpdR 27,37,810,1080 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
-alias capture.right='screencapture -vpdR 1029,43,2056,1286 \
+alias capture.3/4-center='screencapture -vpdR 459,37,810,1080 \
+  -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
+alias capture.3/4-right='screencapture -vpdR 891,37,810,1080 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
