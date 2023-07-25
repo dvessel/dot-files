@@ -24,8 +24,6 @@ alias tag.list='tag -ctm "*" *(n)'
 alias tag.usage='tag --usage -c ./'
 alias tag.usage-all='tag --usage -c'
 
-alias tm.excluded='mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"'
-
 alias brew.tree='brew leaves | xargs brew deps --include-build --tree'
 
 alias sync.emulation='rsync -avL --itemize-changes --delete ~/Games/Emulation /Volumes/980Pro'

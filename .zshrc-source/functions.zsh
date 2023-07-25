@@ -14,10 +14,23 @@ function lb {
   fi
 }
 
+function tm.is-excluded {
+  if [[ -n $@ ]]; then
+    tmutil isexcluded $@
+  else
+    mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"
+  fi
+}
+function tm.exclude {
+  tmutil addexclusion $@ && tag -a "Time Machine - Excluded" $@
+}
+function tm.include {
+  tmutil removeexclusion $@ && tag -r "Time Machine - Excluded" $@
+}
 function tm.log {
   local time=${@:-1H}
-  log show --style syslog --info --start "$(date -j -v-$time +'%Y-%m-%d %H:%M:%S')" \
-    --predicate 'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"'
+  log show --style syslog --info --start "$(date -j -v-$time +'%Y-%m-%d %H:%M:%S')" --predicate \
+    'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"'
 }
 function tm.fs_usage {
   sudo fs_usage -f filesys backupd
