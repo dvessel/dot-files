@@ -4,9 +4,7 @@ alias lt='lsd --tree'
 alias cl='clear'
 
 alias vs='code'
-alias vs.select='_fzf_send_paths_to code'
 alias st='subl'
-alias st.select='_fzf_send_paths_to subl'
 
 alias hide='chflags hidden'
 alias show='chflags nohidden'
