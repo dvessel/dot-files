@@ -39,6 +39,8 @@ brew "fswatch"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# GIF image/animation creator/editor
+brew "gifsicle"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -79,6 +81,8 @@ brew "switchaudio-osx"
 brew "tag"
 # Simplified and community-driven man pages
 brew "tldr"
+# Command-line interface for VirusTotal
+brew "virustotal-cli"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # DDEV
