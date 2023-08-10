@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>bluetoothPrefsMenuLongPressAction</string>
+		<string>bluetoothPrefsShareLongPressSystemGestureMode</string>
+		<string>bluetoothPrefsShareDoublePressSystemGestureMode</string>
+	</array>
+	<key>bluetoothPrefsMenuLongPressAction</key>
+	<integer>0</integer>
+	<key>bluetoothPrefsShareDoublePressSystemGestureMode</key>
+	<integer>-1</integer>
+	<key>bluetoothPrefsShareLongPressSystemGestureMode</key>
+	<integer>-1</integer>
+</dict>
+</plist>

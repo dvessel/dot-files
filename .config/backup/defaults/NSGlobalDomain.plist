@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleAccentColor</key>
+	<integer>0</integer>
+	<key>AppleFontSmoothing</key>
+	<integer>0</integer>
+	<key>AppleHighlightColor</key>
+	<string>1.000000 0.733333 0.721569 Red</string>
+	<key>AppleMenuBarVisibleInFullscreen</key>
+	<true/>
+	<key>InitialKeyRepeat</key>
+	<real>25</real>
+	<key>KeyRepeat</key>
+	<real>2</real>
+	<key>NSApplicationShowExceptions</key>
+	<true/>
+	<key>NSFullScreenDarkMenu</key>
+	<true/>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>WindowRevert</key>
+		<string>^$e</string>
+		<key>Back</key>
+		<string>^z</string>
+		<key>Emoji &amp; Symbols</key>
+		<string>@$e</string>
+		<key>Enter Full Screen</key>
+		<string>@^f</string>
+		<key>Exit Full Screen</key>
+		<string>@^f</string>
+		<key>Forward</key>
+		<string>^x</string>
+		<key>Hide Sidebar</key>
+		<string>@^s</string>
+		<key>Lock Screen</key>
+		<string>@~$l</string>
+		<key>Make Window Full Screen</key>
+		<string>@^$f</string>
+		<key>Move Tab to New Window</key>
+		<string>@^t</string>
+		<key>Move Window to Left Side of Screen</key>
+		<string>^$q</string>
+		<key>Move Window to Right Side of Screen</key>
+		<string>^$w</string>
+		<key>Remove Window from Set</key>
+		<string>^$r</string>
+		<key>Replace Tiled Window</key>
+		<string>@^r</string>
+		<key>Show Sidebar</key>
+		<string>@^s</string>
+		<key>System Settings...</key>
+		<string>@~,</string>
+		<key>Tile Window to Left of Screen</key>
+		<string>@^q</string>
+		<key>Tile Window to Right of Screen</key>
+		<string>@^w</string>
+		<key>Zoom</key>
+		<string>^$z</string>
+		<key>Zoom All</key>
+		<string>~^$z</string>
+	</dict>
+	<key>NSWindowResizeTime</key>
+	<real>0.065000000000000002</real>
+	<key>NSWindowShouldDragOnGesture</key>
+	<true/>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+		<string>AppleMenuBarVisibleInFullscreen</string>
+		<string>NSWindowResizeTime</string>
+		<string>NSFullScreenDarkMenu</string>
+		<string>NSWindowShouldDragOnGesture</string>
+		<string>AppleFontSmoothing</string>
+		<string>AppleAccentColor</string>
+		<string>AppleHighlightColor</string>
+		<string>InitialKeyRepeat</string>
+		<string>KeyRepeat</string>
+		<string>NSApplicationShowExceptions</string>
+	</array>
+</dict>
+</plist>

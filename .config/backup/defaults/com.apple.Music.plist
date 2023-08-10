@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>Create Station</key>
+		<string>@^s</string>
+		<key>Dislike</key>
+		<string>^d</string>
+		<key>Disliked</key>
+		<string>^d</string>
+		<key>Love</key>
+		<string>^l</string>
+		<key>Loved</key>
+		<string>^l</string>
+		<key>Next Track</key>
+		<string>^n</string>
+		<key>Play Later</key>
+		<string>@^l</string>
+		<key>Play Next</key>
+		<string>@^n</string>
+		<key>Previous Track</key>
+		<string>^p</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>

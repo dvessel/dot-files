@@ -1,0 +1,219 @@
+#!/usr/bin/env zsh
+set -e
+
+# defaults backup path.
+bdpath=~/.config/backup/defaults
+
+# $1 exit status
+function shelp() {
+  print -rC1 -- \
+  "[backup|restore|list]      - Required action." \
+  "[-k|--key] [<setting>]     - Settings key or -e is required." \
+  "[-e|--existing]            - Previously backed up keys. Conflicts with -k." \
+  "[-s|--search]              - Look for key in all active domains." \
+  "[-d|--domain] [<domain>]   - Settings domain, e.g., com.apple.finder." \
+  "[-g|-globalDomain]         - Global domain. Conflicts with -d." \
+  "[-p|--path] [<path>]       - Defaults to ~/.config/backup/defaults." \
+  "[-h|--help]                - This help text."
+  exit $1
+}
+
+# $1 domain
+# $2 key
+function sbackup() {
+  local type value index plist=$bdpath/$1.plist
+
+  # Keys from `defaults read-type` translated to values accepted by plutil.
+  # Arrays and dictionaries must be added as a quoted string of xml.
+  typeset -A types=(
+    "Type is boolean"     -bool
+    "Type is integer"     -integer
+    "Type is float"       -float
+    "Type is string"      -string
+    "Type is data"        -data
+    "Type is date"        -date
+    "Type is array"       -xml
+    "Type is dictionary"  -xml
+  )
+
+  if type=$types[`defaults read-type $1 $2 2>/dev/null`]; then
+    if [[ ! -f $plist ]]; then
+      plutil -create xml1 $plist
+    fi
+    # Hold keys to list later. No other way to do it AFAIK.
+    if ! plutil -type SettingsIndex $plist &>/dev/null; then
+      plutil -insert SettingsIndex -array $plist
+    fi
+
+    case $type in
+      -bool)            typeset -A bool=( 0 false 1 true )
+                        value=$bool[`defaults read $1 $2`]  ;;
+      -integer|-float)  value=`defaults read $1 $2`         ;;
+      *)                value="`defaults read $1 $2`"       ;;
+    esac
+
+    # Escape dots or plutil will drill into submembers.
+    plutil -replace ${2//\./\\.} $type $value $plist &&
+      echo "  $1 > $2 - saved"
+
+    # Ensure the index is unique.
+    index=(${(f)"$(sgetIndex $1)"})
+    if [[ ${2:|index} ]]; then
+      plutil -insert SettingsIndex -string $2 -append $plist
+    fi
+  else
+    echo "? $1 ! $2 - does not exist!" >&2
+  fi
+}
+
+# $1 domain
+# $2 key
+function srestore() {
+  local value
+  # Escape dots or plutil will drill into submembers.
+  if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
+    defaults write $1 $2 "$value" &&
+      echo "  $1 < $2 - restored"
+  else
+    echo "!!$1 ! $2 - failed!"
+  fi
+}
+
+# $1 domain
+# $2 key
+function slist() {
+  echo "  $2"
+}
+
+# $1 domain
+# $2 key
+function slistDomain() {
+  echo "  $1"
+}
+
+# $1 domain
+# $2 key
+# returns 0 when it exists, 1 when it doesn't.
+function skeyExists() {
+  typeset -A r=(0 1 1 0)
+  local i=(${(f)"$(sgetIndex $1)"})
+  return $r[$i[(Ie)$2]]
+}
+
+# $1 domain
+function sgetIndex() {
+  c=`plutil -extract SettingsIndex raw $bdpath/$1.plist`
+  if [[ $c > 0 ]]; then
+    for n in {0..$((c-1))}; do
+      plutil -extract SettingsIndex.$n raw $bdpath/$1.plist
+    done
+  fi
+}
+
+function sgetDomains() {
+  for d in $bdpath/*.plist(N); echo $d:r:t
+}
+
+function () {
+  local op key domain _path help errmsg
+
+  # Zsh 5.8 required for -F option (exit on invalid flag).
+  # Should be fine from Big Sur and up.
+  zmodload zsh/zutil
+  zparseopts -D -E -F - \
+    {s,-search}=search \
+    {e,-existing,k:,-key:}=key \
+    {g,globalDomain,d:,-domain:}=domain \
+    {p,-path}:=_path \
+    {h,-help}=help || shelp 1
+
+  bdpath=${_path[-1]:-$bdpath}
+  domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
+
+  if [[ ${#@[@]} > 0 ]]; then
+    op=$1; shift 1
+  fi
+
+  if [[ -n $help ]]; then
+    shelp
+  elif [[ $op != (backup|restore|list) ]]; then
+    errmsg="backup, restore or list action required."
+  elif [[ ${#key[@]} > 2 || ${#domain[@]} > 2 ]]; then
+    errmsg="Conflicting arguments:`printf " %s" $key $domain`"
+  elif [[ ${#@[@]} > 0 ]]; then
+    errmsg="Unknown arguments: $@"
+  fi
+
+  if [[ ! -d $bdpath ]]; then
+    case $op in
+      backup)       mkdir -p $bdpath                           ;;
+      restore|list) errmsg="No backups found in path: $_path" ;;
+    esac
+  fi
+
+  if [[ -n $errmsg ]]; then
+    echo $errmsg >&2; shelp 1
+  fi
+
+  if [[ -n $search ]]; then
+    if [[ $op != (backup|list) ]]; then
+      echo "Cannot $op with $search ! Omit the $search flag." >&2
+      shelp 1
+    elif [[ $key == (-e|--existing) ]]; then
+      echo "Conflicting arguments! Cannot search active domains with $key !" >&2
+      echo "Use $search with -k <setting> to $op beyond existing backed up keys!" >&2
+      shelp 1
+    elif [[ -z $key ]]; then
+      echo "Missing key." >&2
+      shelp 1
+    else
+
+      # [backup|list] by searching across all active domains for a given key.
+      echo "Searching active domains for $key…"
+      op=${op/list/listDomain}
+      while read -r l; do
+        if [[ $l =~ "Found [0-9]+ keys in domain '([^']*)'" ]]; then
+          # If there's a match, skip to next item in the loop.
+        elif [[ -n $match[1] ]]; then
+          # If previously matched, verify it's for the correct key.
+          if [[ $l =~ "^\"?${key[-1]}\"? =" ]]; then
+            s$op ${match[1]//Apple Global Domain/NSGlobalDomain} ${key[-1]}
+          fi
+          unset match
+        fi
+      done < <( defaults find ${key[-1]} )
+    fi
+  else
+
+    # [backup|restore|list] all keys for all backed up domains.
+    if [[ $key == (-e|--existing) ]]; then
+      while read -r d; do
+        echo "Getting existing keys for $d…"
+        while read -r k; do
+          s$op $d $k
+        done < <( sgetIndex $d )
+      done < <( [[ -n $domain ]] && echo $domain || sgetDomains )
+
+    # [backup|restore] a specific key for specific domain.
+    elif [[ -n $domain && -n $key && $op != list ]]; then
+      echo "Getting ${key[-1]} for $domain…"
+      s$op $domain ${key[-1]}
+
+    # [list] all backed up domains that contains a given key.
+    elif [[ $op == list && -n $key ]]; then
+      echo "Getting domains for $key…"
+      while read -r d; do
+        skeyExists $d ${key[-1]} &&
+          echo "  $d"
+      done < <( sgetDomains )
+
+    elif [[ $op == backup && -n $key ]]; then
+      echo "Missing -s flag for $key or use -e without -s." >&2
+      shelp 1
+    else
+      echo "Cannot $op $key!" >&2
+      shelp 1
+    fi
+
+  fi
+} $@

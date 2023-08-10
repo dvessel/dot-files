@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>ViewHide Calendar List</key>
+		<string>@^s</string>
+		<key>ViewHide Notifications</key>
+		<string>@^n</string>
+		<key>ViewShow Calendar List</key>
+		<string>@^s</string>
+		<key>ViewShow Notifications</key>
+		<string>@^n</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>

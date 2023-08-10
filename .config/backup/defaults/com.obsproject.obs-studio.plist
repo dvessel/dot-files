@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>DocksStats</key>
+		<string>^s</string>
+		<key>ProfileDefault Scaling - 16:10</key>
+		<string>@2</string>
+		<key>ProfileDefault Scaling - 16:9</key>
+		<string>@3</string>
+		<key>ProfileDefault Scaling - 4:3</key>
+		<string>@4</string>
+		<key>ProfileDefault Scaling - Full Display</key>
+		<string>@1</string>
+		<key>ProfileDefault Scaling - \U21bb 3:4</key>
+		<string>@5</string>
+		<key>Scene CollectionDefault Scaling - 16:10</key>
+		<string>@~2</string>
+		<key>Scene CollectionDefault Scaling - 16:9</key>
+		<string>@~3</string>
+		<key>Scene CollectionDefault Scaling - 4:3</key>
+		<string>@~4</string>
+		<key>Scene CollectionDefault Scaling - Full Display</key>
+		<string>@~1</string>
+		<key>Scene CollectionDefault Scaling - \U21bb 3:4</key>
+		<string>@~5</string>
+		<key>Chat</key>
+		<string>^c</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>

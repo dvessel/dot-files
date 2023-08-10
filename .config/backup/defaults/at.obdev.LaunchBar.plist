@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ClipboardHistoryIgnoreApplications</key>
+	<array>
+		<string>com.apple.keychainaccess</string>
+		<string>com.apple.systempreferences</string>
+	</array>
+	<key>LaunchBarHotKey</key>
+	<string>4096@49</string>
+	<key>ModifierTapInstantSend</key>
+	<integer>23</integer>
+	<key>PasteClipboardHistoryHotKey</key>
+	<string>4352@9</string>
+	<key>RetypeDelay</key>
+	<real>0.80000000000000004</real>
+	<key>SelectFromClipboardHistoryHotKey</key>
+	<string>4352@4</string>
+	<key>SettingsIndex</key>
+	<array>
+		<string>ClipboardHistoryIgnoreApplications</string>
+		<string>LaunchBarHotKey</string>
+		<string>ModifierTapInstantSend</string>
+		<string>PasteClipboardHistoryHotKey</string>
+		<string>RetypeDelay</string>
+		<string>SelectFromClipboardHistoryHotKey</string>
+		<string>ShowClipboardHistoryHotKey</string>
+		<string>ShowItemListAfterDelay</string>
+	</array>
+	<key>ShowClipboardHistoryHotKey</key>
+	<string>4864@4</string>
+	<key>ShowItemListAfterDelay</key>
+	<integer>2</integer>
+</dict>
+</plist>

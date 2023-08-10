@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>WindowMinimize All</key>
+		<string>@~m</string>
+		<key>New Tab</key>
+		<string>@^t</string>
+		<key>New Tab with Current Profile</key>
+		<string>@t</string>
+		<key>Toggle Full Screen</key>
+		<string>@^f</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>

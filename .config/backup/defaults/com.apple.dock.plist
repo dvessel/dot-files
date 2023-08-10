@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>autohide</string>
+		<string>autohide-delay</string>
+		<string>autohide-time-modifier</string>
+	</array>
+	<key>autohide</key>
+	<true/>
+	<key>autohide-delay</key>
+	<real>86400</real>
+	<key>autohide-time-modifier</key>
+	<real>0.20000000298023221</real>
+</dict>
+</plist>

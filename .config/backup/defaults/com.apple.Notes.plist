@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>Hide Folders</key>
+		<string>@^s</string>
+		<key>Lock Note</key>
+		<string>@l</string>
+		<key>Pin Note</key>
+		<string>@p</string>
+		<key>Remove Lock</key>
+		<string>@l</string>
+		<key>Show Folders</key>
+		<string>@^s</string>
+		<key>Unpin Note</key>
+		<string>@p</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>

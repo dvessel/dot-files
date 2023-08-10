@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>Mute Other Tab</key>
+		<string>^,</string>
+		<key>Mute Other Tabs</key>
+		<string>^,</string>
+		<key>Mute This Tab</key>
+		<string>^m</string>
+		<key>Search Results SnapBack</key>
+		<string>^c</string>
+		<key>Unmute Other Tab</key>
+		<string>^,</string>
+		<key>Unmute Other Tabs</key>
+		<string>^,</string>
+		<key>Unmute This Tab</key>
+		<string>^m</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>

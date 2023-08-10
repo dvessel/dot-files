@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>DialogType</key>
+	<string>developer</string>
+	<key>SettingsIndex</key>
+	<array>
+		<string>DialogType</string>
+		<string>UseUNC</string>
+	</array>
+	<key>UseUNC</key>
+	<integer>1</integer>
+</dict>
+</plist>
