@@ -11,9 +11,9 @@
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<true/>
 	<key>InitialKeyRepeat</key>
-	<real>25</real>
+	<real>15</real>
 	<key>KeyRepeat</key>
-	<real>2</real>
+	<real>1</real>
 	<key>NSApplicationShowExceptions</key>
 	<true/>
 	<key>NSFullScreenDarkMenu</key>
