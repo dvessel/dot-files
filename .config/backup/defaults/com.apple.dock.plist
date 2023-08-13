@@ -7,6 +7,14 @@
 		<string>autohide</string>
 		<string>autohide-delay</string>
 		<string>autohide-time-modifier</string>
+		<string>wvous-br-corner</string>
+		<string>wvous-br-modifier</string>
+		<string>wvous-bl-corner</string>
+		<string>wvous-bl-modifier</string>
+		<string>wvous-tl-corner</string>
+		<string>wvous-tl-modifier</string>
+		<string>wvous-tr-corner</string>
+		<string>wvous-tr-modifier</string>
 	</array>
 	<key>autohide</key>
 	<true/>
@@ -14,5 +22,21 @@
 	<real>86400</real>
 	<key>autohide-time-modifier</key>
 	<real>0.20000000298023221</real>
+	<key>wvous-bl-corner</key>
+	<integer>1</integer>
+	<key>wvous-bl-modifier</key>
+	<integer>0</integer>
+	<key>wvous-br-corner</key>
+	<integer>4</integer>
+	<key>wvous-br-modifier</key>
+	<integer>0</integer>
+	<key>wvous-tl-corner</key>
+	<integer>1</integer>
+	<key>wvous-tl-modifier</key>
+	<integer>0</integer>
+	<key>wvous-tr-corner</key>
+	<integer>1</integer>
+	<key>wvous-tr-modifier</key>
+	<integer>0</integer>
 </dict>
 </plist>
