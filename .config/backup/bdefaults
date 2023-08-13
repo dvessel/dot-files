@@ -127,9 +127,6 @@ function () {
     {p,-path}:=_path \
     {h,-help}=help || shelp 1
 
-  bdpath=${_path[-1]:-$bdpath}
-  domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
-
   if [[ ${#@[@]} > 0 ]]; then
     op=$1; shift 1
   fi
@@ -144,6 +141,7 @@ function () {
     errmsg="Unknown arguments: $@"
   fi
 
+  bdpath=${_path[-1]:-$bdpath}
   if [[ ! -d $bdpath ]]; then
     case $op in
       backup)       mkdir -p $bdpath                           ;;
@@ -184,6 +182,7 @@ function () {
       done < <( defaults find ${key[-1]} )
     fi
   else
+    domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
 
     # [backup|restore|list] all keys for all backed up domains.
     if [[ $key == (-e|--existing) ]]; then
