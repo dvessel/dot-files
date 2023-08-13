@@ -44,7 +44,7 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>65535</string>
+					<string>49</string>
 					<string>18</string>
 					<string>262144</string>
 				</array>
@@ -71,7 +71,7 @@
 		<key>12</key>
 		<dict>
 			<key>enabled</key>
-			<string>1</string>
+			<string>0</string>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
@@ -591,14 +591,14 @@
 		<key>163</key>
 		<dict>
 			<key>enabled</key>
-			<string>1</string>
+			<string>0</string>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>52</string>
-					<string>21</string>
-					<string>393216</string>
+					<string>65535</string>
+					<string>65535</string>
+					<string>0</string>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -888,8 +888,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>92</string>
-					<string>42</string>
+					<string>100</string>
+					<string>2</string>
 					<string>1441792</string>
 				</array>
 				<key>type</key>
@@ -1021,8 +1021,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>51</string>
-					<string>20</string>
+					<string>96</string>
+					<string>50</string>
 					<string>393216</string>
 				</array>
 				<key>type</key>
@@ -1053,9 +1053,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>52</string>
-					<string>21</string>
-					<string>1441792</string>
+					<string>65535</string>
+					<string>126</string>
+					<string>8781824</string>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1327,9 +1327,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>107</string>
-					<string>40</string>
-					<string>1572864</string>
+					<string>32</string>
+					<string>49</string>
+					<string>262144</string>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1343,9 +1343,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>108</string>
-					<string>37</string>
-					<string>1572864</string>
+					<string>32</string>
+					<string>49</string>
+					<string>786432</string>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1409,7 +1409,7 @@
 				<array>
 					<string>32</string>
 					<string>49</string>
-					<string>655360</string>
+					<string>1572864</string>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1609,9 +1609,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>50</string>
-					<string>19</string>
-					<string>393216</string>
+					<string>65535</string>
+					<string>124</string>
+					<string>8781824</string>
 				</array>
 				<key>type</key>
 				<string>standard</string>
