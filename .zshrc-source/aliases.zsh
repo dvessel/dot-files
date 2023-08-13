@@ -24,8 +24,10 @@ alias tag.usage-all='tag --usage -c'
 
 alias brew.tree='brew leaves | xargs brew deps --include-build --tree'
 
-alias sync.emulation='rsync -avL --itemize-changes --delete ~/Games/Emulation /Volumes/980Pro'
-alias sync.storage='rsync -avzL --itemize-changes --delete /Volumes/Storage/* dvessel-ds.local:/volume1/storage'
+alias sync.emulation='rsync -avL --itemize-changes --exclude=.DS_Store \
+  --delete --delete-excluded ~/Games/Emulation /Volumes/980Pro'
+alias sync.storage='rsync -avzL --itemize-changes --exclude=.DS_Store \
+  --delete --delete-excluded /Volumes/Storage/* dvessel-ds.local:/volume1/storage'
 alias sync.all='sync.emulation && sync.storage'
 
 alias hex2decimal='printf "%d\n"'
