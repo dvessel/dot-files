@@ -4,7 +4,7 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>Delete Conversation\U2026</key>
+		<key>Delete Conversation...</key>
 		<string>@\U232b</string>
 		<key>New Message</key>
 		<string>@$n</string>
