@@ -191,7 +191,7 @@ function () {
 
     # list all domains for a given key.
     if [[ $op == list && ${#key[@]} > 1 ]]; then
-      echo "Getting domains for $key…"
+      echo "$op domains for $key…"
       while read -r d; do
         skeyExists $d $key[-1] &&
           echo "  $d"
@@ -199,7 +199,7 @@ function () {
 
     # [backup|restore] a specific key for specific domain.
     elif [[ -n $domain && ${#key[@]} > 1 ]]; then
-      echo "Getting $key[-1] for $domain…"
+      echo "$op $key[-1] for $domain…"
       s$op $domain $key[-1]
 
     else
@@ -207,7 +207,7 @@ function () {
     # - filter by domain - applies to all keys within a domain.
     # - filter by key    - applies to a key across all domains.
       while read -r d; do
-        echo "Getting existing keys for $d…"
+        echo "$op saved keys for $d…"
         while read -r k; do
           if [[ -z $domain || $domain == $d ]] &&
              [[ ${#key[@]} = 1 || $key[-1] == $k ]]; then
