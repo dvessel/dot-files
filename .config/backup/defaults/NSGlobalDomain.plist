@@ -10,6 +10,10 @@
 	<string>1.000000 0.733333 0.721569 Red</string>
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<true/>
+	<key>AppleSpacesSwitchOnActivate</key>
+	<false/>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>InitialKeyRepeat</key>
 	<real>15</real>
 	<key>KeyRepeat</key>
@@ -75,6 +79,8 @@
 		<string>AppleFontSmoothing</string>
 		<string>AppleAccentColor</string>
 		<string>AppleHighlightColor</string>
+		<string>AppleSpacesSwitchOnActivate</string>
+		<string>AppleWindowTabbingMode</string>
 		<string>InitialKeyRepeat</string>
 		<string>KeyRepeat</string>
 		<string>NSApplicationShowExceptions</string>

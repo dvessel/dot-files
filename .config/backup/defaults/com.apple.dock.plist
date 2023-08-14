@@ -9,6 +9,9 @@
 		<string>autohide-time-modifier</string>
 		<string>wvous-br-corner</string>
 		<string>wvous-br-modifier</string>
+		<string>expose-group-apps</string>
+		<string>mru-spaces</string>
+		<string>tilesize</string>
 		<string>wvous-bl-corner</string>
 		<string>wvous-bl-modifier</string>
 		<string>wvous-tl-corner</string>
@@ -22,6 +25,12 @@
 	<real>86400</real>
 	<key>autohide-time-modifier</key>
 	<real>0.20000000298023221</real>
+	<key>expose-group-apps</key>
+	<true/>
+	<key>mru-spaces</key>
+	<false/>
+	<key>tilesize</key>
+	<real>48</real>
 	<key>wvous-bl-corner</key>
 	<integer>1</integer>
 	<key>wvous-bl-modifier</key>
