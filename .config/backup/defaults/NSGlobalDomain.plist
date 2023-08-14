@@ -15,7 +15,7 @@
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
 	<key>InitialKeyRepeat</key>
-	<real>15</real>
+	<real>25</real>
 	<key>KeyRepeat</key>
 	<real>1</real>
 	<key>NSApplicationShowExceptions</key>
