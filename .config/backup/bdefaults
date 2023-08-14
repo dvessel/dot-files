@@ -184,7 +184,7 @@ function () {
     domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
 
     # list all domains for a given key.
-    if [[ $op == list && -n $key[-1] ]]; then
+    if [[ $op == list && ${#key[@]} > 1 ]]; then
       echo "Getting domains for $key…"
       while read -r d; do
         skeyExists $d $key[-1] &&
@@ -192,7 +192,7 @@ function () {
       done < <( sgetDomains )
 
     # [backup|restore] a specific key for specific domain.
-    elif [[ -n $domain && -n $key[-1] ]]; then
+    elif [[ -n $domain && ${#key[@]} > 1 ]]; then
       echo "Getting $key[-1] for $domain…"
       s$op $domain $key[-1]
 
@@ -204,7 +204,7 @@ function () {
         echo "Getting existing keys for $d…"
         while read -r k; do
           if [[ -z $domain || $domain == $d ]] &&
-             [[ -z $key[-1] || $key[-1] == $k ]]; then
+             [[ ${#key[@]} = 1 || $key[-1] == $k ]]; then
             s$op $d $k
           fi
         done < <( sgetIndex $d )
