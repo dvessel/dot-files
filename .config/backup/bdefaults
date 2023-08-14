@@ -169,14 +169,14 @@ function () {
     echo "Searching active domains for $key…"
     op=${op/list/listDomain}
     while read -r l; do
-      if [[ $l =~ "Found [0-9]+ keys in domain '([^']*)'" ]]; then
+      if [[ $l =~ "^Found [0-9]+ keys in domain '([^']*)': {$" ]]; then
         # If there's a match, skip to next item in the loop.
       elif [[ -n $match[1] ]]; then
         # If previously matched, verify it's for the correct key.
         if [[ $l =~ "^\"?$key[-1]\"? =" ]]; then
           s$op ${match[1]//Apple Global Domain/NSGlobalDomain} $key[-1]
+          unset match
         fi
-        unset match
       fi
     done < <( defaults find $key[-1] )
 
