@@ -10,7 +10,7 @@ function shelp() {
   "[backup|restore|list]      - Required action." \
   "[-k|--key] [<setting>]     - Settings key or -e is required." \
   "[-e|--existing]            - Previously backed up keys. Conflicts with -k." \
-  "[-s|--search]              - Look for key in all active domains." \
+  "[-s|--search]              - Search for keys in all active settings." \
   "[-d|--domain] [<domain>]   - Settings domain, e.g., com.apple.finder." \
   "[-g|-globalDomain]         - Global domain. Conflicts with -d." \
   "[-p|--path] [<path>]       - Defaults to ~/.config/backup/defaults." \
@@ -132,6 +132,9 @@ function () {
   [[ $op != (backup|restore|list) ]] && errmsg+=(
     "backup, restore or list action is required."
   )
+  [[ $op == list && -n $domain && -n $key ]] && errmsg+=(
+    "Cannot $op with $domain[1] and $key[1] !"
+  )
   [[ -n $search && $op == restore ]] && errmsg+=(
     "Cannot $op with search! Omit the $search flag."
   )
@@ -164,24 +167,27 @@ function () {
     shelp 1
   fi
 
+  domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
+
   if [[ -n $search ]]; then
 
     echo "Searching active domains for $key…"
     op=${op/list/listDomain}
     while read -r l; do
       if [[ $l =~ "^Found [0-9]+ keys in domain '([^']*)': {$" ]]; then
-        # If there's a match, skip to next item in the loop.
-      elif [[ -n $match[1] ]]; then
-        # If previously matched, verify it's for the correct key.
-        if [[ $l =~ "^\"?$key[-1]\"? =" ]]; then
-          s$op ${match[1]//Apple Global Domain/NSGlobalDomain} $key[-1]
-          unset match
-        fi
+        _mdomain=${match[1]//Apple Global Domain/NSGlobalDomain}
+        # domain filtering. Is case insensitive.
+        [[ -z $domain || $_mdomain:l == $domain:l ]] &&
+          m=m
+
+      # If previously matched a domain, verify it's for the right key.
+      elif [[ -n $m && $l =~ "^\"?$key[-1]\"? =" ]]; then
+        s$op $_mdomain $key[-1]
+        unset m
       fi
     done < <( defaults find $key[-1] )
 
   else
-    domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
 
     # list all domains for a given key.
     if [[ $op == list && ${#key[@]} > 1 ]]; then
@@ -197,7 +203,7 @@ function () {
       s$op $domain $key[-1]
 
     else
-    # [backup|restore|list] from saved keys.
+    # [backup|restore|list] from saved keys. One filter allowed.
     # - filter by domain - applies to all keys within a domain.
     # - filter by key    - applies to a key across all domains.
       while read -r d; do
