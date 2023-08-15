@@ -11,15 +11,15 @@
 		<key>WindowState</key>
 		<dict>
 			<key>ContainerShowSidebar</key>
-			<string>0</string>
+			<false/>
 			<key>ShowSidebar</key>
-			<string>0</string>
+			<false/>
 			<key>ShowStatusBar</key>
-			<string>0</string>
+			<false/>
 			<key>ShowTabView</key>
-			<string>0</string>
+			<false/>
 			<key>ShowToolbar</key>
-			<string>1</string>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{451, 343}, {825, 392}}</string>
 		</dict>
@@ -33,31 +33,31 @@
 			<key>arrangeBy</key>
 			<string>dateAdded</string>
 			<key>backgroundColorBlue</key>
-			<string>1</string>
+			<real>1</real>
 			<key>backgroundColorGreen</key>
-			<string>1</string>
+			<real>1</real>
 			<key>backgroundColorRed</key>
-			<string>1</string>
+			<real>1</real>
 			<key>backgroundType</key>
-			<string>0</string>
+			<integer>0</integer>
 			<key>gridOffsetX</key>
-			<string>0</string>
+			<real>0.0</real>
 			<key>gridOffsetY</key>
-			<string>0</string>
+			<real>0.0</real>
 			<key>gridSpacing</key>
-			<string>100</string>
+			<real>100</real>
 			<key>iconSize</key>
-			<string>40</string>
+			<real>40</real>
 			<key>labelOnBottom</key>
-			<string>0</string>
+			<false/>
 			<key>showIconPreview</key>
-			<string>1</string>
+			<true/>
 			<key>showItemInfo</key>
-			<string>1</string>
+			<true/>
 			<key>textSize</key>
-			<string>12</string>
+			<real>12</real>
 			<key>viewOptionsVersion</key>
-			<string>1</string>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>FK_DefaultIconViewSettings</key>
@@ -1350,28 +1350,28 @@
 			<key>ArrangeBy</key>
 			<string>dnam</string>
 			<key>ColumnShowFolderArrow</key>
-			<string>1</string>
+			<true/>
 			<key>ColumnShowIcons</key>
-			<string>0</string>
+			<false/>
 			<key>ColumnWidth</key>
-			<string>275</string>
+			<integer>275</integer>
 			<key>FontSize</key>
-			<string>12</string>
+			<integer>12</integer>
 			<key>PreviewDisclosureState</key>
-			<string>1</string>
+			<true/>
 			<key>SharedArrangeBy</key>
 			<string>kipl</string>
 			<key>ShowIconThumbnails</key>
-			<string>1</string>
+			<true/>
 			<key>ShowPreview</key>
-			<string>1</string>
+			<true/>
 		</dict>
 		<key>GalleryViewOptions</key>
 		<dict>
 			<key>ShowPreviewPane</key>
-			<string>1</string>
+			<true/>
 			<key>ShowTitles</key>
-			<string>0</string>
+			<false/>
 		</dict>
 	</dict>
 </dict>

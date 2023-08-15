@@ -5,7 +5,7 @@
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>Delete Conversation...</key>
-		<string>@\U232b</string>
+		<string>@⌫</string>
 		<key>New Message</key>
 		<string>@$n</string>
 	</dict>

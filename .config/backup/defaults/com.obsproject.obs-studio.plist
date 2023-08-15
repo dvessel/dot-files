@@ -14,7 +14,7 @@
 		<string>@4</string>
 		<key>ProfileDefault Scaling - Full Display</key>
 		<string>@1</string>
-		<key>ProfileDefault Scaling - \U21bb 3:4</key>
+		<key>ProfileDefault Scaling - ↻ 3:4</key>
 		<string>@5</string>
 		<key>Scene CollectionDefault Scaling - 16:10</key>
 		<string>@~2</string>
@@ -24,7 +24,7 @@
 		<string>@~4</string>
 		<key>Scene CollectionDefault Scaling - Full Display</key>
 		<string>@~1</string>
-		<key>Scene CollectionDefault Scaling - \U21bb 3:4</key>
+		<key>Scene CollectionDefault Scaling - ↻ 3:4</key>
 		<string>@~5</string>
 		<key>Chat</key>
 		<string>^c</string>
