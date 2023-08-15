@@ -1,6 +1,11 @@
 #!/usr/bin/env zsh
 set -e
 
+# - Make sure full disk access is enabled for the terminal app so
+#   defaults can read from sandboxed apps and their containers.
+# - Doesn't account for hosts or -currentHost. I have not run into a any
+#   problems without it but there are some settings where it's needed.
+
 # Tested on MacOS 13 Ventura.
 # - Uses features in Zsh 5.8, installed with 11 Big Sur.
 # - Uses features in plutil available in 10.2 Jaguar.
