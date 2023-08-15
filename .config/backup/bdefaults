@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 set -e
 
+# Tested on MacOS 13 Ventura.
+# - Uses features in Zsh 5.8, installed with 11 Big Sur.
+# - Uses features in plutil available in 10.2 Jaguar.
+
 # defaults backup path.
 bdpath=~/.config/backup/defaults
 
@@ -49,6 +53,8 @@ function sbackup() {
       -bool)            typeset -A bool=( 0 false 1 true )
                         value=$bool[`defaults read $1 $2`]  ;;
       -integer|-float)  value=`defaults read $1 $2`         ;;
+      -xml)             value="`defaults export $1 - |
+                        plutil -extract "${2//\./\\.}" xml1 -o - -- -`" ;;
       *)                value="`defaults read $1 $2`"       ;;
     esac
 
@@ -114,7 +120,6 @@ function () {
   local op key domain _path help errmsg
 
   # Zsh 5.8 required for -F option (exit on invalid flag).
-  # Should be fine from Big Sur and up.
   zmodload zsh/zutil
   zparseopts -D -E -F - \
     {s,-search}=search \
