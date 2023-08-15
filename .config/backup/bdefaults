@@ -54,7 +54,7 @@ function sbackup() {
                         value=$bool[`defaults read $1 $2`]  ;;
       -integer|-float)  value=`defaults read $1 $2`         ;;
       -xml)             value="`defaults export $1 - |
-                        plutil -extract "${2//\./\\.}" xml1 -o - -- -`" ;;
+                        plutil -extract ${2//\./\\.} xml1 -o - -- -`" ;;
       *)                value="`defaults read $1 $2`"       ;;
     esac
 
@@ -76,7 +76,7 @@ function sbackup() {
 function srestore() {
   local value
   # Escape dots or plutil will drill into submembers.
-  if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
+  if value=`plutil -extract ${2//\./\\.} xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
     defaults write $1 $2 "$value" &&
       echo "  $1 < $2 - restored"
   else
