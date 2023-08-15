@@ -44,7 +44,7 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>49</integer>
+					<integer>65535</integer>
 					<integer>18</integer>
 					<integer>262144</integer>
 				</array>
@@ -575,14 +575,14 @@
 		<key>162</key>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
 					<integer>65535</integer>
 					<integer>96</integer>
-					<integer>9961472</integer>
+					<integer>8912896</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -718,14 +718,14 @@
 		<key>184</key>
 		<dict>
 			<key>enabled</key>
-			<string>1</string>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<string>53</string>
-					<string>23</string>
-					<string>1179648</string>
+					<integer>53</integer>
+					<integer>23</integer>
+					<integer>1179648</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -925,9 +925,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>44</integer>
-					<integer>43</integer>
-					<integer>1835008</integer>
+					<integer>102</integer>
+					<integer>3</integer>
+					<integer>1048576</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1210,7 +1210,7 @@
 		<key>52</key>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
@@ -1247,9 +1247,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>113</integer>
-					<integer>8388608</integer>
+					<integer>102</integer>
+					<integer>3</integer>
+					<integer>1048576</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1279,9 +1279,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>113</integer>
-					<integer>8912896</integer>
+					<integer>102</integer>
+					<integer>3</integer>
+					<integer>1572864</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
