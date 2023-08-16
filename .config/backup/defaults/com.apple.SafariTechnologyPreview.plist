@@ -4,6 +4,16 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
+		<key>WindowDuplicate Tab</key>
+		<string>@d</string>
+		<key>WindowPin Tab</key>
+		<string>@$p</string>
+		<key>WindowUnpin Tab</key>
+		<string>@$p</string>
+		<key>Add Bookmark…</key>
+		<string>@b</string>
+		<key>Hide Reader</key>
+		<string>~ </string>
 		<key>Mute Other Tab</key>
 		<string>^,</string>
 		<key>Mute Other Tabs</key>
@@ -12,6 +22,8 @@
 		<string>^m</string>
 		<key>Search Results SnapBack</key>
 		<string>^c</string>
+		<key>Show Reader</key>
+		<string>~ </string>
 		<key>Unmute Other Tab</key>
 		<string>^,</string>
 		<key>Unmute Other Tabs</key>

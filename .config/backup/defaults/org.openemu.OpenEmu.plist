@@ -13,9 +13,9 @@
 		<key>Show ROM Names</key>
 		<string>@~n</string>
 		<key>Take Native Screenshot</key>
-		<string>@~t</string>
+		<string>~</string>
 		<key>Take Screenshot</key>
-		<string>@t</string>
+		<string></string>
 		<key>Undock Game Window</key>
 		<string>@d</string>
 	</dict>
