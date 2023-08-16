@@ -277,8 +277,6 @@
 		<key>viewOptionsVersion</key>
 		<integer>1</integer>
 	</dict>
-	<key>FXPreferredViewStyle</key>
-	<string>clmv</string>
 	<key>ICloudViewSettings</key>
 	<dict>
 		<key>WindowState</key>
@@ -335,7 +333,6 @@
 		<string>FK_DefaultIconViewSettings</string>
 		<string>FK_SidebarWidth</string>
 		<string>FK_StandardViewOptions2</string>
-		<string>FXPreferredViewStyle</string>
 		<string>NetworkViewSettings</string>
 		<string>NSUserKeyEquivalents</string>
 		<string>PreviewPaneWidth</string>
