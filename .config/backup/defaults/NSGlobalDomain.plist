@@ -4,12 +4,18 @@
 <dict>
 	<key>AppleAccentColor</key>
 	<integer>0</integer>
+	<key>AppleActionOnDoubleClick</key>
+	<string>None</string>
 	<key>AppleFontSmoothing</key>
 	<integer>0</integer>
 	<key>AppleHighlightColor</key>
 	<string>1.000000 0.733333 0.721569 Red</string>
+	<key>AppleInterfaceStyleSwitchesAutomatically</key>
+	<true/>
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<true/>
+	<key>AppleShowScrollBars</key>
+	<string>WhenScrolling</string>
 	<key>AppleSpacesSwitchOnActivate</key>
 	<false/>
 	<key>AppleWindowTabbingMode</key>
@@ -20,8 +26,14 @@
 	<real>1</real>
 	<key>NSApplicationShowExceptions</key>
 	<true/>
+	<key>NSCloseAlwaysConfirmsChanges</key>
+	<false/>
 	<key>NSFullScreenDarkMenu</key>
 	<true/>
+	<key>NSQuitAlwaysKeepsWindows</key>
+	<true/>
+	<key>NSTableViewDefaultSizeMode</key>
+	<integer>1</integer>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>WindowRevert</key>
@@ -84,6 +96,15 @@
 		<string>InitialKeyRepeat</string>
 		<string>KeyRepeat</string>
 		<string>NSApplicationShowExceptions</string>
+		<string>NSQuitAlwaysKeepsWindows</string>
+		<string>AppleActionOnDoubleClick</string>
+		<string>NSCloseAlwaysConfirmsChanges</string>
+		<string>NSTableViewDefaultSizeMode</string>
+		<string>AppleShowScrollBars</string>
+		<string>AppleInterfaceStyleSwitchesAutomatically</string>
+		<string>com.apple.sound.beep.feedback</string>
 	</array>
+	<key>com.apple.sound.beep.feedback</key>
+	<integer>0</integer>
 </dict>
 </plist>

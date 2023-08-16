@@ -18,6 +18,9 @@
 		<string>wvous-tl-modifier</string>
 		<string>wvous-tr-corner</string>
 		<string>wvous-tr-modifier</string>
+		<string>show-recents</string>
+		<string>show-process-indicators</string>
+		<string>launchanim</string>
 	</array>
 	<key>autohide</key>
 	<true/>
@@ -27,7 +30,13 @@
 	<real>0.20000000298023221</real>
 	<key>expose-group-apps</key>
 	<true/>
+	<key>launchanim</key>
+	<false/>
 	<key>mru-spaces</key>
+	<false/>
+	<key>show-process-indicators</key>
+	<false/>
+	<key>show-recents</key>
 	<false/>
 	<key>tilesize</key>
 	<real>48</real>
