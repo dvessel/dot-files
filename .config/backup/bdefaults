@@ -10,26 +10,25 @@ set -e
 # - Uses features in Zsh 5.8, installed with 11 Big Sur.
 # - Uses features in plutil available in 10.2 Jaguar.
 
-# defaults backup path.
-bdpath=~/.config/backup/defaults
-
 # $1 exit status
-function shelp() {
+function shelp {
   print -rC1 -- \
-  "[backup|restore|list]      - Required action." \
-  "[-k|--key] [<setting>]     - Settings key or -e is required." \
-  "[-e|--existing]            - Previously backed up keys. Conflicts with -k." \
-  "[-s|--search]              - Search for keys in all active settings." \
-  "[-d|--domain] [<domain>]   - Settings domain, e.g., com.apple.finder." \
-  "[-g|-globalDomain]         - Global domain. Conflicts with -d." \
-  "[-p|--path] [<path>]       - Defaults to ~/.config/backup/defaults." \
-  "[-h|--help]                - This help text."
+  "[backup|restore|list|delete] - Required action." \
+  "[-a|--all]                   - Acts on all keys/domains from existing backups." \
+  "[-s|--search]                - Search for keys in active settings." \
+  "                               Use to list/save keys not previously backed-up." \
+  "[-k|--key] [<setting>]       - Settings key to act on." \
+  "[-d|--domain] [<domain>]     - Target a domain, e.g., com.apple.finder." \
+  "[-g|-globalDomain]           - Global domain. Conflicts with -d." \
+  "[-p|--path] [<path>]         - Defaults to ~/.config/backup/defaults." \
+  "[-h|--help]                  - This help text."
   exit $1
 }
 
 # $1 domain
 # $2 key
-function sbackup() {
+# $3 output 1 = domain or 2 = key
+function sbackup {
   local type value index plist=$bdpath/$1.plist
 
   # Keys from `defaults read-type` translated to values accepted by plutil.
@@ -65,50 +64,63 @@ function sbackup() {
 
     # Escape dots or plutil will drill into submembers.
     plutil -replace ${2//\./\\.} $type $value $plist &&
-      echo "  $1 > $2 - saved"
+      echo "  $@[$3] - saved"
 
     # Ensure the index is unique.
     if ! sgetIndex $1 | grep -qxF $2; then
       plutil -insert SettingsIndex -string $2 -append $plist
     fi
   else
-    echo "? $1 ! $2 - does not exist!" >&2
+    echo "? $@[$3] - does not exist!" >&2
   fi
 }
 
 # $1 domain
 # $2 key
-function srestore() {
+# $3 output 1 = domain or 2 = key
+function srestore {
   local value
-  # Escape dots or plutil will drill into submembers.
   if value=`plutil -extract ${2//\./\\.} xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
     defaults write $1 $2 "$value" &&
-      echo "  $1 < $2 - restored"
+      echo "  $@[$3] - restored"
   else
-    echo "!!$1 ! $2 - failed!" >&2
+    echo "!!$@[$3] - failed!" >&2
   fi
 }
 
 # $1 domain
 # $2 key
-function slist() {
+# $3 output 1 = domain or 2 = key
+function sdelete {
+  if l=`sgetIndex $1 | grep -Fxn $2`; then
+    plutil -remove SettingsIndex.$((${l/:*} - 1)) $bdpath/$1.plist
+    plutil -remove ${2//\./\\.} $bdpath/$1.plist &&
+      echo "  $@[$3] - deleted"
+  else
+    echo "!!$@[$3] - does not exist!" >&2
+  fi
+}
+
+# $1 domain
+# $2 key
+function slist {
   echo "  $2"
 }
 
 # $1 domain
 # $2 key
-function slistDomain() {
+function slistDomain {
   echo "  $1"
 }
 
 # $1 domain
 # $2 key
-function skeyExists() {
+function skeyExists {
   sgetIndex $1 | grep -qxF $2
 }
 
 # $1 domain
-function sgetIndex() {
+function sgetIndex {
   c=`plutil -extract SettingsIndex raw $bdpath/$1.plist`
   if [[ $c > 0 ]]; then
     for n in {0..$((c-1))}; do
@@ -117,18 +129,19 @@ function sgetIndex() {
   fi
 }
 
-function sgetDomains() {
+function sgetDomains {
   for d in $bdpath/*.plist(N); echo $d:r:t
 }
 
-function () {
-  local op key domain _path help errmsg
+function {
+  local op key domain search all _path help errmsg
 
   # Zsh 5.8 required for -F option (exit on invalid flag).
   zmodload zsh/zutil
   zparseopts -D -E -F - \
+    {a,-all}=all \
     {s,-search}=search \
-    {e,-existing,k:,-key:}=key \
+    {k:,-key:}=key \
     {g,globalDomain,d:,-domain:}=domain \
     {p,-path}:=_path \
     {h,-help}=help || shelp 1
@@ -139,23 +152,20 @@ function () {
 
   [[ -n $help ]] && shelp
 
-  [[ $op != (backup|restore|list) ]] && errmsg+=(
-    "backup, restore or list action is required."
+  [[ $op != (backup|restore|list|delete) ]] && errmsg+=(
+    "backup, restore, list or delete action is required."
   )
-  [[ $op == list && -n $domain && -n $key ]] && errmsg+=(
-    "Cannot $op with $domain[1] and $key[1] !"
+  [[ $op == (backup|restore|delete) && ! -n $key$domain$all ]] && errmsg+=(
+    "$op requires a key, domain or the -a flag."
   )
-  [[ -n $search && $op == restore ]] && errmsg+=(
+  [[ -n $search && -z $key ]] && errmsg+=(
+    "Search requires a key."
+  )
+  [[ -n $search && $op == (restore|delete) ]] && errmsg+=(
     "Cannot $op with search! Omit the $search flag."
   )
-  [[ -n $search && $key == (-e|--existing) ]] && errmsg+=(
-    "Cannot use $key with search! Use -k <setting> instead."
-  )
-  [[ -z $key ]] && errmsg+=(
-    "-k or -e is required."
-  )
-  [[ ${#key[@]} > 2 ]] && errmsg+=(
-    "Conflicting keys: $key"
+  [[ $op == list && -n $domain && -n $key ]] && errmsg+=(
+    "Cannot list with $domain[1] and $key[1] !"
   )
   [[ ${#domain[@]} > 2 ]] && errmsg+=(
     "Conflicting domains: $domain"
@@ -164,7 +174,7 @@ function () {
     "Unknown arguments: $@"
   )
 
-  bdpath=${_path[-1]:-$bdpath}
+  bdpath=${_path[-1]:-~/.config/backup/defaults}
   if [[ ! -d $bdpath ]]; then
     case $op in
       backup)       mkdir -p $bdpath                            ;;
@@ -181,18 +191,18 @@ function () {
 
   if [[ -n $search ]]; then
 
-    echo "Searching active domains for $key…"
+    echo "Searching active domains for $key:"
     op=${op/list/listDomain}
     while read -r l; do
       if [[ $l =~ "^Found [0-9]+ keys in domain '([^']*)': {$" ]]; then
         _mdomain=${match[1]//Apple Global Domain/NSGlobalDomain}
         # domain filtering. Is case insensitive.
-        [[ -z $domain || $_mdomain:l == $domain:l ]] &&
+        if [[ -z $domain || $_mdomain:l == $domain:l ]]; then
           m=m
-
+        fi
       # If previously matched a domain, verify it's for the right key.
       elif [[ -n $m && $l =~ "^\"?$key[-1]\"? =" ]]; then
-        s$op $_mdomain $key[-1]
+        s$op $_mdomain $key[-1] 1
         unset m
       fi
     done < <( defaults find $key[-1] )
@@ -200,30 +210,34 @@ function () {
   else
 
     # list all domains for a given key.
-    if [[ $op == list && ${#key[@]} > 1 ]]; then
-      echo "$op domains for $key…"
+    if [[ $op == list && -n $key ]]; then
+      echo "${(C)op} domains for $key:"
       while read -r d; do
-        skeyExists $d $key[-1] &&
+        ! skeyExists $d $key[-1] ||
           echo "  $d"
       done < <( sgetDomains )
 
     # [backup|restore] a specific key for specific domain.
-    elif [[ -n $domain && ${#key[@]} > 1 ]]; then
-      echo "$op $key[-1] for $domain…"
-      s$op $domain $key[-1]
+    elif [[ -n $domain && -n $key ]]; then
+      echo "${(C)op} $key[-1] for $domain:"
+      s$op $domain $key[-1] 2
 
     else
     # [backup|restore|list] from saved keys. One filter allowed.
     # - filter by domain - applies to all keys within a domain.
     # - filter by key    - applies to a key across all domains.
       while read -r d; do
-        echo "$op saved keys for $d…"
         while read -r k; do
           if [[ -z $domain || $domain == $d ]] &&
-             [[ ${#key[@]} = 1 || $key[-1] == $k ]]; then
-            s$op $d $k
+             [[ -z $key || $key[-1] == $k ]];
+          then
+            if [[ -z $h ]] && h=h; then
+              echo "${(C)op} ${key[-1]:-keys} for $d:"
+            fi
+            s$op $d $k 2
           fi
         done < <( sgetIndex $d )
+        unset h
       done < <( [[ -n $domain ]] && echo $domain || sgetDomains )
 
     fi
