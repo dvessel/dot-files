@@ -2949,7 +2949,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>19.762782579787231</real>
+			<real>20</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -3941,7 +3941,7 @@
 			<key>Title Components</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.20000000000000007</real>
+			<real>0.10000000000000001</real>
 			<key>Triggers</key>
 			<array>
 				<dict>
