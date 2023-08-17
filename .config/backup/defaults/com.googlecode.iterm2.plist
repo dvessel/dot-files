@@ -383,6 +383,10 @@
 	<dict>
 		<key>WindowMinimize All</key>
 		<string>@~m</string>
+		<key>New Tab with Current Profile</key>
+		<string>@t</string>
+		<key>New Window with Current Profile</key>
+		<string>@n</string>
 		<key>Toggle Full Screen</key>
 		<string>@^f</string>
 	</dict>

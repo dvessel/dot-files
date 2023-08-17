@@ -54,6 +54,8 @@
 		<string>@~$l</string>
 		<key>Make Window Full Screen</key>
 		<string>@^$f</string>
+		<key>Merge All Windows</key>
+		<string>@^m</string>
 		<key>Move Tab to New Window</key>
 		<string>@^t</string>
 		<key>Move Window to Left Side of Screen</key>
