@@ -67,7 +67,7 @@ function sbackup {
       echo "  $@[$3] - saved"
 
     # Ensure the index is unique.
-    if ! sgetIndex $1 | grep -qxF $2; then
+    if ! sgetIndex $1 | grep -qx $2; then
       plutil -insert SettingsIndex -string $2 -append $plist
     fi
   else
@@ -92,7 +92,7 @@ function srestore {
 # $2 key
 # $3 output 1 = domain or 2 = key
 function sdelete {
-  if l=`sgetIndex $1 | grep -Fxn $2`; then
+  if l=`sgetIndex $1 | grep -nx $2`; then
     plutil -remove SettingsIndex.$((${l/:*} - 1)) $bdpath/$1.plist
     plutil -remove "${2//\./\\.}" $bdpath/$1.plist &&
       echo "  $@[$3] - deleted"
@@ -116,7 +116,7 @@ function slistDomain {
 # $1 domain
 # $2 key
 function skeyExists {
-  sgetIndex $1 | grep -qxF $2
+  sgetIndex $1 | grep -qx $2
 }
 
 # $1 domain
