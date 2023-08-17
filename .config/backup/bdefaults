@@ -58,12 +58,12 @@ function sbackup {
                         value=$bool[`defaults read $1 $2`]  ;;
       -integer|-float)  value=`defaults read $1 $2`         ;;
       -xml)             value="`defaults export $1 - |
-                        plutil -extract ${2//\./\\.} xml1 -o - -- -`" ;;
+                        plutil -extract "${2//\./\\.}" xml1 -o - -- -`" ;;
       *)                value="`defaults read $1 $2`"       ;;
     esac
 
     # Escape dots or plutil will drill into submembers.
-    plutil -replace ${2//\./\\.} $type $value $plist &&
+    plutil -replace "${2//\./\\.}" $type $value $plist &&
       echo "  $@[$3] - saved"
 
     # Ensure the index is unique.
@@ -80,7 +80,7 @@ function sbackup {
 # $3 output 1 = domain or 2 = key
 function srestore {
   local value
-  if value=`plutil -extract ${2//\./\\.} xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
+  if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
     defaults write $1 $2 "$value" &&
       echo "  $@[$3] - restored"
   else
@@ -94,7 +94,7 @@ function srestore {
 function sdelete {
   if l=`sgetIndex $1 | grep -Fxn $2`; then
     plutil -remove SettingsIndex.$((${l/:*} - 1)) $bdpath/$1.plist
-    plutil -remove ${2//\./\\.} $bdpath/$1.plist &&
+    plutil -remove "${2//\./\\.}" $bdpath/$1.plist &&
       echo "  $@[$3] - deleted"
   else
     echo "!!$@[$3] - does not exist!" >&2
