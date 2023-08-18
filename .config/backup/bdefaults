@@ -32,14 +32,14 @@ function sbackup {
   local type value index plist=$bdpath/$1.plist
 
   # Keys from `defaults read-type` translated to values accepted by plutil.
-  # Arrays and dictionaries must be added as a quoted string of xml.
+  # Data, date, arrays and dictionaries must be added as xml.
   typeset -A types=(
     "Type is boolean"     -bool
     "Type is integer"     -integer
     "Type is float"       -float
     "Type is string"      -string
-    "Type is data"        -data
-    "Type is date"        -date
+    "Type is data"        -xml
+    "Type is date"        -xml
     "Type is array"       -xml
     "Type is dictionary"  -xml
   )
