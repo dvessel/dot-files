@@ -292,8 +292,38 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{432, 379}, {825, 392}}</string>
+			<string>{{451, 343}, {825, 392}}</string>
 		</dict>
+	</dict>
+	<key>NSToolbar Configuration Browser</key>
+	<dict>
+		<key>TB Default Item Identifiers</key>
+		<array>
+			<string>com.apple.finder.BACK</string>
+			<string>com.apple.finder.SWCH</string>
+			<string>NSToolbarSpaceItem</string>
+			<string>com.apple.finder.ARNG</string>
+			<string>com.apple.finder.SHAR</string>
+			<string>com.apple.finder.LABL</string>
+			<string>com.apple.finder.ACTN</string>
+			<string>NSToolbarSpaceItem</string>
+			<string>com.apple.finder.SRCH</string>
+		</array>
+		<key>TB Display Mode</key>
+		<integer>2</integer>
+		<key>TB Icon Size Mode</key>
+		<integer>1</integer>
+		<key>TB Is Shown</key>
+		<true/>
+		<key>TB Item Identifiers</key>
+		<array>
+			<string>com.apple.finder.BACK</string>
+			<string>com.apple.finder.SWCH</string>
+			<string>com.apple.finder.ARNG</string>
+			<string>com.apple.finder.SRCH</string>
+		</array>
+		<key>TB Size Mode</key>
+		<integer>1</integer>
 	</dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
@@ -339,6 +369,7 @@
 		<string>StandardViewOptions</string>
 		<string>ICloudViewSettings</string>
 		<string>FK_iCloudListViewSettingsV2</string>
+		<string>NSToolbar Configuration Browser</string>
 	</array>
 	<key>StandardViewOptions</key>
 	<dict>
