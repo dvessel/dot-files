@@ -63,12 +63,11 @@ function sbackup {
     esac
 
     # Escape dots or plutil will drill into submembers.
-    plutil -replace "${2//\./\\.}" $type $value $plist &&
+    if plutil -replace "${2//\./\\.}" $type $value $plist; then
       echo "  $@[$3] - saved"
-
-    # Ensure the index is unique.
-    if ! sgetIndex $1 | grep -qx $2; then
-      plutil -insert SettingsIndex -string $2 -append $plist
+      if ! sgetIndex $1 | grep -qx $2; then
+        plutil -insert SettingsIndex -string $2 -append $plist
+      fi
     fi
   else
     echo "? $@[$3] - does not exist!" >&2
