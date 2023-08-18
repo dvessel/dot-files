@@ -3684,6 +3684,8 @@
 			<string>/Users/joon</string>
 		</dict>
 	</array>
+	<key>PromptOnQuit</key>
+	<false/>
 	<key>SeparateWindowTitlePerTab</key>
 	<true/>
 	<key>SettingsIndex</key>
@@ -3708,6 +3710,7 @@
 		<string>MinimalTabStyleOutlineStrength</string>
 		<string>BellRateLimit</string>
 		<string>DisableWindowSizeSnap</string>
+		<string>PromptOnQuit</string>
 	</array>
 	<key>SmartPlacement</key>
 	<false/>
