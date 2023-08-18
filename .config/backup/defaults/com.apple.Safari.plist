@@ -31,9 +31,21 @@
 		<key>Unmute This Tab</key>
 		<string>^m</string>
 	</dict>
+	<key>OpenNewTabsInFront</key>
+	<false/>
+	<key>SearchProviderShortName</key>
+	<string>DuckDuckGo</string>
 	<key>SettingsIndex</key>
 	<array>
 		<string>NSUserKeyEquivalents</string>
+		<string>OpenNewTabsInFront</string>
+		<string>TabCreationPolicy</string>
+		<string>ShowStandaloneTabBar</string>
+		<string>SearchProviderShortName</string>
 	</array>
+	<key>ShowStandaloneTabBar</key>
+	<false/>
+	<key>TabCreationPolicy</key>
+	<integer>0</integer>
 </dict>
 </plist>
