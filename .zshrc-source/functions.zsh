@@ -1,4 +1,10 @@
 
+# https://iterm2.com/3.3/documentation-variables.html
+# https://iterm2.com/3.3/documentation-scripting-fundamentals.html
+function iterm2_print_user_vars {
+  iterm2_set_user_var arch `arch`
+}
+
 # Jump to previous directory.
 function .. {
   builtin cd $OLDPWD

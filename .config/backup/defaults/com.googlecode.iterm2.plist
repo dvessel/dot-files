@@ -1751,7 +1751,7 @@
 				</array>
 			</dict>
 			<key>Subtitle</key>
-			<string></string>
+			<string>\(user.arch) – \(tty) – \(columns) x \(rows)</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -3576,7 +3576,7 @@
 				</array>
 			</dict>
 			<key>Subtitle</key>
-			<string></string>
+			<string>\(user.arch) – \(tty) – \(columns) x \(rows)</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
