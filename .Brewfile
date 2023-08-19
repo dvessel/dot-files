@@ -53,6 +53,8 @@ brew "grex"
 brew "highlight"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Compiler for SIMD programming on the CPU
+brew "ispc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
