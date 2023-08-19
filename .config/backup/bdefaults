@@ -32,7 +32,7 @@ function sbackup {
   local type value index plist=$bdpath/$1.plist
 
   if ! ssourceDomainExists $1; then
-    echo "? $1 - source domain does not exist!"
+    echo "? $1 - `serror source domain does not exist!`"
     return 1
   fi
 
@@ -69,13 +69,13 @@ function sbackup {
 
     # Escape dots or plutil will drill into submembers.
     if plutil -replace "${2//\./\\.}" $type $value $plist; then
-      echo "  $@[$3] - saved"
+      echo "  $@[$3] - `sok saved`"
       if ! sgetSettingsIndex $1 | grep -qx $2; then
         plutil -insert SettingsIndex -string $2 -append $plist
       fi
     fi
   else
-    echo "? $@[$3] - source key does not exist!" >&2
+    echo "? $@[$3] - `serror source key does not exist!`" >&2
     return 1
   fi
 }
@@ -85,15 +85,15 @@ function sbackup {
 # $3 output 1 = domain or 2 = key
 function srestore {
   if ! ssourceDomainExists $1; then
-    echo "? $1 - restore target does not exist!"
+    echo "? $1 - `serror restore target does not exist!`"
     return 1
   fi
   local value
   if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
     defaults write $1 $2 "$value" &&
-      echo "  $@[$3] - restored"
+      echo "  $@[$3] - `sok restored`"
   else
-    echo "!!$@[$3] - failed reading backup!" >&2
+    echo "!!$@[$3] - `serror failed reading backup!`" >&2
     return 1
   fi
 }
@@ -105,9 +105,9 @@ function sdelete {
   if l=`sgetSettingsIndex $1 | grep -nx $2`; then
     plutil -remove SettingsIndex.$((${l/:*} - 1)) $bdpath/$1.plist
     plutil -remove "${2//\./\\.}" $bdpath/$1.plist &&
-      echo "  $@[$3] - deleted"
+      echo "  $@[$3] - `sok deleted`"
   else
-    echo "!!$@[$3] - backup key does not exist!" >&2
+    echo "!!$@[$3] - `serror backup key does not exist!`" >&2
     return 1
   fi
 }
@@ -150,6 +150,20 @@ function sgetSettingsIndex {
 
 function sgetBackupDomains {
   for d in $bdpath/*.plist(N); echo $d:r:t
+}
+
+function sheader {
+  # Uppercase first character.
+  echo "\e[1;30m${(C)1::1}${1:1}\e[0m"
+}
+function serror {
+  printf "\e[0;31m%s\e[0m" "${(j[ ])@}"
+}
+function sok {
+  printf "\e[0;32m%s\e[0m" "${(j[ ])@}"
+}
+function swarn {
+  printf "\e[0;33m%s\e[0m" "${(j[ ])@}"
 }
 
 function {
@@ -210,7 +224,7 @@ function {
 
   if [[ -n $search ]]; then
 
-    echo "Searching active domains for $key:"
+    sheader "Searching active domains for $key:"
     # [backup|list] from search.
     op=${op/list/listDomain}
     while read -r l; do
@@ -231,7 +245,7 @@ function {
 
     # list all domains for a given key.
     if [[ $op == list && -n $key ]]; then
-      echo "${(C)op} domains for $key:"
+      sheader "$op domains for $key:"
       while read -r d; do
         ! sbackupKeyExists $d $key[-1] ||
           echo "  $d"
@@ -239,7 +253,7 @@ function {
 
     # [backup|restore|delete] a specific key for specific domain.
     elif [[ -n $domain && -n $key ]]; then
-      echo "${(C)op} $key[-1] for $domain:"
+      sheader "$op $key[-1] for $domain:"
       s$op $domain $key[-1] 2
 
     else
@@ -252,7 +266,7 @@ function {
              [[ -z $key || $key[-1] == $k ]];
           then
             if [[ -z $h ]] && h=h; then
-              echo "${(C)op} ${key[-1]:-keys} for $d:"
+              sheader "$op ${key[-1]:-keys} for $d:"
             fi
             s$op $d $k 2
           fi
