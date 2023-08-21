@@ -6,7 +6,7 @@ alias cl='clear'
 alias ..='builtin cd $OLDPWD'
 
 alias lb='open -b at.obdev.LaunchBar'
-alias ql='qlmanage -p 2>/dev/null'
+alias ql='qlmanage -p &>/dev/null'
 
 alias vs='code'
 alias st='subl'
