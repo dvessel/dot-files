@@ -3,26 +3,24 @@ alias la='lsd -lA'
 alias lt='lsd --tree'
 alias cl='clear'
 
+alias ..='builtin cd $OLDPWD'
+
+alias lb='open -b at.obdev.LaunchBar'
+alias ql='qlmanage -p 2>/dev/null'
+
 alias vs='code'
 alias st='subl'
 
 alias hide='chflags hidden'
 alias show='chflags nohidden'
-alias hide.extension='SetFile -a E'
-alias show.extension='SetFile -a e'
+alias hide.ext='SetFile -a E'
+alias show.ext='SetFile -a e'
+
 alias unquarantine='xattr -d com.apple.quarantine'
 
 # Use `exit` to undo the switch.
 alias switch.x86='arch -d PATH --x86_64 /bin/zsh -l'
 alias switch.arm='arch -d PATH --arm64 /bin/zsh -l'
-
-alias ql='qlmanage -p 2>/dev/null'
-
-alias tag.list='tag -ctm "*" *(n)'
-alias tag.usage='tag --usage -c ./'
-alias tag.usage-all='tag --usage -c'
-
-alias brew.tree='brew leaves | xargs brew deps --include-build --tree'
 
 alias sync.emulation='rsync -avL --itemize-changes --delete \
   ~/Games/Emulation /Volumes/980Pro'

@@ -5,33 +5,29 @@ function iterm2_print_user_vars {
   iterm2_set_user_var arch `arch`
 }
 
-# Jump to previous directory.
-function .. {
-  builtin cd $OLDPWD
+function brew.tree {
+  brew deps --include-build --tree $@
 }
-
-# Send to LaunchBar.
-function lb {
-  local sent=${@-:} && [[ ${sent[1]} != / ]] && sent=`pwd`/$sent
-  if [[ -a $sent ]]; then
-    open "x-launchbar:select?file=`url.encode $sent`"
-  else
-    open "x-launchbar:select?string=$sent"
+function brew.binaries {
+  if [[ -z $@ ]]; then
+    echo "Formula required." >&2; return 1 
   fi
+  brew unlink --dry-run $@ | grep "`brew --prefix`/bin/.*" | cut -d/ -f5
 }
 
 function tm.is-excluded {
-  if [[ -n $@ ]]; then
-    tmutil isexcluded $@
-  else
-    mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"
-  fi
+  tmutil isexcluded $@
 }
 function tm.exclude {
-  tmutil addexclusion $@ && tag -a "Time Machine - Excluded" $@
+  tmutil addexclusion $@ && _brew_check tag {}
+    tag -a "Time Machine - Excluded" $@
 }
 function tm.include {
-  tmutil removeexclusion $@ && tag -r "Time Machine - Excluded" $@
+  tmutil removeexclusion $@ &&
+    tag -r "Time Machine - Excluded" $@
+}
+function tm.find-excluded {
+  mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"
 }
 function tm.log {
   local time=${@:-1H}
@@ -40,10 +36,6 @@ function tm.log {
 }
 function tm.fs_usage {
   sudo fs_usage -f filesys backupd
-}
-
-function brew.executables {
-  brew unlink --dry-run $@ | pcregrep -o1 "$(brew --prefix)/bin/(.*)"
 }
 
 function prfzf {
