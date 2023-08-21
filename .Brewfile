@@ -23,6 +23,8 @@ brew "colima"
 brew "conda-zsh-completion"
 # In-depth comparison of files, archives, and directories
 brew "diffoscope"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Generate documentation for several programming languages
