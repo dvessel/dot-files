@@ -41,14 +41,9 @@ function tm.fs_usage {
   sudo fs_usage -f filesys backupd
 }
 
-function prfzf {
-  if _brew_check gh fzf; then
-    GH_FORCE_TTY=100%
-    gh pr list |
-      fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down --header-lines 3 |
-        awk '{print $1}' |
-          xargs gh pr checkout
-  fi
+function gh.pr-list {
+  gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down |
+    awk '{print $1}' | xargs gh pr $@
 }
 
 # Encode/decode url's.
