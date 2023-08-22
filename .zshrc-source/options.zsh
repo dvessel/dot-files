@@ -5,6 +5,9 @@
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt no_case_glob
 
+# Word boundaries for keyboard traversal. Defaults: *?_-.[]~=/&;!#$%^(){}<>
+WORDCHARS='*?_-.[]~&:;!#$%^<>'
+
 setopt share_history          # Reads/writes history to keep sessions in sync.
                               # inc_append_history not needed.
 setopt extended_history       # Extended format required when the history file
