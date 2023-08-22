@@ -19,7 +19,7 @@ function tm.is-excluded {
   tmutil isexcluded $@
 }
 function tm.exclude {
-  tmutil addexclusion $@ && _brew_check tag {}
+  tmutil addexclusion $@ &&
     tag -a "Time Machine - Excluded" $@
 }
 function tm.include {
@@ -27,6 +27,9 @@ function tm.include {
     tag -r "Time Machine - Excluded" $@
 }
 function tm.find-excluded {
+  tag -Rm "Time Machine - Excluded" $@
+}
+function tm.mdfind-excluded {
   mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"
 }
 function tm.log {
