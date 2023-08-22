@@ -19,3 +19,7 @@
 	required = true
 [init]
 	defaultBranch = main
+[alias]
+	# When pruning ignores unreachable commits.
+	# https://www.sean-lloyd.com/post/using-git-prune/
+	reflog-expire-all = git reflog expire --expire=now --expire-unreachable=now --all
