@@ -4,24 +4,11 @@
 [core]
 	whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
 	editor = code
-	pager = delta
 	excludesfile = ~/.config/git/ignore
-[interactive]
-	diffFilter = delta --color-only
-[add.interactive]
-# delta - Required for git 2.37.0.
-	useBuiltin = false
-[delta]
-# delta - Use n and N to move between diffs.
-	navigate = true
 [diff]
 	tool = opendiff
-# delta
-	colorMoved = default
 [merge]
 	tool = opendiff
-# delta
-	conflictstyle = diff3
 [pull]
 	ff = only
 	rebase = true

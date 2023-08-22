@@ -45,8 +45,6 @@ brew "gh"
 brew "gifsicle"
 # Distributed revision control system
 brew "git"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
 # Small git utilities
 brew "git-extras"
 # Command-line tool for generating regular expressions
