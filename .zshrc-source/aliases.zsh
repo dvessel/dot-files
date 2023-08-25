@@ -24,7 +24,7 @@ alias switch.arm='arch -d PATH --arm64 /bin/zsh -l'
 
 alias sync.emulation='rsync -avL --itemize-changes --delete \
   ~/Games/Emulation /Volumes/980Pro'
-alias sync.storage='rsync -avzL --itemize-changes --delete \
+alias sync.storage='rsync -avzL --delete --progress -h \
   /Volumes/Storage/* dvessel-ds.local:/volume1/storage'
 alias sync.all='sync.emulation && sync.storage'
 
