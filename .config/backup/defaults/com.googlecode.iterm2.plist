@@ -1749,7 +1749,7 @@
 				</array>
 			</dict>
 			<key>Subtitle</key>
-			<string>\(user.arch) – \(tty)</string>
+			<string>\(user.machine) – \(tty)</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -3574,7 +3574,7 @@
 				</array>
 			</dict>
 			<key>Subtitle</key>
-			<string>\(user.arch) – \(tty)</string>
+			<string>\(user.machine) – \(tty)</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
