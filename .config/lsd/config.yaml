@@ -85,7 +85,7 @@ recursion:
   enabled: false
   # How deep the recursion should go. This has to be a positive integer. Leave
   # it unspecified for (virtually) infinite.
-  depth: 5
+  depth: 4
 
 # == Size ==
 # Specifies the format of the size column.
