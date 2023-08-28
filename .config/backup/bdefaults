@@ -30,7 +30,7 @@ function s.help {
 # $3 output 1 = domain or 2 = key
 function op.backup {
   if ! s.sourceDomainExists $1; then
-    echo "? $1 - `s.error source domain does not exist!`"
+    echo "? $1 - `s.error source domain does not exist!`" >&2
     return 1
   fi
 
@@ -85,7 +85,7 @@ function op.backup {
 # $3 output 1 = domain or 2 = key
 function op.restore {
   if ! s.sourceDomainExists $1; then
-    echo "? $1 - `s.error restore target does not exist!`"
+    echo "? $1 - `s.error restore target does not exist!`" >&2
     return 1
   fi
 
