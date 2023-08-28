@@ -65,8 +65,6 @@ brew "neovide"
 brew "ninja"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
-# Perceptual image comparison tool
-brew "perceptualdiff"
 # Organize and de-duplicate your files without losing data
 brew "periscope"
 # PNG image optimizing utility
