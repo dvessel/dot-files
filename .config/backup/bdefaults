@@ -212,8 +212,8 @@ function {
   bdpath=${bdpath[-1]:-~/.config/backup/defaults}
   if [[ ! -d $bdpath ]]; then
     case $op in
-      backup)       mkdir -p $bdpath                            ;;
-      restore|list) errmsg+=("No backups found in path: $bdpath");;
+      backup)               mkdir -p $bdpath                              ;;
+      restore|list|delete)  errmsg+=("No backups found in path: $bdpath") ;;
     esac
   fi
 
