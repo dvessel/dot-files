@@ -31,9 +31,6 @@ alias sync.all='sync.emulation && sync.storage'
 alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
 
-alias metal-hud.enable='launchctl setenv MTL_HUD_ENABLED 1'
-alias metal-hud.disable='launchctl setenv MTL_HUD_ENABLED 0'
-
 alias capture.fullscreen='screencapture -vpdR 0,0,1728,1117 \
   -G com.rogueamoeba.Loopback:4699A16B-2B90-4A3F-B522-B2CFFAC463FA'
 alias capture.no-menu='screencapture -vpdR 0,37,1728,1080 \
