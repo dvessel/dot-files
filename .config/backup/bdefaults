@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-set -e
 
 # - Make sure full disk access is enabled for the terminal app so
 #   defaults can read from sandboxed apps and their containers.
