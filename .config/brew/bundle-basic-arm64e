@@ -1,0 +1,26 @@
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+# Plugin manager for zsh, inspired by antigen and antibody
+brew "antidote"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Small git utilities
+brew "git-extras"
+# Convert source code to formatted text with syntax highlighting
+brew "highlight"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Developer targeted fonts with a high number of glyphs
+cask "font-anonymice-nerd-font"
+cask "font-ia-writer-duo"
