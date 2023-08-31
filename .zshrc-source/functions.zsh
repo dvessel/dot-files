@@ -15,11 +15,9 @@ function brew.binaries {
   brew unlink --dry-run $@ | grep "`brew --prefix`/bin/.*" | cut -d/ -f5
 }
 function brew.bundle {
-  mkdir -p ~/.config/brew
-  brew bundle $@ \
-    --force --no-lock --describe \
-    --brews --casks --taps \
-    --file ~/.config/brew/bundle-`machine`
+  zparseopts -D -E - {s,-set}:=set || return 1
+  brew bundle $@ --describe --no-lock --brews --casks --taps \
+    --file ~/.config/brew/bundle-${set[-1]:-default}-`machine`
 }
 
 function tm.is-excluded {
