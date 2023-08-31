@@ -59,8 +59,8 @@ brew "ispc"
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
-# No Nonsense Neovim Client in Rust
-brew "neovide"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # 7-Zip (high compression file archiver) implementation
