@@ -4,24 +4,24 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>Create Station</key>
-		<string>@^s</string>
-		<key>Dislike</key>
-		<string>^d</string>
-		<key>Disliked</key>
-		<string>^d</string>
-		<key>Love</key>
-		<string>^l</string>
-		<key>Loved</key>
-		<string>^l</string>
-		<key>Next Track</key>
+		<key>ControlsNext Track</key>
 		<string>^n</string>
-		<key>Play Later</key>
-		<string>@^l</string>
-		<key>Play Next</key>
-		<string>@^n</string>
-		<key>Previous Track</key>
+		<key>ControlsPrevious Track</key>
 		<string>^p</string>
+		<key>SongCreate Station</key>
+		<string>@~s</string>
+		<key>SongDislike</key>
+		<string>^d</string>
+		<key>SongDisliked</key>
+		<string>^d</string>
+		<key>SongLove</key>
+		<string>^l</string>
+		<key>SongLoved</key>
+		<string>^l</string>
+		<key>SongPlay Later</key>
+		<string>@~l</string>
+		<key>SongPlay Next</key>
+		<string>@~n</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

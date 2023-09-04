@@ -4,6 +4,8 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
+		<key>DocksChat</key>
+		<string>^c</string>
 		<key>DocksStats</key>
 		<string>^s</string>
 		<key>ProfileDefault Scaling - 16:10</key>
@@ -26,8 +28,6 @@
 		<string>@~1</string>
 		<key>Scene CollectionDefault Scaling - ↻ 3:4</key>
 		<string>@~5</string>
-		<key>Chat</key>
-		<string>^c</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

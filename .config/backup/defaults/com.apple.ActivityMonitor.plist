@@ -4,13 +4,13 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>Normally (5 sec)</key>
-		<string>@~5</string>
-		<key>Often (2 sec)</key>
-		<string>@~2</string>
-		<key>Quit Process</key>
+		<key>ViewQuit Process</key>
 		<string>@~q</string>
-		<key>Very often (1 sec)</key>
+		<key>ViewUpdate FrequencyNormally (5 sec)</key>
+		<string>@~5</string>
+		<key>ViewUpdate FrequencyOften (2 sec)</key>
+		<string>@~2</string>
+		<key>ViewUpdate FrequencyVery often (1 sec)</key>
 		<string>@~1</string>
 	</dict>
 	<key>SettingsIndex</key>

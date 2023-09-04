@@ -4,10 +4,8 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>Delete Conversation...</key>
+		<key>ConversationDelete Conversation…</key>
 		<string>@⌫</string>
-		<key>New Message</key>
-		<string>@$n</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

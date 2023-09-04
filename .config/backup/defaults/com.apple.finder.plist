@@ -329,7 +329,7 @@
 	<dict>
 		<key>GoEnclosing Folder</key>
 		<string>^c</string>
-		<key>Enclosing Folder in New Window</key>
+		<key>GoEnclosing Folder in New Window</key>
 		<string>^$c</string>
 	</dict>
 	<key>NetworkViewSettings</key>

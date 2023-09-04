@@ -4,32 +4,40 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
+		<key>BookmarksAdd Bookmark…</key>
+		<string>@b</string>
+		<key>HistoryBack</key>
+		<string>^z</string>
+		<key>HistoryForward</key>
+		<string>^x</string>
+		<key>HistorySearch Results SnapBack</key>
+		<string>^c</string>
+		<key>ViewHide Reader</key>
+		<string>~ </string>
+		<key>ViewShow Reader</key>
+		<string>~ </string>
+		<key>ViewTranslationTranslate to English</key>
+		<string>@~l</string>
+		<key>ViewTranslationView Original</key>
+		<string>@~o</string>
 		<key>WindowDuplicate Tab</key>
 		<string>@d</string>
+		<key>WindowMute Other Tab</key>
+		<string>^,</string>
+		<key>WindowMute Other Tabs</key>
+		<string>^,</string>
+		<key>WindowMute This Tab</key>
+		<string>^m</string>
 		<key>WindowPin Tab</key>
 		<string>@$p</string>
+		<key>WindowUnmute Other Tab</key>
+		<string>^,</string>
+		<key>WindowUnmute Other Tabs</key>
+		<string>^,</string>
+		<key>WindowUnmute This Tab</key>
+		<string>^m</string>
 		<key>WindowUnpin Tab</key>
 		<string>@$p</string>
-		<key>Add Bookmark…</key>
-		<string>@b</string>
-		<key>Hide Reader</key>
-		<string>~ </string>
-		<key>Mute Other Tab</key>
-		<string>^,</string>
-		<key>Mute Other Tabs</key>
-		<string>^,</string>
-		<key>Mute This Tab</key>
-		<string>^m</string>
-		<key>Search Results SnapBack</key>
-		<string>^c</string>
-		<key>Show Reader</key>
-		<string>~ </string>
-		<key>Unmute Other Tab</key>
-		<string>^,</string>
-		<key>Unmute Other Tabs</key>
-		<string>^,</string>
-		<key>Unmute This Tab</key>
-		<string>^m</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

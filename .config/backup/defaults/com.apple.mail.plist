@@ -4,7 +4,7 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>Send</key>
+		<key>MessageSend</key>
 		<string>@↩</string>
 	</dict>
 	<key>SettingsIndex</key>

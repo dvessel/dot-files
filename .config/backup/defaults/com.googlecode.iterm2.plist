@@ -24,12 +24,12 @@
 	<real>0.10000000000000001</real>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
+		<key>ShellNew Tab with Current Profile</key>
+		<string>@t</string>
+		<key>ViewToggle Full Screen</key>
+		<string>@^f</string>
 		<key>WindowMinimize All</key>
 		<string>@~m</string>
-		<key>New Tab with Current Profile</key>
-		<string>@t</string>
-		<key>Toggle Full Screen</key>
-		<string>@^f</string>
 	</dict>
 	<key>New Bookmarks</key>
 	<array>

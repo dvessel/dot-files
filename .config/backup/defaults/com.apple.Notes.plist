@@ -4,18 +4,18 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>Hide Folders</key>
-		<string>@^s</string>
-		<key>Lock Note</key>
+		<key>FileLock Note</key>
 		<string>@l</string>
-		<key>Pin Note</key>
+		<key>FilePin Note</key>
 		<string>@p</string>
-		<key>Remove Lock</key>
+		<key>FileRemove Lock</key>
 		<string>@l</string>
-		<key>Show Folders</key>
-		<string>@^s</string>
-		<key>Unpin Note</key>
+		<key>FileUnpin Note</key>
 		<string>@p</string>
+		<key>ViewHide Folders</key>
+		<string>@^s</string>
+		<key>ViewShow Folders</key>
+		<string>@^s</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

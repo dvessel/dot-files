@@ -6,13 +6,13 @@
 	<false/>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>Float on Top</key>
-		<string>@~f</string>
-		<key>Restart Game</key>
+		<key>ControlsRestart Game</key>
 		<string>@r</string>
-		<key>Show ROM Names</key>
+		<key>ViewFloat on Top</key>
+		<string>@~f</string>
+		<key>ViewShow ROM Names</key>
 		<string>@~n</string>
-		<key>Undock Game Window</key>
+		<key>ViewUndock Game Window</key>
 		<string>@d</string>
 	</dict>
 	<key>SettingsIndex</key>

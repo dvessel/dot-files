@@ -44,7 +44,7 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
+					<integer>49</integer>
 					<integer>18</integer>
 					<integer>262144</integer>
 				</array>
@@ -60,7 +60,7 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
+					<integer>50</integer>
 					<integer>19</integer>
 					<integer>262144</integer>
 				</array>
@@ -596,8 +596,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>51</integer>
-					<integer>20</integer>
+					<integer>52</integer>
+					<integer>21</integer>
 					<integer>393216</integer>
 				</array>
 				<key>type</key>
@@ -750,14 +750,14 @@
 		<key>190</key>
 		<dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>110</integer>
-					<integer>45</integer>
-					<integer>1441792</integer>
+					<integer>113</integer>
+					<integer>12</integer>
+					<integer>8388608</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -968,7 +968,7 @@
 		<key>29</key>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
@@ -1000,7 +1000,7 @@
 		<key>31</key>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
@@ -1021,8 +1021,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>96</integer>
-					<integer>50</integer>
+					<integer>51</integer>
+					<integer>20</integer>
 					<integer>393216</integer>
 				</array>
 				<key>type</key>
@@ -1037,9 +1037,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>48</integer>
-					<integer>1310720</integer>
+					<integer>51</integer>
+					<integer>20</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1053,9 +1053,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>126</integer>
-					<integer>8781824</integer>
+					<integer>52</integer>
+					<integer>21</integer>
+					<integer>393216</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1069,9 +1069,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>48</integer>
-					<integer>1441792</integer>
+					<integer>51</integer>
+					<integer>20</integer>
+					<integer>393216</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1085,8 +1085,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>96</integer>
-					<integer>50</integer>
+					<integer>52</integer>
+					<integer>21</integer>
 					<integer>262144</integer>
 				</array>
 				<key>type</key>
@@ -1101,8 +1101,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>96</integer>
-					<integer>50</integer>
+					<integer>52</integer>
+					<integer>21</integer>
 					<integer>393216</integer>
 				</array>
 				<key>type</key>
