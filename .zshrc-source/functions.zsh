@@ -50,6 +50,11 @@ function gh.pr-list {
   gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down |
     awk '{print $1}' | xargs gh pr $@
 }
+function git.recursive {
+  while read -r p; do
+    echo "\e[1;30m$p:h\e[0m"; git --git-dir=$p --work-tree=$p:h $@; echo
+  done < <( find . -type d -name .git )
+}
 
 # Encode/decode url's.
 function url.decode {
