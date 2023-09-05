@@ -33,42 +33,21 @@ function op.backup {
     return 1
   fi
 
-  local type value index plist=$bdpath/$1.plist
+  local value plist=$bdpath/$1.plist
 
-  # Keys from `defaults read-type` translated to values accepted by plutil.
-  # Data, date, arrays and dictionaries must be added as xml.
-  typeset -A types=(
-    "Type is boolean"     -bool
-    "Type is integer"     -integer
-    "Type is float"       -float
-    "Type is string"      -string
-    "Type is data"        -xml
-    "Type is date"        -xml
-    "Type is array"       -xml
-    "Type is dictionary"  -xml
-  )
-
-  if type=$types[`defaults read-type $1 $2 2>/dev/null`]; then
+  if value="`defaults export $1 - |
+    plutil -extract "${2//\./\\.}" xml1 -o - -- - 2>/dev/null`";
+  then
     if [[ ! -f $plist ]]; then
       plutil -create xml1 $plist
     fi
-    # Hold keys to list later. No other way to do it AFAIK.
-    if ! plutil -type SettingsIndex $plist &>/dev/null; then
-      plutil -insert SettingsIndex -array $plist
-    fi
-
-    case $type in
-      -bool)            typeset -A bool=( 0 false 1 true )
-                        value=$bool[`defaults read $1 $2`]  ;;
-      -integer|-float)  value=`defaults read $1 $2`         ;;
-      -xml)             value="`defaults export $1 - |
-                        plutil -extract "${2//\./\\.}" xml1 -o - -- -`" ;;
-      *)                value="`defaults read $1 $2`"       ;;
-    esac
-
     # Escape dots or plutil will drill into submembers.
-    if plutil -replace "${2//\./\\.}" $type $value $plist; then
+    if plutil -replace "${2//\./\\.}" -xml $value $plist; then
       echo "  $@[$3] - `s.ok saved`"
+      # Hold keys to list later. No other way to do it AFAIK.
+      if ! plutil -type SettingsIndex $plist &>/dev/null; then
+        plutil -insert SettingsIndex -array $plist
+      fi
       if ! s.getSettingsIndex $1 | grep -qx $2; then
         plutil -insert SettingsIndex -string $2 -append $plist
       fi
