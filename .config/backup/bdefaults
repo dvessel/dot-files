@@ -36,7 +36,7 @@ function op.backup {
   local value plist=$bdpath/$1.plist
 
   if value="`defaults export $1 - |
-    plutil -extract "${2//\./\\.}" xml1 -o - -- - 2>/dev/null`";
+    plutil -extract "${2//\./\\.}" xml1 -o - -- - 2>/dev/null`"
   then
     if [[ ! -f $plist ]]; then
       plutil -create xml1 $plist
@@ -69,7 +69,8 @@ function op.restore {
 
   local value
 
-  if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`; then
+  if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`
+  then
     defaults write $1 $2 "$value" &&
       echo "  $@[$3] - `s.ok restored`"
   else
