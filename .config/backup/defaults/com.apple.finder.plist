@@ -277,6 +277,12 @@
 		<key>viewOptionsVersion</key>
 		<integer>1</integer>
 	</dict>
+	<key>FXDefaultSearchScope</key>
+	<string>SCcf</string>
+	<key>FXEnableRemoveFromICloudDriveWarning</key>
+	<false/>
+	<key>FinderSpawnTab</key>
+	<false/>
 	<key>ICloudViewSettings</key>
 	<dict>
 		<key>WindowState</key>
@@ -354,6 +360,10 @@
 			<string>{{451, 343}, {825, 392}}</string>
 		</dict>
 	</dict>
+	<key>NewWindowTarget</key>
+	<string>PfHm</string>
+	<key>NewWindowTargetPath</key>
+	<string>file:///Users/joon/</string>
 	<key>PreviewPaneWidth</key>
 	<real>275</real>
 	<key>SettingsIndex</key>
@@ -370,6 +380,13 @@
 		<string>ICloudViewSettings</string>
 		<string>FK_iCloudListViewSettingsV2</string>
 		<string>NSToolbar Configuration Browser</string>
+		<string>WarnOnEmptyTrash</string>
+		<string>_FXSortFoldersFirstOnDesktop</string>
+		<string>NewWindowTargetPath</string>
+		<string>NewWindowTarget</string>
+		<string>FinderSpawnTab</string>
+		<string>FXEnableRemoveFromICloudDriveWarning</string>
+		<string>FXDefaultSearchScope</string>
 	</array>
 	<key>StandardViewOptions</key>
 	<dict>
@@ -402,5 +419,9 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>WarnOnEmptyTrash</key>
+	<false/>
+	<key>_FXSortFoldersFirstOnDesktop</key>
+	<true/>
 </dict>
 </plist>
