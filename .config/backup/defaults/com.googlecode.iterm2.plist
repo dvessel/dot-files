@@ -24,8 +24,12 @@
 	<real>0.10000000000000001</real>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
+		<key>EditEngage Artificial Intelligence</key>
+		<string>@i</string>
 		<key>ShellNew Tab with Current Profile</key>
 		<string>@t</string>
+		<key>ViewShow Composer</key>
+		<string>@/</string>
 		<key>ViewToggle Full Screen</key>
 		<string>@^f</string>
 		<key>WindowMinimize All</key>
