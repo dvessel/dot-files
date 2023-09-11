@@ -20,6 +20,10 @@ function brew.bundle {
     --file ~/.config/brew/bundle-${set[-1]:-default}-`machine`
 }
 
+function eject {
+  diskutil eject `diskutil info /Volumes/$@ |
+    grep "Device Identifier" | awk '{print $3}'`
+}
 function tm.is-excluded {
   tmutil isexcluded $@
 }
