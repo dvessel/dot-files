@@ -13,8 +13,6 @@ brew "atool"
 brew "basis_universal"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
-# Anti-virus software
-brew "clamav"
 # Cross-platform make
 brew "cmake"
 # Container runtimes on MacOS (and Linux) with minimal setup
