@@ -3692,6 +3692,8 @@
 	</array>
 	<key>PromptOnQuit</key>
 	<false/>
+	<key>SaveProfilesToRecentDocuments</key>
+	<false/>
 	<key>SeparateWindowTitlePerTab</key>
 	<true/>
 	<key>SettingsIndex</key>
@@ -3717,6 +3719,7 @@
 		<string>BellRateLimit</string>
 		<string>DisableWindowSizeSnap</string>
 		<string>PromptOnQuit</string>
+		<string>SaveProfilesToRecentDocuments</string>
 	</array>
 	<key>SmartPlacement</key>
 	<false/>
