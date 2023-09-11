@@ -6,6 +6,8 @@
 	<dict>
 		<key>BookmarksAdd Bookmark…</key>
 		<string>@b</string>
+		<key>BookmarksCopy Text Fragment</key>
+		<string>@^l</string>
 		<key>HistoryBack</key>
 		<string>^z</string>
 		<key>HistoryForward</key>
