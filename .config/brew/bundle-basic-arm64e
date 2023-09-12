@@ -21,6 +21,8 @@ brew "jq"
 brew "lsd"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Developer targeted fonts with a high number of glyphs
 cask "font-anonymice-nerd-font"
 cask "font-ia-writer-duo"

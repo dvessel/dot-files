@@ -8,7 +8,7 @@
 .colima
 .conda
 .config/gh
-.config/shell_gpt
+.config/nvim/lazy-lock.json
 .cups
 .ddev
 .diffusionbee

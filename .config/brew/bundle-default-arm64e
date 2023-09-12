@@ -67,6 +67,8 @@ brew "p7zip"
 brew "periscope"
 # PNG image optimizing utility
 brew "pngquant"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Tools for Multiple Arcade Machine Emulator
 brew "rom-tools"
 # Assigns custom icons to webloc files
