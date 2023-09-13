@@ -14,6 +14,8 @@
 	<true/>
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<true/>
+	<key>AppleReduceDesktopTinting</key>
+	<true/>
 	<key>AppleShowScrollBars</key>
 	<string>WhenScrolling</string>
 	<key>AppleSpacesSwitchOnActivate</key>
@@ -109,6 +111,7 @@
 		<string>AppleShowScrollBars</string>
 		<string>AppleInterfaceStyleSwitchesAutomatically</string>
 		<string>com.apple.sound.beep.feedback</string>
+		<string>AppleReduceDesktopTinting</string>
 	</array>
 	<key>com.apple.sound.beep.feedback</key>
 	<integer>0</integer>
