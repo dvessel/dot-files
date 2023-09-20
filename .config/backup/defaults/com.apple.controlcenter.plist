@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSStatusItem Visible Battery</key>
-	<false/>
+	<true/>
 	<key>NSStatusItem Visible Bluetooth</key>
 	<false/>
 	<key>NSStatusItem Visible WiFi</key>
