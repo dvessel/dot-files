@@ -49,6 +49,10 @@ function tm.log {
 function tm.fs_usage {
   sudo fs_usage -f filesys backupd
 }
+function inodeInfo {
+  zparseopts -D -E -F - {v,-volume}:=vol | return 1
+  GetFileInfo /.vol/`stat -f %d ${vol[-1]:-./}`/$1
+}
 
 function gh.pr-list {
   gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down |
