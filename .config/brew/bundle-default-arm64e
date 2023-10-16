@@ -67,6 +67,8 @@ brew "p7zip"
 brew "periscope"
 # PNG image optimizing utility
 brew "pngquant"
+# Cross-platform application and UI framework
+brew "qt"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Tools for Multiple Arcade Machine Emulator
