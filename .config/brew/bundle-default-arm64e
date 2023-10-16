@@ -9,6 +9,8 @@ tap "homebrew/services"
 brew "antidote"
 # Archival front-end
 brew "atool"
+# Simple python script to download Bandcamp albums
+brew "bandcamp-dl"
 # Basis Universal GPU texture codec command-line compression tool
 brew "basis_universal"
 # Get/set bluetooth power and discoverable state
