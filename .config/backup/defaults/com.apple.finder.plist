@@ -281,6 +281,8 @@
 	<string>SCcf</string>
 	<key>FXEnableRemoveFromICloudDriveWarning</key>
 	<false/>
+	<key>FXPreferredViewStyle</key>
+	<string>clmv</string>
 	<key>FinderSpawnTab</key>
 	<false/>
 	<key>ICloudViewSettings</key>
@@ -387,6 +389,7 @@
 		<string>FinderSpawnTab</string>
 		<string>FXEnableRemoveFromICloudDriveWarning</string>
 		<string>FXDefaultSearchScope</string>
+		<string>FXPreferredViewStyle</string>
 	</array>
 	<key>StandardViewOptions</key>
 	<dict>
