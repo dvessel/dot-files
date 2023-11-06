@@ -83,6 +83,8 @@ brew "swiftlint"
 brew "switchaudio-osx"
 # Manipulate and query tags on macOS files
 brew "tag"
+# Log file highlighter
+brew "tailspin"
 # Simplified and community-driven man pages
 brew "tldr"
 # Command-line interface for VirusTotal
