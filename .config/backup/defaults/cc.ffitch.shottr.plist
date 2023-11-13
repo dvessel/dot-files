@@ -9,15 +9,15 @@
 	<key>KeyboardShortcuts_fullscreen</key>
 	<string>{"carbonModifiers":768,"carbonKeyCode":20}</string>
 	<key>KeyboardShortcuts_ocr</key>
-	<string>{"carbonModifiers":4864,"carbonKeyCode":19}</string>
+	<string>{"carbonModifiers":768,"carbonKeyCode":18}</string>
 	<key>KeyboardShortcuts_reopen</key>
-	<string>{"carbonModifiers":768,"carbonKeyCode":29}</string>
+	<false/>
 	<key>KeyboardShortcuts_repeatArea</key>
 	<string>{"carbonModifiers":2816,"carbonKeyCode":21}</string>
 	<key>KeyboardShortcuts_scrolling</key>
 	<string>{"carbonModifiers":768,"carbonKeyCode":19}</string>
 	<key>KeyboardShortcuts_window</key>
-	<string>{"carbonModifiers":2816,"carbonKeyCode":20}</string>
+	<false/>
 	<key>SettingsIndex</key>
 	<array>
 		<string>KeyboardShortcuts_anyWindow</string>
