@@ -87,8 +87,6 @@ brew "tag"
 brew "tailspin"
 # Simplified and community-driven man pages
 brew "tldr"
-# Command-line interface for VirusTotal
-brew "virustotal-cli"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # DDEV
