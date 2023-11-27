@@ -16,6 +16,7 @@ function s.help {
   "[-a|--all]                   - Acts on all keys/domains from existing backups." \
   "[-s|--search]                - Search for keys in active settings." \
   "                               Use to list/save keys not previously backed-up." \
+  "                               -k is required and is case sensitive." \
   "[-k|--key] [<setting>]       - Settings key to act on." \
   "[-d|--domain] [<domain>]     - Target a domain, e.g., com.apple.finder." \
   "[-g|-globalDomain]           - Global domain. Conflicts with -d." \
