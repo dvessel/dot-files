@@ -31,7 +31,7 @@
 		<key>IconViewSettings</key>
 		<dict>
 			<key>arrangeBy</key>
-			<string>dateModified</string>
+			<string>name</string>
 			<key>axTextSize</key>
 			<real>12</real>
 			<key>backgroundColorBlue</key>
