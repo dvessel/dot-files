@@ -15,7 +15,7 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<false/>
+			<true/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
@@ -296,7 +296,7 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<false/>
+			<true/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
@@ -355,7 +355,7 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<false/>
+			<true/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
