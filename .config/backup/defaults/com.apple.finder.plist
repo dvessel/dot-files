@@ -324,7 +324,7 @@
 		<key>TB Icon Size Mode</key>
 		<integer>1</integer>
 		<key>TB Is Shown</key>
-		<false/>
+		<true/>
 		<key>TB Item Identifiers</key>
 		<array>
 			<string>com.apple.finder.BACK</string>
