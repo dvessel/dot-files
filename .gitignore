@@ -22,6 +22,8 @@
 # Track support scripts.
 !.local/*/
 !.local/bin/_*
+.mailcap
+.mime.types
 .mutagen
 .ngrok2
 .npm
