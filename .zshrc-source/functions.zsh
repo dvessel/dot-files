@@ -61,7 +61,7 @@ function gh.pr-list {
 function git.recursive {
   while read -r p; do
     echo "\e[1;30m$p:h\e[0m"; git --git-dir=$p --work-tree=$p:h $@; echo
-  done < <( fd -g .git . --type d --hidden )
+  done < <( fd --glob .git . --type d --hidden --no-ignore )
 }
 
 # Encode/decode url's.
