@@ -3,17 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>NSFixedPitchFontSize</key>
-	<string>14</string>
+	<string>16</string>
 	<key>NSFontSize</key>
-	<string>14</string>
-	<key>NSUserKeyEquivalents</key>
-	<dict>
-		<key>MessageSend</key>
-		<string>@↩</string>
-	</dict>
+	<string>16</string>
 	<key>SettingsIndex</key>
 	<array>
-		<string>NSUserKeyEquivalents</string>
 		<string>NSFixedPitchFontSize</string>
 		<string>NSFontSize</string>
 	</array>

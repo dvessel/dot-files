@@ -35,7 +35,7 @@
 	<key>NSQuitAlwaysKeepsWindows</key>
 	<true/>
 	<key>NSTableViewDefaultSizeMode</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>EditEmoji &amp; Symbols</key>

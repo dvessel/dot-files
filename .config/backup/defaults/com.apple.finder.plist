@@ -33,7 +33,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -57,7 +57,7 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>viewOptionsVersion</key>
 			<integer>1</integer>
 		</dict>
@@ -287,6 +287,8 @@
 	<string>clmv</string>
 	<key>FinderSpawnTab</key>
 	<false/>
+	<key>FontSizeCategory</key>
+	<string>Custom</string>
 	<key>ICloudViewSettings</key>
 	<dict>
 		<key>WindowState</key>
@@ -392,6 +394,7 @@
 		<string>FXEnableRemoveFromICloudDriveWarning</string>
 		<string>FXDefaultSearchScope</string>
 		<string>FXPreferredViewStyle</string>
+		<string>FontSizeCategory</string>
 	</array>
 	<key>StandardViewOptions</key>
 	<dict>
@@ -406,7 +409,7 @@
 			<key>ColumnWidth</key>
 			<integer>275</integer>
 			<key>FontSize</key>
-			<integer>12</integer>
+			<integer>13</integer>
 			<key>PreviewDisclosureState</key>
 			<true/>
 			<key>SharedArrangeBy</key>

@@ -2,11 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FontSizeCategory</key>
+	<dict>
+		<key>com.apple.finder</key>
+		<string>Custom</string>
+		<key>global</key>
+		<string>L</string>
+		<key>version</key>
+		<string>2.0</string>
+	</dict>
 	<key>SettingsIndex</key>
 	<array>
 		<string>closeViewDesiredZoomFactor</string>
 		<string>closeViewFarPoint</string>
 		<string>closeViewNearPoint</string>
+		<string>FontSizeCategory</string>
 	</array>
 	<key>closeViewDesiredZoomFactor</key>
 	<real>2</real>

@@ -4,18 +4,9 @@
 <dict>
 	<key>NSFixedPitchFontSize</key>
 	<string>14</string>
-	<key>NSFontSize</key>
-	<string>14</string>
-	<key>NSUserKeyEquivalents</key>
-	<dict>
-		<key>MessageSend</key>
-		<string>@↩</string>
-	</dict>
 	<key>SettingsIndex</key>
 	<array>
-		<string>NSUserKeyEquivalents</string>
 		<string>NSFixedPitchFontSize</string>
-		<string>NSFontSize</string>
 	</array>
 </dict>
 </plist>
