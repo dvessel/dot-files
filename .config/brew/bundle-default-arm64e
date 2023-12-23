@@ -59,6 +59,8 @@ brew "ispc"
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Multiple Arcade Machine Emulator
+brew "mame", link: false
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Small build system for use with gyp or CMake

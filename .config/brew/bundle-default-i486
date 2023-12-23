@@ -9,5 +9,7 @@ brew "fzf"
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Multiple Arcade Machine Emulator
+brew "mame"
 # Tool to enforce Swift style and conventions
 brew "swiftlint"
