@@ -11,26 +11,18 @@ brew "antidote"
 brew "atool"
 # Simple python script to download Bandcamp albums
 brew "bandcamp-dl"
-# Basis Universal GPU texture codec command-line compression tool
-brew "basis_universal"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
-# Cross-platform make
-brew "cmake"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
 # Zsh completion for conda
 brew "conda-zsh-completion"
-# In-depth comparison of files, archives, and directories
-brew "diffoscope"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Generate documentation for several programming languages
 brew "doxygen"
-# Select default apps for documents and URL schemes on macOS
-brew "duti"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream audio and video
@@ -63,20 +55,12 @@ brew "lsd"
 brew "mame", link: false
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Small build system for use with gyp or CMake
-brew "ninja"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
-# Organize and de-duplicate your files without losing data
-brew "periscope"
 # PNG image optimizing utility
 brew "pngquant"
-# Cross-platform application and UI framework
-brew "qt"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Tools for Multiple Arcade Machine Emulator
-brew "rom-tools"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
 # Tool to enforce Swift style and conventions
