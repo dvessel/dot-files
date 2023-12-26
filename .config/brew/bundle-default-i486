@@ -6,7 +6,7 @@ brew "fzf"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
-brew "lsd"
+brew "lsd", args: ["HEAD"]
 # Multiple Arcade Machine Emulator
 brew "mame"
 # Tool to enforce Swift style and conventions

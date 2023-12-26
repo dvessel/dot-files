@@ -18,7 +18,7 @@ brew "highlight"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
-brew "lsd"
+brew "lsd", args: ["HEAD"]
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Search tool like grep and The Silver Searcher
