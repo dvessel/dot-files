@@ -21,7 +21,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{451, 343}, {825, 392}}</string>
+			<string>{{615, 453}, {825, 398}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -304,7 +304,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{451, 343}, {825, 392}}</string>
+			<string>{{615, 453}, {825, 398}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -363,7 +363,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{451, 343}, {825, 392}}</string>
+			<string>{{615, 453}, {825, 398}}</string>
 		</dict>
 	</dict>
 	<key>NewWindowTarget</key>
