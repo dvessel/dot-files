@@ -27,9 +27,12 @@
 		<string>SelectFromClipboardHistoryHotKey</string>
 		<string>ShowClipboardHistoryHotKey</string>
 		<string>ShowItemListAfterDelay</string>
+		<string>ShowDockIcon</string>
 	</array>
 	<key>ShowClipboardHistoryHotKey</key>
 	<string>4864@4</string>
+	<key>ShowDockIcon</key>
+	<false/>
 	<key>ShowItemListAfterDelay</key>
 	<integer>2</integer>
 </dict>
