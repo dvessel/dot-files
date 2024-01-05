@@ -26,3 +26,5 @@ brew "ripgrep"
 # Developer targeted fonts with a high number of glyphs
 cask "font-anonymice-nerd-font"
 cask "font-ia-writer-duo"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
