@@ -9,6 +9,7 @@
 .conda
 .config/gh
 .config/nvim/lazy-lock.json
+.config/zed
 .cups
 .ddev
 .diffusionbee
