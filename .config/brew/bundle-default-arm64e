@@ -55,6 +55,8 @@ brew "lsd", args: ["HEAD"]
 brew "mame", link: false
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Retrieves currently playing media, and simulates media actions
+brew "nowplaying-cli"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # PNG image optimizing utility
