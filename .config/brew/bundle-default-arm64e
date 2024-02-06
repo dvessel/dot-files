@@ -53,6 +53,8 @@ brew "jq"
 brew "lsd", args: ["HEAD"]
 # Multiple Arcade Machine Emulator
 brew "mame", link: false
+# Command-line client for Mega.co.nz
+brew "megatools"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Retrieves currently playing media, and simulates media actions
