@@ -5,6 +5,13 @@ function iterm2_print_user_vars {
   iterm2_set_user_var machine `machine`
 }
 
+function arch.toggle {
+  case `sysctl -n sysctl.proc_translated` in
+    0) arch -d PATH --x86_64 /bin/zsh -l ;;
+    1) exit ;;
+  esac
+}
+
 function brew.tree {
   brew deps --include-build --tree $@
 }

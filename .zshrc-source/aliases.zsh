@@ -18,10 +18,6 @@ alias show.ext='SetFile -a e'
 
 alias unquarantine='xattr -d com.apple.quarantine'
 
-# Use `exit` to undo the switch.
-alias switch.x86='arch -d PATH --x86_64 /bin/zsh -l'
-alias switch.arm='arch -d PATH --arm64 /bin/zsh -l'
-
 alias sync.emulation='rsync -avL --itemize-changes --delete \
   ~/Games/Emulation /Volumes/980Pro'
 alias sync.storage='rsync -avzL --delete --progress -h \
