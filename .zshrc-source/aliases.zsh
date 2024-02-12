@@ -26,5 +26,3 @@ alias sync.all='sync.emulation && sync.storage'
 
 alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
-
-alias capture.restart='launchctl kickstart -pk gui/$UID/com.apple.replayd'
