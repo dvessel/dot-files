@@ -5,17 +5,17 @@
 	<key>KeyboardShortcuts_anyWindow</key>
 	<false/>
 	<key>KeyboardShortcuts_area</key>
-	<string>{"carbonModifiers":768,"carbonKeyCode":21}</string>
+	<string>{"carbonKeyCode":21,"carbonModifiers":2816}</string>
 	<key>KeyboardShortcuts_fullscreen</key>
-	<string>{"carbonModifiers":768,"carbonKeyCode":20}</string>
+	<string>{"carbonKeyCode":20,"carbonModifiers":2816}</string>
 	<key>KeyboardShortcuts_ocr</key>
-	<string>{"carbonModifiers":768,"carbonKeyCode":18}</string>
+	<string>{"carbonKeyCode":18,"carbonModifiers":2816}</string>
 	<key>KeyboardShortcuts_reopen</key>
-	<false/>
+	<string>{"carbonModifiers":2816,"carbonKeyCode":23}</string>
 	<key>KeyboardShortcuts_repeatArea</key>
-	<string>{"carbonModifiers":2816,"carbonKeyCode":21}</string>
+	<string>{"carbonKeyCode":21,"carbonModifiers":6912}</string>
 	<key>KeyboardShortcuts_scrolling</key>
-	<string>{"carbonModifiers":768,"carbonKeyCode":19}</string>
+	<string>{"carbonKeyCode":19,"carbonModifiers":2816}</string>
 	<key>KeyboardShortcuts_window</key>
 	<false/>
 	<key>SettingsIndex</key>
