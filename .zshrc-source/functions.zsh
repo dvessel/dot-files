@@ -98,3 +98,8 @@ function url.encode {
   -e 's/;/%3B/g'  \
   -e 's/=/%3D/g'
 }
+
+# Shim for `extract` ohmyzsh plugin to unrar through p7zip.
+if ! type unrar &>/dev/null && type 7z &>/dev/null; then
+  function unrar { 7z "$@" }
+fi
