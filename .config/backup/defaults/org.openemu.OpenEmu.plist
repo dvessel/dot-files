@@ -22,9 +22,18 @@
 		<string>debug</string>
 		<string>videoShader.user.preset.data.CRT Royale Kurozumi:1675003692</string>
 		<string>videoShader.user.preset.data.MAME HLSL:1655042283</string>
+		<string>defaultCore.openemu.system.ps2</string>
+		<string>defaultCore.openemu.system.snes</string>
+		<string>videoShader</string>
 	</array>
 	<key>debug</key>
 	<true/>
+	<key>defaultCore.openemu.system.ps2</key>
+	<string>org.openemu.PCSX2</string>
+	<key>defaultCore.openemu.system.snes</key>
+	<string>org.openemu.BSNES</string>
+	<key>videoShader</key>
+	<string>MAME HLSL</string>
 	<key>videoShader.user.preset.data.CRT Royale Kurozumi:1675003692</key>
 	<string>$name="PVM Clean";$shader="CRT Royale Kurozumi";$createdAt="1675003692";beam_max_sigma=0.2;beam_spot_power=0.3;bloom_excess=0.8;border_compress=1.25;border_darkness=1.25;convergence_offset_x_b=0.05;convergence_offset_y_g=0;convergence_offset_y_r=-0.05;crt_gamma=2.2;diffusion_weight=0.05;halation_weight=0.005;interlace_detect_toggle=0;lcd_gamma=2.2;levels_contrast=0.9;mask_num_triads_desired=960;mask_triad_size_desired=2.224;mask_type=1</string>
 	<key>videoShader.user.preset.data.MAME HLSL:1655042283</key>
