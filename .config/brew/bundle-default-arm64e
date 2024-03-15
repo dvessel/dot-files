@@ -7,6 +7,8 @@ tap "homebrew/core"
 tap "homebrew/services"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
+# ChatGPT in the terminal
+brew "ata"
 # Archival front-end
 brew "atool"
 # Simple python script to download Bandcamp albums
