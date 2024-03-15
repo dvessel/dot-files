@@ -10,6 +10,7 @@ typeset -aU path; path+=~/.local/bin
 for zsh in ~/.zshrc-source/*.zsh; source $zsh
 
 if type brew &>/dev/null; then
+  export HOMEBREW_NO_ENV_HINTS=1
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
   # `autoload -Uz compinit; compinit` handled by antidote plugin:`belak/zsh-utils path:completion`.
   fpath+=`brew --prefix`/share/zsh/site-functions
