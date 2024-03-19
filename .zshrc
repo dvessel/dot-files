@@ -12,11 +12,13 @@ for zsh in ~/.zshrc-source/*.zsh; source $zsh
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
-  # `autoload -Uz compinit; compinit` handled by antidote plugin:`belak/zsh-utils path:completion`.
   fpath+=`brew --prefix`/share/zsh/site-functions
+  # autoload -Uz compinit; compinit
+  # `compinit` handled by antidote plugin:`belak/zsh-utils path:completion`.
 fi
 
 if type antidote &>/dev/null; then
+  # @see ~/.zsh_plugins.txt for loaded plugins.
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
 fi
