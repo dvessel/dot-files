@@ -7,7 +7,7 @@ p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 # Prevent duplicate paths.
 typeset -aU path; path+=~/.local/bin
 
-for zsh in ~/.zshrc-source/*.zsh; source $zsh
+for zs in ~/.zshrc-source/*.zsh; [ ! -f $zs ] || source $zs
 
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
