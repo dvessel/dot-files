@@ -21,9 +21,10 @@
 .lima
 .lldb
 .local/**
-# Track support scripts.
 !.local/*/
 !.local/bin/_*
+!.local/bin/bdefaults
+!.local/bin/fbrew
 .mailcap
 .mime.types
 .mutagen
@@ -33,14 +34,11 @@
 .sqlite_history
 .ssh
 .swiftpm
-.thumbnails
 .tldrc
 .Trash
 .vim
 .viminfo
 .vscode
-.zcompcache
-.zcompdump
 .zsh_history
 .zsh_plugins.zsh
 .zsh_sessions
