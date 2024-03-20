@@ -1,0 +1,144 @@
+#!/usr/bin/env zsh
+
+set -e
+
+_brew_check fzf jq || return 1
+
+# Set up possible first parameter commands.
+cmds_any=(
+  install info abv edit uses deps desc fetch cleanup options home homepage log
+  audit cat formula livecheck style unbottled unpack
+)
+cmds_installed=(
+  reinstall uninstall remove rm outdated upgrade postinstall missing
+  list ls link ln unlink pin unpin migrate gist-logs bottle linkage test
+  --prefix --cellar --cache
+)
+cmds=( $cmds_any $cmds_installed )
+
+# Commands incompatible with casks.
+cask_incompatible=(
+  link ln unlink gist-logs migrate missing options bottle formula linkage test
+  unbottled unpack --prefix --cellar
+)
+# Single select commands for fzf single select mode.
+no_multi=( log gist-logs migrate )
+
+# Either formula or cask. defaults to formula.
+src=${argv[( $argv[(i)--cask] )]:---formula}
+if [[ $src == --cask ]]; then
+  cmds=( ${cmds:|cask_incompatible} )
+fi
+
+if (( $cmds[(I)$1] )); then
+  # First argument is valid, pass in all of it.
+  opts=( $@ )
+elif [[ $1 =~ (--formula|--cask) && -z ${(@)argv:*cmds} || -z $@ ]]; then
+  # First argument is --formula or --cask or no arguments.
+  # Add default info command.
+  opts=( info $@ )
+elif [[ -n ${(@)argv:*cmds} ]]; then
+  # Wrong order.
+  printf "Did you mean \`%s\`?\n" "${(@)argv:*cmds} $src" >&2
+  return 1
+else
+  printf "Supported \`%s\` commands:\n%s [See brew --help]\n" \
+    "$src" "${(j[, ])cmds}" >&2
+  return 1
+fi
+
+if [[ $src == --formula ]]; then
+  installed=`brew --cache`/installed.json
+  arch=`machine`
+  sha1=`ls $HOMEBREW_CELLAR | shasum`
+
+  if [[ ! -f $installed ]]; then
+    printf "{}" > $installed
+  fi
+
+  # Pick out installed on request vs dependency. It's slow, cache it. 
+  if [[ $sha1 != `jq -r --arg arch $arch '.formulae.[$arch].sha1' $installed` ]]; then
+    tmp=`mktemp`
+    jq  --arg arch "$arch" \
+        --arg sha1 "$sha1" \
+        --argjson requested "`brew info --json=v1 --installed |
+          jq -r '[.[]|select(.installed[].installed_on_request).name]'`" \
+        --argjson dependencies "`brew info --json=v1 --installed |
+          jq -r '[.[]|select(.installed[].installed_as_dependency).name]'`" \
+        '.formulae.[$arch] = {
+          "sha1": $sha1,
+          "requested": $requested,
+          "dependencies": $dependencies
+        }' $installed > $tmp && mv -f $tmp $installed
+  fi
+
+  reqs=( `jq -r --arg arch $arch '.formulae.[$arch].requested|@tsv' $installed` )
+  deps=( `jq -r --arg arch $arch '.formulae.[$arch].dependencies|@tsv' $installed` )
+  names=`brew --cache`/api/formula_names
+  descs=`brew --cache`/descriptions.json
+elif [[ $src == --cask ]]; then
+  reqs=( `brew list --cask` )
+  names=`brew --cache`/api/cask_names
+  descs=`brew --cache`/cask_descriptions.json
+fi
+
+# Update descriptions.json. It's not refreshed with new formulae/casks.
+if [[ -f $names.last.txt && -f $names.txt ]]; then
+  new_keys=( "${(@f)$(comm -1 -3 $names.last.txt $names.txt)}" )
+
+  if [[ -n $new_keys ]]; then
+    printf "%s\n" $new_keys > $names.new-`date +%s`.txt
+
+    tmp=`mktemp`
+    new_descs=`brew info --json=v2 $src $new_keys |
+      jq -r --arg src "${${src/--formula/formulae}/--cask/casks}" \
+        '.[$src].[].desc'`
+
+    for ((i = 1; i <= $#new_keys; i++)); do
+      jq  --arg nkey "$new_keys[$i]" \
+          --arg desc "`printf "%s\n" $new_descs | sed $i!d`" \
+          '.[$nkey] = $desc' $descs > $tmp && mv -f $tmp $descs
+    done
+  fi
+fi
+# If cache/api/*_names.txt doesn't exist, initialize with a light update.
+if [[ ! -f $names.txt ]]; then
+  brew update --auto-update
+fi
+cp -f $names.txt $names.last.txt
+
+# Clear new entries older than 3 days.
+for f in $names.new-*.txt(Nm+3); rm $f
+
+# brew bug: desc --eval-all is ignored when descriptions.json is missing.
+# HOMEBREW_EVAL_ALL still works.
+export HOMEBREW_EVAL_ALL=1
+
+if (( $cmds_any[(I)$opts[1]] )); then
+  new=()
+  for f in $names.new-*.txt(N); new+=( "${(@f)$(cat $f)}" )
+
+  # Search strings in deps, reqs and new must escape ++. Most likely others too.
+  lsdesc=`brew desc --eval-all $src --name ".+" |
+    sed -uE "s/^(${(j[|])deps}):(.*)/\1:[🌾 dependency]\2/" |
+    sed -uE "s/^(${(j[|])reqs}):(.*)/\1:[🍺 installed]\2/" |
+    sed -uE "s/^(${(j[|])new}):(.*)/\1:[⏱ new]\2/"`
+
+elif (( $cmds_installed[(I)$opts[1]] )); then
+  if [[ $src == --formula ]]; then
+    filter=`printf "%s|" $(brew leaves --installed-on-request)`
+  else
+    filter=`printf "%s|" $(brew list --full-name $src)`
+  fi
+
+  lsdesc=`brew desc --eval-all $src --name "/^($filter)$/"`
+fi
+
+sids=( `printf "%s\n" $lsdesc | fzf $((( $no_multi[(I)$opts[1]] )) || printf --multi) \
+  --header-lines=1 --prompt="❯ brew $opts " | grep -oE "^[^:]+"` )
+
+# TODO: save a history of selected id's to be recalled with different commands.
+if [[ ! -z $sids ]]; then
+  printf "\033[0;33m❯ brew %s %s\033[0m\n" "$opts" "$sids"
+  brew $opts $sids
+fi
