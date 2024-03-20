@@ -5,23 +5,23 @@ function iterm2_print_user_vars {
   iterm2_set_user_var machine `machine`
 }
 
-function arch.toggle {
+function arch-toggle {
   case `sysctl -n sysctl.proc_translated` in
     0) arch -d PATH --x86_64 /bin/zsh -l ;;
     1) exit ;;
   esac
 }
 
-function brew.tree {
+function brew-tree {
   brew deps --include-build --tree $@
 }
-function brew.binaries {
+function brew-binaries {
   if [[ -z $@ ]]; then
     echo "Formula required." >&2; return 1 
   fi
   brew unlink --dry-run $@ | grep "`brew --prefix`/bin/.*" | cut -d/ -f5
 }
-function brew.bundle {
+function brew-bundle {
   zparseopts -D -E - {s,-set}:=set || return 1
   brew bundle $@ --describe --no-lock --brews --casks --taps \
     --file ~/.config/brew/bundle-${set[-1]:-default}-`machine`
@@ -31,29 +31,29 @@ function eject {
   diskutil eject `diskutil info /Volumes/$@ |
     grep "Device Identifier" | awk '{print $3}'`
 }
-function tm.is-excluded {
+function tm-is-excluded {
   tmutil isexcluded $@
 }
-function tm.exclude {
+function tm-exclude {
   tmutil addexclusion $@ &&
     tag -a "Time Machine - Excluded" $@
 }
-function tm.include {
+function tm-include {
   tmutil removeexclusion $@ &&
     tag -r "Time Machine - Excluded" $@
 }
-function tm.find-excluded {
+function tm-find-excluded {
   tag -Rm "Time Machine - Excluded" $@
 }
-function tm.mdfind-excluded {
+function tm-mdfind-excluded {
   mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"
 }
-function tm.log {
+function tm-log {
   local time=${@:-1H}
   log show --style syslog --info --start "$(date -j -v-$time +'%Y-%m-%d %H:%M:%S')" --predicate \
     'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"'
 }
-function tm.fs_usage {
+function tm-fs_usage {
   sudo fs_usage -f filesys backupd
 }
 function inodeInfo {
@@ -61,22 +61,22 @@ function inodeInfo {
   GetFileInfo /.vol/`stat -f %d ${vol[-1]:-./}`/$1
 }
 
-function gh.pr-list {
+function gh-pr-list {
   gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down |
     awk '{print $1}' | xargs gh pr $@
 }
-function git.recursive {
+function rgit {
   while read -r p; do
     echo "\e[1;30m$p:h\e[0m"; git --git-dir=$p --work-tree=$p:h $@; echo
   done < <( fd --glob .git . --type d --hidden --no-ignore )
 }
 
 # Encode/decode url's.
-function url.decode {
+function url-decode {
   echo "$@" | sed -E 's/%([0-9a-fA-F]{2})/\\x\1/g;s/\+/ /g'
 }
 # Conforms to RFC 3986
-function url.encode {
+function url-encode {
   echo "$@" | sed \
   -e 's/ /%20/g'  \
   -e 's/:/%3A/g'  \
