@@ -79,7 +79,7 @@ brew "tag"
 brew "tailspin"
 # Simplified and community-driven man pages
 brew "tldr"
-# Fork of youtube-dl with additional features and fixes
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # DDEV
 brew "drud/ddev/ddev"
