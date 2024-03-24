@@ -52,7 +52,7 @@ brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
-brew "lsd", args: ["HEAD"]
+brew "lsd"
 # Multiple Arcade Machine Emulator
 brew "mame", link: false
 # Command-line client for Mega.co.nz
