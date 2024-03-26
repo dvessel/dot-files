@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppWindowGroupingBehavior</key>
+	<integer>0</integer>
+	<key>EnableStandardClickToShowDesktop</key>
+	<true/>
+	<key>HideDesktop</key>
+	<true/>
+	<key>SettingsIndex</key>
+	<array>
+		<string>HideDesktop</string>
+		<string>StandardHideDesktopIcons</string>
+		<string>AppWindowGroupingBehavior</string>
+		<string>EnableStandardClickToShowDesktop</string>
+	</array>
+	<key>StandardHideDesktopIcons</key>
+	<false/>
+</dict>
+</plist>
