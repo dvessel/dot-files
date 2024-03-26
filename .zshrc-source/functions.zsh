@@ -49,8 +49,7 @@ function tm-mdfind-excluded {
   mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"
 }
 function tm-log {
-  local time=${@:-1H}
-  log show --style syslog --info --start "$(date -j -v-$time +'%Y-%m-%d %H:%M:%S')" --predicate \
+  log show --style syslog --info --start "$(date -j -v-${@:-1H} +'%Y-%m-%d %H:%M:%S')" --predicate \
     'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"'
 }
 function tm-fs_usage {
