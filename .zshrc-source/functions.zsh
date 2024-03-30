@@ -13,7 +13,7 @@ function arch-toggle {
 }
 
 function brew-tree {
-  brew deps --include-build --tree ${@:-`brew leaves --installed-on-request`}
+  brew deps --include-build --tree ${@:---installed}
 }
 function brew-binaries {
   if [[ -z $@ ]]; then
