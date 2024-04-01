@@ -79,6 +79,8 @@ brew "tag"
 brew "tailspin"
 # Simplified and community-driven man pages
 brew "tldr"
+# Binary diff, differential compression tools
+brew "xdelta"
 # XML command-line utilities
 brew "xmlstarlet"
 # Feature-rich command-line audio/video downloader
