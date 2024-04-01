@@ -51,6 +51,8 @@ brew "highlight"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Library for querying compressed XML metadata
+brew "libxmlb"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Multiple Arcade Machine Emulator
@@ -77,6 +79,8 @@ brew "tag"
 brew "tailspin"
 # Simplified and community-driven man pages
 brew "tldr"
+# XML command-line utilities
+brew "xmlstarlet"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # DDEV
