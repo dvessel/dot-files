@@ -9,8 +9,6 @@ tap "homebrew/services"
 brew "antidote"
 # ChatGPT in the terminal
 brew "ata"
-# Archival front-end
-brew "atool"
 # Simple python script to download Bandcamp albums
 brew "bandcamp-dl"
 # Get/set bluetooth power and discoverable state
