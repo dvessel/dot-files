@@ -31,7 +31,7 @@
 		<key>IconViewSettings</key>
 		<dict>
 			<key>arrangeBy</key>
-			<string>name</string>
+			<string>kind</string>
 			<key>axTextSize</key>
 			<real>13</real>
 			<key>backgroundColorBlue</key>
