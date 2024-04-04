@@ -22,9 +22,15 @@ function brew-binaries {
   brew unlink --dry-run $@ | grep "`brew --prefix`/bin/.*" | cut -d/ -f5
 }
 function brew-bundle {
-  zparseopts -D -E - {s,-set}:=set || return 1
-  brew bundle $@ --describe --no-lock --brews --casks --taps \
-    --file ~/.config/brew/bundle-${set[-1]:-default}-`machine`
+  zparseopts -D -E - \
+    {n,-name}:=name \
+    {-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set || return 1
+  # Set defaults. Omits vscode which is enabled when nothing is passed.
+  if [[ -z $set ]]; then
+    set=(--tap --formula --cask)
+  fi
+  brew bundle $@ $set --describe --no-lock \
+    --file ~/.config/brew/bundle-${name[-1]:-default}-`machine`
 }
 
 function eject {
