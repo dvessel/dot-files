@@ -7,10 +7,17 @@ p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 # Prevent duplicate paths.
 typeset -aU path; path+=~/.local/bin
 
-for zs in ~/.zshrc-source/*.zsh; [ ! -f $zs ] || source $zs
+for p in ~/.zshrc-source/*.zsh; source $p
 
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
+
+  # Formulae must be installed for both arm and x86.
+  for p in `brew --prefix antidote`/share/antidote/antidote.zsh \
+           `brew --prefix fzf`/shell/completion.zsh \
+           `brew --prefix fzf`/shell/key-bindings.zsh \
+           `brew --prefix git-extras`/share/git-extras/git-extras-completion.zsh; source $p
+
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
   fpath+=`brew --prefix`/share/zsh/site-functions
   # autoload -Uz compinit; compinit

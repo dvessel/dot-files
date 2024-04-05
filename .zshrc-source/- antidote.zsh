@@ -1,1 +1,0 @@
-/opt/homebrew/opt/antidote/share/antidote/antidote.zsh
