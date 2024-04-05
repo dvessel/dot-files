@@ -9,7 +9,7 @@ alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
 
 alias vs='code'
-alias st='subl'
+alias zz='zed'
 
 alias hide='chflags hidden'
 alias show='chflags nohidden'
