@@ -1836,9 +1836,9 @@
 			<key>Use Selected Text Color</key>
 			<true/>
 			<key>Use Selected Text Color (Dark)</key>
-			<true/>
+			<false/>
 			<key>Use Selected Text Color (Light)</key>
-			<true/>
+			<false/>
 			<key>Use Separate Colors for Light and Dark Mode</key>
 			<true/>
 			<key>Use Tab Color</key>
@@ -3663,9 +3663,9 @@
 			<key>Use Selected Text Color</key>
 			<true/>
 			<key>Use Selected Text Color (Dark)</key>
-			<true/>
+			<false/>
 			<key>Use Selected Text Color (Light)</key>
-			<true/>
+			<false/>
 			<key>Use Separate Colors for Light and Dark Mode</key>
 			<true/>
 			<key>Use Tab Color</key>
