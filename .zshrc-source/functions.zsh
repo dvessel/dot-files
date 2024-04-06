@@ -25,12 +25,16 @@ function brew-bundle {
   zparseopts -D -E - \
     {n,-name}:=name \
     {-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set || return 1
-  # Set defaults. Omits vscode which is enabled when nothing is passed.
-  if [[ -z $set ]]; then
+  if [[ -z $name && -z $set ]]; then
+    name=default
     set=(--tap --formula --cask)
+  elif [[ -z $name && ${#set[@]} == 1 ]]; then
+    name=${set/--/}
+  else
+    echo "--name <name> required for multiple listed: $set." >&2
+    return 1
   fi
-  brew bundle $@ $set --describe --no-lock \
-    --file ~/.config/brew/bundle-${name[-1]:-default}-`machine`
+  brew bundle $@ $set --describe --no-lock --file ~/.config/brew/bundle-$name-`machine`
 }
 
 function eject {
