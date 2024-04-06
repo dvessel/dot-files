@@ -42,7 +42,7 @@ date: '+%y.%m.%d %k:%M'
 # == Dereference ==
 # Whether to dereference symbolic links.
 # Possible values: false, true
-dereference: true
+dereference: false
 
 # == Display ==
 # What items to display. Do not specify this for the default behavior.
@@ -60,7 +60,7 @@ icons:
   theme: fancy
   # Separator between icon and the name
   # IDEOGRAPHIC SPACE Unicode: U+3000
-  separator: "　"
+  separator: "  "
 
 # == Ignore Globs ==
 # A list of globs to ignore when listing.
@@ -113,7 +113,7 @@ sorting:
 # == No Symlink ==
 # Whether to omit showing symlink targets
 # Possible values: false, true
-no-symlink: false
+no-symlink: true
 
 # == Total size ==
 # Whether to display the total size of directories.
@@ -146,5 +146,5 @@ truncate-owner:
   # Number of characters to keep. By default, no truncation is done (empty value).
   after:
   # String to be appended to a name if truncated.
-  marker: ""
+  marker: "…"
   
