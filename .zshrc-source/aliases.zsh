@@ -1,9 +1,12 @@
-alias ll='lsd -lL'
+alias ll='lsd -l'
 alias la='lsd -lA'
 alias lt='lsd --tree'
+alias ml='lsd --blocks=date,name --date=relative --sort=time'
+alias sl='lsd --blocks=size,name --total-size --size=default --sort=size'
+alias ol='lsd --blocks=permission,user,group,name --permission=octal'
+alias ms='lsd --blocks=date,size,name --date=relative --total-size --sort=time'
+alias sm='lsd --blocks=size,date,name --total-size --date=relative --sort=size'
 alias cl='clear'
-
-alias ..='builtin cd $OLDPWD'
 
 alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
