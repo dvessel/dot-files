@@ -1,7 +1,7 @@
 _brew_check fzf || return
 
 FZF_DEFAULT_OPTS='--reverse --scroll-off 6 --info inline --pointer ▏'
-FZF_DEFAULT_OPTS+=' --marker ▏ --ellipsis … --preview-window noborder'
+FZF_DEFAULT_OPTS+=' --marker "✸ " --ellipsis … --preview-window noborder'
 FZF_DEFAULT_OPTS+=' --color gutter:-1,hl+:underline,hl:underline'
 export FZF_DEFAULT_OPTS
 export FZF_COMPLETION_TRIGGER='..'
