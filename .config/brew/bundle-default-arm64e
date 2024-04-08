@@ -7,10 +7,14 @@ tap "homebrew/core"
 tap "homebrew/services"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
+# Cross-platform, multi-format archive utility
+brew "archiver"
 # ChatGPT in the terminal
 brew "ata"
 # Simple python script to download Bandcamp albums
 brew "bandcamp-dl"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
 # Container runtimes on MacOS (and Linux) with minimal setup
