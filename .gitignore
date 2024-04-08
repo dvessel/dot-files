@@ -2,7 +2,6 @@
 /[a-zA-Z0-9]*
 
 # Dot files not to track.
-.bundle
 .cache
 .CFUserTextEncoding
 .colima
@@ -19,12 +18,13 @@
 .jupyter
 .lesshst
 .lima
-.lldb
+# Inverse .local selection. !entries tracks changes.
 .local/**
 !.local/*/
 !.local/bin/_*
 !.local/bin/bdefaults
 !.local/bin/fbrew
+# CrossOver .mailcap, .mime.types
 .mailcap
 .mime.types
 .mutagen

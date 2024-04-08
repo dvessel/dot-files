@@ -28,6 +28,7 @@ if type antidote &>/dev/null; then
   # @see ~/.zsh_plugins.txt for loaded plugins.
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
+
   # zsh-users/zsh-history-substring-search
   bindkey '^[[A' history-substring-search-up
   bindkey '^[[B' history-substring-search-down
