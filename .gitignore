@@ -42,3 +42,5 @@
 .zsh_history
 .zsh_plugins.zsh
 .zsh_sessions
+# Don't track local files.
+.zshrc-source/*.local.zsh
