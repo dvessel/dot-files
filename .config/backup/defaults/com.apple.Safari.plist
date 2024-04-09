@@ -18,6 +18,10 @@
 		<string>^c</string>
 		<key>ViewHide Reader</key>
 		<string>~ </string>
+		<key>ViewReload and Hide IP Address</key>
+		<string>@$r</string>
+		<key>ViewReload and Show IP Address</key>
+		<string>@$r</string>
 		<key>ViewShow Reader</key>
 		<string>~ </string>
 		<key>ViewTranslationTranslate to English</key>
