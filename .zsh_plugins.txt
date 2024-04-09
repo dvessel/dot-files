@@ -61,15 +61,12 @@ belak/zsh-utils path:completion
 
 Aloxaf/fzf-tab
 
-# Antidote allows you to defer loading plugins. This is similar to concepts like "turbo
-# mode" in other plugin managers. Antidote handles deferring plugins by leveraging
-# romkatv/zsh-defer, which "defers execution of a zsh command until zsh has nothing else
-# to do and is waiting for user input". In general, you should not defer plugins unless
-# you know for sure they properly support deferred loading, and there are no adverse
-# side-effects (see: https://github.com/romkatv/zsh-defer#Caveats). However, for
+# In general, you should not defer plugins unless you know for sure they properly
+# support deferred loading, and there are no adverse side-effects. However, for
 # certain plugins, this can greatly increase your zsh startup speed.
+# https://github.com/romkatv/zsh-defer#Caveats
 
-zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-syntax-highlighting kind:defer
 
 # These popular core plugins should be loaded at the end
 
