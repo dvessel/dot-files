@@ -1,10 +1,3 @@
-
-# https://iterm2.com/3.3/documentation-variables.html
-# https://iterm2.com/3.3/documentation-scripting-fundamentals.html
-function iterm2_print_user_vars {
-  iterm2_set_user_var machine `machine`
-}
-
 function arch-toggle {
   case `sysctl -n sysctl.proc_translated` in
     0) arch -d PATH --x86_64 /bin/zsh -l ;;
@@ -37,9 +30,16 @@ function brew-bundle {
   brew bundle $@ $set --describe --no-lock --file ~/.config/brew/bundle-$name-`machine`
 }
 
-function eject {
-  diskutil eject `diskutil info /Volumes/$@ | grep "Device Identifier" | awk '{print $3}'`
+function gh-pr-list {
+  gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down |
+    awk '{print $1}' | xargs gh pr $@
 }
+function rgit {
+  while read -r p; do
+    echo "\e[1;30m$p:h\e[0m"; git --git-dir=$p --work-tree=$p:h $@; echo
+  done < <( fd --glob .git . --type d --hidden --no-ignore )
+}
+
 function tm-is-excluded {
   tmutil isexcluded $@
 }
@@ -62,19 +62,13 @@ function tm-log {
 function tm-fs_usage {
   sudo fs_usage -f filesys backupd | tspin
 }
+
+function eject {
+  diskutil eject `diskutil info /Volumes/$@ | grep "Device Identifier" | awk '{print $3}'`
+}
 function inodeInfo {
   zparseopts -D -E -F - {v,-volume}:=vol || return 1
   GetFileInfo /.vol/`stat -f %d ${vol[-1]:-./}`/$1
-}
-
-function gh-pr-list {
-  gh pr list | fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down |
-    awk '{print $1}' | xargs gh pr $@
-}
-function rgit {
-  while read -r p; do
-    echo "\e[1;30m$p:h\e[0m"; git --git-dir=$p --work-tree=$p:h $@; echo
-  done < <( fd --glob .git . --type d --hidden --no-ignore )
 }
 
 # Encode/decode url's.
@@ -104,8 +98,3 @@ function url-encode {
   -e 's/;/%3B/g'  \
   -e 's/=/%3D/g'
 }
-
-# Shim for `extract` ohmyzsh plugin to unrar through p7zip.
-if ! type unrar &>/dev/null && type 7z &>/dev/null; then
-  function unrar { 7z $@ }
-fi
