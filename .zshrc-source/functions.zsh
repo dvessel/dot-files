@@ -17,7 +17,7 @@ function brew-tree {
 }
 function brew-binaries {
   if [[ -z $@ ]]; then
-    echo "Formula required." >&2; return 1 
+    echo "Formula required." >&2; return 1
   fi
   brew unlink --dry-run $@ | grep "`brew --prefix`/bin/.*" | cut -d/ -f5
 }
@@ -38,19 +38,16 @@ function brew-bundle {
 }
 
 function eject {
-  diskutil eject `diskutil info /Volumes/$@ |
-    grep "Device Identifier" | awk '{print $3}'`
+  diskutil eject `diskutil info /Volumes/$@ | grep "Device Identifier" | awk '{print $3}'`
 }
 function tm-is-excluded {
   tmutil isexcluded $@
 }
 function tm-exclude {
-  tmutil addexclusion $@ &&
-    tag -a "Time Machine - Excluded" $@
+  tmutil addexclusion $@ && tag -a "Time Machine - Excluded" $@
 }
 function tm-include {
-  tmutil removeexclusion $@ &&
-    tag -r "Time Machine - Excluded" $@
+  tmutil removeexclusion $@ && tag -r "Time Machine - Excluded" $@
 }
 function tm-find-excluded {
   tag -Rm "Time Machine - Excluded" $@
@@ -60,13 +57,13 @@ function tm-mdfind-excluded {
 }
 function tm-log {
   log show --style syslog --info --start "$(date -j -v-${@:-1H} +'%Y-%m-%d %H:%M:%S')" --predicate \
-    'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"'
+    'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"' | tspin
 }
 function tm-fs_usage {
-  sudo fs_usage -f filesys backupd
+  sudo fs_usage -f filesys backupd | tspin
 }
 function inodeInfo {
-  zparseopts -D -E -F - {v,-volume}:=vol | return 1
+  zparseopts -D -E -F - {v,-volume}:=vol || return 1
   GetFileInfo /.vol/`stat -f %d ${vol[-1]:-./}`/$1
 }
 
@@ -110,5 +107,5 @@ function url-encode {
 
 # Shim for `extract` ohmyzsh plugin to unrar through p7zip.
 if ! type unrar &>/dev/null && type 7z &>/dev/null; then
-  function unrar { 7z "$@" }
+  function unrar { 7z $@ }
 fi
