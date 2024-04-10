@@ -15,8 +15,7 @@ if type brew &>/dev/null; then
   # Formulae must be installed for both arm and x86.
   for p in `brew --prefix antidote`/share/antidote/antidote.zsh \
            `brew --prefix fzf`/shell/completion.zsh \
-           `brew --prefix fzf`/shell/key-bindings.zsh \
-           `brew --prefix git-extras`/share/git-extras/git-extras-completion.zsh; source $p
+           `brew --prefix fzf`/shell/key-bindings.zsh; source $p
 
   # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
   fpath+=`brew --prefix`/share/zsh/site-functions
