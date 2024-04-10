@@ -17,10 +17,9 @@ if type brew &>/dev/null; then
            `brew --prefix fzf`/shell/completion.zsh \
            `brew --prefix fzf`/shell/key-bindings.zsh; source $p
 
-  # Homebrew managed shell completions: https://docs.brew.sh/Shell-Completion
   fpath+=`brew --prefix`/share/zsh/site-functions
   # autoload -Uz compinit; compinit
-  # `compinit` handled by antidote plugin:`belak/zsh-utils path:completion`.
+  # `compinit` handled by antidote:`mattmc3/zephyr path:plugins/completion`.
 fi
 
 if type antidote &>/dev/null; then
@@ -32,4 +31,5 @@ if type antidote &>/dev/null; then
   for k in '^[[A' '^P'; bindkey $k history-substring-search-up
   for k in '^[[B' '^N'; bindkey $k history-substring-search-down
   HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+  HISTORY_SUBSTRING_SEARCH_FUZZY=1
 fi
