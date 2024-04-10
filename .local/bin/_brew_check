@@ -18,6 +18,6 @@ for f in $@; if [[ ! -d `brew --prefix $f` ]]; then
   formulae+=$f
 fi
 if [[ -n $formulae ]]; then
-  printf "Required brew formulae '%s' not installed.\n" "$formulae" >&2
+  printf "Required brew formula '%s' not installed.\n" "$formulae" >&2
   return 1
 fi
