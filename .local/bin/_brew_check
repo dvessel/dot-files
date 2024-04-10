@@ -1,24 +1,23 @@
 #!/usr/bin/env zsh
 
-# Helper function used to check for a brew installed binaries.
+# Helper used to check for installed brew formulae.
 #
 # Usage:
-#  _brew_check [formulae - optional:]binary [binary]...
+#  _brew_check [formulae] ...
 #
-#  if _brew_check rom-tools:chdman fzf fd; then
+#  if _brew_check fzf fd; then
 #    cmd ...
 #    cmd ...
 #  fi
 #
-# Formulae is optional. Use when the binary and formulae names do not match.
-# Add as many formulae:binaries as needed. Status code 1 (false) and stderr 
+# Add as many formulae as needed. Status code 1 (error) and stderr 
 # message on failed checks.
-typeset -aU formulae bins
-for i in $@; if ! type ${i/*:/} &>/dev/null; then
-    formulae+=${i/:*/}; bins+=${i/*:/}
+typeset -a formulae
+
+for f in $@; if [[ ! -d `brew --prefix $f` ]]; then
+  formulae+=$f
 fi
-if [[ -n $bins ]]; then
-  printf "Required binaries missing: %s. Install with \`brew install %s\`.\n" \
-    "${(j:, :)bins}" "$formulae" >&2
+if [[ -n $formulae ]]; then
+  printf "Required brew formulae '%s' not installed.\n" "$formulae" >&2
   return 1
 fi
