@@ -56,7 +56,7 @@ brew "libxmlb"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Multiple Arcade Machine Emulator
-brew "mame", link: false
+brew "mame"
 # Command-line client for Mega.co.nz
 brew "megatools"
 # Ambitious Vim-fork focused on extensibility and agility
