@@ -29,6 +29,8 @@ romkatv/powerlevel10k
 
 mattmc3/zman
 mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zephyr path:plugins/fishcmds
+mattmc3/zephyr path:plugins/macos
 
 # Oh-My-Zsh is a very popular Zsh framework. You might choose to use plugins from OMZ
 # in your own config. Depending on which plugins you use, you may also need to include
