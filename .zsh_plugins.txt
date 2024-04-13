@@ -28,6 +28,9 @@ romkatv/powerlevel10k
 # assume GitHub.com, then you can use the user/repo shorthand.
 
 mattmc3/zman
+
+# https://github.com/mattmc3/zephyr/tree/main/plugins
+
 mattmc3/zephyr path:plugins/zfunctions
 mattmc3/zephyr path:plugins/fishcmds
 mattmc3/zephyr path:plugins/macos
