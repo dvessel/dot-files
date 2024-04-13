@@ -35,7 +35,7 @@
 	<key>videoShader</key>
 	<string>MAME HLSL</string>
 	<key>videoShader.user.preset.data.CRT Royale Kurozumi:1675003692</key>
-	<string>$name="PVM Clean";$shader="CRT Royale Kurozumi";$createdAt="1675003692";beam_max_sigma=0.2;beam_spot_power=0.3;bloom_excess=0.8;border_compress=1.25;border_darkness=1.25;convergence_offset_x_b=0.05;convergence_offset_y_g=0;convergence_offset_y_r=-0.05;crt_gamma=2.2;diffusion_weight=0.05;halation_weight=0.005;interlace_detect_toggle=0;lcd_gamma=2.2;levels_contrast=0.9;mask_num_triads_desired=960;mask_triad_size_desired=2.224;mask_type=1</string>
+	<string>$name="PVM Clean";$shader="CRT Royale Kurozumi";$createdAt="1675003692";aa_cubic_c=1;beam_max_sigma=0.2;beam_spot_power=0.3;bloom_excess=0.8;border_compress=1.25;border_darkness=1.25;convergence_offset_x_b=0.05;convergence_offset_y_g=0;convergence_offset_y_r=-0.05;crt_gamma=2.2;diffusion_weight=0.05;geom_mode_runtime=1;halation_weight=0.005;interlace_detect_toggle=0;lcd_gamma=2.2;levels_contrast=0.9;mask_num_triads_desired=960;mask_triad_size_desired=2.224;mask_type=1</string>
 	<key>videoShader.user.preset.data.MAME HLSL:1655042283</key>
 	<string>$name="NTSC 8:7 PAR";$shader="MAME HLSL";$createdAt="1655042283";col_saturation=1.4;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;noise_amt=1.2;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinealpha=1;scanlinebrightoffset=1.1;scanlinebrightscale=1;scanlinevariation=4;scantime=53.3;shadowalpha=0.25;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2</string>
 </dict>
