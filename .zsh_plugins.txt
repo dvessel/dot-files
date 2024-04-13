@@ -32,6 +32,11 @@ mattmc3/zephyr path:plugins/zfunctions
 mattmc3/zephyr path:plugins/fishcmds
 mattmc3/zephyr path:plugins/macos
 
+# zsh completion functions.
+
+keith/zsh-xcode-completions path:src kind:fpath
+nilsonholger/osx-zsh-completions kind:fpath
+
 # Oh-My-Zsh is a very popular Zsh framework. You might choose to use plugins from OMZ
 # in your own config. Depending on which plugins you use, you may also need to include
 # OMZ's entire "lib" directory. If you do this, be careful - "lib" configures a lot of
