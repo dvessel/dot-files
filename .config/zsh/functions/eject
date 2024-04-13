@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+diskutil eject `diskutil info /Volumes/$@ | grep "Device Identifier" | awk '{print $3}'`

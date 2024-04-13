@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+if _brew_check gh fzf; then
+  gh pr list |
+    fzf --ansi --preview 'GH_FORCE_TTY=100% gh pr view {1}' --preview-window down |
+      awk '{print $1}' | xargs gh pr $@
+fi
