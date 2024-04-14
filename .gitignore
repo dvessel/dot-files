@@ -20,10 +20,13 @@
 .lima
 # Inverse .local selection. !entries tracks changes.
 .local/**
-!.local/*/
 !.local/bin/_*
+!.local/*
 !.local/bin/bdefaults
 !.local/bin/fbrew
+!.local/share/*
+!.local/share/zsh/*
+!.local/share/zsh/completions/*
 # CrossOver .mailcap, .mime.types
 .mailcap
 .mime.types

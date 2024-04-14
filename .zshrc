@@ -4,8 +4,9 @@
 p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 [ ! -f $p10k_cpath ] || source $p10k_cpath
 
-# Prevent duplicate paths.
-typeset -aU path; path+=~/.local/bin
+# Add local paths and prevent duplicates.
+typeset -aU  path;  path=(~/.local/bin $path)
+typeset -aU fpath; fpath=(~/.local/share/zsh/completions $fpath)
 
 for p in ~/.zshrc-source/*.zsh; source $p
 
@@ -17,7 +18,7 @@ if type brew &>/dev/null; then
            `brew --prefix fzf`/shell/completion.zsh \
            `brew --prefix fzf`/shell/key-bindings.zsh; source $p
 
-  fpath+=`brew --prefix`/share/zsh/site-functions
+  fpath=(`brew --prefix`/share/zsh/site-functions $fpath)
   # autoload -Uz compinit; compinit
   # `compinit` handled by antidote:`mattmc3/zephyr path:plugins/completion`.
 fi
@@ -32,4 +33,6 @@ if type antidote &>/dev/null; then
   for k in '^[[B' '^N'; bindkey $k history-substring-search-down
   HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
   HISTORY_SUBSTRING_SEARCH_FUZZY=1
+else
+  autoload -Uz compinit; compinit
 fi
