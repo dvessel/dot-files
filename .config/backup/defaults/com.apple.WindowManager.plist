@@ -7,7 +7,7 @@
 	<key>EnableStandardClickToShowDesktop</key>
 	<true/>
 	<key>HideDesktop</key>
-	<true/>
+	<false/>
 	<key>SettingsIndex</key>
 	<array>
 		<string>HideDesktop</string>
