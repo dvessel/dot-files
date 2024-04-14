@@ -13,7 +13,7 @@
 # Example: https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
 
 # With antidote, using Zephyr's completion plugin is recommended. This plugin is meant
-# to be run near the TOP of your .zsh_plugins.txt file.
+# to be run near the TOP of your .zsh_plugins.txt file. Includes zsh-users/zsh-completions.
 
 mattmc3/zephyr path:plugins/completion
 
@@ -27,7 +27,7 @@ romkatv/powerlevel10k
 # Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
 # assume GitHub.com, then you can use the user/repo shorthand.
 
-mattmc3/zman
+mattmc3/zman kind:defer
 
 # https://github.com/mattmc3/zephyr/tree/main/plugins
 
@@ -62,7 +62,7 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 # fzf-tab needs to be loaded before plugins which will wrap widgets, such as
 # zsh-autosuggestions or fast-syntax-highlighting!!
 
-Aloxaf/fzf-tab
+Aloxaf/fzf-tab kind:defer
 
 # In general, you should not defer plugins unless you know for sure they properly
 # support deferred loading, and there are no adverse side-effects. However, for
@@ -73,5 +73,5 @@ zsh-users/zsh-syntax-highlighting kind:defer
 
 # These popular core plugins should be loaded at the end
 
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search kind:defer
