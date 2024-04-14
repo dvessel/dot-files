@@ -8,8 +8,6 @@ p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 typeset -aU  path;  path=(~/.local/bin $path)
 typeset -aU fpath; fpath=(~/.local/share/zsh/completions $fpath)
 
-for p in ~/.zshrc-source/*.zsh; source $p
-
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
 
@@ -39,3 +37,5 @@ if type antidote &>/dev/null; then
 else
   autoload -Uz compinit; compinit
 fi
+
+for p in ~/.zshrc-source/*.zsh; source $p
