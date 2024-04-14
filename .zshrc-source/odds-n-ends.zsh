@@ -6,6 +6,13 @@ if type bat &>/dev/null; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
+# Generic help completions.
+if type zsh-defer &>/dev/null; then
+  zsh-defer compdef _gnu_generic file fzf dolphin
+elif type compdef &>/dev/null; then
+  compdef _gnu_generic file fzf dolphin
+fi
+
 # Shim for `extract` ohmyzsh plugin to unrar through p7zip.
 if ! type unrar &>/dev/null && type 7z &>/dev/null; then
   function unrar { 7z $@ }
