@@ -28,6 +28,9 @@ if type antidote &>/dev/null; then
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
 
+  # mattmc3/zephyr plugins:zfunctions,fishcmds
+  ZFUNCDIR=~/.local/zfunctions
+
   # zsh-users/zsh-history-substring-search
   for k in '^[[A' '^P'; bindkey $k history-substring-search-up
   for k in '^[[B' '^N'; bindkey $k history-substring-search-down

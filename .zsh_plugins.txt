@@ -53,13 +53,11 @@ nilsonholger/osx-zsh-completions kind:fpath
 #
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
 
-ohmyzsh/ohmyzsh path:plugins/direnv
-ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-ohmyzsh/ohmyzsh path:plugins/qrcode
-ohmyzsh/ohmyzsh path:plugins/rsync
-ohmyzsh/ohmyzsh path:plugins/transfer
-ohmyzsh/ohmyzsh path:plugins/universalarchive
+# functions saved.
+# ohmyzsh/ohmyzsh path:plugins/extract
+# ohmyzsh/ohmyzsh path:plugins/transfer
+# ohmyzsh/ohmyzsh path:plugins/universalarchive
 
 # fzf-tab needs to be loaded before plugins which will wrap widgets, such as
 # zsh-autosuggestions or fast-syntax-highlighting!!

@@ -24,6 +24,11 @@ alias unquarantine='xattr -d com.apple.quarantine'
 alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
 
+alias rsync-copy="rsync -avz --progress -h"
+alias rsync-move="rsync -avz --progress -h --remove-source-files"
+alias rsync-update="rsync -avzu --progress -h"
+alias rsync-synchronize="rsync -avzu --delete --progress -h"
+
 alias sync-emulation='rsync -avL --itemize-changes --delete ~/Games/Emulation /Volumes/980Pro'
 alias sync-mame-storage='rsync -avL --itemize-changes --delete \
   ~/Games/Support/OpenEmu/AdvanceScan/_{unknown,import/_updates} /Volumes/Storage/Emulation/MAME'

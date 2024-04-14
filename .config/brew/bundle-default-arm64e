@@ -23,8 +23,6 @@ brew "colima"
 brew "conda-zsh-completion"
 # JSON, YAML, TOML, XML, and CSV query and modification tool
 brew "dasel"
-# Load/unload environment variables based on $PWD
-brew "direnv"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Generate documentation for several programming languages
