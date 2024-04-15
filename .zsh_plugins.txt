@@ -36,7 +36,7 @@ mattmc3/zephyr path:plugins/fishcmds
 mattmc3/zephyr path:plugins/macos
 
 # zsh completion functions.
-
+dvessel/zsh-completion-generator kind:defer
 keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
 

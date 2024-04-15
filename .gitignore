@@ -25,8 +25,7 @@
 !.local/bin/bdefaults
 !.local/bin/fbrew
 !.local/share/*
-!.local/share/zsh/*
-!.local/share/zsh/completions/*
+!.local/share/completions/*
 # CrossOver .mailcap, .mime.types
 .mailcap
 .mime.types
