@@ -21,8 +21,10 @@ mattmc3/zephyr path:plugins/completion
 # - Add multiple prompt plugins to your `$fpath` with `kind:fpath` and then later in
 #   your .zshrc run the Zsh built-in `prompt` to select the theme.
 # - Or, just load one prompt like a regular plugin.
+#
+# Path set to .zsh-theme since it will source multiple otherwise.
 
-romkatv/powerlevel10k
+romkatv/powerlevel10k path:powerlevel10k.zsh-theme
 
 # Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
 # assume GitHub.com, then you can use the user/repo shorthand.
