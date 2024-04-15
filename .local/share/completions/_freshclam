@@ -1,0 +1,33 @@
+#compdef freshclam
+
+# zsh completions for 'freshclam'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {--help,-h}'[show this help]'
+  {--version,-V}'[print version number and exit]'
+  {--verbose,-v}'[be verbose]'
+  '--debug[enable debug messages]'
+  '--quiet[only output error messages]'
+  '--no-warnings[dont print and log warnings]'
+  '--stdout[write to stdout instead of stderr.]'
+  '--show-progress[show download progress percentage]'
+  '--config-file[read configuration from FILE.]'
+  {--log,-l}'[log into FILE]'
+  {--daemon,-d}'[run in daemon mode]'
+  {--pid,-p}'[write the daemons pid to FILE]'
+  {--foreground,-F}'[dont fork into background (for use in daemon mode).]'
+  {--user,-u}'[run as USER]'
+  '--no-dns[force old non-DNS verification method]'
+  {--checks,-c}'[number of checks per day, 1 <= n <= 50]'
+  '--datadir[download new databases into DIRECTORY]'
+  '--daemon-notify[/path/clamd.conf\]   Send RELOAD command to clamd]'
+  {--local-address,-a}'[bind to IP for HTTP downloads]'
+  '--on-update-execute[execute COMMAND after successful update.]'
+  '--on-error-execute[execute COMMAND if errors occurred]'
+  '--on-outdated-execute[execute COMMAND when software is outdated]'
+  '--update-db[only update database DBNAME]'
+)
+
+_arguments -s $arguments
