@@ -23,6 +23,7 @@ fi
 
 if type antidote &>/dev/null; then
   # @see ~/.zsh_plugins.txt for loaded plugins.
+  ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
 
