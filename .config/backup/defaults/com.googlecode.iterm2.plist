@@ -9,17 +9,17 @@
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>BellRateLimit</key>
-	<real>1.5</real>
+	<real>1.25</real>
 	<key>CheckTestRelease</key>
 	<true/>
 	<key>DisableAdaptiveFrameRateInInteractiveApps</key>
-	<false/>
-	<key>DisableWindowSizeSnap</key>
 	<true/>
+	<key>DisableWindowSizeSnap</key>
+	<false/>
 	<key>MaxVertically</key>
 	<true/>
 	<key>MetalDeferCurrentDrawable</key>
-	<true/>
+	<false/>
 	<key>MetalRedrawPeriod</key>
 	<real>3600</real>
 	<key>MinimalTabStyleOutlineStrength</key>
@@ -1306,7 +1306,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>AnonymiceProNF 15</string>
+			<string>AnonymiceProNFP 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -1328,7 +1328,7 @@
 			<key>Screen</key>
 			<integer>-2</integer>
 			<key>Scrollback Lines</key>
-			<integer>500000</integer>
+			<integer>1000000</integer>
 			<key>Scrollback in Alternate Screen</key>
 			<false/>
 			<key>Selected Text Color</key>
@@ -1759,7 +1759,7 @@
 				</array>
 			</dict>
 			<key>Subtitle</key>
-			<string>\(user.machine) – \(tty)</string>
+			<string>\(processTitle) – \(tty)</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -1769,18 +1769,11 @@
 			<key>Thin Strokes</key>
 			<integer>0</integer>
 			<key>Title Components</key>
-			<integer>2</integer>
+			<integer>386</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
-			<array>
-				<dict>
-					<key>action</key>
-					<string>BounceTrigger</string>
-					<key>regex</key>
-					<string></string>
-				</dict>
-			</array>
+			<array/>
 			<key>Underline Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1808,7 +1801,7 @@
 				<real>0.78431373834609985</real>
 			</dict>
 			<key>Unicode Normalization</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Unicode Version</key>
 			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
@@ -1852,7 +1845,7 @@
 			<key>Use Underline Color (Dark)</key>
 			<true/>
 			<key>Use Underline Color (Light)</key>
-			<true/>
+			<false/>
 			<key>Use libtickit protocol</key>
 			<false/>
 			<key>Vertical Spacing</key>
@@ -2867,7 +2860,7 @@
 			<key>HotKey Key Code</key>
 			<integer>0</integer>
 			<key>HotKey Modifier Activation</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>HotKey Modifier Flags</key>
 			<integer>0</integer>
 			<key>HotKey Window Animates</key>
@@ -3131,7 +3124,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>AnonymiceProNF 15</string>
+			<string>AnonymiceProNFP 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Open Toolbelt</key>
@@ -3153,7 +3146,7 @@
 			<key>Screen</key>
 			<integer>-2</integer>
 			<key>Scrollback Lines</key>
-			<integer>500000</integer>
+			<integer>1000000</integer>
 			<key>Scrollback in Alternate Screen</key>
 			<false/>
 			<key>Selected Text Color</key>
@@ -3382,7 +3375,7 @@
 						<real>0.40746861696243286</real>
 					</dict>
 					<key>font</key>
-					<string>.SFNS-Regular 12</string>
+					<string>.AppleSystemUIFont 12</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -3584,7 +3577,7 @@
 				</array>
 			</dict>
 			<key>Subtitle</key>
-			<string>\(user.machine) – \(tty)</string>
+			<string>\(processTitle) – \(tty)</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -3594,18 +3587,11 @@
 			<key>Thin Strokes</key>
 			<integer>0</integer>
 			<key>Title Components</key>
-			<integer>2</integer>
+			<integer>386</integer>
 			<key>Transparency</key>
 			<real>0.10000000000000001</real>
 			<key>Triggers</key>
-			<array>
-				<dict>
-					<key>action</key>
-					<string>BounceTrigger</string>
-					<key>regex</key>
-					<string></string>
-				</dict>
-			</array>
+			<array/>
 			<key>Underline Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -3633,7 +3619,7 @@
 				<real>0.78431373834609985</real>
 			</dict>
 			<key>Unicode Normalization</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Unicode Version</key>
 			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
@@ -3679,7 +3665,7 @@
 			<key>Use Underline Color (Dark)</key>
 			<true/>
 			<key>Use Underline Color (Light)</key>
-			<true/>
+			<false/>
 			<key>Use libtickit protocol</key>
 			<false/>
 			<key>Vertical Spacing</key>
