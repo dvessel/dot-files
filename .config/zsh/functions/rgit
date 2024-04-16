@@ -3,9 +3,9 @@ local int basepath=`pwd`
 trap 'int=1' INT TERM
 
 while read -r p; do
-	echo "\n\e[1;30m$p:h\e[0m"
-	cd "$basepath/$p:h"
+	echo "\n\e[1;30m$p\e[0m"
+	cd "$basepath/$p"
 	git $@
 	test $int && break
-done < <( find . -type d -name .git )
+done < <( rgit-paths )
 cd "$basepath"
