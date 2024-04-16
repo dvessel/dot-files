@@ -5,6 +5,13 @@
 local arguments
 
 arguments=(
+  {-a,--add}'[add tags to file]'
+  {-r,--remove}'[remove tags from file]'
+  {-s,--set}'[set tags on file]'
+  {-m,--match}'[display files with matching tags]'
+  {-f,--find}'[find all files with tags (-A, -e, -R ignored)]'
+  {-u,--usage}'[display tag usage]'
+  {-l,--list}'[list the tags on file]'
   {-v,--version}'[display version]'
   {-h,--help}'[display this help]'
   {-A,--all}'[display invisible files while enumerating]'

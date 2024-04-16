@@ -1,0 +1,23 @@
+#compdef networkQuality
+
+# zsh completions for 'networkQuality'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '-C[Override Configuration URL or path (with scheme file://)]'
+  '-c[Produce computer-readable output]'
+  '-d[Do not run a download test (implies -s)]'
+  '-f[<h1,h2,h3,L4S,noL4S>: Enforce Protocol selections. Available options:]'
+  '-h[Show help (this message)]'
+  '-I[Bind test to interface (e.g., en0, pdp_ip0,...)]'
+  '-k[Disable certificate validation]'
+  '-p[Use iCloud Private Relay]'
+  '-r[Connect to host or IP, overriding DNS for initial config request]'
+  '-S[Start and run server on specified port. Other specified options ignored]'
+  '-s[Run tests sequentially instead of parallel upload/download]'
+  '-u[Do not run an upload test (implies -s)]'
+  '-v[Verbose output]'
+)
+
+_arguments -s $arguments
