@@ -4,10 +4,6 @@
 p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 [ ! -f $p10k_cpath ] || source $p10k_cpath
 
-# Add local paths and prevent duplicates.
-typeset -aU  path;  path=(~/.local/bin $path)
-typeset -aU fpath; fpath=(~/.local/share/completions $fpath)
-
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
 
@@ -38,5 +34,9 @@ if type antidote &>/dev/null; then
 else
   autoload -Uz compinit; compinit
 fi
+
+# Add local paths and prevent duplicates.
+typeset -aU  path;  path=(~/.local/bin $path)
+typeset -aU fpath; fpath=(~/.local/share/completions $fpath)
 
 for p in ~/.zshrc-source/*.zsh; source $p
