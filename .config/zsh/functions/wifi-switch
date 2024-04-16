@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+networksetup -setairportpower "en0" "${1}"

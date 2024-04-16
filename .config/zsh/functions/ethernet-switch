@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+networksetup -setnetworkserviceenabled "Ethernet" "${1}"

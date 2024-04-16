@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+wifi-switch off
+sleep 3
+wifi-switch on

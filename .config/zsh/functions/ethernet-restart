@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+ethernet-switch off
+sleep 3
+ethernet-switch on
