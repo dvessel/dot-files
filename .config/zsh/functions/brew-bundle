@@ -1,5 +1,4 @@
 #!/usr/bin/env zsh
-
 zparseopts -D -E - {n,-name}:=name \
 	{-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set || return 1
 
