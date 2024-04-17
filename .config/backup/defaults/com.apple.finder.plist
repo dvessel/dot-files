@@ -123,8 +123,6 @@
 	<string>SCcf</string>
 	<key>FXEnableRemoveFromICloudDriveWarning</key>
 	<false/>
-	<key>FXPreferredViewStyle</key>
-	<string>clmv</string>
 	<key>FinderSpawnTab</key>
 	<false/>
 	<key>FontSizeCategory</key>
@@ -233,7 +231,6 @@
 		<string>FinderSpawnTab</string>
 		<string>FXEnableRemoveFromICloudDriveWarning</string>
 		<string>FXDefaultSearchScope</string>
-		<string>FXPreferredViewStyle</string>
 		<string>FontSizeCategory</string>
 	</array>
 	<key>SidebarWidth</key>
