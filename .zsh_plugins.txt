@@ -33,8 +33,8 @@ mattmc3/zman kind:defer
 
 # https://github.com/mattmc3/zephyr/tree/main/plugins
 
-mattmc3/zephyr path:plugins/zfunctions
-mattmc3/zephyr path:plugins/macos
+mattmc3/zephyr path:plugins/zfunctions kind:defer
+mattmc3/zephyr path:plugins/macos kind:defer
 
 # zsh auto completions.
 dvessel/zsh-completion-generator kind:defer
