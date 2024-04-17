@@ -18,14 +18,15 @@
 .jupyter
 .lesshst
 .lima
-# Inverse .local selection. !entries tracks changes.
-.local/**
+.local/bin
+.local/include
+.local/lib
+.local/share
+.local/state
+# Inverse selects. !entries tracks changes.
 !.local/bin/_*
-!.local/*
 !.local/bin/bdefaults
 !.local/bin/fbrew
-!.local/share/*
-!.local/share/completions/*
 # CrossOver .mailcap, .mime.types
 .mailcap
 .mime.types
