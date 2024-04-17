@@ -14,65 +14,21 @@
 
 # With antidote, using Zephyr's completion plugin is recommended. This plugin is meant
 # to be run near the TOP of your .zsh_plugins.txt file. Includes zsh-users/zsh-completions.
-
 mattmc3/zephyr path:plugins/completion
 
-# There are two ways to load prompts.
-# - Add multiple prompt plugins to your `$fpath` with `kind:fpath` and then later in
-#   your .zshrc run the Zsh built-in `prompt` to select the theme.
-# - Or, just load one prompt like a regular plugin.
-#
 # Path set to .zsh-theme since it will source multiple otherwise.
-
 romkatv/powerlevel10k path:powerlevel10k.zsh-theme
-
-# Plugins are the simplest kind of bundles. You can point to a full git URL, or if you
-# assume GitHub.com, then you can use the user/repo shorthand.
-
-mattmc3/zman kind:defer
-
-# https://github.com/mattmc3/zephyr/tree/main/plugins
 
 mattmc3/zephyr path:plugins/zfunctions kind:defer
 mattmc3/zephyr path:plugins/macos kind:defer
+mattmc3/zman kind:defer
 
 # zsh auto completions.
 dvessel/zsh-completion-generator kind:defer
 keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
 
-# Oh-My-Zsh is a very popular Zsh framework. You might choose to use plugins from OMZ
-# in your own config. Depending on which plugins you use, you may also need to include
-# OMZ's entire "lib" directory. If you do this, be careful - "lib" configures a lot of
-# very broad settings. If you are familiar with what you are doing, you may choose to
-# only include parts of "lib".
-#
-#   # use all of lib
-#   ohmyzsh/ohmyzsh path:lib
-#   # -OR-, only use only the specific files we care about
-#   ohmyzsh/ohmyzsh path:lib/clipboard.zsh
-#
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins
-
-ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
-# functions saved.
-# ohmyzsh/ohmyzsh path:plugins/extract
-# ohmyzsh/ohmyzsh path:plugins/transfer
-# ohmyzsh/ohmyzsh path:plugins/universalarchive
-
-# fzf-tab needs to be loaded before plugins which will wrap widgets, such as
-# zsh-autosuggestions or fast-syntax-highlighting!!
-
 Aloxaf/fzf-tab kind:defer
-
-# In general, you should not defer plugins unless you know for sure they properly
-# support deferred loading, and there are no adverse side-effects. However, for
-# certain plugins, this can greatly increase your zsh startup speed.
-# https://github.com/romkatv/zsh-defer#Caveats
-
 zsh-users/zsh-syntax-highlighting kind:defer
-
-# These popular core plugins should be loaded at the end
-
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search kind:defer

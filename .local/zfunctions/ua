@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/universalarchive
 local usage=\
 "Archive files and directories using a given compression algorithm.
 
