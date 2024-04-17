@@ -75,7 +75,7 @@ while (( $# > 0 )); do
 		(*.lzma) unlzma "$full_path" ;;
 		(*.z) uncompress "$full_path" ;;
 		(*.zip|*.war|*.jar|*.ear|*.sublime-package|*.ipa|*.ipsw|*.xpi|*.apk|*.aar|*.whl) unzip "$full_path" ;;
-		(*.rar) unrar x -ad "$full_path" ;;
+		(*.rar) 7z x "$full_path" ;;
 		(*.rpm)
 			rpm2cpio "$full_path" | cpio --quiet -id ;;
 		(*.7z) 7za x "$full_path" ;;
