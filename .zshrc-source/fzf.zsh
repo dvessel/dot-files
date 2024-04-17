@@ -5,7 +5,7 @@ _opts=(
   --scroll-off 7
   --info inline
   --pointer ▏
-  --marker '✸ '
+  --marker '✸\ '
   --ellipsis …
   --preview-window noborder
   --color gutter:-1,hl+:underline,hl:underline
