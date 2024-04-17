@@ -23,7 +23,7 @@ if type antidote &>/dev/null; then
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
 
-  # mattmc3/zephyr plugins:zfunctions,fishcmds
+  # mattmc3/zephyr plugins:zfunctions
   ZFUNCDIR=~/.local/zfunctions
 
   # zsh-users/zsh-history-substring-search

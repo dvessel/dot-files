@@ -34,7 +34,6 @@ mattmc3/zman kind:defer
 # https://github.com/mattmc3/zephyr/tree/main/plugins
 
 mattmc3/zephyr path:plugins/zfunctions
-mattmc3/zephyr path:plugins/fishcmds
 mattmc3/zephyr path:plugins/macos
 
 # zsh auto completions.
