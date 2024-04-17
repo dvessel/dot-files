@@ -94,7 +94,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>FK_SidebarWidth</key>
-	<real>200</real>
+	<real>275</real>
 	<key>FK_StandardViewOptions2</key>
 	<dict>
 		<key>ColumnViewOptions</key>
@@ -222,6 +222,7 @@
 		<string>NetworkViewSettings</string>
 		<string>NSUserKeyEquivalents</string>
 		<string>PreviewPaneWidth</string>
+		<string>SidebarWidth</string>
 		<string>StandardViewOptions</string>
 		<string>ICloudViewSettings</string>
 		<string>NSToolbar Configuration Browser</string>
@@ -235,6 +236,8 @@
 		<string>FXPreferredViewStyle</string>
 		<string>FontSizeCategory</string>
 	</array>
+	<key>SidebarWidth</key>
+	<real>275</real>
 	<key>StandardViewOptions</key>
 	<dict>
 		<key>ColumnViewOptions</key>
