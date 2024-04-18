@@ -1543,21 +1543,8 @@
 					<integer>1</integer>
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
-					<key>default text color</key>
-					<dict>
-						<key>Alpha Component</key>
-						<real>1</real>
-						<key>Blue Component</key>
-						<real>0.61460286378860474</real>
-						<key>Color Space</key>
-						<string>P3</string>
-						<key>Green Component</key>
-						<real>0.46823865175247192</real>
-						<key>Red Component</key>
-						<real>0.40746861696243286</real>
-					</dict>
 					<key>font</key>
-					<string>iAWriterDuoS-Regular 12</string>
+					<string>AnonymiceProNFP 15</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -1578,8 +1565,6 @@
 								<real>+infinity</real>
 								<key>minwidth</key>
 								<integer>0</integer>
-								<key>path</key>
-								<string>path</string>
 								<key>shared font</key>
 								<string></string>
 							</dict>
@@ -1589,21 +1574,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>iAWriterDuoS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1616,27 +1588,8 @@
 						<dict>
 							<key>knobs</key>
 							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-								<key>iTermStatusBarSpringComponentSizeMultipleKey</key>
-								<integer>1</integer>
 								<key>iTermStatusBarSpringComponentSpringConstantKey</key>
 								<real>0.01</real>
-								<key>shared text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.82982367277145386</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.89269793033599854</real>
-									<key>Red Component</key>
-									<real>0.68831604719161987</real>
-								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
 							<dict>
@@ -1644,21 +1597,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>iAWriterDuoS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1688,21 +1628,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>iAWriterDuoS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1736,21 +1663,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>iAWriterDuoS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1769,7 +1683,7 @@
 			<key>Thin Strokes</key>
 			<integer>0</integer>
 			<key>Title Components</key>
-			<integer>386</integer>
+			<integer>258</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
@@ -3249,7 +3163,7 @@
 			<key>Show Offscreen Command line</key>
 			<false/>
 			<key>Show Status Bar</key>
-			<false/>
+			<true/>
 			<key>Show Timestamps</key>
 			<integer>0</integer>
 			<key>Silence Bell</key>
@@ -3361,21 +3275,8 @@
 					<integer>1</integer>
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
-					<key>default text color</key>
-					<dict>
-						<key>Alpha Component</key>
-						<real>1</real>
-						<key>Blue Component</key>
-						<real>0.61460286378860474</real>
-						<key>Color Space</key>
-						<string>P3</string>
-						<key>Green Component</key>
-						<real>0.46823865175247192</real>
-						<key>Red Component</key>
-						<real>0.40746861696243286</real>
-					</dict>
 					<key>font</key>
-					<string>.AppleSystemUIFont 12</string>
+					<string>AnonymiceProNFP 15</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -3396,8 +3297,6 @@
 								<real>+infinity</real>
 								<key>minwidth</key>
 								<integer>0</integer>
-								<key>path</key>
-								<string>path</string>
 								<key>shared font</key>
 								<string></string>
 							</dict>
@@ -3407,21 +3306,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>.SFNS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3434,27 +3320,8 @@
 						<dict>
 							<key>knobs</key>
 							<dict>
-								<key>base: compression resistance</key>
-								<integer>1</integer>
-								<key>base: priority</key>
-								<real>5</real>
-								<key>iTermStatusBarSpringComponentSizeMultipleKey</key>
-								<integer>1</integer>
 								<key>iTermStatusBarSpringComponentSpringConstantKey</key>
 								<real>0.01</real>
-								<key>shared text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.82982367277145386</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.89269793033599854</real>
-									<key>Red Component</key>
-									<real>0.68831604719161987</real>
-								</dict>
 							</dict>
 							<key>layout advanced configuration dictionary value</key>
 							<dict>
@@ -3462,21 +3329,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>.SFNS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3506,21 +3360,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>.SFNS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3554,21 +3395,8 @@
 								<integer>1</integer>
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
-								<key>default text color</key>
-								<dict>
-									<key>Alpha Component</key>
-									<real>1</real>
-									<key>Blue Component</key>
-									<real>0.61460286378860474</real>
-									<key>Color Space</key>
-									<string>P3</string>
-									<key>Green Component</key>
-									<real>0.46823865175247192</real>
-									<key>Red Component</key>
-									<real>0.40746861696243286</real>
-								</dict>
 								<key>font</key>
-								<string>.SFNS-Regular 12</string>
+								<string>AnonymiceProNFP 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3587,7 +3415,7 @@
 			<key>Thin Strokes</key>
 			<integer>0</integer>
 			<key>Title Components</key>
-			<integer>386</integer>
+			<integer>258</integer>
 			<key>Transparency</key>
 			<real>0.10000000000000001</real>
 			<key>Triggers</key>
@@ -3718,7 +3546,7 @@
 	<key>StatusBarHeight</key>
 	<real>24</real>
 	<key>StatusBarPosition</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TabViewType</key>
