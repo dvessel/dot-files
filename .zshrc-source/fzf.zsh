@@ -1,5 +1,3 @@
-_brew_check fzf || return
-
 _opts=(
   --reverse
   --scroll-off 7
