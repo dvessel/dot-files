@@ -11,25 +11,21 @@ if type brew &>/dev/null; then
            `brew --prefix fzf`/shell/key-bindings.zsh; source $p
 
   fpath=(`brew --prefix`/share/zsh/site-functions $fpath)
-  # autoload -Uz compinit; compinit
-  # `compinit` handled by antidote:`mattmc3/zephyr path:plugins/completion`.
 fi
 
 if type antidote &>/dev/null; then
   # @see ~/.zsh_plugins.txt for loaded plugins.
   ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
-  antidote load
 
-  # mattmc3/zephyr plugins:zfunctions
-  ZFUNCDIR=~/.local/zfunctions
-
-  # zsh-users/zsh-history-substring-search
-  for k in '^[[A' '^P'; bindkey $k history-substring-search-up
-  for k in '^[[B' '^N'; bindkey $k history-substring-search-down
-  HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-  HISTORY_SUBSTRING_SEARCH_FUZZY=1
+  # Generate a new static file whenever .zsh_plugins.txt is updated.
+  if [[ ! ~/.zsh_plugins.zsh -nt ~/.zsh_plugins.txt ]]; then
+    antidote bundle <~/.zsh_plugins.txt >|~/.zsh_plugins.zsh
+  fi
+  source ~/.zsh_plugins.zsh
 else
+  # Normally handled by antidote plugin:
+  # - `mattmc3/zephyr path:plugins/completion`
   autoload -Uz compinit; compinit
 fi
 
