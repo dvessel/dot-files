@@ -14,9 +14,11 @@ if type brew &>/dev/null; then
 fi
 
 if type antidote &>/dev/null; then
-  # @see ~/.zsh_plugins.txt for loaded plugins.
-  ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
+
+  ANTIDOTE_HOME=~/.cache/antidote
+  [[ -d $ANTIDOTE_HOME ]]     || touch ~/.zsh_plugins.txt
+  [[ -f ~/.zsh_plugins.txt ]] || touch ~/.zsh_plugins.txt
 
   # Generate a new static file whenever .zsh_plugins.txt is updated.
   if [[ ! ~/.zsh_plugins.zsh -nt ~/.zsh_plugins.txt ]]; then
