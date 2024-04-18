@@ -1,6 +1,6 @@
 # Enable Powerlevel10k instant prompt.
 p10k_cpath=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
-[ ! -f $p10k_cpath ] || source $p10k_cpath
+[[ ! -f $p10k_cpath ]] || source $p10k_cpath
 
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
@@ -20,7 +20,7 @@ if type antidote &>/dev/null; then
 
   # Generate a new static file whenever .zsh_plugins.txt is updated.
   if [[ ! ~/.zsh_plugins.zsh -nt ~/.zsh_plugins.txt ]]; then
-    antidote bundle <~/.zsh_plugins.txt >|~/.zsh_plugins.zsh
+    antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.zsh
   fi
   source ~/.zsh_plugins.zsh
 else
