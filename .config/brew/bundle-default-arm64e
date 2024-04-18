@@ -15,6 +15,8 @@ brew "ata"
 brew "bandcamp-dl"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Bash scripts that integrate bat with various command-line tools
+brew "bat-extras"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
 # Container runtimes on MacOS (and Linux) with minimal setup

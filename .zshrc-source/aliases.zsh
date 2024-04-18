@@ -15,6 +15,8 @@ alias ql='qlmanage -p &>/dev/null'
 alias vs='code'
 alias zd='zed'
 
+alias man='batman'
+
 alias hide='chflags hidden'
 alias show='chflags nohidden'
 alias hide-ext='SetFile -a E'
