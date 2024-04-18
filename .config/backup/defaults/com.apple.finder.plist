@@ -168,9 +168,6 @@
 		<key>TB Item Identifiers</key>
 		<array>
 			<string>com.apple.finder.BACK</string>
-			<string>com.apple.finder.SWCH</string>
-			<string>com.apple.finder.ARNG</string>
-			<string>com.apple.finder.SRCH</string>
 		</array>
 		<key>TB Size Mode</key>
 		<integer>1</integer>
