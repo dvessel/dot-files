@@ -8,6 +8,7 @@
 .conda
 .config/bandcamp-dl.json
 .config/gh
+.config/iterm2
 .config/nvim/lazy-lock.json
 .config/zed
 .cups
