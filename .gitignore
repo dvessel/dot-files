@@ -13,7 +13,8 @@
 .config/gh
 .config/iterm2
 .config/nvim/lazy-lock.json
-.config/zed
+.config/zed/.*
+.config/zed/embeddings
 .cups
 .ddev
 .diffusionbee
