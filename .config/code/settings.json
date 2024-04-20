@@ -48,7 +48,6 @@
     "editorRuler.foreground": "#66666628",
     "scrollbarSlider.background": "#00000028"
   },
-  "workbench.colorTheme": "Github Light Theme - Gray",
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabActionLocation": "left",
   "workbench.enableExperiments": false,
