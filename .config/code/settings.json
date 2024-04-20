@@ -40,7 +40,7 @@
   "window.newWindowDimensions": "inherit",
   "window.openWithoutArgumentsInNewWindow": "on",
   "window.restoreFullscreen": true,
-  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "top",
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#ff0000",
     "editorIndentGuide.activeBackground1": "#ff000030",
