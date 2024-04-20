@@ -10,7 +10,6 @@
 .config/code/globalStorage
 .config/code/History
 .config/code/workspaceStorage
-.config/gh
 .config/iterm2
 .config/nvim/lazy-lock.json
 .config/zed/.*
