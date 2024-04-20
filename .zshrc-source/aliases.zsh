@@ -9,6 +9,9 @@ alias -g stl='lsd --blocks=size,date,name --total-size --date=relative --sort=si
 alias -g cl='/usr/bin/clear'
 alias -g cx='/usr/bin/clear -x'
 
+alias d='pwd'
+alias h='ls -d --color=auto .*'
+
 alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
 
@@ -27,7 +30,7 @@ alias unquarantine='xattr -d com.apple.quarantine'
 alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
 
-alias rsync-copy="rsync -avz --progress -h"
-alias rsync-move="rsync -avz --progress -h --remove-source-files"
-alias rsync-update="rsync -avzu --progress -h"
-alias rsync-synchronize="rsync -avzu --delete --progress -h"
+alias rsync-copy='rsync -avz --progress -h --exclude=.DS_Store'
+alias rsync-move='rsync -avz --progress -h --remove-source-files --exclude=.DS_Store'
+alias rsync-update='rsync -avzu --progress -h --exclude=.DS_Store'
+alias rsync-synchronize='rsync -avzu --delete --progress -h --exclude=.DS_Store'
