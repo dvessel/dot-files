@@ -6,7 +6,6 @@
 .CFUserTextEncoding
 .colima
 .conda
-.config/bandcamp-dl.json
 .config/code/globalStorage
 .config/code/History
 .config/code/workspaceStorage
@@ -36,7 +35,6 @@
 .mime.types
 .mutagen
 .ngrok2
-.npm
 .python_history
 .sqlite_history
 .ssh
@@ -44,7 +42,6 @@
 .thumbnails
 .tldrc
 .Trash
-.vim
 .viminfo
 .vscode
 .zsh_history
