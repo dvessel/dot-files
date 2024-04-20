@@ -10,7 +10,8 @@
 .config/code/History
 .config/code/workspaceStorage
 .config/iterm2
-.config/nvim/lazy-lock.json
+# Moved to dvessel/kickstart.nvim.
+.config/nvim
 .config/zed/.*
 .config/zed/embeddings
 .cups
