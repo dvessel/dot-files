@@ -1,0 +1,72 @@
+// Place your key bindings in this file to override the defaults
+[
+  // Disabled shortcuts due to system conflicts.
+  {
+    "key": "ctrl+shift+q",
+    "command": "-workbench.action.quickOpenNavigatePreviousInViewPicker",
+    "when": "inQuickOpen && inViewsPicker"
+  },
+  {
+    "key": "ctrl+shift+m",
+    "command": "-editor.action.toggleTabFocusMode"
+  },
+
+  // Overrides to normalize system behavior.
+  {
+    "key": "ctrl+z",
+    "command": "workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "-workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "ctrl+x",
+    "command": "workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "-workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "ctrl+cmd+s",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+
+  // General overrides.
+  {
+    "key": "ctrl+cmd+g",
+    "command": "search.action.focusNextSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "f4",
+    "command": "-search.action.focusNextSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "ctrl+shift+cmd+g",
+    "command": "search.action.focusPreviousSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "shift+f4",
+    "command": "-search.action.focusPreviousSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+
+  // Custom bindings.
+  {
+    "key": "ctrl+cmd+m",
+    "command": "editor.action.toggleMinimap"
+  }
+
+]
