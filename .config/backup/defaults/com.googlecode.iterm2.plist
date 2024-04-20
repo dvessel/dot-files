@@ -3531,7 +3531,6 @@
 		<string>AddUtilitiesToPATH</string>
 		<string>MetalDeferCurrentDrawable</string>
 		<string>UseExperimentalFontMetrics</string>
-		<string>StatusBarHeight</string>
 		<string>AlternateMouseScroll</string>
 		<string>MinimalTabStyleOutlineStrength</string>
 		<string>BellRateLimit</string>
@@ -3543,10 +3542,8 @@
 	</array>
 	<key>SmartPlacement</key>
 	<false/>
-	<key>StatusBarHeight</key>
-	<real>24</real>
 	<key>StatusBarPosition</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TabViewType</key>
