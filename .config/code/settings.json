@@ -34,6 +34,11 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "markdown.preview.fontSize": 15,
+  "intelephense.telemetry.enabled": false,
+  "partialDiff.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.lineHeight": 1.2,
@@ -58,12 +63,5 @@
   "workbench.preferredLightColorTheme": "Github Light Theme - Gray",
   "workbench.startupEditor": "newUntitledFile",
   "xml.server.workDir": "~/.cache/lemminx",
-  // Disable all telemetry! - start
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "telemetry.telemetryLevel": "off",
-  "intelephense.telemetry.enabled": false,
-  "partialDiff.enableTelemetry": false,
-  // Disable all telemetry! - end
   "editor.minimap.enabled": false
 }
