@@ -1,0 +1,2 @@
+# Show file header, line numbers and Git modifications (but no grid).
+--style="header,numbers,changes"
