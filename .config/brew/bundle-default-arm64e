@@ -65,6 +65,8 @@ brew "neovim"
 brew "p7zip"
 # PNG image optimizing utility
 brew "pngquant"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Assigns custom icons to webloc files
