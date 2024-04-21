@@ -12,6 +12,7 @@
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 7,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.minimap.showSlider": "always",
   "editor.occurrencesHighlight": "off",
   "editor.padding.bottom": 10,
@@ -64,8 +65,5 @@
   "intelephense.telemetry.enabled": false,
   "partialDiff.enableTelemetry": false,
   // Disable all telemetry! - end
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.minimap.enabled": false
 }
