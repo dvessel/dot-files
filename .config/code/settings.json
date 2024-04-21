@@ -57,7 +57,7 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.tabActionLocation": "left",
   "workbench.enableExperiments": false,
-  "workbench.iconTheme": "eq-material-theme-icons-light",
+  "workbench.iconTheme": "eq-material-theme-icons",
   "workbench.list.smoothScrolling": true,
   "workbench.preferredDarkColorTheme": "One Dark Pro Flat",
   "workbench.preferredLightColorTheme": "Github Light Theme - Gray",
