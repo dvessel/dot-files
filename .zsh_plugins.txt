@@ -25,6 +25,7 @@ mattmc3/zman kind:defer
 
 # zsh auto completions.
 dvessel/zsh-completion-generator kind:defer
+conda-incubator/conda-zsh-completion kind:fpath
 keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
 
