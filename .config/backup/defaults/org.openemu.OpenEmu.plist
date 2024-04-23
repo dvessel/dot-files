@@ -21,12 +21,13 @@
 		<string>AppleMenuBarVisibleInFullscreen</string>
 		<string>debug</string>
 		<string>videoShader.user.preset.data.CRT Royale Kurozumi:1675003692</string>
-		<string>videoShader.user.preset.data.MAME HLSL:1655042283</string>
 		<string>defaultCore.openemu.system.ps2</string>
 		<string>defaultCore.openemu.system.snes</string>
 		<string>videoShader</string>
 		<string>videoShader.user.preset.data.MAME HLSL:1713747692</string>
 		<string>videoShader.user.preset.data.MAME HLSL:1713749175</string>
+		<string>videoShader.user.preset.data.MAME HLSL:1713909047</string>
+		<string>videoShader.user.preset.data.MAME HLSL:1713961857</string>
 	</array>
 	<key>debug</key>
 	<true/>
@@ -37,12 +38,14 @@
 	<key>videoShader</key>
 	<string>MAME HLSL</string>
 	<key>videoShader.user.preset.data.CRT Royale Kurozumi:1675003692</key>
-	<string>$name="PVM Clean";$shader="CRT Royale Kurozumi";$createdAt="1675003692";aa_cubic_c=1;beam_max_sigma=0.2;beam_spot_power=0.3;bloom_excess=0.8;border_compress=1.25;border_darkness=1.25;convergence_offset_x_b=0.05;convergence_offset_y_g=0;convergence_offset_y_r=-0.05;crt_gamma=2.603;diffusion_weight=0.05;geom_mode_runtime=1;halation_weight=0.005;interlace_detect_toggle=0;lcd_gamma=2.2;levels_contrast=1.2;mask_num_triads_desired=960;mask_triad_size_desired=2.224;mask_type=1</string>
-	<key>videoShader.user.preset.data.MAME HLSL:1655042283</key>
-	<string>$name="NTSC 8:7 PAR";$shader="MAME HLSL";$createdAt="1655042283";col_saturation=1.4;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinealpha=1;scanlinebrightoffset=1.1;scanlinebrightscale=1;scanlinevariation=4;scantime=53.3;shadowalpha=0.25;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2</string>
+	<string>$name="PVM Clean";$shader="CRT Royale Kurozumi";$createdAt="1675003692";aa_cubic_c=1;beam_max_sigma=0.2;beam_spot_power=0.3;border_compress=1.25;border_darkness=1.25;convergence_offset_x_b=0.05;convergence_offset_y_g=0;convergence_offset_y_r=-0.05;crt_gamma=2.603;diffusion_weight=0.001;halation_weight=0.005;interlace_detect_toggle=0;lcd_gamma=2.2;levels_contrast=1.2;mask_type=1</string>
 	<key>videoShader.user.preset.data.MAME HLSL:1713747692</key>
-	<string>$name="NTSC, CRT Gamma + Saturation";$shader="MAME HLSL";$createdAt="1713747692";chromaa_y=0.3396;chromab_x=0.3;chromab_y=0.5998;chromac_x=0.2;chromac_y=0.1;chromatoggle=1;col_saturation=1.5;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;power_b=2;power_g=2;power_r=2;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinealpha=0.3;scanlinevariation=2;scantime=53.3;shadowalpha=0;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2;ygain_b=0.3;ygain_g=1;ygain_r=0.3</string>
+	<string>$name="NTSC, CRT Saturation";$shader="MAME HLSL";$createdAt="1713747692";chromaa_y=0.3396;chromab_x=0.3;chromab_y=0.5998;chromac_x=0.2;chromac_y=0.1;chromatoggle=1;col_saturation=1.5;col_scale_x=0.85;col_scale_y=0.85;col_scale_z=0.85;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;noise_amt=0.7;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;power_b=2;power_g=2;power_r=2;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinealpha=0.5;scanlinevariation=2;shadowalpha=0;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2;ygain_b=0.2;ygain_g=0.8;ygain_r=0.2</string>
 	<key>videoShader.user.preset.data.MAME HLSL:1713749175</key>
-	<string>$name="NTSC, CRT Gamma";$shader="MAME HLSL";$createdAt="1713749175";chromaa_y=0.3396;chromab_x=0.3;chromab_y=0.5998;chromac_x=0.2;chromac_y=0.1;chromatoggle=1;col_scale_x=0.85;col_scale_y=0.85;col_scale_z=0.85;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;power_b=2;power_g=2;power_r=2;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinealpha=0.5;scanlinevariation=2;shadowalpha=0;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2;ygain_b=0.2;ygain_g=0.8;ygain_r=0.2</string>
+	<string>$name="NTSC, CRT Default";$shader="MAME HLSL";$createdAt="1713749175";chromaa_y=0.3396;chromab_x=0.3;chromab_y=0.5998;chromac_x=0.2;chromac_y=0.1;chromatoggle=1;col_scale_x=0.85;col_scale_y=0.85;col_scale_z=0.85;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;noise_amt=0.7;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;power_b=2;power_g=2;power_r=2;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinealpha=0.5;scanlinevariation=2;shadowalpha=0;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2;ygain_b=0.2;ygain_g=0.8;ygain_r=0.2</string>
+	<key>videoShader.user.preset.data.MAME HLSL:1713909047</key>
+	<string>$name="NTSC, CRT Brighter";$shader="MAME HLSL";$createdAt="1713909047";chromaa_y=0.3396;chromab_x=0.3;chromab_y=0.5998;chromac_x=0.2;chromac_y=0.1;chromatoggle=1;col_scale_x=0.8;col_scale_y=0.8;col_scale_z=0.8;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;noise_amt=0.7;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;power_b=2;power_g=2;power_r=2;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinealpha=0.6;scanlinevariation=2;shadowalpha=0;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2;ygain_b=0.2;ygain_g=0.8;ygain_r=0.2</string>
+	<key>videoShader.user.preset.data.MAME HLSL:1713961857</key>
+	<string>$name="NTSC, CRT Baseline";$shader="MAME HLSL";$createdAt="1713961857";chromaa_y=0.3396;chromab_x=0.3;chromab_y=0.5998;chromac_x=0.2;chromac_y=0.1;chromatoggle=1;col_saturation=1;col_scale_x=1;col_scale_y=1;col_scale_z=1;distort_corner_amount=0;distortion_amount=0.04;distortiontoggle=1;jitter=2;noise_amt=0.7;ntscsignal=1;phosphor_b=0.4;phosphor_g=0.4;phosphor_r=0.4;phosphortoggle=1;power_b=2;power_g=2;power_r=2;prescale=1;reflection_amount=0;round_corner_amount=0.04;scanline_crawl=1;scanline_jitter_amount=0.03;scanlinevariation=2;shadowalpha=0;shadowcount_x=24;shadowcount_y=24;shadowuv_x=1;shadowuv_y=1;smooth_border_amount=1;vignette_amount=0.2;ygain_b=0.2;ygain_g=0.8;ygain_r=0.2</string>
 </dict>
 </plist>
