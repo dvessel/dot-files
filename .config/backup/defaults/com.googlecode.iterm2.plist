@@ -3435,9 +3435,12 @@
 		<string>SaveProfilesToRecentDocuments</string>
 		<string>CheckTestRelease</string>
 		<string>SUFeedURL</string>
+		<string>StatusBarHeight</string>
 	</array>
 	<key>SmartPlacement</key>
 	<false/>
+	<key>StatusBarHeight</key>
+	<real>28</real>
 	<key>StatusBarPosition</key>
 	<integer>0</integer>
 	<key>TabStyleWithAutomaticOption</key>
