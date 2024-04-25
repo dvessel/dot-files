@@ -11,8 +11,6 @@ brew "fzf"
 brew "gh"
 # Distributed revision control system
 brew "git"
-# Convert source code to formatted text with syntax highlighting
-brew "highlight"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
