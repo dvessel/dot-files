@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+zparseopts -D -E -F - {t:,-tool:}=tool || return 1
+
+if [[ -n $tool ]]; then
+  _tool=${tool[-1]}
+  unset tool
+elif [[ -z $_tool ]]; then
+  _tool=(diff -u)
+fi
+
+if [[ -z $_defaults_before ]]; then
+  if [[ -z $1 ]]; then
+    echo "defaults domain required. Run 'defaults domains' to list all possible values."
+    unset _tool
+    return 1
+  fi
+  _defaults_before=`mktemp`
+  _domain=$1
+  defaults read $_domain > $_defaults_before
+  echo "Ready for changes in $_domain."
+else
+  _defaults_after=`mktemp`
+  defaults read $_domain > $_defaults_after
+  $_tool $_defaults_before $_defaults_after
+  rm $_defaults_before $_defaults_after
+  unset _tool _domain _defaults_before _defaults_after
+fi
