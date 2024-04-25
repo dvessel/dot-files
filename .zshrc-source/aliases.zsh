@@ -12,6 +12,7 @@ alias -g cx='/usr/bin/clear -x'
 alias d='pwd'
 alias h='ls -d --color=auto .*'
 
+alias bp='batpipe'
 alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
 
