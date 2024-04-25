@@ -21,7 +21,7 @@ if type antidote &>/dev/null; then
   [[ -f ~/.zsh_plugins.txt ]] || touch ~/.zsh_plugins.txt
 
   # Generate a new static file whenever .zsh_plugins.txt is updated.
-  if [[ ! ~/.zsh_plugins.zsh -nt ~/.zsh_plugins.txt ]]; then
+  if [[ ~/.zsh_plugins.txt -nt ~/.zsh_plugins.zsh ]]; then
     antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.zsh
   fi
   source ~/.zsh_plugins.zsh
