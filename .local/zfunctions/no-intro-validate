@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+zparseopts -D -E -F - {t,-tag-valid}=tag_valid || return 1
+local int tag_valid db=~/Games/Support/console-db.xmlb
+trap 'int=1' INT TERM
+
+while read i; do
+	h=`unzip -p $i | md5`
+	xb-tool query $db "datafile/game/rom[@md5='$h']" | dasel -r xml 'rom.-name' 2&> /dev/null
+	if [[ $? > 0 ]]; then
+		echo "\033[0;31m - unknown: $h - $i \033[0m"
+	elif [[ $tag_valid ]]; then
+		tag -a "no-intro validated" "$i"
+	fi
+	test $int && break
+done < <( fd .zip ${@:-.} )
