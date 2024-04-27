@@ -37,3 +37,6 @@ alias rsync-copy='rsync -avz --progress -h --exclude=.DS_Store'
 alias rsync-move='rsync -avz --progress -h --remove-source-files --exclude=.DS_Store'
 alias rsync-update='rsync -avzu --progress -h --exclude=.DS_Store'
 alias rsync-synchronize='rsync -avzu --delete --progress -h --exclude=.DS_Store'
+
+# Clear completions cache.
+alias zcc='rm -rf ~/.cache/zsh/*'
