@@ -13,6 +13,9 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 7,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
   "editor.minimap.showSlider": "always",
   "editor.occurrencesHighlight": "off",
   "editor.padding.bottom": 10,
