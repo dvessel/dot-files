@@ -17,3 +17,6 @@
 [filter "gitignore"]
 	clean = "sed -e '/@gitignore.line/d;' -e '/@gitignore.start/,/@gitignore.end/d;'"
 	smudge = cat
+[alias]
+	ignore = update-index --skip-worktree
+	unignore = update-index --no-skip-worktree
