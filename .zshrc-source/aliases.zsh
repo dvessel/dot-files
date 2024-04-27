@@ -9,8 +9,10 @@ alias -g stl='lsd --blocks=size,date,name --total-size --date=relative --sort=si
 alias -g cl='/usr/bin/clear'
 alias -g cx='/usr/bin/clear -x'
 
-alias d='pwd'
 alias h='ls -d --color=auto .*'
+alias d='pwd'
+alias dh='cd +${$(dirs -v | fzf --with-nth=2 | cut -f1):-0}'
+for i ({1..9}) alias "$i"="cd +$i"
 
 alias bp='batpipe'
 alias lb='open -b at.obdev.LaunchBar'
