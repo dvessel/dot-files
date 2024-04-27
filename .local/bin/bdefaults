@@ -12,16 +12,15 @@
 # $1 exit status
 function s.help {
   print -rC1 -- \
-  "[backup|restore|list|delete] - Required action." \
-  "[-a|--all]                   - Acts on all keys/domains from existing backups." \
-  "[-s|--search]                - Search for keys in active settings." \
-  "                               Use to list/save keys not previously backed-up." \
-  "                               -k is required and is case sensitive." \
-  "[-k|--key] [<setting>]       - Settings key to act on." \
-  "[-d|--domain] [<domain>]     - Target a domain, e.g., com.apple.finder." \
-  "[-g|-globalDomain]           - Global domain. Conflicts with -d." \
-  "[-p|--path] [<path>]         - Defaults to ~/.config/backup/defaults." \
-  "[-h|--help]                  - This help text."
+  "backup,restore,list,delete   Required action." \
+  "-a,--all                     Acts on all keys/domains from existing backups." \
+  "-s,--search                  Search for keys in active settings. -k is required." \
+  "                             Use to list/save keys not previously backed-up." \
+  "-k,--key <setting>           Settings key to act on." \
+  "-d,--domain <domain>         Target a domain, e.g., com.apple.finder." \
+  "-g,-globalDomain             Global domain. Conflicts with -d." \
+  "-p,--path <path>             Defaults to ~/.config/backup/defaults." \
+  "-h,--help                    Show help text."
   exit $1
 }
 
@@ -168,7 +167,7 @@ function {
   [[ -n $help ]] && s.help
 
   [[ $op != (backup|restore|list|delete) ]] && errmsg+=(
-    "backup, restore, list or delete action is required."
+    "Required action was omitted."
   )
   [[ $op == (backup|restore|delete) && ! -n $key$domain$all ]] && errmsg+=(
     "$op requires a key, domain or the -a flag."
