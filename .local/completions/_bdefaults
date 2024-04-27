@@ -1,0 +1,14 @@
+#compdef bdefaults
+
+local arguments=(
+  "1:command:(backup restore list delete)" \
+  {-a,--all}'[acts on all keys/domains from existing backups.]'
+  {-s,--search}'[search for keys in active settings. -k is required.]'
+  {-k,--key}'[settings key to act on.]'
+  {-d,--domain}'[target a domain, e.g., com.apple.finder.]'
+  {-g,-globalDomain}'[global domain. Conflicts with -d.]'
+  {-p,--path}'[defaults to ~/.config/backup/defaults.]'
+  {-h,--help}'[show help.]'
+)
+
+_arguments -s $arguments
