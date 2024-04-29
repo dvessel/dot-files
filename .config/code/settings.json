@@ -62,8 +62,8 @@
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "eq-material-theme-icons",
   "workbench.list.smoothScrolling": true,
-  "workbench.preferredDarkColorTheme": "One Dark Pro Flat",
-  "workbench.preferredLightColorTheme": "Github Light Theme - Gray",
+  "workbench.preferredDarkColorTheme": "One Dark Pro Darker",
+  "workbench.preferredLightColorTheme": "Github Light Theme",
   "workbench.startupEditor": "newUntitledFile",
   "xml.server.workDir": "~/.cache/lemminx",
   "editor.minimap.enabled": false
