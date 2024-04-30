@@ -27,10 +27,6 @@
 .local/lib
 .local/share
 .local/state
-# Inverse selects. !entries tracks changes.
-!.local/bin/_*
-!.local/bin/bdefaults
-!.local/bin/fbrew
 # CrossOver .mailcap, .mime.types
 .mailcap
 .mime.types
