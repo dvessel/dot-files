@@ -4,7 +4,7 @@ type antidote &>/dev/null || return
 ZFUNCDIR=~/.local/zfunctions
 
 # dvessel/zsh-completion-generator
-GENCOMPL_FPATH=~/.local/completions
+GENCOMPL_FPATH=~/.local/zcompletions
 
 # mattmc3/zephyr plugins:zman
 ZMAN_URL=https://zsh-manual.netlify.app

@@ -33,6 +33,6 @@ fi
 
 # Add local paths and prevent duplicates.
 typeset -aU  path=(~/.local/{bin,zbin} $path)
-typeset -aU fpath=(~/.local/completions $fpath)
+typeset -aU fpath=(~/.local/zcompletions $fpath)
 
 for p in ~/.zshrc-source/*.zsh; source $p
