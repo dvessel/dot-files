@@ -1,5 +1,5 @@
-# Ignore base directory files and folders.
-/[a-zA-Z0-9]*
+# Ignore visible directory files and folders.
+/[^.]*
 
 # Dot files not to track.
 .cache
