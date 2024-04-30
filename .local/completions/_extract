@@ -2,6 +2,6 @@
 #autoload
 
 _arguments \
-  {-r,--remove}'[Remove archive.]' \
-  "*::archive file:_files -g '(#i)*.(7z|bz2|gz|iso|rar|tar.bz2|tar.gz|tar|tbz2|tgz|Z|zip)(-.)'" \
+  {-t,--trash-archive}'[Move extracted archive to the trash.]' \
+  "*::archive file:_files -g '(#i)*.(7z|bz2|gz|iso|rar|tar.bz2|tar.gz|tar|tbz|tbz2|tgz|Z|zip)(-.)'" \
     && return 0

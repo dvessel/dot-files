@@ -1,28 +1,27 @@
 #!/usr/bin/env zsh
 
-local remove_archive archive
-zparseopts -D -E -F - {r,-remove}=remove_archive || return 1
+local trash archive
+zparseopts -D -E -F - {t,-trash-archive}=trash || return 1
 
 for archive in "$@"; do
   if [[ -f $archive ]]; then
     case $archive in
-      *.7z)       7z x $archive        ;; # require p7zip
-      *.bz2)      bunzip2 $archive     ;;
-      *.gz)       gunzip $archive      ;;
-      *.iso)      7z x $archive        ;; # require p7zip
-      *.rar)      7z x $archive        ;; # require p7zip
-      *.tar.bz2)  tar xjf $archive     ;;
-      *.tar.gz)   tar xzf $archive     ;;
-      *.tar)      tar xf $archive      ;;
-      *.tbz2)     tar xjf $archive     ;;
-      *.tgz)      tar xzf $archive     ;;
-      *.Z)        uncompress $archive  ;;
-      *.zip)      unzip $archive       ;;
-      *)          echo "'$archive' cannot be extracted." ;;
+      *.(7z|iso|rar)) ! _brew_check p7zip ||
+              7z x $archive       ;;
+      *.bz2)  bunzip2 $archive    ;;
+      *.gz)   gunzip $archive     ;;
+      *.tar)  tar xf $archive     ;;
+      *.(tbz|tbz2|tar.bz2))
+              tar xjf $archive    ;;
+      *.(tgz|tar.gz))
+              tar xzf $archive    ;;
+      *.Z)    uncompress $archive ;;
+      *.zip)  unzip $archive      ;;
+      *)      echo "'$archive' cannot be extracted." ;;
     esac
-    if [[ $? == 0 && $remove_archive ]]; then
-      rm $archive
-      echo "'$archive' removed."
+    if [[ $? == 0 && $trash ]]; then
+      trash $archive
+      echo "'$archive' moved to trash."
     fi
   else
     echo "'$archive' is not a valid archive."
