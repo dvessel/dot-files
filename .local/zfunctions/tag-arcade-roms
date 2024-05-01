@@ -1,0 +1,132 @@
+#!/usr/bin/env zsh
+_brew_check libxmlb || return 1
+
+local int roms xmlb tmp_dir=`mktemp -d`
+zparseopts -D -E -F - {v,-version}:=version || return 1
+
+roms=${1:-~/Games/Emulation/Arcade}
+xmlb=~/Games/Support/OpenEmu/AdvanceScan/mame${version[-1]:-0258}.xmlb
+trap 'int=1' INT TERM
+
+if [[ ! -f $xmlb && -f ${xmlb:r}.xml ]]; then
+  print "Compiling..."
+  xb-tool compile $xmlb ${xmlb:r}.xml
+elif [[ ! -f ${xmlb:r}.xml ]]; then
+  print "${xmlb:t:r}.xml does not exist." >&2
+  return 1
+fi
+
+function tag.add {
+  tag -a "$1" "$2:a"
+  printf "%-20s %s\n" "$2:t" "$1"
+}
+
+function xpath.get {
+  if [[ $3 == cache ]]; then
+    h=`md5 -qs "${2:-$current}/$1"`
+    if [[ -f $tmp_dir/$h ]]; then
+      cat $tmp_dir/$h
+      # print "cached $f:${2:-$current}:$1" >&2
+    else
+      xpath.get $1 ${2:-$current} | tee $tmp_dir/$h
+      # print "get $f:${2:-$current}:$1" >&2
+    fi
+  else
+    if o=`xb-tool query $xmlb "mame/machine[@name='${2:-$current}']"`; then
+      print $o | sed 's/^RESULT: //1' | xpath -q -e $1
+    else
+      print "mame/machine[@name='${2:-$current}']|$1" >> $tmp_dir/querymisses
+    fi
+  fi
+}
+
+function find.bios {
+  romof=`xpath.get "string(machine/@romof)" $current cache`
+  while [[ -n $romof ]]; do
+    if (( `xpath.get "boolean(machine[@isbios='yes'])" $romof cache` )); then
+      printf $romof
+      break
+    fi
+    romof=`xpath.get "string(machine/@romof)" $romof cache`
+  done
+}
+
+function find.devices {
+  while read l; do
+    if (( `xpath.get "boolean(machine/rom)" $l cache` )); then
+      print $l
+    fi
+  done < <( xpath.get "machine/device_ref/@name" | uniq | sed 's/.*name="\(.*\)"/\1/1' )
+}
+
+for i in `print -r -- $roms/*.(chd|zip)`; do
+  local current=${i:t:r}
+
+  # preliminary status
+  if (( `xpath.get "boolean(machine/driver[@status='preliminary'])"` )) then
+    tag.add "MAME - Preliminary" "$i"
+    if [[ -d "$i:r" ]]; then
+      tag.add "MAME - Preliminary" "$i:r"
+    fi
+  fi
+
+  # tag bios/device
+  if (( `xpath.get "boolean(machine[@isbios='yes'])" $current cache` )) then
+    tag.add "MAME - BIOS" "$i"
+  elif (( `xpath.get "boolean(machine[@isdevice='yes'])" $current cache` )) then
+    tag.add "MAME - Device" "$i"
+  else
+    # tag dependent devices
+    while read l; do
+      tag.add "MAME - Device: $l" "$i"
+    done < <( find.devices )
+
+    # tag dependent bios
+    local bios=`find.bios`
+    if [[ -n $bios ]]; then
+      tag.add "MAME - BIOS: $bios" "$i"
+    fi
+
+    # tag clone/parent roms
+    local parent=`xpath.get "string(machine/@cloneof)"`
+    if [[ -n $parent ]]; then
+      # tag clone
+      tag.add "MAME - Clone" "$i"
+      tag.add "MAME - Parent: $parent" "$i"
+      # tag parent
+      if [[ -d "$roms/$parent" ]]; then
+        tag.add "MAME - Parent" "$roms/$parent" $parent
+      fi
+      if [[ -f "$roms/$parent.zip" ]]; then
+        tag.add "MAME - Parent" "$roms/$parent.zip" $parent
+      elif [[ -f "$roms/$parent.chd" ]]; then
+        tag.add "MAME - Parent" "$roms/$parent.chd" $parent
+      else
+        # parent should have a zip or chd file.
+        print "Missing parent dependency: $parent" >&2
+      fi
+    fi
+
+    # tag disk
+    if (( `xpath.get "boolean(machine/disk)"` )); then
+      tag.add "MAME - Disk" "$i"
+      if [[ -d "$i:r" ]]; then
+        # tag folder enclosing chd.
+        tag.add "MAME - Disk" "$i:r"
+      elif [[ -n $parent && ! -d "$roms/$parent" ]]; then
+        # if clone does not have an chd folder, a parent should exist.
+        # If neither, print warning.
+        print "Missing folder for chd: $i:r" >&2
+      fi
+    fi
+
+  fi
+
+  ! test $int || break
+done
+
+if [[ -f $tmp_dir/querymisses ]]; then
+  print "\nMissed queries:"
+  cat $tmp_dir/querymisses
+fi
+rm -rf $tmp_dir
