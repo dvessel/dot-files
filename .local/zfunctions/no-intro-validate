@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+_brew_check libxmlb || return 1
 
 local int db tag_valid
 zparseopts -D -E -F - {t,-tag-valid}=tag_valid || return 1
@@ -6,7 +7,8 @@ trap 'int=1' INT TERM
 db=~/Games/Support/console-db.xmlb
 while read i; do
 	h=`unzip -p $i | md5`
-	xb-tool query $db "datafile/game/rom[@md5='$h']" | dasel -r xml 'rom.-name' 2&> /dev/null
+	xb-tool query $db "datafile/game/rom[@md5='$h']" | sed 's/^RESULT: //1' |
+		xpath -q -e "string(rom/@name)" 2&> /dev/null
 	if [[ $? > 0 ]]; then
 		echo "\033[0;31m - unknown: $h - $i \033[0m"
 	elif [[ $tag_valid ]]; then
