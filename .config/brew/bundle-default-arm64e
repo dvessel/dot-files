@@ -47,6 +47,8 @@ brew "imagemagick"
 brew "jq"
 # Library for querying compressed XML metadata
 brew "libxmlb"
+# CLI for SQLite Databases with auto-completion and syntax highlighting
+brew "litecli"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Multiple Arcade Machine Emulator

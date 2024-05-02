@@ -10,6 +10,8 @@
 .config/code/History
 .config/code/workspaceStorage
 .config/iterm2
+.config/litecli/history
+.config/litecli/log
 # Moved to dvessel/kickstart.nvim.
 .config/nvim
 .config/zed/.*
