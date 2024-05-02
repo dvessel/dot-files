@@ -9,6 +9,7 @@ alias -g stl='lsd --blocks=size,date,name --total-size --date=relative --sort=si
 alias -g cl='/usr/bin/clear'
 alias -g cx='/usr/bin/clear -x'
 
+alias l='ls --color=auto'
 alias h='ls -d --color=auto .*'
 alias d='pwd'
 alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
