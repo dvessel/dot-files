@@ -36,6 +36,7 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  "git.autorefresh": false,
   "markdown.preview.fontSize": 15,
   "intelephense.telemetry.enabled": false,
   "partialDiff.enableTelemetry": false,
