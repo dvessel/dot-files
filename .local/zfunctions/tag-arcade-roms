@@ -77,14 +77,21 @@ for i in `print -r -- $roms/*.(chd|zip)`; do
     tag.add "MAME - Device" "$i"
   else
     # tag dependent devices
+    local missing=
     while read l; do
       tag.add "MAME - Device: $l" "$i"
+      [[ -f "$roms/$l.zip" ]] &&
+        tag.add "$current" "$roms/$l.zip" ||
+        missing+=" - device [$l] '`xpath.get "machine/description/text()" $l`'\n"
     done < <( find.devices )
 
     # tag dependent bios
     local bios=`find.bios`
     if [[ -n $bios ]]; then
       tag.add "MAME - BIOS: $bios" "$i"
+      [[ -f "$roms/$bios.zip" ]] &&
+        tag.add "$current" "$roms/$bios.zip" ||
+        missing+=" - bios [$bios] '`xpath.get "machine/description/text()" $bios`'\n"
     fi
 
     # tag clone/parent roms
@@ -92,18 +99,20 @@ for i in `print -r -- $roms/*.(chd|zip)`; do
     if [[ -n $parent ]]; then
       # tag clone
       tag.add "MAME - Clone" "$i"
-      tag.add "MAME - Parent: $parent" "$i"
+      tag.add "$parent" "$i"
       # tag parent
       if [[ -d "$roms/$parent" ]]; then
         tag.add "MAME - Parent" "$roms/$parent" $parent
       fi
       if [[ -f "$roms/$parent.zip" ]]; then
         tag.add "MAME - Parent" "$roms/$parent.zip" $parent
+        tag.add "$current" "$roms/$parent.zip" $parent
       elif [[ -f "$roms/$parent.chd" ]]; then
         tag.add "MAME - Parent" "$roms/$parent.chd" $parent
+        tag.add "$current" "$roms/$parent.chd" $parent
       else
         # parent should have a zip or chd file.
-        print "Missing parent dependency: $parent" >&2
+        missing+=" - parent [$parent] '`xpath.get "machine/description/text()" $parent`'\n"
       fi
     fi
 
@@ -114,12 +123,17 @@ for i in `print -r -- $roms/*.(chd|zip)`; do
         # tag folder enclosing chd.
         tag.add "MAME - Disk" "$i:r"
       elif [[ -n $parent && ! -d "$roms/$parent" ]]; then
-        # if clone does not have an chd folder, a parent should exist.
-        # If neither, print warning.
-        print "Missing folder for chd: $i:r" >&2
+        # if clone does not require a chd folder, a parent should exist.
+        # if clone does require a folder and a parent exists, it will stay silent. (bad)
+        # If neither, emit warning.
+        missing+=" - chd folder [$current] '`xpath.get "machine/description/text()"`'\n"
       fi
     fi
 
+    if [[ -n $missing ]]; then
+      printf "Missing items for [%s] '%s'.\n%b" \
+        "$current" "`xpath.get "machine/description/text()"`" "$missing" >&2
+    fi
   fi
 
   ! test $int || break
