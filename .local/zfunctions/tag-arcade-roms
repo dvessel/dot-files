@@ -53,7 +53,7 @@ function find.bios {
 
 function find.devices {
   while read l; do
-    if (( `xpath.get "boolean(machine/rom)" $l cache` )); then
+    if (( `xpath.get "boolean(machine/rom/@crc)" $l cache` )); then
       print $l
     fi
   done < <( xpath.get "machine/device_ref/@name" | uniq | sed 's/.*name="\(.*\)"/\1/1' )
