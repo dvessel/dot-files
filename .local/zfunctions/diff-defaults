@@ -10,15 +10,18 @@ elif [[ -z $_tool ]]; then
 fi
 
 if [[ -z $_defaults_before ]]; then
-  if [[ -z $1 ]]; then
-    echo "defaults domain required. Run 'defaults domains' to list all possible values."
-    unset _tool
-    return 1
-  fi
   _defaults_before=`mktemp`
   _domain=$1
+  if [[ -z $_domain ]]; then
+    print "Warning! Domain was not set. All preferences will be monitored for changes."
+  fi
   defaults read $_domain > $_defaults_before
-  echo "Ready for changes in $_domain."
+  if [[ $? == 0 ]]; then
+    print "Ready for changes in ${_domain:-all domains}."
+  else
+    rm $_defaults_before
+    unset _tool _domain _defaults_before
+  fi
 else
   _defaults_after=`mktemp`
   defaults read $_domain > $_defaults_after
