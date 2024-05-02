@@ -19,8 +19,6 @@ brew "bat-extras"
 brew "blueutil"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
-# JSON, YAML, TOML, XML, and CSV query and modification tool
-brew "dasel"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Generate documentation for several programming languages
