@@ -1,31 +1,40 @@
 #!/usr/bin/env zsh
 
-zparseopts -D -E -F - {t:,-tool:}=tool || return 1
+zparseopts -D -E -F - \
+  {d:,-diff-command:}=diff_command \
+  {t:,-timer:}=timer || return 1
 
-if [[ -n $tool ]]; then
-  _tool=${tool[-1]}
-  unset tool
-elif [[ -z $_tool ]]; then
-  _tool=(diff -u)
-fi
-
-if [[ -z $_defaults_before ]]; then
-  _defaults_before=`mktemp`
+if [[ -z $_dbefore ]]; then
   _domain=$1
   if [[ -z $_domain ]]; then
-    print "Warning! Domain was not set. All preferences will be monitored for changes."
+    print "Warning! Domain was not set. All settings will be monitored for changes."
   fi
-  defaults read $_domain > $_defaults_before
+
+  _dbefore=`mktemp`
+  defaults read $_domain > $_dbefore
+
   if [[ $? == 0 ]]; then
     print "Ready for changes in ${_domain:-all domains}."
+    if [[ -n $timer ]]; then
+      print "Diff will be auto applied in ${timer[-1]} seconds."
+      sleep ${timer[-1]}
+      $0 $diff_command $_domain
+    fi
   else
-    rm $_defaults_before
-    unset _tool _domain _defaults_before
+    rm $_dbefore
+    unset diff_command timer _domain _dbefore
   fi
 else
-  _defaults_after=`mktemp`
-  defaults read $_domain > $_defaults_after
-  $_tool $_defaults_before $_defaults_after
-  rm $_defaults_before $_defaults_after
-  unset _tool _domain _defaults_before _defaults_after
+  if [[ -n $diff_command ]]; then
+    _diff=(${(z)diff_command[-1]})
+  else
+    _diff=(diff -u --color=auto)
+  fi
+
+  _dafter=`mktemp`
+  defaults read $_domain > $_dafter
+  $_diff $_dbefore $_dafter
+
+  rm $_dbefore $_dafter
+  unset diff_command timer _diff _domain _dbefore _dafter
 fi
