@@ -77,12 +77,12 @@ for i in `print -r -- $roms/*.(chd|zip)`; do
     tag.add "MAME - Device" "$i"
   else
     # tag dependent devices
-    local missing=
+    local missing=()
     while read l; do
       tag.add "MAME - Device: $l" "$i"
       [[ -f "$roms/$l.zip" ]] &&
         tag.add "$current" "$roms/$l.zip" ||
-        missing+=" - device [$l] '`xpath.get "machine/description/text()" $l`'\n"
+        missing+="device [$l] '`xpath.get "machine/description/text()" $l`'"
     done < <( find.devices )
 
     # tag dependent bios
@@ -91,7 +91,7 @@ for i in `print -r -- $roms/*.(chd|zip)`; do
       tag.add "MAME - BIOS: $bios" "$i"
       [[ -f "$roms/$bios.zip" ]] &&
         tag.add "$current" "$roms/$bios.zip" ||
-        missing+=" - bios [$bios] '`xpath.get "machine/description/text()" $bios`'\n"
+        missing+="bios [$bios] '`xpath.get "machine/description/text()" $bios`'"
     fi
 
     # tag clone/parent roms
@@ -112,7 +112,7 @@ for i in `print -r -- $roms/*.(chd|zip)`; do
         tag.add "$current" "$roms/$parent.chd" $parent
       else
         # parent should have a zip or chd file.
-        missing+=" - parent [$parent] '`xpath.get "machine/description/text()" $parent`'\n"
+        missing+="parent [$parent] '`xpath.get "machine/description/text()" $parent`'"
       fi
     fi
 
@@ -126,13 +126,13 @@ for i in `print -r -- $roms/*.(chd|zip)`; do
         # if clone does not require a chd folder, a parent should exist.
         # if clone does require a folder and a parent exists, it will stay silent. (bad)
         # If neither, emit warning.
-        missing+=" - chd folder [$current] '`xpath.get "machine/description/text()"`'\n"
+        missing+="chd folder [$current] '`xpath.get "machine/description/text()"`'"
       fi
     fi
 
     if [[ -n $missing ]]; then
-      printf "Missing items for [%s] '%s'.\n%b" \
-        "$current" "`xpath.get "machine/description/text()"`" "$missing" >&2
+      printf "Missing items for [%s] '%s'.\n%b\n" \
+        "$current" "`xpath.get "machine/description/text()"`" " - ${(j[\n - ])missing}" >&2
     fi
   fi
 
