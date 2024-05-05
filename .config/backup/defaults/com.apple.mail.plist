@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSFixedPitchFont</key>
+	<string>AnonymiceProNFP</string>
 	<key>NSFixedPitchFontSize</key>
 	<string>15</string>
+	<key>NSFont</key>
+	<string>iAWriterDuoS-Regular</string>
 	<key>NSFontSize</key>
 	<string>15</string>
 	<key>NSUserKeyEquivalents</key>
@@ -16,6 +20,8 @@
 		<string>NSUserKeyEquivalents</string>
 		<string>NSFixedPitchFontSize</string>
 		<string>NSFontSize</string>
+		<string>NSFixedPitchFont</string>
+		<string>NSFont</string>
 	</array>
 </dict>
 </plist>

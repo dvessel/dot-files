@@ -6,6 +6,8 @@
 	<dict>
 		<key>com.apple.finder</key>
 		<string>Custom</string>
+		<key>com.apple.mail</key>
+		<string>Custom</string>
 		<key>global</key>
 		<string>XL</string>
 		<key>version</key>
