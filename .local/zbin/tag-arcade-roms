@@ -1,9 +1,140 @@
 #!/usr/bin/env zsh
 
-zparseopts -D -E -F - \
-  {v,-version}:=version \
-  {d,-dry-run}=dryrun \
-  {c,-clear-cache}=ccache || return 1
+function main {
+  zparseopts -D -E -F - \
+    {v,-version}:=version \
+    {d,-dry-run}=dryrun \
+    {c,-clear-cache}=ccache || return 1
+
+  version=${version[-1]:-`mame-version`}
+  scandir=${1:-$HOME/Library/Application\ Support/OpenEmu/Game\ Library/roms/Arcade}
+  cachedir=${TMPDIR}oemame/hashes-$version
+
+  if [[ -n $ccache ]]; then
+    rm -rf $cachedir
+  fi
+  mkdir -p $cachedir
+
+  trap 'interrupt=1' INT TERM
+
+  while read i; do
+    current=${i:t:r}
+
+    # preliminary status
+    if xpath.condition "machine/driver[@status='preliminary']"; then
+      tag.add "MAME Preliminary" "$i"
+    fi
+
+    # tag bios/device
+    if xpath.condition "machine[@isbios='yes']"; then
+      tag.add "MAME BIOS" "$i"
+    elif xpath.condition "machine[@isdevice='yes']" $current; then
+      tag.add "MAME Device" "$i"
+    else
+      missing=()
+
+      # tag chain of dependencies from clones to bios/devices.
+      while read d; do
+        tag.add "Requires $d" "$i"
+        if ! xpath.condition "machine[@isbios='yes']" $d \
+        && ! xpath.condition "machine[@isdevice='yes']" $d; then
+          [[ -f "$scandir/$d.zip" ]] && tag.add "MAME Dependency" "$scandir/$d.zip"
+        fi
+        [[ -f "$scandir/$d.zip" ]] || missing+=`format.missing $d`
+      done < <( find.dependencies )
+
+      # tag dependent chd for current & parent.
+      for set in $current `xpath.get "string(machine/@cloneof)"`; do
+        while read d; do
+          tag.add "Requires $set/$d" "$i"
+          [[ -f "$scandir/$set/$d.chd" ]] || missing+=`format.missing $set/$d.chd`
+        done < <( find.disks $set )
+      done
+
+      if [[ -n $missing ]]; then
+        printf "Missing items for [%s] '%s'.\n%b\n" \
+          "$current" "`xpath.get "machine/description/text()"`" " - ${(j[\n - ])missing}" >&2 |
+            tee -a "$cachedir/Incomplete Sets"
+      fi
+    fi
+
+    ! test $interrupt || break
+  done < <( printf "%s\n" $scandir/*.(chd|zip) )
+}
+
+# 1 tag label
+# 2 rom path
+function tag.add {
+  [[ -n $dryrun ]] || tag -a "$1" "$2"
+  printf "%-20s %s\n" "$2:t" "$1"
+}
+
+function xpath.condition {
+  case `xpath.get "boolean($1)" $2 $3` in
+    1) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# 1 xpath query string
+# 2 machine name, defaults to $current
+function xpath.get {
+  local h=`md5 -qs "${2:-$current}/$1"`
+
+  if [[ -f $cachedir/$h ]]; then
+    cat $cachedir/$h
+    return
+  fi
+  if ! xpath.query $1 ${2:-$current}; then
+    return 1
+  fi | tee $cachedir/$h
+}
+
+function xpath.query {
+  local result
+  if [[ -z $xmlb_path ]]; then
+    xmlb-get >&2 || return 1
+  fi
+  if result=`xb-tool query $xmlb_path "mame/machine[@name='${2:-$current}']"`; then
+    print $result | sed 's/^RESULT: //1' | xpath -q -e $1
+  elif [[ $result =~ "^no results" ]]; then
+    print "mame/machine[@name='${2:-$current}']:xpath[$1]" >> "$cachedir/Missed Queries"
+  else
+    print "failed query:mame/machine[@name='${2:-$current}']:xpath[$1]" >&2
+    exit 1
+  fi
+}
+
+function find.dependencies {
+  local device
+  while read device; do
+    # device crc means it's been dumped.
+    if xpath.condition "machine/rom/@crc" $device; then
+      print $device
+    fi
+  done < <( xpath.get "machine/device_ref/@name" | uniq | sed 's/.*name="\(.*\)"/\1/1' )
+
+  local romof=`xpath.get "string(machine/@romof)" $current`
+  while [[ -n $romof ]]; do
+    print $romof
+    romof=`xpath.get "string(machine/@romof)" $romof`
+  done
+}
+
+# 1 machine name, defaults to $current
+function find.disks {
+  local disk
+  while read disk; do
+    # merge names are inherited from a parent set. Ignore!
+    if ! xpath.condition "machine/disk/@merge" ${1:-$current}; then
+      print $disk
+    fi
+  done < <( xpath.get "machine/disk/@name" ${1:-$current} | sed 's/.*name="\(.*\)"/\1/1' )
+}
+
+function format.missing {
+  printf "%-20s %s\n" $1 "`xpath.get "machine/description/text()" ${1%/*}`"
+}
 
 function mame-version {
   local mamecore=$HOME/Library/Application\ Support/OpenEmu/Cores/MAME.oecoreplugin
@@ -13,7 +144,7 @@ function mame-version {
     print ${${$( plutil -extract CFBundleVersion raw $mamecore/Contents/Info.plist )/./}%%.*}
   else
     print "Could not determine MAME core version. Install it through OpenEmu's Cores setting." >&2
-    return 1
+    exit 1
   fi
 }
 
@@ -25,166 +156,37 @@ function xmlb-get {
     return
   fi
 
+  local url=https://github.com/mamedev/mame/releases/download/mame${version}/mame${version}lx.zip
+  local archive=$work_path/mame${version}lx.zip
+
   print "Getting info file for ver.${version}…"
   # Check for existing archive and make sure it's not corrupt.
   if test ! -f $archive || ! unzip -tqq $archive &>/dev/null; then
-    local url=https://github.com/mamedev/mame/releases/download/mame${version}/mame${version}lx.zip
-    local archive=$work_path/mame${version}lx.zip
     if ! curl -o /dev/null --silent --head --fail $url || ! curl -Lo $archive $url; then
       print "Failed to download 'mame${version}lx.zip'. Check version number and try again." >&2
-      return 1
+      exit 1
     fi
   fi
-  unzip $archive -d $work_path
+
+  if [[ ! -f $work_path/mame${version}.xml ]]; then
+    unzip $archive -d $work_path
+  fi
 
   if [[ -f $work_path/mame${version}.xml ]]; then
     print "Compiling mame${version}.xmlb…"
     xb-tool compile $work_path/mame${version}.xmlb \
                     $work_path/mame${version}.xml
-    if [[ $? == 0 ]]; then
-      rm $work_path/mame${version}.xml
-    fi
   fi
 
   if [[ -f $work_path/mame${version}.xmlb ]]; then
     xmlb_path=$work_path/mame${version}.xmlb
   else
-    return 1
+    print "Failed to compile mame${version}.xmlb." >&2
+    exit 1
   fi
 }
 
-# 1 tag label
-# 2 rom path
-function tag.add {
-  [[ -n $dryrun ]] || tag -a "$1" "$2"
-  printf "%-20s %s\n" "$2:t" "$1"
-}
-
-function xpath.boolean {
-  case `xpath.get "boolean($1)" $2 $3` in
-    1) return 0 ;;
-    *) return 1 ;;
-  esac
-}
-
-# 1 xpath query string
-# 2 machine name, defaults to $current
-# 3 [cache] set, reads will always be from cache. dryrun always sets cache.
-function xpath.get {
-  local h=`md5 -qs "${2:-$current}/$1"`
-
-  if [[ -f $cachedir/$h ]]; then
-    cat $cachedir/$h
-    return
-  fi
-  if [[ $3 == cache || -n $dryrun ]]; then
-    if ! xpath.query $1 ${2:-$current}; then
-      return 1
-    fi | tee $cachedir/$h
-  else
-    xpath.query $1 ${2:-$current} || return 1
-  fi
-}
-
-function xpath.query {
-  local result
-  if [[ -z $xmlb_path ]]; then
-    xmlb-get >&2 || return 1
-  fi
-  if result=`xb-tool query $xmlb_path "mame/machine[@name='${2:-$current}']"`; then
-    print $result | sed 's/^RESULT: //1' | xpath -q -e $1
-  elif [[ $result =~ "^no results" ]]; then
-    print "mame/machine[@name='${2:-$current}']|$1" >> "$cachedir/Missed Queries"
-  else
-    return 1
-  fi
-}
-
-function find.dependencies {
-  local device
-  while read device; do
-    # device crc means it's been dumped.
-    if xpath.boolean "machine/rom/@crc" $device cache; then
-      print $device
-    fi
-  done < <( xpath.get "machine/device_ref/@name" | uniq | sed 's/.*name="\(.*\)"/\1/1' )
-
-  local romof=`xpath.get "string(machine/@romof)" $current cache`
-  while [[ -n $romof ]]; do
-    print $romof
-    romof=`xpath.get "string(machine/@romof)" $romof cache`
-  done
-}
-
-# 1 machine name, defaults to $current
-function find.disks {
-  local disk
-  while read disk; do
-    # merge names are inherited from a parent set. Ignore!
-    if ! xpath.boolean "machine/disk/@merge" ${1:-$current} cache; then
-      print $disk
-    fi
-  done < <( xpath.get "machine/disk/@name" ${1:-$current} | sed 's/.*name="\(.*\)"/\1/1' )
-}
-
-function format.missing {
-  printf "%-20s %s\n" $1 "`xpath.get "machine/description/text()" ${1%/*}`"
-}
-
-version=${version[-1]:-`mame-version`}
-scandir=${1:-$HOME/Library/Application\ Support/OpenEmu/Game\ Library/roms/Arcade}
-cachedir=${TMPDIR}oemamedb/$version
-
-if [[ -n $ccache ]]; then
-  rm -rf $cachedir
-fi
-mkdir -p $cachedir
-
-trap 'interrupt=1' INT TERM
-
-while read i; do
-  current=${i:t:r}
-
-  # preliminary status
-  if xpath.boolean "machine/driver[@status='preliminary']"; then
-    tag.add "MAME Preliminary" "$i"
-  fi
-
-  # tag bios/device
-  if xpath.boolean "machine[@isbios='yes']"; then
-    tag.add "MAME BIOS" "$i"
-  elif xpath.boolean "machine[@isdevice='yes']" $current; then
-    tag.add "MAME Device" "$i"
-  else
-    missing=()
-
-    # tag chain of dependencies from clones to bios/devices.
-    while read d; do
-      tag.add "Requires $d" "$i"
-      if ! xpath.boolean "machine[@isbios='yes']" $d \
-      && ! xpath.boolean "machine[@isdevice='yes']" $d; then
-        [[ -f "$scandir/$d.zip" ]] && tag.add "MAME Dependency" "$scandir/$d.zip"
-      fi
-      [[ -f "$scandir/$d.zip" ]] || missing+=`format.missing $d`
-    done < <( find.dependencies )
-
-    # tag dependent chd for current & parent.
-    for set in $current `xpath.get "string(machine/@cloneof)"`; do
-      while read d; do
-        tag.add "Requires $set/$d" "$i"
-        [[ -f "$scandir/$set/$d.chd" ]] || missing+=`format.missing $set/$d.chd`
-      done < <( find.disks $set )
-    done
-
-    if [[ -n $missing ]]; then
-      printf "Missing items for [%s] '%s'.\n%b\n" \
-        "$current" "`xpath.get "machine/description/text()"`" " - ${(j[\n - ])missing}" >&2 |
-          tee -a "$cachedir/Incomplete Sets"
-    fi
-  fi
-
-  ! test $interrupt || break
-done < <( printf "%s\n" $scandir/*.(chd|zip) )
+main $@
 
 for i in "Incomplete Sets" "Missed Queries"; do
   if [[ -f "$cachedir/$i" ]]; then
