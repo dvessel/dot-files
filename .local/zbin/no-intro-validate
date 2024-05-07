@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-_brew_check libxmlb || return 1
+_brew_check fd tag libxmlb || return 1
 
 local int db tag_valid
 zparseopts -D -E -F - {t,-tag-valid}=tag_valid || return 1
