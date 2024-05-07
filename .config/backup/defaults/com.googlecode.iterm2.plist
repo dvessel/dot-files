@@ -3436,6 +3436,9 @@
 		<string>CheckTestRelease</string>
 		<string>SUFeedURL</string>
 		<string>StatusBarHeight</string>
+		<string>SwitchPaneModifier</string>
+		<string>SwitchTabModifier</string>
+		<string>SwitchWindowModifier</string>
 	</array>
 	<key>SmartPlacement</key>
 	<false/>
@@ -3443,6 +3446,12 @@
 	<real>28</real>
 	<key>StatusBarPosition</key>
 	<integer>0</integer>
+	<key>SwitchPaneModifier</key>
+	<integer>6</integer>
+	<key>SwitchTabModifier</key>
+	<integer>5</integer>
+	<key>SwitchWindowModifier</key>
+	<integer>4</integer>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TabViewType</key>
