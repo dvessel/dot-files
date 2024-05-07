@@ -7,70 +7,171 @@ function main {
     {c,-clear-cache}=ccache || return 1
 
   version=${version[-1]:-`mame-version`}
-  scandir=${1:-$HOME/Library/Application\ Support/OpenEmu/Game\ Library/roms/Arcade}
-  cachedir=${TMPDIR}oemame/hashes-$version
+  scandir=${${${1:a}:-`defaults read org.openemu.OpenEmu databasePath 2>/dev/null`/roms/Arcade}/\~/$HOME}
+  cachedir=${TMPDIR}oemame/cache-$version
+
+  if [[ ! -d $scandir ]]; then
+    printf "Scan directory does not exist:\n%s\n" $scandir >&2
+    exit 1
+  fi
 
   if [[ -n $ccache ]]; then
     rm -rf $cachedir
   fi
-  mkdir -p $cachedir
+
+  # tags directory is dependent on the contents of the scan directory.
+  tagsdir=$cachedir/tags-`md5 -qs "$(readlink -f $scandir)"`
+  depsdir=$cachedir/deps
+  hashdir=$cachedir/hashes
+
+  # rebuild tags directory if the scan directory was modified.
+  if [[ -d $tagsdir && $scandir -nt $tagsdir ]]; then
+    rm -rf $tagsdir
+  fi
+  mkdir -p $tagsdir $depsdir $hashdir
 
   trap 'interrupt=1' INT TERM
 
   while read i; do
-    current=${i:t:r}
+    ! test $interrupt || break
+              test $i || continue
 
-    # preliminary status
-    if xpath.condition "machine/driver[@status='preliminary']"; then
-      tag.add "MAME Preliminary" "$i"
-    fi
+    # current's scope extends to other functions.
+    current=$i:t:r
 
-    # tag bios/device
-    if xpath.condition "machine[@isbios='yes']"; then
-      tag.add "MAME BIOS" "$i"
-    elif xpath.condition "machine[@isdevice='yes']" $current; then
-      tag.add "MAME Device" "$i"
-    else
-      missing=()
+    register-dependencies
+    register-tags
+    apply-tags $i
+  done < <( printf "%s\n" $scandir/*.(chd|zip)(N) )
+}
 
-      # tag chain of dependencies from clones to bios/devices.
-      while read d; do
-        tag.add "Requires $d" "$i"
-        if ! xpath.condition "machine[@isbios='yes']" $d \
-        && ! xpath.condition "machine[@isdevice='yes']" $d; then
-          [[ -f "$scandir/$d.zip" ]] && tag.add "MAME Dependency" "$scandir/$d.zip"
-        fi
-        [[ -f "$scandir/$d.zip" ]] || missing+=`format.missing $d`
-      done < <( find.dependencies )
+# 1 file path.
+function apply-tags {
+  local currenttags=$tagsdir/$current.tags
 
-      # tag dependent chd for current & parent.
-      for set in $current `xpath.get "string(machine/@cloneof)"`; do
-        while read d; do
-          tag.add "Requires $set/$d" "$i"
-          [[ -f "$scandir/$set/$d.chd" ]] || missing+=`format.missing $set/$d.chd`
-        done < <( find.disks $set )
-      done
+  if [[ -s $currenttags ]]; then
+    local IFS=$'\n'
+    local tags=( `cat $currenttags` )
 
-      if [[ -n $missing ]]; then
-        printf "Missing items for [%s] '%s'.\n%b\n" \
-          "$current" "`xpath.get "machine/description/text()"`" " - ${(j[\n - ])missing}" >&2 |
-            tee -a "$cachedir/Incomplete Sets"
+    if [[ -z $dryrun ]]; then
+      a=( `tag -gN $1 | sort` ) b=( `cat $currenttags | sort`)
+      if [[ $a != $b ]]; then
+        tag -r ${(j[,])a} $1
+        tag -a ${(j[,])tags} $1
       fi
     fi
 
-    ! test $interrupt || break
-  done < <( printf "%s\n" $scandir/*.(chd|zip) )
+    printf "%-16s %s\n" $i:t ${(j[,])tags} | color-tagged
+  fi
 }
 
-# 1 tag label
-# 2 rom path
-function tag.add {
-  [[ -n $dryrun ]] || tag -a "$1" "$2"
-  printf "%-20s %s\n" "$2:t" "$1"
+function color-tagged {
+  # Preliminary : purple
+  # BIOS/Device : yellow
+  # Incomplete  : red
+  perl -pe '/(Preliminary|BIOS|Device|Incomplete)/;
+    print ($1 eq Preliminary ? "\033[0;35m" :
+          ($1 eq BIOS or
+           $1 eq Device)     ? "\033[0;33m" :
+           $1 eq Incomplete  ? "\033[0;31m" :
+                               "\033[0m")'
 }
 
+function format-missing {
+  printf "[%s] %s" $1 "`xpath-get "machine/description/text()" ${1%/*}`"
+}
+
+function register-tags {
+  local currenttags=$tagsdir/$current.tags
+
+  if [[ -f $currenttags ]]; then
+    return
+  fi
+  touch $currenttags
+
+  # tag order done for presentation.
+  if xpath.condition "machine[@isbios='yes']"; then
+    print "MAME BIOS" >> $currenttags
+  elif xpath.condition "machine[@isdevice='yes']"; then
+    print "MAME Device" >> $currenttags
+  else
+    while read dep; do
+      if [[ ! ( -f $scandir/$dep.zip || -f $scandir/$dep.chd ) ]]; then
+        print "MAME Incomplete" >> $currenttags
+        break
+      fi
+    done < <( cat $depsdir/$current.deps )
+  fi
+
+  if xpath.condition "machine/driver[@status='preliminary']"; then
+    print "MAME Preliminary" >> $currenttags
+  fi
+
+  # tag chain of dependencies from clones to bios/devices.
+  while read dep; do
+    if [[ -f $scandir/$dep.zip || -f $scandir/$dep.chd ]]; then
+      print "\+$dep" >> $currenttags
+    else
+      print "\-$dep" >> $currenttags
+      printf "%s requires %s\n" "`format-missing $current`" "`format-missing $dep`" >> $cachedir/missing
+    fi
+  done < <( cat $depsdir/$current.deps )
+}
+
+function register-dependencies {
+  local currentdeps=$depsdir/$current.deps
+
+  if [[ -f $currentdeps ]]; then
+    return
+  fi
+  touch $currentdeps
+
+  # get chain of dependencies from bios/devices to clones for current.
+  while read dep; do
+    print $dep >> $currentdeps
+  done < <( find-dependencies )
+
+  # get dependent chd for current & parent.
+  for set in $current `xpath-get "string(machine/@cloneof)"`; do
+    while read dep; do
+      print $set/$dep >> $currentdeps
+    done < <( find-disks $set )
+  done
+}
+
+function find-dependencies {
+  local device
+
+  while read device; do
+    # device crc means it's been dumped.
+    if xpath.condition "machine/rom/@crc" $device; then
+      print $device
+    fi
+  done < <( xpath-get "machine/device_ref/@name" | uniq | sed 's/.*name="\(.*\)"/\1/1' )
+
+  local romof=`xpath-get "string(machine/@romof)" $current`
+  while [[ -n $romof ]]; do
+    print $romof
+    romof=`xpath-get "string(machine/@romof)" $romof`
+  done
+}
+
+# 1 machine name, defaults to $current
+function find-disks {
+  local disk
+
+  while read disk; do
+    # merge names are inherited from a parent set. Ignore!
+    if ! xpath.condition "machine/disk/@merge" ${1:-$current}; then
+      print $disk
+    fi
+  done < <( xpath-get "machine/disk/@name" ${1:-$current} | sed 's/.*name="\(.*\)"/\1/1' )
+}
+
+# 1 xpath query string (exists?)
+# 2 machine name, defaults to $current
 function xpath.condition {
-  case `xpath.get "boolean($1)" $2 $3` in
+  case `xpath-get "boolean($1)" $2` in
     1) return 0 ;;
     *) return 1 ;;
   esac
@@ -78,62 +179,38 @@ function xpath.condition {
 
 # 1 xpath query string
 # 2 machine name, defaults to $current
-function xpath.get {
+function xpath-get {
   local h=`md5 -qs "${2:-$current}/$1"`
 
-  if [[ -f $cachedir/$h ]]; then
-    cat $cachedir/$h
+  if [[ -f $hashdir/$h ]]; then
+    cat $hashdir/$h
     return
   fi
-  if ! xpath.query $1 ${2:-$current}; then
+
+  if ! xpath-query $1 ${2:-$current}; then
     return 1
-  fi | tee $cachedir/$h
+  fi | tee $hashdir/$h
 }
 
-function xpath.query {
+# 1 xpath query string
+# 2 machine name, defaults to $current
+function xpath-query {
   local result
+
   if [[ -z $xmlb_path ]]; then
     xmlb-get >&2 || return 1
   fi
+
   if result=`xb-tool query $xmlb_path "mame/machine[@name='${2:-$current}']"`; then
     print $result | sed 's/^RESULT: //1' | xpath -q -e $1
   elif [[ $result =~ "^no results" ]]; then
-    print "mame/machine[@name='${2:-$current}']:xpath[$1]" >> "$cachedir/Missed Queries"
+    f=( $scandir/${2:-$current}.* )
+    print $f >> $cachedir/unknown
+    return 1
   else
     print "failed query:mame/machine[@name='${2:-$current}']:xpath[$1]" >&2
     exit 1
   fi
-}
-
-function find.dependencies {
-  local device
-  while read device; do
-    # device crc means it's been dumped.
-    if xpath.condition "machine/rom/@crc" $device; then
-      print $device
-    fi
-  done < <( xpath.get "machine/device_ref/@name" | uniq | sed 's/.*name="\(.*\)"/\1/1' )
-
-  local romof=`xpath.get "string(machine/@romof)" $current`
-  while [[ -n $romof ]]; do
-    print $romof
-    romof=`xpath.get "string(machine/@romof)" $romof`
-  done
-}
-
-# 1 machine name, defaults to $current
-function find.disks {
-  local disk
-  while read disk; do
-    # merge names are inherited from a parent set. Ignore!
-    if ! xpath.condition "machine/disk/@merge" ${1:-$current}; then
-      print $disk
-    fi
-  done < <( xpath.get "machine/disk/@name" ${1:-$current} | sed 's/.*name="\(.*\)"/\1/1' )
-}
-
-function format.missing {
-  printf "%-20s %s\n" $1 "`xpath.get "machine/description/text()" ${1%/*}`"
 }
 
 function mame-version {
@@ -188,8 +265,9 @@ function xmlb-get {
 
 main $@
 
-for i in "Incomplete Sets" "Missed Queries"; do
-  if [[ -f "$cachedir/$i" ]]; then
-    print "\n$i:"; cat "$cachedir/$i"; rm "$cachedir/$i"
-  fi
-done
+for i in missing unknown; [[ -f $cachedir/$i ]] && {
+  printf "\n[%s] %s in '%s':\n%s\n" \
+    "`date -u +%Y-%m-%dT%H:%M:%SZ`" "$i" "${scandir:a:t}" \
+    "`cat $cachedir/$i | uniq`" | tee -a $cachedir/$i-history.txt
+  rm $cachedir/$i
+}
