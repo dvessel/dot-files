@@ -40,6 +40,7 @@
   "markdown.preview.fontSize": 15,
   "intelephense.telemetry.enabled": false,
   "partialDiff.enableTelemetry": false,
+  "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "telemetry.telemetryLevel": "off",
