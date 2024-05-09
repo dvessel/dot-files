@@ -3,21 +3,26 @@
 # Helper used to check for installed brew formulae.
 #
 # Usage:
-#  _brew_check [formulae] ...
+#  _brew_check [-q|--quiet] [formulae] ...
 #
-#  if _brew_check fzf fd; then
-#    cmd ...
-#    cmd ...
-#  fi
-#
-# Add as many formulae as needed. Status code 1 (error) and stderr 
-# message on failed checks.
-typeset -a formulae
+# Add as many formulae as needed. Status code 1 (error) and stderr
+# message on failed checks unless --quiet is passed.
+() {
 
-for f in $@; if [[ ! -d `brew --prefix $f` ]]; then
-  formulae+=$f
-fi
-if [[ -n $formulae ]]; then
-  printf "Required brew formula '%s' not installed.\n" "$formulae" >&2
-  return 1
-fi
+  zparseopts -D -E -F - {q,-quiet}=quiet || return 1
+  typeset -a formulae
+
+  for f in $@; test -d `brew --prefix $f` || {
+    formulae+=$f
+  }
+
+  if [[ -z $formulae ]]; then
+    return 0
+  elif [[ -n $quiet ]]; then
+    return 1
+  else
+    printf "Required homebrew formulae not installed: %s\n" "${(j[ ])formulae}" >&2
+    return 1
+  fi
+
+} $@
