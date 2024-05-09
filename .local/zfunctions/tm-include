@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 if _brew_check tag; then
   tmutil removeexclusion $@ && tag -r "Time Machine - Excluded" $@
 fi

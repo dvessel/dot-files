@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 type brew &>/dev/null || return
 
 # >>> conda initialize >>>

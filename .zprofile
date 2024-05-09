@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Initialize Homebrew.
 #   0) Native ARM.
 #   1) Translated x86.

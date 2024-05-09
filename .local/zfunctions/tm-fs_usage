@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 if _brew_check tailspin; then
   sudo fs_usage -f filesys backupd | tspin
 fi

@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 _brew_check fd tag libxmlb || return 1
 
 local int db tag_valid
@@ -10,7 +11,7 @@ while read i; do
 	xb-tool query $db "datafile/game/rom[@md5='$h']" | sed 's/^RESULT: //1' |
 		xpath -q -e "string(rom/@name)" 2&> /dev/null
 	if [[ $? > 0 ]]; then
-		echo "\033[0;31m - unknown: $h - $i \033[0m"
+		print "\033[0;31m - unknown: $h - $i \033[0m"
 	elif [[ $tag_valid ]]; then
 		tag -a "No-Intro Validated" "$i:a"
 	fi

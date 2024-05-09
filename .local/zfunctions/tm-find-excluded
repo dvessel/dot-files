@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 if _brew_check tag; then
   tag -Rm "Time Machine - Excluded" $@
 fi

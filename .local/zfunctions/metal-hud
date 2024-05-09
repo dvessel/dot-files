@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 case $1 in
 	(enable)	launchctl setenv MTL_HUD_ENABLED 1 ;;
 	(disable) launchctl unsetenv MTL_HUD_ENABLED ;;
@@ -12,7 +13,7 @@ case $1 in
 esac
 
 if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]; then
-	echo enabled
+	print enabled
 else
-	echo disabled
+	print disabled
 fi

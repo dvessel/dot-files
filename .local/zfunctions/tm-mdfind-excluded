@@ -1,2 +1,3 @@
 #!/usr/bin/env zsh
+
 mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"

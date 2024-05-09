@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 _opts=(
   --reverse
   --scroll-off 7

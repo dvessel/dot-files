@@ -29,7 +29,7 @@ function s.help {
 # $3 output 1 = domain or 2 = key
 function op.backup {
   if ! s.sourceDomainExists $1; then
-    echo "? $1 - `s.error source domain does not exist!`" >&2
+    print "? $1 - `s.error source domain does not exist!`" >&2
     return 1
   fi
 
@@ -43,7 +43,7 @@ function op.backup {
     fi
     # Escape dots or plutil will drill into submembers.
     if plutil -replace "${2//\./\\.}" -xml $value $plist; then
-      echo "  $@[$3] - `s.ok saved`"
+      print "  $@[$3] - `s.ok saved`"
       # Hold keys to list later. No other way to do it AFAIK.
       if ! plutil -type SettingsIndex $plist &>/dev/null; then
         plutil -insert SettingsIndex -array $plist
@@ -53,7 +53,7 @@ function op.backup {
       fi
     fi
   else
-    echo "? $@[$3] - `s.error source key does not exist!`" >&2
+    print "? $@[$3] - `s.error source key does not exist!`" >&2
     return 1
   fi
 }
@@ -63,7 +63,7 @@ function op.backup {
 # $3 output 1 = domain or 2 = key
 function op.restore {
   if ! s.sourceDomainExists $1; then
-    echo "? $1 - `s.error restore target does not exist!`" >&2
+    print "? $1 - `s.error restore target does not exist!`" >&2
     return 1
   fi
 
@@ -72,9 +72,9 @@ function op.restore {
   if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`
   then
     defaults write $1 $2 "$value" &&
-      echo "  $@[$3] - `s.ok restored`"
+      print "  $@[$3] - `s.ok restored`"
   else
-    echo "!!$@[$3] - `s.error failed reading backup!`" >&2
+    print "!!$@[$3] - `s.error failed reading backup!`" >&2
     return 1
   fi
 }
@@ -86,9 +86,9 @@ function op.delete {
   if l=`s.getSettingsIndex $1 | grep -nx $2`; then
     plutil -remove SettingsIndex.$((${l/:*} - 1)) $bdpath/$1.plist
     plutil -remove "${2//\./\\.}" $bdpath/$1.plist &&
-      echo "  $@[$3] - `s.ok deleted`"
+      print "  $@[$3] - `s.ok deleted`"
   else
-    echo "!!$@[$3] - `s.error backup key does not exist!`" >&2
+    print "!!$@[$3] - `s.error backup key does not exist!`" >&2
     return 1
   fi
 }
@@ -96,13 +96,13 @@ function op.delete {
 # $1 domain
 # $2 key
 function op.list {
-  echo "  $2"
+  print "  $2"
 }
 
 # $1 domain
 # $2 key
 function op.listDomain {
-  echo "  $1"
+  print "  $1"
 }
 
 # $1 domain
@@ -117,7 +117,7 @@ function s.sourceDomainExists {
   if [[ -z $defaultsDomains ]]; then
     defaultsDomains="NSGlobalDomain\n`defaults domains | sed 's/, /\n/g'`"
   fi
-  echo $defaultsDomains | grep -qix $1
+  print $defaultsDomains | grep -qix $1
 }
 
 # $1 domain
@@ -129,12 +129,12 @@ function s.getSettingsIndex {
 }
 
 function s.getBackupDomains {
-  for d in $bdpath/*.plist(N); echo $d:r:t
+  for d in $bdpath/*.plist(N); print $d:r:t
 }
 
 function s.header {
   # Uppercase first character.
-  echo "\e[1;30m${(C)1::1}${1:1}\e[0m"
+  print "\e[1;30m${(C)1::1}${1:1}\e[0m"
 }
 function s.error {
   printf "\e[0;31m%s\e[0m" "${(j[ ])@}"
@@ -204,9 +204,9 @@ function {
   domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
   # Domains are case sensitive. Check when possible. Ignore otherwise.
   if test ! -z $domain && s.sourceDomainExists $domain; then
-    if [[ $domain != `echo $defaultsDomains | grep -ix $domain` ]]; then
-      domain=`echo $defaultsDomains | grep -ix $domain`
-      echo "`s.warn Domain is case sensitive. Using $domain.`"
+    if [[ $domain != `print $defaultsDomains | grep -ix $domain` ]]; then
+      domain=`print $defaultsDomains | grep -ix $domain`
+      print "`s.warn Domain is case sensitive. Using $domain.`"
     fi
   fi
 
@@ -260,7 +260,7 @@ function {
           fi
         done < <( s.getSettingsIndex $d )
         unset h
-      done < <( [[ -n $domain ]] && echo $domain || s.getBackupDomains )
+      done < <( [[ -n $domain ]] && print $domain || s.getBackupDomains )
 
     fi
   fi

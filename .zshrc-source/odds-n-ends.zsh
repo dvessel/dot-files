@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Odd bits being reviewed or doesn't have a fitting home.
 
 # compdef _gnu_generic foo

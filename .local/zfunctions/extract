@@ -17,13 +17,13 @@ for archive in "$@"; do
               tar xzf $archive    ;;
       *.Z)    uncompress $archive ;;
       *.zip)  unzip $archive      ;;
-      *)      echo "'$archive' cannot be extracted." ;;
+      *)      print "'$archive' cannot be extracted." ;;
     esac
     if [[ $? == 0 && $trash ]]; then
       trash $archive
-      echo "'$archive' moved to trash."
+      print "'$archive' moved to trash."
     fi
   else
-    echo "'$archive' is not a valid archive."
+    print "'$archive' is not a valid archive."
 	fi
 done

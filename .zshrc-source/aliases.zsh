@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 alias -g ll='lsd -l'
 alias -g la='lsd -lA'
 alias -g lt='lsd --tree'
