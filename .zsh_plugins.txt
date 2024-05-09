@@ -29,7 +29,8 @@ conda-incubator/conda-zsh-completion kind:fpath
 keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
 
-Aloxaf/fzf-tab kind:defer
+hlissner/zsh-autopair kind:defer
 zsh-users/zsh-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search kind:defer
+Aloxaf/fzf-tab kind:defer
