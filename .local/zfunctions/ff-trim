@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+# trim losslessly. time format: HH:MM:SS.xxx or in seconds as below.
+# position of -ss -t relative to -i behaves differently.
+# -t = length relative to -ss, -to = absolute length.
+# use -frames:v NUM instead of -t/-to if the video is too short. Must come after -i.
+
+zparseopts -D -E -F - \
+  {s,-start}:=start \
+  {l,-length}:=length || return 1
+
+if [[ -n $start && -n $length && ${#@} = 2 ]]; then
+  ffmpeg -ss $start -t $length -i $1 -c copy $2
+else
+  print "Usage: $0 --start N --length N input.mov output.mov" >&2
+  return 1
+fi
