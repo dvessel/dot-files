@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+zparseopts -D -E - {p,-rom-path}:=rompath  || return 1
+
+scandir=${${${rompath[-1]:a}:-`eval print $( mame -showconfig | awk '$1=="rompath" { $1=""; print $0 }' )`}}
+
+if [[ ! -d $scandir ]]; then
+  printf "rom path not found:%s\n" "$scandir" >&2
+  return 1
+fi
+
+if [[ -n $1 && ${1[1]} != - ]]; then
+  query=( --select-1 --query="$1" )
+  shift
+fi
+
+if [[ -f $scandir/.romlist && $scandir -nt $scandir/.romlist ]]; then
+  rm $scandir/.romlist
+fi
+
+if [[ ! -f $scandir/.romlist ]]; then
+  print "Generating list..."
+  typeset -A listfull
+  while read l; do if [[ $l =~ ^([0-9a-z_]*)[^\"]*\"(.*)\"$ ]]; then
+    listfull[$match[1]]=$match[2]
+  fi; done < <( mame -listfull | sed 1,1d )
+
+  typeset -A listselect
+  while read r; do
+    id=$r:t:r
+    if [[ -n $listfull[$id] ]]; then
+      [[ `tag -n $r` =~ "MAME (BIOS|Device|Incomplete)" ]] && continue
+      listselect[$id]="$listfull[$id]"
+    else
+      printf "%s - unknown\n" $r:t >&2
+    fi
+  done < <( printf "%s\n" $scandir/*.(chd|zip)(N) )
+
+  printf "%s\t%s\n" ${(kv)listselect} | sort -k 2 > $scandir/.romlist
+fi
+
+if [[ -f $scandir/.romlist ]]; then
+  rom=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $query`
+  if [[ -n $rom ]]; then
+    print $rom | cut -f2
+    mame `print $rom | cut -f1` -rompath $scandir $@
+  fi
+else
+  return 1
+fi
