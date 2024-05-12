@@ -1,6 +1,38 @@
 #!/usr/bin/env zsh
 
-zparseopts -D -E - {p,-rom-path}:=rompath  || return 1
+zparseopts -D -E - rompath:=rompath help=help || {
+  print "see -help" >&2
+  return 1
+}
+
+if [[ -n $help ]]; then
+cat <<- -----
+Presents a friendly list of full names for fuzzy search. fzf is required.
+
+A query string can be passed anywhere mame expects a name. If passed as
+the first argument, it will prefilter the list and run after selection.
+Without a prefilter, the full list in your collection will be presented.
+
+Some commands accepts names and the same prefilter query can be supplied.
+Most commands prefixed with -list* or -verify* are accepted and some
+commands accept multiple selections. Use tab or ctrl-i for selection.
+
+Examples:
+- ${0:t} pacman                 Simple query string.
+- ${0:t} "pacman midway"        Quote spaces and special characters.
+- ${0:t} "^pac-man (midway)$"   ^ Starts with. $ Ends with.
+- ${0:t} -verifyroms [query]    Same applies to utility commands.
+
+If the query string in the argument filters your collection down to one
+result, it will be automatically selected.
+
+-rompath <dir>        ROM path is respected. Point to a different
+                      directory and the list will reflect its contents.
+
+See 'mame -showusage' for more information.
+-----
+  return
+fi
 
 scandir=${${${rompath[-1]:a}:-`eval print $( mame -showconfig | awk '$1=="rompath" { $1=""; print $0 }' )`}}
 
@@ -9,42 +41,63 @@ if [[ ! -d $scandir ]]; then
   return 1
 fi
 
-if [[ -n $1 && ${1[1]} != - ]]; then
-  query=( --select-1 --query="$1" )
-  shift
-fi
-
 if [[ -f $scandir/.romlist && $scandir -nt $scandir/.romlist ]]; then
   rm $scandir/.romlist
 fi
 
 if [[ ! -f $scandir/.romlist ]]; then
   print "Generating list..."
-  typeset -A listfull
-  while read l; do if [[ $l =~ ^([0-9a-z_]*)[^\"]*\"(.*)\"$ ]]; then
-    listfull[$match[1]]=$match[2]
-  fi; done < <( mame -listfull | sed 1,1d )
 
   typeset -A listselect
-  while read r; do
-    id=$r:t:r
-    if [[ -n $listfull[$id] ]]; then
-      [[ `tag -n $r` =~ "MAME (BIOS|Device|Incomplete)" ]] && continue
-      listselect[$id]="$listfull[$id]"
-    else
-      printf "%s - unknown\n" $r:t >&2
-    fi
-  done < <( printf "%s\n" $scandir/*.(chd|zip)(N) )
+  typeset file files=( $scandir/*.(chd|7z|zip)(N) )
 
-  printf "%s\t%s\n" ${(kv)listselect} | sort -k 2 > $scandir/.romlist
+  if [[ -n $files ]]; then
+    while read l; do if [[ $l =~ ^([0-9a-z_]*)[^\"]*\"(.*)\"$ ]]; then
+      # skip files tagged as bios/devices and incomplete.
+      file=$files[$files[(I)*/$match[1].*]]
+      [[ `tag -n $file` =~ "MAME (BIOS|Device|Incomplete)" ]] && continue
+
+      listselect[$match[1]]=$match[2]
+    fi; done < <( mame -listfull $files:t:r | sed 1,1d )
+  else
+    print "No qualifying files found to scan. Supported extensions: zip,7z,chd." >&2
+    return 1
+  fi
+
+  if [[ -n $listselect ]]; then
+    printf "%s\t%s\n" ${(kv)listselect} | sort -k 2 > $scandir/.romlist
+  else
+    print "No qualifying files detected." >&2
+    return 1
+  fi
 fi
 
-if [[ -f $scandir/.romlist ]]; then
-  rom=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $query`
-  if [[ -n $rom ]]; then
-    print $rom | cut -f2
-    mame `print $rom | cut -f1` -rompath $scandir $@
+local version prefix fzf_args=()
+version=`mame -version`
+fzf_args+=--header="$version"
+if [[ -n ${argv[1]} && ${argv[1]} =~ ^(-(list|verify)[a-z]+) ]]; then
+  prefix=$match[1]
+  shift
+fi
+if [[ -n ${argv[1]} && ${argv[1][1]} != - ]]; then
+  fzf_args+=--select-1
+  fzf_args+=--query="$1"
+  shift
+fi
+if [[ -n $prefix ]]; then
+  accepts_multi=( -listxml -listfull -listsource -listcrc -listroms -verifyroms )
+  if [[ -n ${prefix:*accepts_multi} ]]; then
+    fzf_args+=--multi
+    fzf_args+=--header="$version | $prefix [multi-select] $@"
+  else
+    fzf_args+=--header="$version | $prefix [select] $@"
   fi
-else
-  return 1
+fi
+
+local selected names
+selected=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $fzf_args`
+if [[ -n $selected ]]; then
+  print $selected | cut -f2
+  names=( `print $selected | cut -f1` )
+  mame $prefix ${names[@]} $@ -rompath $scandir
 fi
