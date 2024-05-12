@@ -72,32 +72,35 @@ if [[ ! -f $scandir/.romlist ]]; then
   fi
 fi
 
-local version prefix fzf_args=()
-version=`mame -version`
-fzf_args+=--header="$version"
-if [[ -n ${argv[1]} && ${argv[1]} =~ ^(-(list|verify)[a-z]+) ]]; then
+local prefix headers fzargs=()
+headers=( "`mame -version`" )
+
+# -listmidi and -listnetwork completely unrelated. Do not prefix.
+if [[ -n $1 && $1 =~ ^(-(list[^(midi|network)]|verify)[a-z]+) ]]; then
   prefix=$match[1]
   shift
 fi
-if [[ -n ${argv[1]} && ${argv[1][1]} != - ]]; then
-  fzf_args+=--select-1
-  fzf_args+=--query="$1"
+if [[ -n $1 && ${1[1]} != - ]]; then
+  fzargs+=( --select-1 --query="$1" )
   shift
 fi
 if [[ -n $prefix ]]; then
+  fzargs+=--prompt=" $prefix "
   accepts_multi=( -listxml -listfull -listsource -listcrc -listroms -verifyroms )
   if [[ -n ${prefix:*accepts_multi} ]]; then
-    fzf_args+=--multi
-    fzf_args+=--header="$version | $prefix [multi-select] $@"
-  else
-    fzf_args+=--header="$version | $prefix [select] $@"
+    fzargs+=--multi
+    headers+=multi-select
   fi
 fi
+headers=($headers "${@[@]}")
+fzargs+=--header="${(j[ | ])headers}"
 
-local selected names
-selected=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $fzf_args`
+
+local selected fullnames names
+selected=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $fzargs`
 if [[ -n $selected ]]; then
-  print $selected | cut -f2
+  fullnames=`print $selected | cut -f2`
   names=( `print $selected | cut -f1` )
+  printf "\e[1m%s\e[0m\n\n" "$fullnames"
   mame $prefix ${names[@]} $@ -rompath $scandir
 fi
