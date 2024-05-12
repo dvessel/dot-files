@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+local rompath=`pwd`
+if [[ -d ${1:a} ]]; then
+  rompath=${1:a}
+	shift
+fi
+lmame $@ -rompath $rompath
