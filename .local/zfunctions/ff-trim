@@ -3,6 +3,7 @@
 # position of -ss -t relative to -i behaves differently.
 # -t = length relative to -ss, -to = absolute length.
 # use -frames:v NUM instead of -t/-to if the video is too short. Must come after -i.
+_brew_check ffmpeg || return 1
 
 zparseopts -D -E -F - \
   {s,-start}:=start \
