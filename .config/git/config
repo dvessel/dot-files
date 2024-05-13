@@ -5,11 +5,17 @@
   whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
   editor = code
   excludesfile = ~/.config/git/ignore
-  pager = less -+FX
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
 [diff]
   tool = opendiff
+  colorMoved = default
 [merge]
   tool = opendiff
+  conflictstyle = diff3
 [pull]
   ff = only
   rebase = true
