@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+local name set
 zparseopts -D -E - {n,-name}:=name \
 	{-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set || return 1
 
@@ -8,8 +9,10 @@ if [[ -z $name && -z $set ]]; then
 	set=(--tap --formula --cask)
 elif [[ -z $name && ${#set[@]} == 1 ]]; then
 	name=${set/--/}
+elif [[ -n $name ]]; then
+	name=${name[-1]}
 else
-	print "--name <name> required for multiple listed: $set." >&2
+	print -- "--name <name> required for multiple listed: $set." >&2
 	return 1
 fi
 
