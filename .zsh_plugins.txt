@@ -19,18 +19,19 @@ mattmc3/zephyr path:plugins/completion
 # Path set to .zsh-theme since it will source multiple otherwise.
 romkatv/powerlevel10k path:powerlevel10k.zsh-theme
 
+# must be deferred so ZFUNCDIR can be set late.
 mattmc3/zephyr path:plugins/zfunctions kind:defer
-mattmc3/zephyr path:plugins/macos kind:defer
-mattmc3/zman kind:defer
+mattmc3/zephyr path:plugins/macos
+mattmc3/zman
 
 # zsh auto completions.
-dvessel/zsh-completion-generator kind:defer
+dvessel/zsh-completion-generator
 conda-incubator/conda-zsh-completion kind:fpath
 keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
 
-hlissner/zsh-autopair kind:defer
+Aloxaf/fzf-tab
+hlissner/zsh-autopair
+zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
-zsh-users/zsh-history-substring-search kind:defer
-Aloxaf/fzf-tab kind:defer
