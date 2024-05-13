@@ -1,22 +1,22 @@
 [user]
-	name = joon
-	email = 126473+dvessel@users.noreply.github.com
+  name = joon
+  email = 126473+dvessel@users.noreply.github.com
 [core]
-	whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
-	editor = code
-	excludesfile = ~/.config/git/ignore
+  whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
+  editor = code
+  excludesfile = ~/.config/git/ignore
 [diff]
-	tool = opendiff
+  tool = opendiff
 [merge]
-	tool = opendiff
+  tool = opendiff
 [pull]
-	ff = only
-	rebase = true
+  ff = only
+  rebase = true
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [filter "gitignore"]
-	clean = "sed -e '/@gitignore.line/d;' -e '/@gitignore.start/,/@gitignore.end/d;'"
-	smudge = cat
+  clean = "sed -e '/@gitignore.line/d;' -e '/@gitignore.start/,/@gitignore.end/d;'"
+  smudge = cat
 [alias]
-	ignore = update-index --skip-worktree
-	unignore = update-index --no-skip-worktree
+  ignore = update-index --skip-worktree
+  unignore = update-index --no-skip-worktree
