@@ -15,5 +15,5 @@ brew "jq"
 brew "lsd"
 # Multiple Arcade Machine Emulator
 brew "mame"
-# Tool to enforce Swift style and conventions
-brew "swiftlint"
+# Manipulate and query tags on macOS files
+brew "tag"
