@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+_brew_check ffmpeg || return 1
+
+local ffargs scale fps start duration width height
+zparseopts -D -E -F - \
+  {s,-start}:=start \
+  {d,-duration}:=duration \
+  {w,-width}:=width \
+  {h,-height}:=height \
+  {f,-fps}:=fps || return 1
+
+if [[ -n $start ]]; then
+  ffargs+=( -ss $start[-1] )
+fi
+if [[ -n $duration ]]; then
+  ffargs+=( -t $duration[-1] )
+fi
+if [[ -n $width && -n $height ]]; then
+  scale=$width[-1]:$height[-1]
+else
+  scale=${width[-1]:-480}:${height[-1]:--1}
+fi
+fps=${fps[-1]:-12}
+
+ffmpeg $ffargs -i $1 \
+  -vf "fps=${fps},scale=${scale}:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+  -loop 0 $1:r.gif
