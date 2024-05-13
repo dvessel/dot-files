@@ -1,8 +1,9 @@
 #!/usr/bin/env zsh
 
-local name set
+local name set changes
 zparseopts -D -E - {n,-name}:=name \
-	{-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set || return 1
+	{-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set \
+	{c,-changes}:=changes || return 1
 
 if [[ -z $name && -z $set ]]; then
 	name=default
@@ -16,4 +17,25 @@ else
 	return 1
 fi
 
-brew bundle $@ $set --describe --no-lock --file ~/.config/brew/bundle-$name-`machine`
+if [[ -n $changes ]]; then
+  local base temp bundle
+
+  base=~/.config/brew/bundle-$changes[-1]-`machine`
+  if [[ -f $base ]]; then
+    temp=`mktemp`
+    brew bundle $@ $set --describe --no-lock --force --file $temp
+
+    bundle=~/.config/brew/bundle-$name-changes-`machine`
+    print "# Changes from 'bundle-$changes[-1]-`machine`':" > $bundle
+
+    while read l; do if ! grep -Fq $l $base; then
+      print -- $l
+    fi; done < <( cat $temp ) >> $bundle
+    rm $temp
+  else
+    print "Base file for changes not found." >&2
+    return 1
+  fi
+else
+  brew bundle $@ $set --describe --no-lock --file ~/.config/brew/bundle-$name-`machine`
+fi
