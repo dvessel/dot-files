@@ -4633,6 +4633,8 @@
 			<false/>
 			<key>Plain Text Logging</key>
 			<integer>0</integer>
+			<key>Prevent Opening in a Tab</key>
+			<true/>
 			<key>Prompt Before Closing 2</key>
 			<integer>2</integer>
 			<key>Reduce Flicker</key>
