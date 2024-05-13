@@ -5,6 +5,7 @@
   whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
   editor = code
   excludesfile = ~/.config/git/ignore
+  pager = less -+FX
 [diff]
   tool = opendiff
 [merge]
