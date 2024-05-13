@@ -5,6 +5,9 @@
 # compdef _gnu_generic foo
 compdef fbrew=brew
 
+if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
+  alias nvim=/opt/homebrew/bin/nvim
+fi
 alias lcut='/Applications/LosslessCut.app/Contents/MacOS/LosslessCut'
 
 alias sync-emulation='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
