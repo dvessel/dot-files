@@ -1,9 +1,7 @@
 #!/usr/bin/env zsh
 
 # PATH deleted for clear separation between arch.
-# Exported EDITOR deleted due to an obscure bug.
-# Control key navigation bindings prints out literal characters.
 case `sysctl -n sysctl.proc_translated` in
-	(0) arch -d PATH -d EDITOR --x86_64 /bin/zsh -l ;;
+	(0) arch -d PATH --x86_64 /bin/zsh -l ;;
 	(1) exit ;;
 esac
