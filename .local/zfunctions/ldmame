@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 
+# helper to work with rom paths easier.
+# - scans for roms in current working directory.
+# - first argument can be a path.
+# - if it's not, pass all arguments to lmame.
+
 local rompath=`pwd`
 # first parameter can be ambigous. assume directory if it exists.
-if [[ -n $1 && ${1[1]} != - ]]; then
-  if [[ -d ${1:a} ]]; then
-    rompath=${1:a}
-    shift
-  else
-    print "Using '$1' as a search query."
-  fi
+if [[ -d ${1:a} ]]; then
+  rompath=${1:a}
+  shift
 fi
 lmame $@ -rompath $rompath

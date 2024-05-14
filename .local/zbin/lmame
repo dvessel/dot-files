@@ -7,22 +7,23 @@ zparseopts -D -E - rompath:=rompath help=help || {
 }
 
 if [[ -n $help ]]; then
-cat <<- -----
+cat <<- --------
 Presents a friendly list of full names for fuzzy search. fzf is required.
 
-A query string can be passed anywhere mame expects a name. If passed as
-the first argument, it will prefilter the list and run after selection.
-Without a prefilter, the full list in your collection will be presented.
+A query string can be passed anywhere mame expects a machine name. If
+passed as the first argument, it will pre-filter the list and run after
+selection. Without a pre-filter, the full list will be presented.
 
-Some commands accepts names and the same prefilter query can be supplied.
-Most commands prefixed with -list* or -verify* are accepted and some
-commands accept multiple selections. Use tab or ctrl-i for selection.
+Some options accept machine names and the same pre-filter query can be
+applied. Most options prefixed with -list* or -verify* are accepted and
+some accept multiple selections. Use tab or ctrl-i for selection.
 
 Examples:
 - ${0:t} pacman                 Simple query string.
 - ${0:t} "pacman midway"        Quote spaces and special characters.
 - ${0:t} "^pac-man (midway)$"   ^ Starts with. $ Ends with.
-- ${0:t} -verifyroms [query]    Same applies to utility commands.
+- ${0:t} -verifyroms pacman     Same applies to utility commands.
+- ${0:t} -listroms              Full list presented.
 
 If the query string in the argument filters your collection down to one
 result, it will be automatically selected.
@@ -31,7 +32,7 @@ result, it will be automatically selected.
                       directory and the list will reflect its contents.
 
 See 'mame -showusage' for more information.
------
+--------
   return
 fi
 
@@ -55,7 +56,7 @@ if [[ ! -f $scandir/.romlist ]]; then
   if [[ -n $files ]]; then
     while read l; do if [[ $l =~ ^([0-9a-z_]*)[^\"]*\"(.*)\"$ ]]; then
       # skip files tagged as bios/devices and incomplete.
-      file=$files[$files[(I)*/$match[1].*]]
+      file=$files[$files[(I)*/$match[1].(chd|7z|zip)]]
       [[ `tag -n $file` =~ "MAME (BIOS|Device|Incomplete)" ]] && continue
 
       listselect[$match[1]]=$match[2]
@@ -73,19 +74,13 @@ if [[ ! -f $scandir/.romlist ]]; then
   fi
 fi
 
-local prefix headers fzargs=()
+local headers prefix fzargs=() accepts_multi
 headers=( "`mame -version`" )
 
 # -listmidi and -listnetwork completely unrelated. Do not prefix.
 if [[ -n $1 && $1 =~ ^(-(list[^(midi|network)]|verify)[a-z]+) ]]; then
   prefix=$match[1]
   shift
-fi
-if [[ -n $1 && ${1[1]} != - ]]; then
-  fzargs+=( --select-1 --query="$1" )
-  shift
-fi
-if [[ -n $prefix ]]; then
   fzargs+=--prompt=" $prefix "
   accepts_multi=( -listxml -listfull -listsource -listcrc -listroms -verifyroms )
   if [[ -n ${prefix:*accepts_multi} ]]; then
@@ -93,15 +88,18 @@ if [[ -n $prefix ]]; then
     headers+=multi-select
   fi
 fi
-headers=($headers "${@[@]}")
+if [[ -n $1 && ${1[1]} != - ]]; then
+  fzargs+=( --select-1 --query="$1" )
+  shift
+fi
+headers=( $headers "${(j[ ])@}" )
 fzargs+=--header="${(j[ | ])headers}"
 
-
-local selected fullnames names
+local selected names
 selected=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $fzargs`
+
 if [[ -n $selected ]]; then
-  fullnames=`print $selected | cut -f2`
+  printf "\e[1m%s\e[0m\n\n" "`print $selected | cut -f2`"
   names=( `print $selected | cut -f1` )
-  printf "\e[1m%s\e[0m\n\n" "$fullnames"
   mame $prefix ${names[@]} $@ -rompath $scandir
 fi
