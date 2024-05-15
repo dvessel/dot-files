@@ -15,10 +15,13 @@ fi
 if [[ -n $duration ]]; then
   ffargs+=( -t $duration[-1] )
 fi
+# maintain aspect ratio unless both dimensions are set.
 if [[ -n $width && -n $height ]]; then
   scale=$width[-1]:$height[-1]
-else
-  scale=${width[-1]:-480}:${height[-1]:--1}
+elif [[ -n $width ]]; then
+  scale=$width[-1]:-1
+elif [[ -n $height ]]; then
+  scale=-1:$height[-1]
 fi
 fps=${fps[-1]:-12}
 
