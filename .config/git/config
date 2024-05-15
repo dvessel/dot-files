@@ -10,6 +10,8 @@
   diffFilter = delta --color-only
 [delta]
   navigate = true
+  hyperlinks = true
+  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
 [diff]
   tool = opendiff
   colorMoved = default
