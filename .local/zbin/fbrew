@@ -56,7 +56,7 @@ if [[ $src == --formula ]]; then
     printf "{}" > $installed
   fi
 
-  # Pick out installed on request vs dependency. It's slow, cache it. 
+  # Pick out installed on request vs dependency. It's slow, cache it.
   if [[ $sha1 != `jq -r --arg arch $arch '.formulae.[$arch].sha1' $installed` ]]; then
     tmp=`mktemp`
     jq  --arg arch "$arch" \
@@ -129,16 +129,16 @@ if (( $cmds_any[(I)$opts[1]] )); then
   lsdesc=`brew desc --eval-all $src --name ".+"`
 
   while [[ $rloop > 0 || $dloop > 0 || $nloop > 0 ]]; do
-    if [[ $rloop > 0 ]]; then
-      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])reqs:$start:$end}):(.*)/\1:[🍺 installed]\2/"`
-      rloop=$(( $rloop - 1 ))
-    fi
     if [[ $dloop > 0 ]]; then
-      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])deps:$start:$end}):(.*)/\1:[🌾 dependency]\2/"`
+      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])deps:$start:$end}):(.*)/\1:🌾dependency.\2/"`
       dloop=$(( $dloop - 1 ))
     fi
+    if [[ $rloop > 0 ]]; then
+      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])reqs:$start:$end}):(.*)/\1:🍺installed.\2/"`
+      rloop=$(( $rloop - 1 ))
+    fi
     if [[ $nloop > 0 ]]; then
-      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])new:$start:$end}):(.*)/\1:[⏱ new]\2/"`
+      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])new:$start:$end}):(.*)/\1:⏰new.\2/"`
       nloop=$(( $nloop - 1 ))
     fi
     start=$(( $start + $limit )) end=$(( $end + $limit ))
