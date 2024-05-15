@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AppleMenuBarVisibleInFullscreen</key>
+	<false/>
 	<key>DefaultPageZoom</key>
 	<real>1.1499999999999999</real>
 	<key>NSUserKeyEquivalents</key>
@@ -59,6 +61,7 @@
 		<string>ShowStandaloneTabBar</string>
 		<string>SearchProviderShortName</string>
 		<string>DefaultPageZoom</string>
+		<string>AppleMenuBarVisibleInFullscreen</string>
 	</array>
 	<key>ShowStandaloneTabBar</key>
 	<false/>
