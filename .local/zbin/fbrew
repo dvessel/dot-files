@@ -115,33 +115,26 @@ for f in $names.new-*.txt(Nm+3); rm $f
 export HOMEBREW_EVAL_ALL=1
 
 if (( $cmds_any[(I)$opts[1]] )); then
-  new=()
-  for f in $names.new-*.txt(N); new+=( "${(@f)$(cat $f)}" )
+  typeset -a new
+  for f in $names.new-*.txt(N); do
+    new+=( "${(@f)$(cat $f)}" )
+  done
 
-  # totally gross but this works around regex capture limits in sed.
-  # limit each capture round to 100.
+  # this works around regex capture limits in sed. limit each loop to 100 names.
   local limit=100
-  local start=1 end=$limit
-  local rloop=$(( ${#reqs} / $limit.0 ))
-  local dloop=$(( ${#deps} / $limit.0 ))
-  local nloop=$(( ${#new} / $limit.0 ))
+  local maxcount=0 a=1 z=$limit
+  for n in ${#reqs} ${#deps} ${#new}; do
+    (( $n < $maxcount )) || maxcount=$n
+  done
 
   lsdesc=`brew desc --eval-all $src --name ".+"`
 
-  while [[ $rloop > 0 || $dloop > 0 || $nloop > 0 ]]; do
-    if [[ $dloop > 0 ]]; then
-      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])deps[$start,$end]}):(.*)/\1:🌾dependency.\2/"`
-      dloop=$(( $dloop - 1 ))
-    fi
-    if [[ $rloop > 0 ]]; then
-      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])reqs[$start,$end]}):(.*)/\1:🍺installed.\2/"`
-      rloop=$(( $rloop - 1 ))
-    fi
-    if [[ $nloop > 0 ]]; then
-      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])new[$start,$end]}):(.*)/\1:⏰new.\2/"`
-      nloop=$(( $nloop - 1 ))
-    fi
-    start=$(( $start + $limit )) end=$(( $end + $limit ))
+  repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`; do
+    lsdesc=`print -- $lsdesc | \
+      sed -uE "s/^(${(j[|])deps[$a,$z]}):(.*)/\1:🌾 dependency.\2/" | \
+      sed -uE "s/^(${(j[|])reqs[$a,$z]}):(.*)/\1:🍺 installed.\2/" | \
+      sed -uE "s/^(${(j[|])new[$a,$z]}):(.*)/\1:⏰ new.\2/"`
+    a=$(( $a + $limit )) z=$(( $z + $limit ))
   done
 
 elif (( $cmds_installed[(I)$opts[1]] )); then
