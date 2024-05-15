@@ -27,9 +27,9 @@
   unignore = update-index --no-skip-worktree
 [delta]
   navigate = true
-  features = decorations
+  features = style-adjustments
   hyperlinks = true
   hyperlinks-file-link-format = "vscode://file/{path}:{line}"
-[delta "decorations"]
+[delta "style-adjustments"]
   file-decoration-style = none
   hunk-header-decoration-style = none
