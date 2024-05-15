@@ -34,6 +34,7 @@
 .mime.types
 .mutagen
 .ngrok2
+.npm
 .python_history
 .sqlite_history
 .ssh
