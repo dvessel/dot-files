@@ -40,4 +40,4 @@ setopt PUSHD_SILENT       # Do not print the directory stack after pushd or popd
 
 # PATH is cleared on arch switch. Make it available in x86. @see arch-toggle
 export EDITOR=/opt/homebrew/bin/nvim
-export LESS='-R --mouse'
+export LESS='-R'
