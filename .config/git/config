@@ -8,10 +8,6 @@
   pager = delta
 [interactive]
   diffFilter = delta --color-only
-[delta]
-  navigate = true
-  hyperlinks = true
-  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
 [diff]
   tool = opendiff
   colorMoved = default
@@ -29,3 +25,11 @@
 [alias]
   ignore = update-index --skip-worktree
   unignore = update-index --no-skip-worktree
+[delta]
+  navigate = true
+  features = decorations
+  hyperlinks = true
+  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[delta "decorations"]
+  file-decoration-style = none
+  hunk-header-decoration-style = none
