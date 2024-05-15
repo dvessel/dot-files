@@ -41,6 +41,7 @@
   "intelephense.telemetry.enabled": false,
   "partialDiff.enableTelemetry": false,
   "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
+  "security.promptForLocalFileProtocolHandling": false,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "telemetry.telemetryLevel": "off",
