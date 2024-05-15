@@ -118,11 +118,31 @@ if (( $cmds_any[(I)$opts[1]] )); then
   new=()
   for f in $names.new-*.txt(N); new+=( "${(@f)$(cat $f)}" )
 
-  # Search strings in deps, reqs and new must escape ++. Most likely others too.
-  lsdesc=`brew desc --eval-all $src --name ".+" |
-    sed -uE "s/^(${(j[|])deps}):(.*)/\1:[🌾 dependency]\2/" |
-    sed -uE "s/^(${(j[|])reqs}):(.*)/\1:[🍺 installed]\2/" |
-    sed -uE "s/^(${(j[|])new}):(.*)/\1:[⏱ new]\2/"`
+  # totally gross but this works around regex capture limits in sed.
+  # limit each capture round to 100.
+  local limit=100
+  local start=0 end=$limit
+  local rloop=$(( ${#reqs} / $limit.0 ))
+  local dloop=$(( ${#deps} / $limit.0 ))
+  local nloop=$(( ${#new} / $limit.0 ))
+
+  lsdesc=`brew desc --eval-all $src --name ".+"`
+
+  while [[ $rloop > 0 || $dloop > 0 || $nloop > 0 ]]; do
+    if [[ $rloop > 0 ]]; then
+      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])reqs:$start:$end}):(.*)/\1:[🍺 installed]\2/"`
+      rloop=$(( $rloop - 1 ))
+    fi
+    if [[ $dloop > 0 ]]; then
+      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])deps:$start:$end}):(.*)/\1:[🌾 dependency]\2/"`
+      dloop=$(( $dloop - 1 ))
+    fi
+    if [[ $nloop > 0 ]]; then
+      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])new:$start:$end}):(.*)/\1:[⏱ new]\2/"`
+      nloop=$(( $nloop - 1 ))
+    fi
+    start=$(( $start + $limit )) end=$(( $end + $limit ))
+  done
 
 elif (( $cmds_installed[(I)$opts[1]] )); then
   if [[ $src == --formula ]]; then
