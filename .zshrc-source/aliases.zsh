@@ -17,6 +17,7 @@ alias d='pwd'
 alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
 for i ({1..9}) alias "$i"="cd +$i"
 
+alias b='bat'
 alias bp='batpipe'
 alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
