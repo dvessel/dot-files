@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>NSFixedPitchFont</key>
-	<string>AnonymiceProNFP</string>
+	<string>IMWritingMonoNFP-Regular</string>
 	<key>NSFixedPitchFontSize</key>
 	<string>15</string>
 	<key>NSFont</key>
-	<string>iAWriterDuoS-Regular</string>
+	<string>IMWritingDuoNFP-Regular</string>
 	<key>NSFontSize</key>
 	<string>15</string>
 	<key>NSUserKeyEquivalents</key>
