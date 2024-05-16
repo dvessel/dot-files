@@ -83,10 +83,6 @@ cp -f $names.txt $names.last.txt
 # Clear new entries older than 3 days.
 for f in $names.new-*.txt(Nm+3); rm $f
 
-# brew bug: desc --eval-all is ignored when descriptions.json is missing.
-# HOMEBREW_EVAL_ALL still works.
-export HOMEBREW_EVAL_ALL=1
-
 if (( $cmds_any[(I)$opts[1]] )); then
 
   typeset -a reqs deps
@@ -110,7 +106,7 @@ if (( $cmds_any[(I)$opts[1]] )); then
     (( $n < $maxcount )) || maxcount=$n
   done
 
-  lsdesc=`brew desc --eval-all $src --name ".+"`
+  lsdesc=`brew desc $src --eval-all --search ".+"`
 
   repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`; do
     lsdesc=`print -- $lsdesc | \
