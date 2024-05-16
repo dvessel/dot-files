@@ -48,36 +48,9 @@ else
 fi
 
 if [[ $src == --formula ]]; then
-  installed=`brew --cache`/installed.json
-  arch=`machine`
-  sha1=`ls $HOMEBREW_CELLAR | shasum`
-
-  if [[ ! -f $installed ]]; then
-    printf "{}" > $installed
-  fi
-
-  # Pick out installed on request vs dependency. It's slow, cache it.
-  if [[ $sha1 != `jq -r --arg arch $arch '.formulae.[$arch].sha1' $installed` ]]; then
-    tmp=`mktemp`
-    jq  --arg arch "$arch" \
-        --arg sha1 "$sha1" \
-        --argjson requested "`brew info --json=v1 --installed |
-          jq -r '[.[]|select(.installed[].installed_on_request).name]'`" \
-        --argjson dependencies "`brew info --json=v1 --installed |
-          jq -r '[.[]|select(.installed[].installed_as_dependency).name]'`" \
-        '.formulae.[$arch] = {
-          "sha1": $sha1,
-          "requested": $requested,
-          "dependencies": $dependencies
-        }' $installed > $tmp && mv -f $tmp $installed
-  fi
-
-  reqs=( `jq -r --arg arch $arch '.formulae.[$arch].requested|@tsv' $installed` )
-  deps=( `jq -r --arg arch $arch '.formulae.[$arch].dependencies|@tsv' $installed` )
   names=`brew --cache`/api/formula_names
   descs=`brew --cache`/descriptions.json
 elif [[ $src == --cask ]]; then
-  reqs=( `brew list --cask` )
   names=`brew --cache`/api/cask_names
   descs=`brew --cache`/cask_descriptions.json
 fi
@@ -115,6 +88,16 @@ for f in $names.new-*.txt(Nm+3); rm $f
 export HOMEBREW_EVAL_ALL=1
 
 if (( $cmds_any[(I)$opts[1]] )); then
+
+  typeset -a reqs deps
+  if [[ $src == --formula ]]; then
+    reqs=( brew ls --installed-on-request )
+    deps=( brew ls --installed-as-dependency )
+  elif [[ $src == --cask ]]; then
+    reqs=( `brew ls --cask` )
+    deps=()
+  fi
+
   typeset -a new
   for f in $names.new-*.txt(N); do
     new+=( "${(@f)$(cat $f)}" )
