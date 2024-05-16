@@ -87,8 +87,8 @@ if (( $cmds_any[(I)$opts[1]] )); then
 
   typeset -a reqs deps
   if [[ $src == --formula ]]; then
-    reqs=( brew ls --installed-on-request )
-    deps=( brew ls --installed-as-dependency )
+    reqs=( `brew ls --installed-on-request` )
+    deps=( `brew ls --installed-as-dependency` )
   elif [[ $src == --cask ]]; then
     reqs=( `brew ls --cask` )
     deps=()
