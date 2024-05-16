@@ -2253,7 +2253,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>IMWritingMonoNFP-Regular 28</string>
+			<string>InputNF 24</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -2461,7 +2461,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>IMWritingMonoNFP-Regular 24</string>
+					<string>InputNF 18</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -2494,7 +2494,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 24</string>
+								<string>InputNF 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2517,7 +2517,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 24</string>
+								<string>InputNF 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2548,7 +2548,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 24</string>
+								<string>InputNF 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2583,7 +2583,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 24</string>
+								<string>InputNF 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
