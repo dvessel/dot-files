@@ -2,7 +2,6 @@ tap "dvessel/oetools", "git@github.com:dvessel/homebrew-oetools.git"
 tap "dvessel/versions", "git@github.com:dvessel/homebrew-versions.git"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/core"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
@@ -51,6 +50,8 @@ brew "dvessel/oetools/oeadvscan"
 # Developer targeted fonts with a high number of glyphs
 cask "font-anonymice-nerd-font"
 cask "font-ia-writer-duo"
+# Developer targeted fonts with a high number of glyphs
+cask "font-im-writing-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Minimal installer for conda
