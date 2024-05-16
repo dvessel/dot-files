@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>NSFixedPitchFont</key>
-	<string>IMWritingMonoNFP-Regular</string>
+	<string>IMWritingMonoNF-Regular</string>
 	<key>NSFixedPitchFontSize</key>
-	<string>15</string>
+	<string>16</string>
 	<key>NSFont</key>
 	<string>IMWritingDuoNFP-Regular</string>
 	<key>NSFontSize</key>
-	<string>15</string>
+	<string>16</string>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>MessageSend</key>

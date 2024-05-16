@@ -942,7 +942,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>IMWritingMonoNFP-Regular 15</string>
+			<string>LilexNF-Regular 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -1148,7 +1148,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>IMWritingMonoNFP-Regular 15</string>
+					<string>LilexNF-Regular 15</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -1169,8 +1169,6 @@
 								<real>+infinity</real>
 								<key>minwidth</key>
 								<integer>0</integer>
-								<key>path</key>
-								<string>path</string>
 								<key>shared font</key>
 								<string></string>
 							</dict>
@@ -1181,7 +1179,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1204,7 +1202,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1235,7 +1233,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1270,7 +1268,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1358,7 +1356,7 @@
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
-			<false/>
+			<true/>
 			<key>AWDS Pane Directory</key>
 			<string></string>
 			<key>AWDS Pane Option</key>
@@ -2253,7 +2251,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>InputNF 24</string>
+			<string>LilexNF-Regular 24</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -2461,7 +2459,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>InputNF 18</string>
+					<string>LilexNF-Regular 24</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -2494,7 +2492,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>InputNF 18</string>
+								<string>LilexNF-Regular 24</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2517,7 +2515,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>InputNF 18</string>
+								<string>LilexNF-Regular 24</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2548,7 +2546,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>InputNF 18</string>
+								<string>LilexNF-Regular 24</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2583,7 +2581,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>InputNF 18</string>
+								<string>LilexNF-Regular 24</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3566,7 +3564,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>IMWritingMonoNFP-Regular 15</string>
+			<string>LilexNF-Regular 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -3772,7 +3770,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>IMWritingMonoNFP-Regular 15</string>
+					<string>LilexNF-Regular 15</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -3805,7 +3803,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3828,7 +3826,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3859,7 +3857,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3894,7 +3892,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -4877,7 +4875,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>IMWritingMonoNFP-Regular 15</string>
+			<string>LilexNF-Regular 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -5083,7 +5081,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>IMWritingMonoNFP-Regular 15</string>
+					<string>LilexNF-Regular 15</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -5116,7 +5114,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -5139,7 +5137,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -5170,7 +5168,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -5205,7 +5203,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>IMWritingMonoNFP-Regular 15</string>
+								<string>LilexNF-Regular 15</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>

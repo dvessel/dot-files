@@ -5,7 +5,8 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 7,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "ImWritingMono Nerd Font Propo",
+  "editor.fontFamily": "Lilex Nerd Font",
+  "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.wordWrapColumn": 120,
   "[xml]": {
