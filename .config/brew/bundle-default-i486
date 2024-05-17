@@ -1,19 +1,14 @@
-tap "homebrew/bundle"
 # Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Distributed revision control system
-brew "git"
 # Compiler for SIMD programming on the CPU
 brew "ispc"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
-# Multiple Arcade Machine Emulator
-brew "mame"
 # Manipulate and query tags on macOS files
 brew "tag"
