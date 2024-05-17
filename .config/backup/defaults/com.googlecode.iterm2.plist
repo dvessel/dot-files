@@ -14,6 +14,8 @@
 	<true/>
 	<key>DisableAdaptiveFrameRateInInteractiveApps</key>
 	<true/>
+	<key>DisableMetalWhenIdle</key>
+	<true/>
 	<key>DisableWindowSizeSnap</key>
 	<false/>
 	<key>MaxVertically</key>
@@ -5294,6 +5296,8 @@
 	<string>https://iterm2.com/appcasts/testing_modern.xml?shard=89</string>
 	<key>SaveProfilesToRecentDocuments</key>
 	<false/>
+	<key>SeparateStatusBarsPerPane</key>
+	<false/>
 	<key>SeparateWindowTitlePerTab</key>
 	<true/>
 	<key>SettingsIndex</key>
@@ -5325,7 +5329,15 @@
 		<string>SwitchPaneModifier</string>
 		<string>SwitchTabModifier</string>
 		<string>SwitchWindowModifier</string>
+		<string>DisableMetalWhenIdle</string>
+		<string>SeparateStatusBarsPerPane</string>
+		<string>ShowPaneTitles</string>
+		<string>TerminalMargin</string>
+		<string>TerminalVMargin</string>
+		<string>WindowNumber</string>
 	</array>
+	<key>ShowPaneTitles</key>
+	<false/>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>StatusBarHeight</key>
@@ -5342,9 +5354,15 @@
 	<integer>5</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
+	<key>TerminalMargin</key>
+	<integer>10</integer>
+	<key>TerminalVMargin</key>
+	<integer>5</integer>
 	<key>UseExperimentalFontMetrics</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<true/>
+	<key>WindowNumber</key>
+	<false/>
 </dict>
 </plist>
