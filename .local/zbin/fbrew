@@ -56,7 +56,7 @@ elif [[ $src == --cask ]]; then
   descs=`brew --cache`/cask_descriptions.json
 fi
 
-local fzf_list=`brew --cache`/fzf$src-list.txt
+local fzf_list=`brew --cache`/fzf$src-list-`machine`.txt
 # - delete *descriptions.json. It's not refreshed with new formulae/casks.
 # - delete fzf_list to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
