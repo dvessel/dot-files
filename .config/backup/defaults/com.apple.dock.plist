@@ -29,7 +29,7 @@
 	<key>autohide-time-modifier</key>
 	<real>0.20000000298023221</real>
 	<key>expose-group-apps</key>
-	<true/>
+	<false/>
 	<key>launchanim</key>
 	<false/>
 	<key>mru-spaces</key>
