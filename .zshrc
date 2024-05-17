@@ -18,16 +18,8 @@ fi
 
 if type antidote &>/dev/null; then
   zstyle ':antidote:bundle' use-friendly-names 'yes'
-
   ANTIDOTE_HOME=~/.cache/antidote
-  test -d $ANTIDOTE_HOME     || touch ~/.zsh_plugins.txt
-  test -f ~/.zsh_plugins.txt || touch ~/.zsh_plugins.txt
-
-  # Generate a new static file whenever .zsh_plugins.txt is updated.
-  if [[ ~/.zsh_plugins.txt -nt ~/.zsh_plugins.zsh ]]; then
-    antidote bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.zsh
-  fi
-  source ~/.zsh_plugins.zsh
+  antidote load
 else
   # Normally handled by antidote plugin:
   # - `mattmc3/zephyr path:plugins/completion`
