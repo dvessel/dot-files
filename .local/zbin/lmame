@@ -92,7 +92,10 @@ if [[ -n $1 && ${1[1]} != - ]]; then
   fzargs+=( --select-1 --query="$1" )
   shift
 fi
-headers=( $headers "${(j[ ])@}" )
+
+if [[ -n $@ ]]; then
+  headers=( $headers "${(j[ ])@}" )
+fi
 fzargs+=--header="${(j[ | ])headers}"
 
 local selected names
