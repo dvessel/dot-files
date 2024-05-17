@@ -7,7 +7,7 @@ zparseopts -D -E - {n,-name}:=name \
 
 if [[ -z $name && -z $set ]]; then
 	name=default
-	set=(--tap --formula --cask)
+	set=(--formula --cask)
 elif [[ -z $name && ${#set[@]} == 1 ]]; then
 	name=${set/--/}
 elif [[ -n $name ]]; then
