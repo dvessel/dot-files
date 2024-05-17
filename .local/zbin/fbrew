@@ -136,7 +136,9 @@ if [[ ! -f $fzf_list ]] \
     fi
 
     if [[ ${#filter} > 0 ]]; then
-      lsdesc=`brew desc $src ${filter[@]}`
+      lsdesc=`printf "==> Installed %s\n%s\n" \
+        "${${src/--formula/Formulae}/--cask/Casks}" \
+        "$(brew desc $src ${filter[@]})"`
       printf "%s\n%s\n" $state $lsdesc > $fzf_list
     else
       print "Nothing to list for '${opts[@]}'." >&2
