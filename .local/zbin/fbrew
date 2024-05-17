@@ -62,11 +62,11 @@ fi
 if [[ -f $names.last.txt && -f $names.txt ]]; then
   local new_keys new_hold fzf_list=`brew --cache`/fzf$src-list-`machine`.txt
 
-  new_keys=( "${(@f)$(comm -1 -3 $names.last.txt $names.txt)}" )
+  new_keys=( `comm -1 -3 $names.last.txt $names.txt` )
   new_hold=$names.new-`print -- ${new_keys[@]} | md5`.txt
-  if [[ -n $new_keys && ! -f $new_hold ]]; then
+  if [[ ${#new_keys} != 0 && ! -f $new_hold ]]; then
     print -- $new_keys > $new_hold
-    rm $descs $fzf_list
+    rm -f $descs $fzf_list
   fi
   # clear new entries older than 3 days.
   for f in $names.new-*.txt(Nm+3); rm $f
@@ -98,9 +98,7 @@ if (( $cmds_any[(I)$opts[1]] )); then
     fi
 
     typeset -a new
-    for f in $names.new-*.txt(N); do
-      new+=( "${(@f)$(cat $f)}" )
-    done
+    for f in $names.new-*.txt(N); new+=( `cat $f` )
 
     # this works around regex capture limits in sed. limit each loop to 100 names.
     local limit=100
