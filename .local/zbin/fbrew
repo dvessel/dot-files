@@ -2,34 +2,34 @@
 
 set -e
 
-_brew_check fzf jq || return 1
+_brew_check fzf || return 1
+
+# Either formula or cask. defaults to formula.
+local src=${argv[( $argv[(i)--cask] )]:---formula}
 
 # Set up possible first parameter commands.
-cmds_any=(
+local cmds_any=(
   install info abv edit uses deps desc fetch cleanup options home homepage log
   audit cat formula livecheck style unbottled unpack
 )
-cmds_installed=(
+local cmds_installed=(
   reinstall uninstall remove rm outdated upgrade postinstall missing
   list ls link ln unlink pin unpin migrate gist-logs bottle linkage test
   --prefix --cellar --cache
 )
-cmds=( $cmds_any $cmds_installed )
-
+local cmds=( $cmds_any $cmds_installed )
 # Commands incompatible with casks.
-cask_incompatible=(
+local cask_incompatible=(
   link ln unlink gist-logs migrate missing options bottle formula linkage test
   unbottled unpack --prefix --cellar
 )
-# Single select commands for fzf single select mode.
-no_multi=( log gist-logs migrate )
-
-# Either formula or cask. defaults to formula.
-src=${argv[( $argv[(i)--cask] )]:---formula}
 if [[ $src == --cask ]]; then
   cmds=( ${cmds:|cask_incompatible} )
 fi
+# Single select commands for fzf single select mode.
+local no_multi=( log gist-logs migrate )
 
+local opts
 if (( $cmds[(I)$1] )); then
   # First argument is valid, pass in all of it.
   opts=( $@ )
@@ -47,6 +47,7 @@ else
   return 1
 fi
 
+local names descs
 if [[ $src == --formula ]]; then
   names=`brew --cache`/api/formula_names
   descs=`brew --cache`/descriptions.json
@@ -55,82 +56,89 @@ elif [[ $src == --cask ]]; then
   descs=`brew --cache`/cask_descriptions.json
 fi
 
-# Update descriptions.json. It's not refreshed with new formulae/casks.
+local fzf_list=`brew --cache`/fzf$src-list.txt
+# - delete *descriptions.json. It's not refreshed with new formulae/casks.
+# - delete fzf_list to rebuild listing.
+# - save new formulae/casks names to present later in fzf.
 if [[ -f $names.last.txt && -f $names.txt ]]; then
+  local new_keys new_hold
+
   new_keys=( "${(@f)$(comm -1 -3 $names.last.txt $names.txt)}" )
-
-  if [[ -n $new_keys ]]; then
-    printf "%s\n" $new_keys > $names.new-`date +%s`.txt
-
-    tmp=`mktemp`
-    new_descs=`brew info --json=v2 $src $new_keys |
-      jq -r --arg src "${${src/--formula/formulae}/--cask/casks}" \
-        '.[$src].[].desc'`
-
-    for ((i = 1; i <= $#new_keys; i++)); do
-      jq  --arg nkey "$new_keys[$i]" \
-          --arg desc "`printf "%s\n" $new_descs | sed $i!d`" \
-          '.[$nkey] = $desc' $descs > $tmp && mv -f $tmp $descs
-    done
+  new_hold=$names.new-`print -- ${new_keys[@]} | md5`.txt
+  if [[ -n $new_keys && ! -f $new_hold ]]; then
+    print -- $new_keys > $new_hold
+    rm $descs $fzf_list
   fi
+  # clear new entries older than 3 days.
+  for f in $names.new-*.txt(Nm+3); rm $f
 fi
-# If cache/api/*_names.txt doesn't exist, initialize with a light update.
+# if cache/api/*_names.txt doesn't exist, initialize with a light update.
 if [[ ! -f $names.txt ]]; then
   brew update --auto-update
 fi
 cp -f $names.txt $names.last.txt
 
-# Clear new entries older than 3 days.
-for f in $names.new-*.txt(Nm+3); rm $f
-
+local lsdesc
 if (( $cmds_any[(I)$opts[1]] )); then
-
-  typeset -a reqs deps
+  local state
   if [[ $src == --formula ]]; then
-    reqs=( `brew ls --installed-on-request` )
-    deps=( `brew ls --installed-as-dependency` )
+    state=`/bin/ls $( brew --cellar ) | md5`
   elif [[ $src == --cask ]]; then
-    reqs=( `brew ls --cask` )
-    deps=()
+    state=`/bin/ls $( brew --caskroom ) | md5`
   fi
 
-  typeset -a new
-  for f in $names.new-*.txt(N); do
-    new+=( "${(@f)$(cat $f)}" )
-  done
+  if [[ ! -f $fzf_list ]] \
+  || [[ -f $fzf_list && $state != `sed '1!d' $fzf_list` ]]; then
+    typeset -a reqs deps
+    if [[ $src == --formula ]]; then
+      reqs=( `brew ls --installed-on-request` )
+      deps=( `brew ls --installed-as-dependency` )
+    elif [[ $src == --cask ]]; then
+      reqs=( `brew ls --cask` )
+      deps=()
+    fi
 
-  # this works around regex capture limits in sed. limit each loop to 100 names.
-  local limit=100
-  local maxcount=0 a=1 z=$limit
-  for n in ${#reqs} ${#deps} ${#new}; do
-    (( $n < $maxcount )) || maxcount=$n
-  done
+    typeset -a new
+    for f in $names.new-*.txt(N); do
+      new+=( "${(@f)$(cat $f)}" )
+    done
 
-  lsdesc=`brew desc $src --eval-all --search ".+"`
+    # this works around regex capture limits in sed. limit each loop to 100 names.
+    local limit=100
+    local maxcount=0 a=1 z=$limit
+    for n in ${#reqs} ${#deps} ${#new}; do
+      (( $n < $maxcount )) || maxcount=$n
+    done
 
-  repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`; do
-    lsdesc=`print -- $lsdesc | \
-      sed -uE "s/^(${(j[|])deps[$a,$z]}):(.*)/\1:🌾 dependency.\2/" | \
-      sed -uE "s/^(${(j[|])reqs[$a,$z]}):(.*)/\1:🍺 installed.\2/" | \
-      sed -uE "s/^(${(j[|])new[$a,$z]}):(.*)/\1:⏰ new.\2/"`
-    a=$(( $a + $limit )) z=$(( $z + $limit ))
-  done
+    lsdesc=`brew desc $src --eval-all --search ".+"`
+
+    repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`; do
+      lsdesc=`print -- $lsdesc | \
+        sed -uE "s/^(${(j[|])deps[$a,$z]}):(.*)/\1:🌾 dependency.\2/" | \
+        sed -uE "s/^(${(j[|])reqs[$a,$z]}):(.*)/\1:🍺 installed.\2/" | \
+        sed -uE "s/^(${(j[|])new[$a,$z]}):(.*)/\1:⏰ new.\2/"`
+      a=$(( $a + $limit )) z=$(( $z + $limit ))
+    done
+
+    printf "%s\n%s\n" $state $lsdesc > $fzf_list
+  else
+    lsdesc=`cat $fzf_list | sed 1,1d`
+  fi
 
 elif (( $cmds_installed[(I)$opts[1]] )); then
+  local filter
   if [[ $src == --formula ]]; then
-    filter=`printf "%s|" $(brew leaves --installed-on-request)`
-  else
-    filter=`printf "%s|" $(brew list --full-name $src)`
+    filter=( `brew ls --installed-on-request` )
+  elif [[ $src == --cask ]]; then
+    filter=( `brew ls --cask` )
   fi
-
-  lsdesc=`brew desc --eval-all $src --name "/^($filter)$/"`
+  lsdesc=`brew desc $src ${filter[@]}`
 fi
 
-sids=( `printf "%s\n" $lsdesc | fzf $((( $no_multi[(I)$opts[1]] )) || printf --multi) \
-  --header-lines=1 --prompt="❯ brew $opts " | grep -oE "^[^:]+"` )
-
-# TODO: save a history of selected id's to be recalled with different commands.
-if [[ ! -z $sids ]]; then
+local sids
+if sids=( `print -- $lsdesc | fzf --header-lines=1 --prompt="❯ brew $opts " \
+  $((( $no_multi[(I)$opts[1]] )) || printf --multi) | grep -oE "^[^:]+"` )
+then
   printf "\033[0;33m❯ brew %s %s\033[0m\n" "$opts" "$sids"
   brew $opts $sids
 fi
