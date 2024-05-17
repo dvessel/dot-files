@@ -36,7 +36,7 @@ See 'mame -showusage' for more information.
   return
 fi
 
-scandir=${${${rompath[-1]:a}:-`eval print $( mame -showconfig | awk '$1=="rompath" { $1=""; print $0 }' )`}}
+scandir=${${${rompath[-1]:a}:-`eval print $(mame -showconfig|awk '$1=="rompath" {$1="";print $0}')`}}
 
 if [[ ! -d $scandir ]]; then
   printf "rom path not found:%s\n" "$scandir" >&2
