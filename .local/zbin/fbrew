@@ -151,6 +151,20 @@ else
   lsdesc=`cat $fzf_list | sed 1,1d`
 fi
 
+if [[ $opts[1] =~ (pin|unpin) ]]; then
+  local pinned=( `brew ls --pinned` )
+  if [[ ${#pinned} > 0 ]]; then
+    if [[ $opts[1] == unpin ]]; then
+      lsdesc=`printf "==> Pinned Formulae\n%s\n" \
+        "$(print -- $lsdesc | sed -nuE "/^(${(j[|])pinned}):.*/p")"`
+    fi
+    lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])pinned}):(.*)/\1:📌\2/"`
+  elif [[ $opts[1] == unpin ]]; then
+    print "Nothing to unpin." >&2
+    return 1
+  fi
+fi
+
 local sids
 if sids=( `print -- $lsdesc | fzf --header-lines=1 --prompt="❯ brew $opts " \
   $((( $no_multi[(I)$opts[1]] )) || printf --multi) | grep -oE "^[^:]+"` )
