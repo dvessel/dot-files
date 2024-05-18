@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-type antidote &>/dev/null || return
-
 # mattmc3/zephyr plugins:zfunctions
 ZFUNCDIR=~/.local/zfunctions
 

@@ -39,5 +39,12 @@ setopt PUSHD_IGNORE_DUPS  # Do not store duplicates in the stack.
 setopt PUSHD_SILENT       # Do not print the directory stack after pushd or popd.
 
 # PATH is cleared on arch switch. Make it available in x86. @see arch-toggle
-export EDITOR=/opt/homebrew/bin/nvim
+# fallback to OS provided vim.
+if type nvim &>/dev/null; then
+  export EDITOR=nvim
+elif [[ -r /opt/homebrew/bin/nvim ]]; then
+  export EDITOR=/opt/homebrew/bin/nvim
+else
+  export EDITOR=vim
+fi
 export LESS='-R'
