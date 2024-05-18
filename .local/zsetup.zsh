@@ -8,6 +8,7 @@ esac
 if ! -f $__brew_path \
 && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 then
+  source ~/.zprofile
   print "Installing brew basic-setup…"
   brew tap homebrew/bundle
   brew bundle --file ~/.config/brew/basic-setup
