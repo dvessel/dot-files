@@ -21,7 +21,7 @@ local cmds=( $cmds_any $cmds_installed )
 # Commands incompatible with casks.
 local cask_incompatible=(
   link ln unlink gist-logs migrate missing options bottle formula linkage test
-  unbottled unpack --prefix --cellar
+  pin unpin unbottled unpack --prefix --cellar
 )
 if [[ $src == --cask ]]; then
   cmds=( ${cmds:|cask_incompatible} )
