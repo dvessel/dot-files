@@ -75,6 +75,7 @@ if [[ -f $names.last.txt && -f $names.txt ]]; then
   if [[ ${#new_keys} != 0 && ! -f $new_hold ]]; then
     print -- $new_keys > $new_hold
     rm -f $descs $fzf_list
+    brew update --auto-update
   fi
   # clear new entries older than 3 days.
   for f in $names.new-*.txt(Nm+3); rm $f
