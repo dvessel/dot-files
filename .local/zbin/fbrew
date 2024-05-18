@@ -119,9 +119,9 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
     lsdesc=`brew desc $src --eval-all --search ".+"`
     repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`; do
       lsdesc=`print -- $lsdesc | \
-        sed -uE "s/^(${(j[|])deps[$a,$z]}):(.*)/\1:🌾 dependency.\2/" | \
-        sed -uE "s/^(${(j[|])reqs[$a,$z]}):(.*)/\1:🍺 installed.\2/" | \
-        sed -uE "s/^(${(j[|])new[$a,$z]}):(.*)/\1:⏰ new.\2/"`
+        sed -uE "s/^(${(j[|])deps[$a,$z]}):(.*)/\1:🌾dependency.\2/" | \
+        sed -uE "s/^(${(j[|])reqs[$a,$z]}):(.*)/\1:🍺installed.\2/" | \
+        sed -uE "s/^(${(j[|])new[$a,$z]}):(.*)/\1:⏰new.\2/"`
       a=$(( $a + $limit )) z=$(( $z + $limit ))
     done
     printf "%s\n%s\n" $state $lsdesc > $fzf_list
