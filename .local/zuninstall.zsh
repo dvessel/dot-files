@@ -2,6 +2,8 @@
 
 print "Uninstalling homebrew.sh…"
 
+fbrew uninstall --cask
+
 if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 then
   __caches=( ~/.cache/{antidote,gitstatus,p10k-*,zsh}(N) )
