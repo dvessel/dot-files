@@ -49,10 +49,10 @@ fi
 
 local names descs
 if [[ $src == --formula ]]; then
-  names=`brew --cache`/api/formula_names
+  names=`brew --cache`/api/formula_names.txt
   descs=`brew --cache`/descriptions.json
 elif [[ $src == --cask ]]; then
-  names=`brew --cache`/api/cask_names
+  names=`brew --cache`/api/cask_names.txt
   descs=`brew --cache`/cask_descriptions.json
 fi
 
@@ -63,28 +63,29 @@ else
   fzf_list=`brew --cache`/fzf$src-list-complete-`machine`.txt
 fi
 
+local names_before=${names:r}.${0:t}-before.txt
 # - delete *descriptions.json. It's not refreshed with new formulae/casks.
 # - delete fzf_list to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
 # - delete the above names older than 3 days.
-if [[ -f $names.last.txt && -f $names.txt ]]; then
-  local new_keys new_hold
+if [[ -f $names_before && -f $names ]]; then
+  local new_keys names_new
 
-  new_keys=( `comm -1 -3 $names.last.txt $names.txt` )
-  new_hold=$names.new-`print -- ${new_keys[@]} | md5`.txt
-  if [[ ${#new_keys} != 0 && ! -f $new_hold ]]; then
-    print -- $new_keys > $new_hold
+  new_keys=( `comm -1 -3 $names_before $names` )
+  names_new=${names:r}.${0:t}-new-`print -- ${new_keys[@]} | md5`.txt
+  if [[ ${#new_keys} > 0 && ! -f $names_new ]]; then
+    print -- $new_keys > $names_new
     rm -f $descs $fzf_list
     brew update --auto-update
   fi
   # clear new entries older than 3 days.
-  for f in $names.new-*.txt(Nm+3); rm $f
+  for f in ${names:r}.${0:t}-new-*.txt(Nm+3); rm $f
 fi
 # if cache/api/*_names.txt doesn't exist, initialize with a light update.
-if [[ ! -f $names.txt ]]; then
+if [[ ! -f $names ]]; then
   brew update --auto-update
 fi
-cp -f $names.txt $names.last.txt
+cp -f $names $names_before
 
 local lsdesc state
 if [[ $src == --formula ]]; then
