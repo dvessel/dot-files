@@ -9,12 +9,12 @@ local src=${argv[( $argv[(i)--cask] )]:---formula}
 
 # Set up possible first parameter commands.
 local cmds_any=(
-  install info abv edit uses deps desc fetch cleanup options home homepage log
+  install info uses deps desc fetch cleanup options home homepage log
   audit cat formula livecheck style unbottled unpack
 )
 local cmds_installed=(
   reinstall uninstall remove rm outdated upgrade postinstall missing
-  list ls link ln unlink pin unpin migrate gist-logs bottle linkage test
+  list ls link ln unlink pin unpin edit migrate gist-logs bottle linkage test
   --prefix --cellar --cache
 )
 local cmds=( $cmds_any $cmds_installed )
@@ -66,6 +66,7 @@ fi
 # - delete *descriptions.json. It's not refreshed with new formulae/casks.
 # - delete fzf_list to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
+# - delete the above names older than 3 days.
 if [[ -f $names.last.txt && -f $names.txt ]]; then
   local new_keys new_hold
 
@@ -91,8 +92,7 @@ elif [[ $src == --cask ]]; then
   state=`/bin/ls $( brew --caskroom ) | md5`
 fi
 
-if [[ ! -f $fzf_list ]] \
-|| [[ -f $fzf_list && $state != `sed '1!d' $fzf_list` ]]; then
+if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
   if (( $cmds_any[(I)$opts[1]] )); then
 
     typeset -a reqs deps
