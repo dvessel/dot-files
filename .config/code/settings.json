@@ -66,7 +66,7 @@
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "eq-material-theme-icons",
   "workbench.list.smoothScrolling": true,
-  "workbench.preferredDarkColorTheme": "One Dark Pro Darker",
+  "workbench.preferredDarkColorTheme": "Mono Atom",
   "workbench.preferredLightColorTheme": "Github Light Theme",
   "workbench.startupEditor": "newUntitledFile",
   "xml.server.workDir": "~/.cache/lemminx",
