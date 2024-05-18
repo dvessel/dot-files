@@ -174,7 +174,10 @@
 		<string>FXDefaultSearchScope</string>
 		<string>FontSizeCategory</string>
 		<string>StandardViewSettings</string>
+		<string>ShowMountedServersOnDesktop</string>
 	</array>
+	<key>ShowMountedServersOnDesktop</key>
+	<true/>
 	<key>SidebarWidth</key>
 	<real>275</real>
 	<key>StandardViewOptions</key>
