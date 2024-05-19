@@ -4,8 +4,14 @@
 <dict>
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<false/>
+	<key>AutoOpenSafeDownloads</key>
+	<false/>
 	<key>DefaultPageZoom</key>
 	<real>1.1499999999999999</real>
+	<key>EnableEnhancedPrivacyInRegularBrowsing</key>
+	<true/>
+	<key>EnableNarrowTabs</key>
+	<false/>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>BookmarksAdd Bookmark…</key>
@@ -51,6 +57,12 @@
 	</dict>
 	<key>OpenNewTabsInFront</key>
 	<false/>
+	<key>PrivateBrowsingRequiresAuthentication</key>
+	<true/>
+	<key>PrivateSearchEngineUsesNormalSearchEngineToggle</key>
+	<true/>
+	<key>ReadingListSaveArticlesOfflineAutomatically</key>
+	<true/>
 	<key>SearchProviderShortName</key>
 	<string>DuckDuckGo</string>
 	<key>SettingsIndex</key>
@@ -62,10 +74,28 @@
 		<string>SearchProviderShortName</string>
 		<string>DefaultPageZoom</string>
 		<string>AppleMenuBarVisibleInFullscreen</string>
+		<string>AutoOpenSafeDownloads</string>
+		<string>EnableEnhancedPrivacyInRegularBrowsing</string>
+		<string>EnableNarrowTabs</string>
+		<string>PrivateBrowsingRequiresAuthentication</string>
+		<string>PrivateSearchEngineUsesNormalSearchEngineToggle</string>
+		<string>ReadingListSaveArticlesOfflineAutomatically</string>
+		<string>WebKitPreferences.privateClickMeasurementEnabled</string>
+		<string>WebKitPreferences.tabFocusesLinks</string>
+		<string>WebKitTabToLinksPreferenceKey</string>
+		<string>WebsiteSpecificSearchEnabled</string>
 	</array>
 	<key>ShowStandaloneTabBar</key>
 	<false/>
 	<key>TabCreationPolicy</key>
 	<integer>0</integer>
+	<key>WebKitPreferences.privateClickMeasurementEnabled</key>
+	<false/>
+	<key>WebKitPreferences.tabFocusesLinks</key>
+	<true/>
+	<key>WebKitTabToLinksPreferenceKey</key>
+	<true/>
+	<key>WebsiteSpecificSearchEnabled</key>
+	<false/>
 </dict>
 </plist>
