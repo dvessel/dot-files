@@ -7,7 +7,7 @@
 	<key>EnableStandardClickToShowDesktop</key>
 	<true/>
 	<key>HideDesktop</key>
-	<false/>
+	<true/>
 	<key>SettingsIndex</key>
 	<array>
 		<string>HideDesktop</string>
@@ -16,6 +16,6 @@
 		<string>EnableStandardClickToShowDesktop</string>
 	</array>
 	<key>StandardHideDesktopIcons</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
