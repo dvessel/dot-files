@@ -33,7 +33,7 @@ local opts
 if (( $cmds[(I)$1] )); then
   # First argument is valid, pass in all of it.
   opts=( $@ )
-elif [[ $1 =~ (--formula|--cask) && -z ${(@)argv:*cmds} || -z $@ ]]; then
+elif [[ $1 == (--formula|--cask) && -z ${(@)argv:*cmds} || -z $@ ]]; then
   # First argument is --formula or --cask or no arguments.
   # Add default info command.
   opts=( info $@ )
@@ -150,7 +150,7 @@ else
   lsdesc=`cat $fzf_list | sed 1,1d`
 fi
 
-if [[ $opts[1] =~ (pin|unpin) ]]; then
+if [[ $opts[1] == (pin|unpin) ]]; then
   local pinned=( `brew ls --pinned` )
   if [[ ${#pinned} > 0 ]]; then
     if [[ $opts[1] == unpin ]]; then
