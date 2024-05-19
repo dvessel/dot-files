@@ -49,10 +49,10 @@ fi
 
 local names descs
 if [[ $src == --formula ]]; then
-  names=`brew --cache`/api/formula_names.txt
+  names=`brew --cache`/api/formula_names
   descs=`brew --cache`/descriptions.json
 elif [[ $src == --cask ]]; then
-  names=`brew --cache`/api/cask_names.txt
+  names=`brew --cache`/api/cask_names
   descs=`brew --cache`/cask_descriptions.json
 fi
 
@@ -63,18 +63,17 @@ else
   fzf_list=`brew --cache`/fzf$src-list-complete-`machine`.txt
 fi
 
-local names_before=${names:r}.${0:t}-before.txt
 # - delete *descriptions.json. It's not refreshed with new formulae/casks.
 # - delete fzf_list to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
-# - delete the above names older than 3 days.
-if [[ -f $names_before && -f $names ]]; then
+# - delete the new names older than 3 days.
+if [[ -f $names.${0:t}-before.txt && -f $names.before.txt ]]; then
   local new_keys names_new
 
-  new_keys=( `comm -1 -3 $names_before $names` )
+  new_keys=( `comm -1 -3 $names.${0:t}-before.txt $names.before.txt` )
   names_new=${names:r}.${0:t}-new-`print -- ${new_keys[@]} | md5`.txt
   if [[ ${#new_keys} > 0 && ! -f $names_new ]]; then
-    print -- $new_keys > $names_new
+    printf "%s\n" $new_keys > $names_new
     rm -f $descs $fzf_list
     brew update --auto-update
   fi
@@ -82,10 +81,10 @@ if [[ -f $names_before && -f $names ]]; then
   for f in ${names:r}.${0:t}-new-*.txt(Nm+3); rm $f
 fi
 # if cache/api/*_names.txt doesn't exist, initialize with a light update.
-if [[ ! -f $names ]]; then
+if [[ ! -f $names.before.txt ]]; then
   brew update --auto-update
 fi
-cp -f $names $names_before
+cp -f $names.before.txt $names.${0:t}-before.txt
 
 local lsdesc state
 if [[ $src == --formula ]]; then
@@ -107,7 +106,7 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
     fi
 
     typeset -a new
-    for f in $names.new-*.txt(N); new+=( `cat $f` )
+    for f in $names.${0:t}-new-*.txt(N); new+=( `cat $f` )
 
     # this works around regex capture limits in sed. limit each loop to 100 names.
     # it can still fail if many names are very long, e.g., font migration to casks.
