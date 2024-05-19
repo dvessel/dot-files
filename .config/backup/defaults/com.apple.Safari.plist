@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AppleMenuBarVisibleInFullscreen</key>
-	<false/>
 	<key>AutoOpenSafeDownloads</key>
 	<false/>
 	<key>DefaultPageZoom</key>
@@ -73,7 +71,6 @@
 		<string>ShowStandaloneTabBar</string>
 		<string>SearchProviderShortName</string>
 		<string>DefaultPageZoom</string>
-		<string>AppleMenuBarVisibleInFullscreen</string>
 		<string>AutoOpenSafeDownloads</string>
 		<string>EnableEnhancedPrivacyInRegularBrowsing</string>
 		<string>EnableNarrowTabs</string>
