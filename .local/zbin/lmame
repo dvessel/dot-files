@@ -103,7 +103,7 @@ selected=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $fzargs`
 
 if [[ -n $selected ]]; then
   if [[ -z $prefix ]]; then
-    printf "\e[1m%s\e[0m\n\n" "`print $selected | cut -f2`"
+    printf "\e[1m%s\e[0m\n" "`print $selected | cut -f2`"
   fi
   names=( `print $selected | cut -f1` )
   mame $prefix ${names[@]} $@ -rompath $scandir
