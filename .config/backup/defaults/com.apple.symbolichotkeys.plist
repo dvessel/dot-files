@@ -1071,7 +1071,7 @@
 				<array>
 					<integer>96</integer>
 					<integer>50</integer>
-					<integer>524288</integer>
+					<integer>1048576</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1775,7 +1775,7 @@
 				<array>
 					<integer>96</integer>
 					<integer>50</integer>
-					<integer>1048576</integer>
+					<integer>524288</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
