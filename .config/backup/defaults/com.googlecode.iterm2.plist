@@ -5335,6 +5335,7 @@
 		<string>TerminalMargin</string>
 		<string>TerminalVMargin</string>
 		<string>WindowNumber</string>
+		<string>VerticalBarCursorWidth</string>
 	</array>
 	<key>ShowPaneTitles</key>
 	<false/>
@@ -5362,6 +5363,8 @@
 	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<true/>
+	<key>VerticalBarCursorWidth</key>
+	<real>2</real>
 	<key>WindowNumber</key>
 	<false/>
 </dict>
