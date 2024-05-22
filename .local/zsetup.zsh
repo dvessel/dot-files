@@ -15,7 +15,7 @@ fi
 if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 then
   source ~/.zprofile
-  print "Ignore brew setup instructions. brew \$PATH was configured in .zprofile."
+  print "Ignore brew setup instructions. Homebrew \$PATH already set in .zprofile."
   print "Installing brew basic-setup…"
   brew tap homebrew/bundle
   brew bundle --no-lock --file ~/.config/brew/basic-setup
