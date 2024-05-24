@@ -34,6 +34,8 @@
 	<true/>
 	<key>NSQuitAlwaysKeepsWindows</key>
 	<true/>
+	<key>NSRepeatCountBinding</key>
+	<string>~r</string>
 	<key>NSTableViewDefaultSizeMode</key>
 	<integer>2</integer>
 	<key>NSUserKeyEquivalents</key>
@@ -112,6 +114,7 @@
 		<string>AppleInterfaceStyleSwitchesAutomatically</string>
 		<string>com.apple.sound.beep.feedback</string>
 		<string>AppleReduceDesktopTinting</string>
+		<string>NSRepeatCountBinding</string>
 	</array>
 	<key>com.apple.sound.beep.feedback</key>
 	<integer>0</integer>
