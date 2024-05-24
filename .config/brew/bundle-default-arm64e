@@ -48,3 +48,5 @@ cask "font-lilex-nerd-font"
 cask "iterm2"
 # Minimal installer for conda
 cask "miniconda"
+# Binary releases of VS Code without MS branding/telemetry/licensing
+cask "vscodium"

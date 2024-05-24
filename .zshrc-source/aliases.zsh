@@ -22,7 +22,7 @@ alias bp='batpipe'
 alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
 
-alias vs='code'
+alias vs='codium'
 alias zd='zed'
 
 alias man='batman'
