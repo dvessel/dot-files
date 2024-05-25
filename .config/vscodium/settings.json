@@ -33,6 +33,7 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "git.autorefresh": false,
+  "git.openRepositoryInParentFolders": "never",
   "github.gitProtocol": "ssh",
   "intelephense.telemetry.enabled": false,
   "markdown.preview.fontSize": 15,
