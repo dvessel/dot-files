@@ -1,5 +1,16 @@
 #!/usr/bin/env zsh
 
+if ! test -f ~/Library/Keybindings/DefaultKeyBinding.dict; then
+  print "Hard linking DefaultKeyBinding.dict to ~/Library/KeyBindings."
+  mkdir -p ~/Library/KeyBindings
+  ln ~/.config/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/
+fi
+
+if ! test -e ~/.vscode; then
+  print "Linking ~/.vscode to .vscode-oss (vscodium) for brew bundle compatibility."
+  ln -s .vscode-oss ~/.vscode
+fi
+
 case `sysctl -n sysctl.proc_translated` in
   0) __brew_path=/opt/homebrew/bin/brew ;;
   1) __brew_path=/usr/local/bin/brew ;;

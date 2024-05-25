@@ -43,7 +43,7 @@
 .tldrc
 .Trash
 .viminfo
-.vscode-oss
+.vscode*
 .zsh_history
 .zsh_plugins.zsh
 .zsh_sessions
