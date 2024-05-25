@@ -1,0 +1,74 @@
+/*
+ * Bypass any bindings for the next keystroke:
+ *  defaults write -g NSQuotedKeystrokeBinding -string "^q"
+ * Repeat count binding:
+ *  defaults write -g NSRepeatCountBinding -string "~r"
+ *
+ * ^ = control
+ * ~ = option, meta equivalent on Emacs.
+ * $ = shift
+ * # = numeric keypad
+ */
+
+{
+  "^h"  = moveLeft:;
+  "^j"  = moveDown:;
+  "^k"  = moveUp:;
+  "^l"  = moveRight:;
+  "^~l" = moveWordForward:;
+  "^~h" = moveWordBackward:;
+  "^w"  = moveWordForward:;
+  "^b"  = moveWordBackward:;
+  "^H"  = moveLeftAndModifySelection:;
+  "^J"  = moveDownAndModifySelection:;
+  "^K"  = moveUpAndModifySelection:;
+  "^L"  = moveRightAndModifySelection:;
+  "^~L" = moveWordForwardAndModifySelection:;
+  "^~H" = moveWordBackwardAndModifySelection:;
+  "~L"  = selectLine:;
+
+  "^0"  = moveToBeginningOfParagraph:;
+  "^~0" = moveToBeginningOfLine:;
+  "^4"  = moveToEndOfParagraph:;
+  "^~4" = moveToEndOfLine:;
+  "^)"  = moveToBeginningOfParagraphAndModifySelection:;
+  "^~)" = moveToBeginningOfLineAndModifySelection:;
+  "^$"  = moveToEndOfParagraphAndModifySelection:;
+  "^~$" = moveToEndOfLineAndModifySelection:;
+
+  "^["  = (moveBackward:,moveToBeginningOfParagraph:);
+  "^]"  = (moveToEndOfParagraph:,moveForward:);
+  "^{"  = (moveBackwardAndModifySelection:,moveToBeginningOfParagraphAndModifySelection:);
+  "^}"  = (moveToEndOfParagraphAndModifySelection:,moveForwardAndModifySelection:);
+
+  "^g"  = { "^g" = moveToBeginningOfDocument:; };
+  "^G"  = moveToEndOfDocument:;
+
+  "^d"  = deleteForward:;
+  "^~d" = deleteWordForward:;
+  "^D"  = deleteToEndOfParagraph:;
+
+  "^m"  = setMark:;
+  "^s"  = selectToMark:;
+  "^x"  = deleteToMark:;
+
+  // cycles through kill ring. yank == paste
+  // defaults write -g NSTextKillRingSize -int 5
+  "^y"  = yank:;
+  "^Y"  = yankAndSelect:;
+
+  "~c"  = capitalizeWord:;
+
+  // Home & Shift-Home
+  "\UF729"  = moveToBeginningOfLine:;
+  "\UF72B"  = moveToEndOfLine:;
+  "$\UF729" = moveToBeginningOfLineAndModifySelection:;
+  "$\UF72B" = moveToEndOfLineAndModifySelection:;
+
+	"^o" = (moveToEndOfParagraph:, insertNewline:);
+	"^O" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
+	// Command-Return & Command-Shift-Return
+	"@\U000D"  = (moveToEndOfParagraph:, insertNewline:);
+	"@$\U000D" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
+
+}

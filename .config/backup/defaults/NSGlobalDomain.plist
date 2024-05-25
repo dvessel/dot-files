@@ -34,10 +34,14 @@
 	<true/>
 	<key>NSQuitAlwaysKeepsWindows</key>
 	<true/>
+	<key>NSQuotedKeystrokeBinding</key>
+	<string>^q</string>
 	<key>NSRepeatCountBinding</key>
 	<string>~r</string>
 	<key>NSTableViewDefaultSizeMode</key>
 	<integer>2</integer>
+	<key>NSTextKillRingSize</key>
+	<integer>5</integer>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>EditEmoji &amp; Symbols</key>
@@ -115,6 +119,8 @@
 		<string>com.apple.sound.beep.feedback</string>
 		<string>AppleReduceDesktopTinting</string>
 		<string>NSRepeatCountBinding</string>
+		<string>NSQuotedKeystrokeBinding</string>
+		<string>NSTextKillRingSize</string>
 	</array>
 	<key>com.apple.sound.beep.feedback</key>
 	<integer>0</integer>
