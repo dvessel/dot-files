@@ -579,7 +579,7 @@
 				<real>0.70213186740875244</real>
 			</dict>
 			<key>Cursor Shadow</key>
-			<true/>
+			<false/>
 			<key>Cursor Text Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1888,7 +1888,7 @@
 				<real>0.70213186740875244</real>
 			</dict>
 			<key>Cursor Shadow</key>
-			<true/>
+			<false/>
 			<key>Cursor Text Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -3201,7 +3201,7 @@
 				<real>0.70213186740875244</real>
 			</dict>
 			<key>Cursor Shadow</key>
-			<true/>
+			<false/>
 			<key>Cursor Text Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -4512,7 +4512,7 @@
 				<real>0.70213186740875244</real>
 			</dict>
 			<key>Cursor Shadow</key>
-			<true/>
+			<false/>
 			<key>Cursor Text Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
