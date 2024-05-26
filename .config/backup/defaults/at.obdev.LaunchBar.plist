@@ -12,11 +12,11 @@
 	<key>ModifierTapInstantSend</key>
 	<integer>23</integer>
 	<key>PasteClipboardHistoryHotKey</key>
-	<string>4352@9</string>
+	<string>2304@9</string>
 	<key>RetypeDelay</key>
 	<real>0.90000000000000002</real>
 	<key>SelectFromClipboardHistoryHotKey</key>
-	<string>4352@4</string>
+	<string>2304@4</string>
 	<key>SettingsIndex</key>
 	<array>
 		<string>ClipboardHistoryIgnoreApplications</string>
@@ -29,7 +29,7 @@
 		<string>ShowItemListAfterDelay</string>
 	</array>
 	<key>ShowClipboardHistoryHotKey</key>
-	<string>4864@4</string>
+	<string>4352@4</string>
 	<key>ShowItemListAfterDelay</key>
 	<integer>0</integer>
 </dict>

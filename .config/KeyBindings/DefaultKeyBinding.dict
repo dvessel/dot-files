@@ -1,74 +1,156 @@
 /*
  * Bypass any bindings for the next keystroke:
- *  defaults write -g NSQuotedKeystrokeBinding -string "^q"
+ *> defaults write -g NSQuotedKeystrokeBinding -string "^q"
  * Repeat count binding:
- *  defaults write -g NSRepeatCountBinding -string "~r"
+ *> defaults write -g NSRepeatCountBinding -string "^r"
  *
  * ^ = control
  * ~ = option, meta equivalent on Emacs.
  * $ = shift
+ * @ = command
  * # = numeric keypad
  */
 
 {
-  "^h"  = moveLeft:;
-  "^j"  = moveDown:;
-  "^k"  = moveUp:;
-  "^l"  = moveRight:;
-  "^~l" = moveWordForward:;
+
+  "^h" = moveBackward:;
+  "^j" = moveDown:;
+  "^k" = moveUp:;
+  "^l" = moveForward:;
+
+  "^H" = moveBackwardAndModifySelection:;
+  "^J" = moveDownAndModifySelection:;
+  "^K" = moveUpAndModifySelection:;
+  "^L" = moveForwardAndModifySelection:;
+
   "^~h" = moveWordBackward:;
-  "^w"  = moveWordForward:;
+  "^~l" = moveWordForward:;
   "^b"  = moveWordBackward:;
-  "^H"  = moveLeftAndModifySelection:;
-  "^J"  = moveDownAndModifySelection:;
-  "^K"  = moveUpAndModifySelection:;
-  "^L"  = moveRightAndModifySelection:;
-  "^~L" = moveWordForwardAndModifySelection:;
+  "^w"  = moveWordForward:;
+
   "^~H" = moveWordBackwardAndModifySelection:;
-  "~L"  = selectLine:;
+  "^~L" = moveWordForwardAndModifySelection:;
+  "^B"  = moveWordBackwardAndModifySelection:;
+  "^W"  = moveWordForwardAndModifySelection:;
 
-  "^0"  = moveToBeginningOfParagraph:;
-  "^~0" = moveToBeginningOfLine:;
-  "^4"  = moveToEndOfParagraph:;
-  "^~4" = moveToEndOfLine:;
-  "^)"  = moveToBeginningOfParagraphAndModifySelection:;
-  "^~)" = moveToBeginningOfLineAndModifySelection:;
-  "^$"  = moveToEndOfParagraphAndModifySelection:;
-  "^~$" = moveToEndOfLineAndModifySelection:;
+  "^0"  = moveToBeginningOfLine:;
+  "^~0" = moveToBeginningOfParagraph:;
+  "^4"  = moveToEndOfLine:;
+  "^~4" = moveToEndOfParagraph:;
 
-  "^["  = (moveBackward:,moveToBeginningOfParagraph:);
-  "^]"  = (moveToEndOfParagraph:,moveForward:);
-  "^{"  = (moveBackwardAndModifySelection:,moveToBeginningOfParagraphAndModifySelection:);
-  "^}"  = (moveToEndOfParagraphAndModifySelection:,moveForwardAndModifySelection:);
+  "^)"  = moveToBeginningOfLineAndModifySelection:;
+  "^~)" = moveToBeginningOfParagraphAndModifySelection:;
+  "^$"  = moveToEndOfLineAndModifySelection:;
+  "^$~" = moveToEndOfParagraphAndModifySelection:;
 
-  "^g"  = { "^g" = moveToBeginningOfDocument:; };
-  "^G"  = moveToEndOfDocument:;
+  "^[" = (
+    moveBackward:,
+    moveToBeginningOfParagraph:
+  );
+  "^]" = (
+    moveToEndOfParagraph:,
+    moveForward:
+  );
+
+  "^{" = (
+    moveBackwardAndModifySelection:,
+    moveToBeginningOfParagraphAndModifySelection:
+  );
+  "^}" = (
+    moveToEndOfParagraphAndModifySelection:,
+    moveForwardAndModifySelection:,
+    moveToEndOfParagraphAndModifySelection:
+  );
 
   "^d"  = deleteForward:;
   "^~d" = deleteWordForward:;
   "^D"  = deleteToEndOfParagraph:;
 
-  "^m"  = setMark:;
-  "^s"  = selectToMark:;
-  "^x"  = deleteToMark:;
+  // cycles through kill ring. requires the folloing defaults:
+  //> defaults write -g NSTextKillRingSize -int 5
+  "^y" = yankAndSelect:;
+  "^Y" = yank:;
 
-  // cycles through kill ring. yank == paste
-  // defaults write -g NSTextKillRingSize -int 5
-  "^y"  = yank:;
-  "^Y"  = yankAndSelect:;
+  // New line after/before paragraph.
+  "^o" = (
+    moveToEndOfParagraph:,
+    insertNewlineIgnoringFieldEditor:
+  );
+  "^O" = (
+    moveToBeginningOfParagraph:,
+    moveBackward:,
+    insertNewlineIgnoringFieldEditor:
+  );
+  // Return: \U000D
+  "@\U000D" = (
+    moveToEndOfParagraph:,
+    insertNewlineIgnoringFieldEditor:
+  );
+  "@$\U000D" = (
+    moveToBeginningOfParagraph:,
+    moveBackward:,
+    insertNewlineIgnoringFieldEditor:
+  );
 
-  "~c"  = capitalizeWord:;
+  "^m" = setMark:;
 
-  // Home & Shift-Home
+  // select
+  "^s" = {
+    "^a" = (
+      setMark:,
+      moveToBeginningOfParagraph:,
+      selectToMark:
+    );
+    "^e" = (
+      setMark:,
+      moveToEndOfParagraph:,
+      selectToMark:
+    );
+    "^l" = selectLine:;
+    "^p" = selectParagraph:;
+    "^k" = noop:;
+    "^m" = selectToMark:;
+  };
+
+  // delete
+  "^x" = {
+    "^a" = (
+      setMark:,
+      moveToBeginningOfParagraph:,
+      deleteToMark:
+    );
+    "^e" = (
+      setMark:,
+      moveToEndOfParagraph:,
+      deleteToMark:
+    );
+    "^l" = (
+      selectLine:,
+      delete:
+    );
+    "^p" = (
+      selectParagraph:,
+      delete:
+    );
+    "^k" = deleteToEndOfParagraph:;
+    "^m" = deleteToMark:;
+  };
+
+  "^g" = {
+    "g" = moveToBeginningOfDocument:;
+    "^g" = (
+      swapWithMark:,
+      centerSelectionInVisibleArea:
+    );
+  };
+  "^G" = moveToEndOfDocument:;
+
+  // Home: \UF729
   "\UF729"  = moveToBeginningOfLine:;
   "\UF72B"  = moveToEndOfLine:;
   "$\UF729" = moveToBeginningOfLineAndModifySelection:;
   "$\UF72B" = moveToEndOfLineAndModifySelection:;
 
-	"^o" = (moveToEndOfParagraph:, insertNewline:);
-	"^O" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
-	// Command-Return & Command-Shift-Return
-	"@\U000D"  = (moveToEndOfParagraph:, insertNewline:);
-	"@$\U000D" = (moveToBeginningOfParagraph:, moveLeft:, insertNewline:);
+  "~c" = capitalizeWord:;
 
 }
