@@ -42,7 +42,7 @@
 			<key>Version</key>
 			<integer>2</integer>
 		</dict>
-		<key>0x30-0x40000-0x1d</key>
+		<key>0x1b-0x40000-0x35</key>
 		<dict>
 			<key>Action</key>
 			<integer>11</integer>
@@ -51,46 +51,7 @@
 			<key>Escaping</key>
 			<integer>2</integer>
 			<key>Text</key>
-			<string>0x01</string>
-			<key>Version</key>
-			<integer>2</integer>
-		</dict>
-		<key>0x34-0x40000-0x15</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Apply Mode</key>
-			<integer>0</integer>
-			<key>Escaping</key>
-			<integer>2</integer>
-			<key>Text</key>
-			<string>0x05</string>
-			<key>Version</key>
-			<integer>2</integer>
-		</dict>
-		<key>0x62-0x40000-0xb</key>
-		<dict>
-			<key>Action</key>
-			<integer>10</integer>
-			<key>Apply Mode</key>
-			<integer>0</integer>
-			<key>Escaping</key>
-			<integer>2</integer>
-			<key>Text</key>
-			<string>b</string>
-			<key>Version</key>
-			<integer>2</integer>
-		</dict>
-		<key>0x77-0x40000-0xd</key>
-		<dict>
-			<key>Action</key>
-			<integer>10</integer>
-			<key>Apply Mode</key>
-			<integer>0</integer>
-			<key>Escaping</key>
-			<integer>2</integer>
-			<key>Text</key>
-			<string>f</string>
+			<string>0x1f</string>
 			<key>Version</key>
 			<integer>2</integer>
 		</dict>
@@ -104,19 +65,6 @@
 			<integer>2</integer>
 			<key>Text</key>
 			<string>0x15</string>
-			<key>Version</key>
-			<integer>2</integer>
-		</dict>
-		<key>0x7f-0x40000-0x33</key>
-		<dict>
-			<key>Action</key>
-			<integer>11</integer>
-			<key>Apply Mode</key>
-			<integer>0</integer>
-			<key>Escaping</key>
-			<integer>2</integer>
-			<key>Text</key>
-			<string>0x1f</string>
 			<key>Version</key>
 			<integer>2</integer>
 		</dict>
