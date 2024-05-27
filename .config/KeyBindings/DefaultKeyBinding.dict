@@ -3,6 +3,8 @@
  *> defaults write -g NSQuotedKeystrokeBinding -string "^q"
  * Repeat count binding:
  *> defaults write -g NSRepeatCountBinding -string "^r"
+ * Cycle through kill ring for yankAndSelect:
+ *> defaults write -g NSTextKillRingSize -int 5
  *
  * ^ = control
  * ~ = option, meta equivalent on Emacs.
@@ -66,8 +68,6 @@
   "^~d" = deleteWordForward:;
   "^D"  = deleteToEndOfParagraph:;
 
-  // cycles through kill ring. requires the folloing defaults:
-  //> defaults write -g NSTextKillRingSize -int 5
   "^y" = yankAndSelect:;
   "^Y" = yank:;
 
