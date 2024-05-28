@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "vim_mode": true,
   "theme": "One Dark",
   "buffer_font_family": "Lilex Nerd Font",
   "ui_font_size": 15,
