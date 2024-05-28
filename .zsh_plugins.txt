@@ -31,8 +31,6 @@ keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
 
 Aloxaf/fzf-tab
-hlissner/zsh-autopair
-# jeffreytse/zsh-vi-mode
-zsh-users/zsh-history-substring-search
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
+jeffreytse/zsh-vi-mode
