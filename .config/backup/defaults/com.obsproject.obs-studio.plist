@@ -4,10 +4,6 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>DocksChat</key>
-		<string>^c</string>
-		<key>DocksStats</key>
-		<string>^s</string>
 		<key>ProfileDefault Scaling - 16:10</key>
 		<string>@2</string>
 		<key>ProfileDefault Scaling - 16:9</key>

@@ -5,25 +5,7 @@
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>ControlsBack</key>
-		<string>^z</string>
-		<key>ControlsNext Track</key>
-		<string>^n</string>
-		<key>ControlsPrevious Track</key>
-		<string>^p</string>
-		<key>SongCreate Station</key>
-		<string>@~s</string>
-		<key>SongDislike</key>
-		<string>^d</string>
-		<key>SongDisliked</key>
-		<string>^d</string>
-		<key>SongLove</key>
-		<string>^l</string>
-		<key>SongLoved</key>
-		<string>^l</string>
-		<key>SongPlay Later</key>
-		<string>@~l</string>
-		<key>SongPlay Next</key>
-		<string>@~n</string>
+		<string>^$z</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

@@ -5,7 +5,7 @@
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>ViewBack</key>
-		<string>^z</string>
+		<string>^$z</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

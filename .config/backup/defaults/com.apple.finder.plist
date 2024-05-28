@@ -118,9 +118,9 @@
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>GoEnclosing Folder</key>
-		<string>^c</string>
-		<key>GoEnclosing Folder in New Window</key>
 		<string>^$c</string>
+		<key>GoEnclosing Folder in New Window</key>
+		<string>~^$c</string>
 		<key>ViewHide Preview Options</key>
 		<string>@~j</string>
 		<key>ViewShow Preview Options</key>

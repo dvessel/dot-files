@@ -47,9 +47,9 @@
 		<key>EditEmoji &amp; Symbols</key>
 		<string>@$e</string>
 		<key>GoBack</key>
-		<string>^z</string>
+		<string>^$z</string>
 		<key>GoForward</key>
-		<string>^x</string>
+		<string>^$x</string>
 		<key>ViewEnter Full Screen</key>
 		<string>@^f</string>
 		<key>ViewExit Full Screen</key>

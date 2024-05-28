@@ -81,16 +81,6 @@
     moveBackward:,
     insertNewlineIgnoringFieldEditor:
   );
-  // Return: \U000D
-  "@\U000D" = (
-    moveToEndOfParagraph:,
-    insertNewlineIgnoringFieldEditor:
-  );
-  "@$\U000D" = (
-    moveToBeginningOfParagraph:,
-    moveBackward:,
-    insertNewlineIgnoringFieldEditor:
-  );
 
   "^m" = setMark:;
 

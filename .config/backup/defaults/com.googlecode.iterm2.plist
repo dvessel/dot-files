@@ -232,10 +232,6 @@
 		<string>@^f</string>
 		<key>WindowMinimize All</key>
 		<string>@~m</string>
-		<key>WindowSelect Next Tab</key>
-		<string>^⇥</string>
-		<key>WindowSelect Previous Tab</key>
-		<string>^$⇥</string>
 	</dict>
 	<key>New Bookmarks</key>
 	<array>
