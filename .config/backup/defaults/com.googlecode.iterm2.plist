@@ -949,7 +949,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>LilexNF-Regular 15 {"featureSettings":[{"CTFeatureSelectorIdentifier":8,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":2,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":4,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":6,"CTFeatureTypeIdentifier":35}]}</string>
+			<string>LilexNF-Regular 15 {"featureSettings":[{"CTFeatureSelectorIdentifier":2,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":6,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":4,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":8,"CTFeatureTypeIdentifier":35}]}</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -3205,7 +3205,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>LilexNF-Regular 15 {"featureSettings":[{"CTFeatureSelectorIdentifier":4,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":6,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":2,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":8,"CTFeatureTypeIdentifier":35}]}</string>
+			<string>LilexNF-Regular 15 {"featureSettings":[{"CTFeatureSelectorIdentifier":8,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":2,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":4,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":6,"CTFeatureTypeIdentifier":35}]}</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -4333,7 +4333,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>LilexNF-Regular 15 {"featureSettings":[{"CTFeatureSelectorIdentifier":6,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":4,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":8,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":2,"CTFeatureTypeIdentifier":35}]}</string>
+			<string>LilexNF-Regular 15 {"featureSettings":[{"CTFeatureSelectorIdentifier":8,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":4,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":2,"CTFeatureTypeIdentifier":35},{"CTFeatureSelectorIdentifier":6,"CTFeatureTypeIdentifier":35}]}</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
