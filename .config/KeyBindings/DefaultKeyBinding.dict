@@ -1,19 +1,43 @@
 /*
  * Bypass any bindings for the next keystroke:
- *> defaults write -g NSQuotedKeystrokeBinding -string "^q"
- * Repeat count binding:
- *> defaults write -g NSRepeatCountBinding -string "^r"
+ * > defaults write -g NSQuotedKeystrokeBinding -string "^q"
+ * Repeat binding, ^r + number will repeat next input x number of times:
+ * > defaults write -g NSRepeatCountBinding -string "^r"
  * Cycle through kill ring for yankAndSelect:
- *> defaults write -g NSTextKillRingSize -int 5
+ * > defaults write -g NSTextKillRingSize -int 5
  *
  * ^ = control
- * ~ = option, meta equivalent on Emacs.
- * $ = shift
+ * ~ = option
  * @ = command
- * # = numeric keypad
+ *
+ * Existing keybinds:
+ * ^z : Go->Back
+ * ^x : Go->Forward
+ * ^c : App Specific. Avoid ^~c as well.
+ * ^Q : Window->Move Window to Left Side of Screen
+ * ^W : Window->Move Window to Right Side of Screen
+ * ^E : Window->Revert
+ * ^Z : Window->Zoom
+ * ^~Z: Window->Zoom All
+ * ^M : Window->Minimize
+ * ^~M: Window->Minimize All
+ * ^R : Window->Remove Window from Set
+ * ^1 : Switch to Desktop 1
+ * ^2 : Switch to Desktop 2, increments with added spaces.
+ * ^3 : Show Desktop
+ * ^! : Move left a Space
+ * ^@ : Move right a Space
+ * ^# : Show Notification Center
+ * ^S : Turn Stage Manager on/off
  */
 
 {
+
+  // Home:\UF729, End:\UF72B
+  "\UF729" = moveToBeginningOfLine:;
+  "\UF72B" = moveToEndOfLine:;
+  "$\UF729"= moveToBeginningOfLineAndModifySelection:;
+  "$\UF72B"= moveToEndOfLineAndModifySelection:;
 
   "^h" = moveBackward:;
   "^j" = moveDown:;
@@ -25,25 +49,31 @@
   "^K" = moveUpAndModifySelection:;
   "^L" = moveForwardAndModifySelection:;
 
-  "^~h" = moveWordBackward:;
-  "^~l" = moveWordForward:;
-  "^b"  = moveWordBackward:;
-  "^w"  = moveWordForward:;
+  "^~h"= moveWordBackward:;
+  "^~l"= moveWordForward:;
+  "^b" = moveWordBackward:;
+  "^e" = moveWordForward:;
+  "^w" = (
+    moveWordForward:,
+    moveWordForward:,
+    moveWordBackward:
+  );
 
-  "^~H" = moveWordBackwardAndModifySelection:;
-  "^~L" = moveWordForwardAndModifySelection:;
-  "^B"  = moveWordBackwardAndModifySelection:;
-  "^W"  = moveWordForwardAndModifySelection:;
+  "^~H"= moveWordBackwardAndModifySelection:;
+  "^~L"= moveWordForwardAndModifySelection:;
+  "^B" = moveWordBackwardAndModifySelection:;
+  "^E" = noop:; // Window->Revert
+  "^W" = noop:; // Window->Move Window to Right Side of Screen
 
-  "^0"  = moveToBeginningOfLine:;
-  "^~0" = moveToBeginningOfParagraph:;
-  "^4"  = moveToEndOfLine:;
-  "^~4" = moveToEndOfParagraph:;
+  "^0" = moveToBeginningOfLine:;
+  "^~0"= moveToBeginningOfParagraph:;
+  "^4" = moveToEndOfLine:;
+  "^~4"= moveToEndOfParagraph:;
 
-  "^)"  = moveToBeginningOfLineAndModifySelection:;
-  "^~)" = moveToBeginningOfParagraphAndModifySelection:;
-  "^$"  = moveToEndOfLineAndModifySelection:;
-  "^$~" = moveToEndOfParagraphAndModifySelection:;
+  "^)" = moveToBeginningOfLineAndModifySelection:;
+  "^~)"= moveToBeginningOfParagraphAndModifySelection:;
+  "^$" = moveToEndOfLineAndModifySelection:;
+  "^$~"= moveToEndOfParagraphAndModifySelection:;
 
   "^[" = (
     moveBackward:,
@@ -64,12 +94,18 @@
     moveToEndOfParagraphAndModifySelection:
   );
 
-  "^d"  = deleteForward:;
-  "^~d" = deleteWordForward:;
-  "^D"  = deleteToEndOfParagraph:;
-
   "^y" = yankAndSelect:;
   "^Y" = yank:;
+  "^m" = setMark:;
+
+  "^g" = {
+    "^g" = moveToBeginningOfDocument:;
+    "^m" = (
+      swapWithMark:,
+      centerSelectionInVisibleArea:
+    );
+  };
+  "^G" = moveToEndOfDocument:;
 
   // New line after/before paragraph.
   "^o" = (
@@ -82,10 +118,51 @@
     insertNewlineIgnoringFieldEditor:
   );
 
-  "^m" = setMark:;
+  // delete
+  "^~d"= deleteWordForward:;
+  "^D" = deleteForward:;
+  "^d" = {
+    "^g" = (
+      setMark:,
+      moveToBeginningOfDocument:,
+      deleteToMark:
+    );
+    "^G" = (
+      setMark:,
+      moveToEndOfDocument:,
+      deleteToMark:
+    );
+    "^a" = deleteToBeginningOfParagraph:;
+    "^e" = deleteToEndOfParagraph:;
+    "^d" = (
+      selectLine:,
+      delete:
+    );
+    "^p" = (
+      selectParagraph:,
+      delete:
+    );
+    "^w" = (
+      selectWord:,
+      delete:
+    );
+    "^k" = deleteToEndOfParagraph:;
+    "^m" = deleteToMark:;
+    "^l" = noop:;
+  };
 
   // select
   "^s" = {
+    "^g" = (
+      setMark:,
+      moveToBeginningOfDocument:,
+      selectToMark:
+    );
+    "^G" = (
+      setMark:,
+      moveToEndOfDocument:,
+      selectToMark:
+    );
     "^a" = (
       setMark:,
       moveToBeginningOfParagraph:,
@@ -98,49 +175,9 @@
     );
     "^l" = selectLine:;
     "^p" = selectParagraph:;
-    "^k" = noop:;
+    "^w" = selectWord:;
     "^m" = selectToMark:;
+    "^k" = noop:;
   };
-
-  // delete
-  "^x" = {
-    "^a" = (
-      setMark:,
-      moveToBeginningOfParagraph:,
-      deleteToMark:
-    );
-    "^e" = (
-      setMark:,
-      moveToEndOfParagraph:,
-      deleteToMark:
-    );
-    "^l" = (
-      selectLine:,
-      delete:
-    );
-    "^p" = (
-      selectParagraph:,
-      delete:
-    );
-    "^k" = deleteToEndOfParagraph:;
-    "^m" = deleteToMark:;
-  };
-
-  "^g" = {
-    "g" = moveToBeginningOfDocument:;
-    "^g" = (
-      swapWithMark:,
-      centerSelectionInVisibleArea:
-    );
-  };
-  "^G" = moveToEndOfDocument:;
-
-  // Home: \UF729
-  "\UF729"  = moveToBeginningOfLine:;
-  "\UF72B"  = moveToEndOfLine:;
-  "$\UF729" = moveToBeginningOfLineAndModifySelection:;
-  "$\UF72B" = moveToEndOfLineAndModifySelection:;
-
-  "~c" = capitalizeWord:;
 
 }

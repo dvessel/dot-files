@@ -47,9 +47,9 @@
 		<key>EditEmoji &amp; Symbols</key>
 		<string>@$e</string>
 		<key>GoBack</key>
-		<string>^$z</string>
+		<string>^z</string>
 		<key>GoForward</key>
-		<string>^$x</string>
+		<string>^x</string>
 		<key>ViewEnter Full Screen</key>
 		<string>@^f</string>
 		<key>ViewExit Full Screen</key>
@@ -63,35 +63,33 @@
 		<key>WindowMerge All Windows</key>
 		<string>@^m</string>
 		<key>WindowMinimize</key>
-		<string>~^m</string>
+		<string>^$m</string>
 		<key>WindowMinimize All</key>
 		<string>~^$m</string>
 		<key>WindowMove Tab to New Window</key>
 		<string>@^t</string>
 		<key>WindowMove Window to Left Side of Screen</key>
-		<string>~^q</string>
+		<string>^$q</string>
 		<key>WindowMove Window to Right Side of Screen</key>
-		<string>~^w</string>
+		<string>^$w</string>
 		<key>WindowRemove Window from Set</key>
-		<string>~^r</string>
+		<string>^$r</string>
 		<key>WindowReplace Tiled Window</key>
 		<string>@^r</string>
 		<key>WindowRevert</key>
-		<string>~^e</string>
+		<string>^$e</string>
 		<key>WindowTile Window to Left of Screen</key>
 		<string>@^q</string>
 		<key>WindowTile Window to Right of Screen</key>
 		<string>@^w</string>
 		<key>WindowZoom</key>
-		<string>~^z</string>
+		<string>^$z</string>
 		<key>WindowZoom All</key>
 		<string>~^$z</string>
 		<key>Hide Others</key>
 		<string>@~$h</string>
 		<key>Lock Screen</key>
 		<string>@$</string>
-		<key>System Settings…</key>
-		<string>@~,</string>
 	</dict>
 	<key>NSWindowResizeTime</key>
 	<real>0.065000000000000002</real>
