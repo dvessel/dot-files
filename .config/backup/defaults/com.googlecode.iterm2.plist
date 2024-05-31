@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AddUtilitiesToPATH</key>
-	<false/>
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AlternateMouseScroll</key>
@@ -4770,7 +4768,6 @@
 		<string>New Bookmarks</string>
 		<string>DisableAdaptiveFrameRateInInteractiveApps</string>
 		<string>MetalRedrawPeriod</string>
-		<string>AddUtilitiesToPATH</string>
 		<string>MetalDeferCurrentDrawable</string>
 		<string>UseExperimentalFontMetrics</string>
 		<string>AlternateMouseScroll</string>
