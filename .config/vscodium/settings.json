@@ -6,7 +6,7 @@
   "editor.cursorSurroundingLines": 7,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "Lilex Nerd Font",
-  "editor.fontLigatures": "'calt', 'cv08', 'cv09', 'cv11', 'ss01', 'ss02', 'ss03'",
+  "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.wordWrapColumn": 120,
   "[xml]": {
