@@ -4,6 +4,7 @@
 # Dot files not to track.
 .cache
 .CFUserTextEncoding
+.codeium
 .colima
 .conda
 .config/vscodium/globalStorage
