@@ -24,7 +24,6 @@
  * ^R : Window->Remove Window from Set
  * ^1 : Switch to Desktop 1
  * ^2 : Switch to Desktop 2, increments with added spaces.
- * ^3 : Show Desktop
  * ^! : Move left a Space
  * ^@ : Move right a Space
  * ^# : Show Notification Center

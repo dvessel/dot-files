@@ -645,7 +645,7 @@
 				<array>
 					<integer>65535</integer>
 					<integer>53</integer>
-					<integer>1310720</integer>
+					<integer>393216</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1213,9 +1213,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>51</integer>
-					<integer>20</integer>
-					<integer>262144</integer>
+					<integer>96</integer>
+					<integer>50</integer>
+					<integer>393216</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1224,13 +1224,13 @@
 		<key>37</key>
 		<dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>51</integer>
-					<integer>20</integer>
+					<integer>92</integer>
+					<integer>42</integer>
 					<integer>393216</integer>
 				</array>
 				<key>type</key>
