@@ -45,6 +45,7 @@
 .Trash
 .viminfo
 .vscode*
+.wget-hsts
 .zsh_history
 .zsh_plugins.zsh
 .zsh_sessions
