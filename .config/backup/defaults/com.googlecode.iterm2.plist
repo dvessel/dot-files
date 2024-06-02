@@ -222,8 +222,6 @@
 		<string>@i</string>
 		<key>ShellNew Tab with Current Profile</key>
 		<string>@t</string>
-		<key>ShellPrintScreen</key>
-		<string>@^p</string>
 		<key>ViewShow Composer</key>
 		<string>@/</string>
 		<key>ViewToggle Full Screen</key>
