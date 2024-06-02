@@ -1,41 +1,41 @@
-send_escape = false
-last_mods = {}
+SEND_ESC = false
+LAST_MOD = {}
 
-control_key_handler = function()
-	send_escape = false
+CTRL_KEY_HANDLER = function()
+	SEND_ESC = false
 end
 
-control_key_timer = hs.timer.delayed.new(0.15, control_key_handler)
+CTRL_KEY_TIMER = hs.timer.delayed.new(0.15, CTRL_KEY_HANDLER)
 
-control_handler = function(evt)
-	local new_mods = evt:getFlags()
+CTRL_HANDLER = function(evt)
+	local new_mod = evt:getFlags()
 
-	if last_mods["ctrl"] == new_mods["ctrl"] then
+	if LAST_MOD["ctrl"] == new_mod["ctrl"] then
 		return false
 	end
 
-	if not last_mods["ctrl"] then
-		last_mods = new_mods
-		send_escape = true
-		control_key_timer:start()
+	if not LAST_MOD["ctrl"] then
+		LAST_MOD = new_mod
+		SEND_ESC = true
+		CTRL_KEY_TIMER:start()
 	else
-		if send_escape then
+		if SEND_ESC then
 			keyUpDown({}, "escape")
 		end
-		last_mods = new_mods
-		control_key_timer:stop()
+		LAST_MOD = new_mod
+		CTRL_KEY_TIMER:stop()
 	end
 
 	return false
 end
 
-control_tap = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, control_handler)
-control_tap:start()
+CTRL_TAP = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, CTRL_HANDLER)
+CTRL_TAP:start()
 
-other_handler = function(evt)
-	send_escape = false
+OTHER_HANDLER = function(evt)
+	SEND_ESC = false
 	return false
 end
 
-other_tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, other_handler)
-other_tap:start()
+OTHER_TAP = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, OTHER_HANDLER)
+OTHER_TAP:start()
