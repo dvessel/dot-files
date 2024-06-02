@@ -11,10 +11,11 @@ if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
 fi
 alias lcut='/Applications/LosslessCut.app/Contents/MacOS/LosslessCut'
 
-alias sync-emulation='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
+alias sync-980-emulation='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
   ~/Games/Emulation /Volumes/980Pro'
-alias sync-mame-storage='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
+alias sync-storage-mame='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
   ~/Games/Support/OpenEmu/AdvanceScan/_{unknown,import/_updates} /Volumes/Storage/Emulation/MAME'
-alias sync-storage-remote='rsync -avzL --delete --progress -h --exclude=.DS_Store\
+alias sync-local='sync-980-emulation && sync-storage-mame'
+alias sync-storage-to-remote='rsync -avzL --delete --progress -h --exclude=.DS_Store\
   /Volumes/Storage/* dvessel-ds.local:/volume1/storage'
-alias sync-all='sync-emulation && sync-mame-storage && sync-storage-remote'
+alias sync-all='sync-local && sync-storage-to-remote'
