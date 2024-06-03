@@ -84,11 +84,8 @@ if [[ ! -f $names.txt ]]; then
 fi
 
 local lsdesc state
-if [[ $src == --formula ]]; then
-  state=`/bin/ls $( brew --cellar ) | md5`
-elif [[ $src == --cask ]]; then
-  state=`/bin/ls $( brew --caskroom ) | md5`
-fi
+state=`printf "%s%s" "$names.$0:t-new-*(N)" \
+  "$(/bin/ls $(brew ${${src/--formula/--cellar}/--cask/--caskroom}))" | md5`
 
 if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
   if (( $cmds_any[(I)$opts[1]] )); then
