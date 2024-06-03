@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-# Selects keymap 'emacs' for any operations by the current command, and also links
-# emacs to main so that it is selected by default.
-bindkey -e
-
 # Case insensitive autocomplete and globbing.
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt no_case_glob
