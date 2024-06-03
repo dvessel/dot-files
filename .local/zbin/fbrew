@@ -7,6 +7,10 @@ _brew_check fzf || return 1
 # Either formula or cask. defaults to formula.
 local src=${argv[( $argv[(i)--cask] )]:---formula}
 
+function src.print {
+  print -- ${${src/--formula/$1}/--cask/$2}
+}
+
 # Set up possible first parameter commands.
 local cmds_any=(
   install info uses deps desc fetch cleanup options home homepage log
@@ -48,13 +52,8 @@ else
 fi
 
 local names descs
-if [[ $src == --formula ]]; then
-  names=`brew --cache`/api/formula_names
-  descs=`brew --cache`/descriptions.json
-elif [[ $src == --cask ]]; then
-  names=`brew --cache`/api/cask_names
-  descs=`brew --cache`/cask_descriptions.json
-fi
+names=`brew --cache`/api/`src.print formula_names cask_names`
+descs=`brew --cache`/`src.print descriptions cask_descriptions`.json
 
 local fzf_list
 if (( $cmds_installed[(I)$opts[1]] )); then
@@ -85,18 +84,15 @@ fi
 
 local lsdesc state
 state=`printf "%s%s" "$names.$0:t-new-*(N)" \
-  "$(/bin/ls $(brew ${${src/--formula/--cellar}/--cask/--caskroom}))" | md5`
+  "$(/bin/ls $(brew $(src.print --cellar --caskroom)))" | md5`
 
 if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
   if (( $cmds_any[(I)$opts[1]] )); then
 
     typeset -a reqs deps
+    reqs=( `brew ls $(src.print --installed-on-request --cask)` )
     if [[ $src == --formula ]]; then
-      reqs=( `brew ls --installed-on-request` )
       deps=( `brew ls --installed-as-dependency` )
-    elif [[ $src == --cask ]]; then
-      reqs=( `brew ls --cask` )
-      deps=()
     fi
 
     typeset -a new
@@ -124,15 +120,11 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
   elif (( $cmds_installed[(I)$opts[1]] )); then
 
     local filter
-    if [[ $src == --formula ]]; then
-      filter=( `brew ls --installed-on-request` )
-    elif [[ $src == --cask ]]; then
-      filter=( `brew ls --cask` )
-    fi
+    filter=( `brew ls $(src.print --installed-on-request --cask)` )
 
     if [[ ${#filter} > 0 ]]; then
       lsdesc=`printf "==> Installed %s\n%s\n" \
-        "${${src/--formula/Formulae}/--cask/Casks}" \
+        "$(src.print Formulae Casks)" \
         "$(brew desc $src $filter[@])"`
       printf "%s\n%s\n" $state $lsdesc > $fzf_list
     else
