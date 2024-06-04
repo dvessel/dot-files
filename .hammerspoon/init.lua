@@ -1,4 +1,4 @@
-hs.ipc.cliInstall()
+require('hs.ipc')
 
 local keyUpDown = function(modifiers, key)
   hs.eventtap.keyStroke(modifiers, key, 0)
