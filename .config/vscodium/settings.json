@@ -50,6 +50,7 @@
   "terminal.integrated.lineHeight": 1.2,
   "window.autoDetectColorScheme": true,
   "window.closeWhenEmpty": true,
+  "window.customTitleBarVisibility": "windowed",
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "on",
   "window.openWithoutArgumentsInNewWindow": "on",
@@ -63,6 +64,7 @@
     "scrollbarSlider.background": "#00000028"
   },
   "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.showTabs": "single",
   "workbench.editor.tabActionLocation": "left",
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "eq-material-theme-icons",
