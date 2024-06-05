@@ -1,41 +1,37 @@
 require('hs.ipc')
-
-local keyUpDown = function(modifiers, key)
-  hs.eventtap.keyStroke(modifiers, key, 0)
-end
 hs.loadSpoon('EmmyLua')
 
 -- tap ctrl to send escape
 
-local send_esc = false
-local last_mod = {}
-local ctrl_key_timer = hs.timer.delayed.new(0.20, function()
-  send_esc = false
+local sendEsc = false
+local lastMod = {}
+CtrlKeyTimer = hs.timer.delayed.new(0.20, function()
+  sendEsc = false
 end)
 
-hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, function(evt)
-  local new_mod = evt:getFlags()
+CtrlTap = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, function(evt)
+  local newMod = evt:getFlags()
 
-  if last_mod["ctrl"] == new_mod["ctrl"] then
+  if lastMod["ctrl"] == newMod["ctrl"] then
     return false
   end
 
-  if not last_mod["ctrl"] then
-    last_mod = new_mod
-    send_esc = true
-    ctrl_key_timer:start()
+  if not lastMod["ctrl"] then
+    lastMod = newMod
+    sendEsc = true
+    CtrlKeyTimer:start()
   else
-    if send_esc then
-      keyUpDown({}, "escape")
+    if sendEsc then
+      hs.eventtap.keyStroke({}, "escape", 0)
     end
-    last_mod = new_mod
-    ctrl_key_timer:stop()
+    lastMod = newMod
+    CtrlKeyTimer:stop()
   end
 
   return false
 end):start()
 
-hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function()
-  send_esc = false
+OtherTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function()
+  sendEsc = false
   return false
 end):start()
