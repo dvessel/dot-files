@@ -36,6 +36,9 @@
   "git.openRepositoryInParentFolders": "never",
   "github.gitProtocol": "ssh",
   "intelephense.telemetry.enabled": false,
+  "Lua.workspace.library": [
+    "/Users/joon/.hammerspoon/Spoons/EmmyLua.spoon/annotations"
+  ],
   "markdown.preview.fontSize": 15,
   "partialDiff.enableTelemetry": false,
   "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",

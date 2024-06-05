@@ -3,6 +3,7 @@ require('hs.ipc')
 local keyUpDown = function(modifiers, key)
   hs.eventtap.keyStroke(modifiers, key, 0)
 end
+hs.loadSpoon('EmmyLua')
 
 -- tap ctrl to send escape
 
