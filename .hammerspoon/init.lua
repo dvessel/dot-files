@@ -5,6 +5,7 @@ hs.loadSpoon('EmmyLua')
 
 local sendEsc = false
 local lastMod = {}
+
 CtrlKeyTimer = hs.timer.delayed.new(0.20, function()
   sendEsc = false
 end)
