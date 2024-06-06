@@ -11,16 +11,25 @@
 
 # $1 exit status
 function s.help {
-  print -rC1 -- \
-  "backup,restore,list,delete   Required action." \
-  "-a,--all                     Acts on all keys/domains from existing backups." \
-  "-s,--search                  Search for keys in active settings. -k is required." \
-  "                             Use to list/save keys not previously backed-up." \
-  "-k,--key <setting>           Settings key to act on." \
-  "-d,--domain <domain>         Target a domain, e.g., com.apple.finder." \
-  "-g,-globalDomain             Global domain. Conflicts with -d." \
-  "-p,--path <path>             Defaults to ~/.config/backup/defaults." \
-  "-h,--help                    Show help text."
+  cat <<- -----
+backup,restore,list,delete   Required action.
+-a,--all                     Acts on all keys/domains from existing backups.
+-s,--search <setting>        Search for matching keys in active settings.
+                             Use to list/save keys not previously backed-up.
+-g,-globalDomain             Global domain. Conflicts with -d.
+-d,--domain <domain>         Target a domain, e.g., com.apple.finder. The flag
+                             is optional. Domain can be positional just like the
+                             defaults command.
+-k,--key <setting>           Settings key to act on. The flag is optional. The
+                             settings key can be positional just like the
+                             defaults command. It is only required when omitting
+                             the domain.
+-p,--path <path>             Defaults to ~/.config/backup/defaults.
+-h,--help                    Show help text.
+
+Full Disk Access required for the terminal to access preferences outside of the
+default prefrences folder.
+-----
   exit $1
 }
 
@@ -63,7 +72,7 @@ function op.backup {
 # $3 output 1 = domain or 2 = key
 function op.restore {
   if ! s.sourceDomainExists $1; then
-    print "? $1 - `s.error restore target does not exist!`" >&2
+    print "? $1 - `s.warn restore target does not exist!`" >&2
     return 1
   fi
 
@@ -95,14 +104,9 @@ function op.delete {
 
 # $1 domain
 # $2 key
+# $3 output 1 = domain or 2 = key
 function op.list {
-  print "  $2"
-}
-
-# $1 domain
-# $2 key
-function op.listDomain {
-  print "  $1"
+  print "  $@[$3]"
 }
 
 # $1 domain
@@ -134,7 +138,7 @@ function s.getBackupDomains {
 
 function s.header {
   # Uppercase first character.
-  print "\e[1;30m${(C)1::1}${1:1}\e[0m"
+  printf "\e[1;30m%s\e[0m\n" "${(C)1::1}${1:1}"
 }
 function s.error {
   printf "\e[0;31m%s\e[0m" "${(j[ ])@}"
@@ -150,59 +154,73 @@ function {
   local op key domain search all help errmsg
   typeset -g bdpath
 
-  # Zsh 5.8 required for -F option (exit on invalid flag).
   zmodload zsh/zutil
   zparseopts -D -E -F - \
     {a,-all}=all \
-    {s,-search}=search \
-    {k:,-key:}=key \
+    {s,-search}:=search \
     {g,globalDomain,d:,-domain:}=domain \
+    {k,-key}+:=key \
     {p,-path}:=bdpath \
     {h,-help}=help || s.help 1
 
-  if [[ ${#@[@]} > 0 ]]; then
-    op=$1; shift 1
+  if [[ ${#@} > 0 ]]; then
+    op=$1; shift
+  fi
+  if [[ -n $search ]]; then
+    search=$search[-1]
+  fi
+  # TODO: Handle multiple domains and keys.
+  if [[ -n $domain ]]; then
+    domain=${(@)domain:#(-d|--domain)}
+  elif [[ ${#@} > 0 ]]; then
+    domain=$1; shift
+  fi
+  if [[ -n $key ]]; then
+    key=( "${(@)key:#(-k|--key)}" )
+  elif [[ ${@} > 0 ]]; then
+    key=$1; shift
   fi
 
   [[ -n $help ]] && s.help
 
   [[ $op != (backup|restore|list|delete) ]] && errmsg+=(
-    "Required action was omitted."
+    "`s.error Required action was omitted.`"
   )
-  [[ $op == (backup|restore|delete) && ! -n $key$domain$all ]] && errmsg+=(
-    "$op requires a key, domain or the -a flag."
-  )
-  [[ -n $search && -z $key ]] && errmsg+=(
-    "Search requires a key."
+  [[ $op == (backup|restore|delete) && ! -n $key$domain$all$search ]] && errmsg+=(
+    "`s.error $op requires a domain, key or --all.`"
   )
   [[ -n $search && $op == (restore|delete) ]] && errmsg+=(
-    "Cannot $op with search! Omit the $search flag."
+    "`s.error Cannot $op with search.`"
   )
   [[ $op == list && -n $domain && -n $key ]] && errmsg+=(
-    "Cannot list with $domain[1] and $key[1] !"
+    "`s.error Cannot list with $domain and $key!`"
   )
-  [[ ${#domain[@]} > 2 ]] && errmsg+=(
-    "Conflicting domains: $domain"
+  [[ -n $domain && -n $all ]] && errmsg+=(
+    "`s.error $all conflicts with domain: $domain`"
   )
-  [[ ${#@[@]} > 0 ]] && errmsg+=(
-    "Unknown arguments: $@"
+  [[ ${#@} > 0 ]] && errmsg+=(
+    "`s.error Unknown arguments: $@`"
   )
 
   bdpath=${bdpath[-1]:-~/.config/backup/defaults}
   if [[ ! -d $bdpath ]]; then
     case $op in
-      backup)               mkdir -p $bdpath                              ;;
-      restore|list|delete)  errmsg+=("No backups found in path: $bdpath") ;;
+      backup)               mkdir -p $bdpath ;;
+      restore|list|delete)  errmsg+=("`s.error No backups found in path: $bdpath`") ;;
     esac
   fi
 
   if [[ -n $errmsg ]]; then
-    printf " %s\n" $errmsg >&2
+    printf "%s\n" $errmsg
     s.help 1
   fi
 
-  domain=${domain[-1]/-(globalDomain|g)/NSGlobalDomain}
-  # Domains are case sensitive. Check when possible. Ignore otherwise.
+  if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null ; then
+    s.warn This script requires your terminal app to have Full Disk Access.
+  fi
+
+  domain=${domain/-(globalDomain|g)/NSGlobalDomain}
+  # Domains are case sensitive. Correct when possible. Ignore otherwise.
   if test ! -z $domain && s.sourceDomainExists $domain; then
     if [[ $domain != `print $defaultsDomains | grep -ix $domain` ]]; then
       domain=`print $defaultsDomains | grep -ix $domain`
@@ -212,54 +230,47 @@ function {
 
   if [[ -n $search ]]; then
 
-    s.header "Searching active domains for $key:"
+    s.header "Searching active domains for $search:"
     # [backup|list] from search.
-    op=${op/list/listDomain}
     while read -r l; do
       if [[ $l =~ "^Found [0-9]+ keys in domain '([^']*)': {$" ]]; then
         _mdomain=${match[1]//Apple Global Domain/NSGlobalDomain}
         # domain filtering. Is case insensitive.
         if [[ -z $domain || $_mdomain:l == $domain:l ]]; then
-          m=m
+          _matchhold=1
         fi
-      # If previously matched a domain, verify it's for the right key.
-      elif [[ -n $m && $l =~ "^\"?$key[-1]\"? =" ]]; then
-        op.$op $_mdomain $key[-1] 1
-        unset m
+      # If previously matched a domain, verify it's for the right search key.
+      elif [[ -n $_matchhold && $l =~ "^\"?$search\"? =" ]]; then
+        op.$op $_mdomain $search 1
+        unset _matchhold
       fi
-    done < <( defaults find $key[-1] )
+    done < <( defaults find $search )
 
   else
-
-    # list all domains for a given key.
-    if [[ $op == list && -n $key ]]; then
+    # [backup|restore|list|delete] specific key across all backed up domains.
+    if [[ -z $domain && -n $key ]]; then
       s.header "$op domains for $key:"
       while read -r d; do
-        ! s.backupKeyExists $d $key[-1] ||
-          op.listDomain $d
+        ! s.backupKeyExists $d $key || op.$op $d $key 1
       done < <( s.getBackupDomains )
 
-    # [backup|restore|delete] a specific key for specific domain.
-    elif [[ -n $domain && -n $key ]]; then
-      s.header "$op $key[-1] for $domain:"
-      op.$op $domain $key[-1] 2
-
     else
-    # [backup|restore|list|delete] from saved keys. One filter allowed.
-    # - filter by domain - applies to all keys within a domain.
-    # - filter by key    - applies to a key across all domains.
+    # [backup|restore|list|delete]
+    # - specific key in specific domain when --domain and --key is set.
+    # - all keys within a domain when --domain is set but --key is not.
+    # - all keys across all domains when --all is set.
       while read -r d; do
         while read -r k; do
-          if [[ -z $domain || $domain == $d ]] &&
-             [[ -z $key || $key[-1] == $k ]];
-          then
-            if [[ -z $h ]] && h=h; then
-              s.header "$op ${key[-1]:-keys} for $d:"
-            fi
-            op.$op $d $k 2
+          if [[ -n $domain && $domain != $d || -n $key && $key != $k ]]; then
+            continue
           fi
+          if [[ -z $_headeremitted ]]; then
+            s.header "$op $d:"
+            _headeremitted=1
+          fi
+          op.$op $d $k 2
         done < <( s.getSettingsIndex $d )
-        unset h
+        unset _headeremitted
       done < <( [[ -n $domain ]] && print $domain || s.getBackupDomains )
 
     fi
