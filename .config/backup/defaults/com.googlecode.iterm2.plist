@@ -10,6 +10,8 @@
 	<real>1.25</real>
 	<key>CheckTestRelease</key>
 	<true/>
+	<key>ClickToSelectCommand</key>
+	<false/>
 	<key>DimInactiveSplitPanes</key>
 	<true/>
 	<key>DisableAdaptiveFrameRateInInteractiveApps</key>
@@ -4790,6 +4792,7 @@
 		<string>DimInactiveSplitPanes</string>
 		<string>SplitPaneDimmingAmount</string>
 		<string>GlobalKeyMap</string>
+		<string>ClickToSelectCommand</string>
 	</array>
 	<key>ShowPaneTitles</key>
 	<false/>
