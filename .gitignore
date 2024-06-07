@@ -16,7 +16,9 @@
 # Moved to dvessel/kickstart.nvim.
 .config/nvim
 .config/zed/.*
+.config/zed/conversations
 .config/zed/embeddings
+.config/zed/prompts
 .cups
 .ddev
 .diffusionbee
