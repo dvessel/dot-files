@@ -12,23 +12,22 @@
 # $1 exit status
 function s.help {
   cat <<- -----
-backup,restore,list,delete   Required action.
--a,--all                     Acts on all keys/domains from existing backups.
--s,--search <setting>        Search for matching keys in active settings.
-                             Use to list/save keys not previously backed-up.
--g,-globalDomain             Global domain. Conflicts with -d.
--d,--domain <domain>         Target a domain, e.g., com.apple.finder. The flag
-                             is optional. Domain can be positional just like the
-                             defaults command.
--k,--key <setting>           Settings key to act on. The flag is optional. The
-                             settings key can be positional just like the
-                             defaults command. It is only required when omitting
-                             the domain.
--p,--path <path>             Defaults to ~/.config/backup/defaults.
--h,--help                    Show help text.
+backup,restore,list,delete  Manage defaults backups. Required action.
+-a,--all                    Acts on all keys/domains from existing backups.
+-s,--search <setting>       Search for matching keys in active settings.
+                            Use to list/save keys not previously backed-up.
+-g,-globalDomain            Global domain. Conflicts with -d.
+-d,--domain <domain>        Target a domain, e.g., com.apple.finder. The flag
+                            is optional. Domain can be positional just like the
+                            defaults command.
+-k,--key <setting>          Settings key to act on. The flag is optional. The
+                            settings key can be positional just like the
+                            defaults command. It is only required when omitting
+                            the domain.
+-p,--path <path>            Defaults to ~/.config/backup/defaults.
+-h,--help                   Show help text.
 
-Full Disk Access required for the terminal to access preferences outside of the
-default prefrences folder.
+Full Disk Access required for the terminal to access preferences in containers.
 -----
   exit $1
 }
@@ -154,7 +153,6 @@ function {
   local op key domain search all help errmsg
   typeset -g bdpath
 
-  zmodload zsh/zutil
   zparseopts -D -E -F - \
     {a,-all}=all \
     {s,-search}:=search \
@@ -169,7 +167,6 @@ function {
   if [[ -n $search ]]; then
     search=$search[-1]
   fi
-  # TODO: Handle multiple domains and keys.
   if [[ -n $domain ]]; then
     domain=${(@)domain:#(-d|--domain)}
   elif [[ ${#@} > 0 ]]; then
@@ -181,7 +178,9 @@ function {
     key=$1; shift
   fi
 
-  [[ -n $help ]] && s.help
+  if [[ -n $help ]]; then
+    s.help
+  fi
 
   [[ $op != (backup|restore|list|delete) ]] && errmsg+=(
     "`s.error Required action was omitted.`"
@@ -220,7 +219,7 @@ function {
   fi
 
   domain=${domain/-(globalDomain|g)/NSGlobalDomain}
-  # Domains are case sensitive. Correct when possible. Ignore otherwise.
+  # Domains are case sensitive. Correct when possible.
   if test ! -z $domain && s.sourceDomainExists $domain; then
     if [[ $domain != `print $defaultsDomains | grep -ix $domain` ]]; then
       domain=`print $defaultsDomains | grep -ix $domain`
@@ -247,32 +246,32 @@ function {
     done < <( defaults find $search )
 
   else
-    # [backup|restore|list|delete] specific key across all backed up domains.
-    if [[ -z $domain && -n $key ]]; then
-      s.header "$op domains for $key:"
-      while read -r d; do
-        ! s.backupKeyExists $d $key || op.$op $d $key 1
-      done < <( s.getBackupDomains )
-
-    else
     # [backup|restore|list|delete]
+    # - specific key across all domains when --key is set but --domain is not.
     # - specific key in specific domain when --domain and --key is set.
     # - all keys within a domain when --domain is set but --key is not.
     # - all keys across all domains when --all is set.
-      while read -r d; do
-        while read -r k; do
-          if [[ -n $domain && $domain != $d || -n $key && $key != $k ]]; then
-            continue
-          fi
-          if [[ -z $_headeremitted ]]; then
-            s.header "$op $d:"
-            _headeremitted=1
-          fi
-          op.$op $d $k 2
-        done < <( s.getSettingsIndex $d )
-        unset _headeremitted
-      done < <( [[ -n $domain ]] && print $domain || s.getBackupDomains )
+    while read -r d; do
+      while read -r k; do
+        if [[ -n $domain && $domain != $d || -n $key && $key != $k ]]; then
+          continue
+        fi
 
-    fi
+        if [[ -n $key ]]; then
+          test -z $_heademitted && s.header "$op domains for $key:"
+          # list by domain.
+          op.$op $d $k 1
+        else
+          test -z $_heademitted && s.header "$op $d:"
+          # list by key.
+          op.$op $d $k 2
+        fi
+        _heademitted=1
+
+      done < <( s.getSettingsIndex $d )
+      test -z $key && unset _heademitted
+
+    done < <( [[ -n $domain ]] && print $domain || s.getBackupDomains )
+
   fi
 } $@
