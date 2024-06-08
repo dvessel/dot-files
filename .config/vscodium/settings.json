@@ -1,4 +1,7 @@
 {
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
   "diffEditor.experimental.showMoves": true,
   "editor.accessibilitySupport": "off",
   "editor.cursorBlinking": "phase",
@@ -8,26 +11,25 @@
   "editor.fontFamily": "Lilex Nerd Font",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
-  "editor.wordWrapColumn": 120,
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
+  "editor.minimap.enabled": false,
   "editor.minimap.showSlider": "always",
   "editor.occurrencesHighlight": "off",
   "editor.padding.bottom": 10,
   "editor.padding.top": 10,
   "editor.quickSuggestionsDelay": 200,
   "editor.renderLineHighlight": "all",
-  "editor.rulers": [72, 80, 120],
+  "editor.rulers": [
+    72,
+    80,
+    120
+  ],
   "editor.scrollbar.horizontal": "visible",
   "editor.scrollbar.horizontalScrollbarSize": 4,
   "editor.scrollbar.verticalScrollbarSize": 10,
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
-  "editor.unicodeHighlight.allowedCharacters": {
-    "❯": true
-  },
+  "editor.wordWrapColumn": 120,
   "explorer.excludeGitIgnore": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -44,16 +46,15 @@
   "python.analysis.nodeExecutable": "/opt/homebrew/bin/node",
   "redhat.telemetry.enabled": false,
   "security.promptForLocalFileProtocolHandling": false,
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
   "telemetry.telemetryLevel": "off",
   "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorWidth": 2,
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.lineHeight": 1.2,
   "window.autoDetectColorScheme": true,
   "window.closeWhenEmpty": true,
-  "window.customTitleBarVisibility": "windowed",
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "on",
   "window.openWithoutArgumentsInNewWindow": "on",
@@ -64,7 +65,8 @@
     "editorIndentGuide.activeBackground1": "#ff000030",
     "editorIndentGuide.background1": "#00000001",
     "editorRuler.foreground": "#66666628",
-    "scrollbarSlider.background": "#00000028"
+    "scrollbarSlider.background": "#00000028",
+    "terminalCursor.foreground": "#ff0000"
   },
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.showTabs": "single",
@@ -75,6 +77,5 @@
   "workbench.preferredDarkColorTheme": "Mono Atom",
   "workbench.preferredLightColorTheme": "Github Light Theme",
   "workbench.startupEditor": "newUntitledFile",
-  "xml.server.workDir": "~/.cache/lemminx",
-  "editor.minimap.enabled": false
+  "xml.server.workDir": "~/.cache/lemminx"
 }
