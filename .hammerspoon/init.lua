@@ -23,7 +23,16 @@ CtrlTap = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, function(evt
     CtrlKeyTimer:start()
   else
     if sendEsc then
-      hs.eventtap.keyStroke({}, "escape", 0)
+      if lastMod["cmd"] then
+      elseif lastMod["shift"] and lastMod["alt"] then
+        hs.eventtap.keyStroke({"shift", "alt"}, "escape", 0)
+      elseif lastMod["shift"] then
+        hs.eventtap.keyStroke({"shift"}, "escape", 0)
+      elseif lastMod["alt"] then
+        hs.eventtap.keyStroke({"alt"}, "escape", 0)
+      else
+        hs.eventtap.keyStroke({}, "escape", 0)
+      end
     end
     lastMod = newMod
     CtrlKeyTimer:stop()
