@@ -95,7 +95,7 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
       deps=( `brew ls --installed-as-dependency` )
     fi
 
-    typeset -a new
+    typeset -aU new
     for f in $names.$0:t-new-*.txt(N); new+=( `cat $f` )
 
     # this works around regex capture limits in sed. limit each loop to 100 names.
