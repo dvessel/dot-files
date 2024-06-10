@@ -35,12 +35,14 @@ CtrlTap = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged }, function(eve
 
   return false
 end):start()
+hs.loadSpoon("ReloadConfiguration")
 
 -- cancel tap escape for other keys
 OtherTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function()
   sendEsc = false
   return false
 end):start()
+spoon.ReloadConfiguration:start()
 
 -- window switcher
 Switcher = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true), {
