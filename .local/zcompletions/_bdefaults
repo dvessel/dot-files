@@ -1,14 +1,95 @@
 #compdef bdefaults
+# parts taken from /usr/share/zsh/5.9/functions/_defaults
 
-local arguments=(
-  "1:command:(backup restore list delete)" \
-  {-a,--all}'[acts on all keys/domains from existing backups.]'
-  {-s,--search}'[search for keys in active settings. -k is required.]'
-  {-k,--key}'[settings key to act on.]'
-  {-d,--domain}'[target a domain, e.g., com.apple.finder.]'
-  {-g,-globalDomain}'[global domain. Conflicts with -d.]'
-  {-p,--path}'[defaults to ~/.config/backup/defaults.]'
-  {-h,--help}'[show help.]'
-)
+_defaults_domains(){
+  if [[ "`eval echo $PREFIX`" != [/~]* ]]; then
+    local str="$(_call_program domains defaults domains 2>/dev/null)"
+    local expl
+    local -a list
+    list=( ${(s/, /)str} -g -globalDomain )
+    _wanted domains expl 'defaults database domain' \
+	compadd -M 'r:|.=* r:|=*' -a list
+  else
+    _files -g '*.plist(-.:r)'
+  fi
+}
 
-_arguments -s $arguments
+_defaults_keys(){
+  local ks
+  ks=(${${${${(M)${(f)"$(defaults read "$words[2]" 2>/dev/null)"}:#    [^ ]*=*}#    }%% = *}:Q})
+  local expl
+  _wanted keys expl 'key' compadd "$ks[@]"
+}
+
+# TODO: this should list backed up domains.\
+_bdefaults_domains(){
+  if [[ "`eval echo $PREFIX`" != [/~]* ]]; then
+    local str="$(_call_program domains defaults domains 2>/dev/null)"
+    local expl
+    local -a list
+    list=( ${(s/, /)str} -g -globalDomain )
+    _wanted domains expl 'defaults database domain' \
+	compadd -M 'r:|.=* r:|=*' -a list
+  fi
+}
+
+# TODO: this should list backed up keys.
+_bdefaults_keys(){
+  local ks
+  ks=(${${${${(M)${(f)"$(defaults read "$words[2]" 2>/dev/null)"}:#    [^ ]*=*}#    }%% = *}:Q})
+  local expl
+  _wanted keys expl 'key' compadd "$ks[@]"
+}
+
+_bdefaults(){
+  local -a _1st_arguments
+  _1st_arguments=( backup restore list delete )
+
+  local curcontext="$curcontext" state line expl
+  typeset -A opt_args
+
+  _arguments -C -A '-*' \
+    '(-currentHost)-host:host:_hosts' \
+    '(-host)-currentHost' \
+    '*::command:->subcmd' && return 0
+
+  if (( CURRENT == 1 )); then
+    _describe -t commands "command" _1st_arguments
+    return
+  fi
+
+  case $words[1] in
+    backup)
+    # list domains and keys from active settings.
+      _arguments \
+        "(1)-app:application:_mac_applications" \
+        "(-app)1:domain:_defaults_domains" \
+        "2:key:_defaults_keys"
+      ;;
+    list|restore|delete)
+    # list domains and keys from backed up settings.
+      _arguments \
+        "(1)-app:application:_mac_applications" \
+        "(-app)1:domain:_bdefaults_domains" \
+        "2:key:_bdefaults_keys"
+      ;;
+    *)
+      _message "unknown bdefaults command: $words[1]"
+      ;;
+  esac
+}
+
+_bdefaults "$@"
+
+# local arguments=(
+#   "1:command:(backup restore list delete)" \
+#   {-a,--all}'[acts on all keys/domains from existing backups.]'
+#   {-s,--search}'[search for keys in active settings. -k is required.]'
+#   {-k,--key}'[settings key to act on.]'
+#   {-d,--domain}'[target a domain, e.g., com.apple.finder.]'
+#   {-g,-globalDomain}'[global domain. Conflicts with -d.]'
+#   {-p,--path}'[defaults to ~/.config/backup/defaults.]'
+#   {-h,--help}'[show help.]'
+# )
+
+# _arguments -s $arguments
