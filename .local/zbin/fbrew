@@ -4,14 +4,12 @@ set -e
 
 _brew_check fzf || return 1
 
-# Either formula or cask. defaults to formula.
-local src=${argv[( $argv[(i)--cask] )]:---formula}
-
 function src.print {
   print -- ${${src/--formula/$1}/--cask/$2}
 }
 
-# Set up possible first parameter commands.
+local src=${argv[( $argv[(i)--cask] )]:---formula}
+
 local cmds_any=(
   install info uses deps desc fetch cleanup options home homepage log
   audit cat formula livecheck style unbottled unpack
@@ -22,7 +20,7 @@ local cmds_installed=(
   --prefix --cellar --cache
 )
 local cmds=( $cmds_any $cmds_installed )
-# Commands incompatible with casks.
+
 local cask_incompatible=(
   link ln unlink gist-logs migrate missing options bottle formula linkage test
   pin unpin unbottled unpack --prefix --cellar
@@ -35,14 +33,10 @@ local no_multi=( log gist-logs migrate )
 
 local opts
 if (( $cmds[(I)$1] )); then
-  # First argument is valid, pass in all of it.
   opts=( $@ )
 elif [[ $1 == (--formula|--cask) && -z ${(@)argv:*cmds} || -z $@ ]]; then
-  # First argument is --formula or --cask or no arguments.
-  # Add default info command.
   opts=( info $@ )
 elif [[ -n ${(@)argv:*cmds} ]]; then
-  # Wrong order.
   printf "Did you mean \`%s\`?\n" "${(@)argv:*cmds} $src" >&2
   return 1
 else
