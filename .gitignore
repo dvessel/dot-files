@@ -36,6 +36,7 @@
 .mutagen
 .ngrok2
 .npm
+.ollama
 .python_history
 .sqlite_history
 .ssh
