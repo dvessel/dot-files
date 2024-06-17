@@ -44,8 +44,10 @@
 .thumbnails
 .tldrc
 .Trash
+.twinny
 .viminfo
 .vscode*
+.webui_secret_key
 .wget-hsts
 .zsh_history
 .zsh_plugins.zsh
