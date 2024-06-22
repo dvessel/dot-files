@@ -72,7 +72,7 @@ if [[ -f $names.$0:t-before.txt && -f $names.txt ]]; then
   # clear new entries older than 3 days.
   for f in $names.$0:t-new-*.txt(Nm+3); rm $f
 fi
-if [[ ! -f $names.txt ]]; then
+if [[ -f $names.txt ]]; then
   cp -f $names.txt $names.$0:t-before.txt
 fi
 
