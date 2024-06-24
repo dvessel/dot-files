@@ -9,7 +9,7 @@
 		<string>bluetoothPrefsShareDoublePressSystemGestureMode</string>
 	</array>
 	<key>bluetoothPrefsMenuLongPressAction</key>
-	<integer>0</integer>
+	<false/>
 	<key>bluetoothPrefsShareDoublePressSystemGestureMode</key>
 	<integer>-1</integer>
 	<key>bluetoothPrefsShareLongPressSystemGestureMode</key>
