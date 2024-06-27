@@ -21,7 +21,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{615, 453}, {825, 398}}</string>
+			<string>{{569, 411}, {918, 462}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -85,7 +85,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{615, 453}, {825, 398}}</string>
+			<string>{{569, 411}, {918, 462}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -145,23 +145,19 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{615, 453}, {825, 398}}</string>
+			<string>{{569, 411}, {918, 462}}</string>
 		</dict>
 	</dict>
 	<key>NewWindowTarget</key>
 	<string>PfHm</string>
 	<key>NewWindowTargetPath</key>
 	<string>file:///Users/joon/</string>
-	<key>PreviewPaneWidth</key>
-	<real>275</real>
 	<key>SettingsIndex</key>
 	<array>
 		<string>ComputerViewSettings</string>
 		<string>DesktopViewSettings</string>
 		<string>NetworkViewSettings</string>
 		<string>NSUserKeyEquivalents</string>
-		<string>PreviewPaneWidth</string>
-		<string>SidebarWidth</string>
 		<string>StandardViewOptions</string>
 		<string>ICloudViewSettings</string>
 		<string>NSToolbar Configuration Browser</string>
@@ -178,8 +174,6 @@
 	</array>
 	<key>ShowMountedServersOnDesktop</key>
 	<true/>
-	<key>SidebarWidth</key>
-	<real>275</real>
 	<key>StandardViewOptions</key>
 	<dict>
 		<key>ColumnViewOptions</key>
@@ -191,7 +185,7 @@
 			<key>ColumnShowIcons</key>
 			<true/>
 			<key>ColumnWidth</key>
-			<integer>275</integer>
+			<integer>306</integer>
 			<key>FontSize</key>
 			<integer>13</integer>
 			<key>PreviewDisclosureState</key>
