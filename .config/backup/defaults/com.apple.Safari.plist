@@ -4,8 +4,6 @@
 <dict>
 	<key>AutoOpenSafeDownloads</key>
 	<false/>
-	<key>DefaultPageZoom</key>
-	<real>1.1499999999999999</real>
 	<key>EnableEnhancedPrivacyInRegularBrowsing</key>
 	<true/>
 	<key>EnableNarrowTabs</key>
@@ -70,7 +68,6 @@
 		<string>TabCreationPolicy</string>
 		<string>ShowStandaloneTabBar</string>
 		<string>SearchProviderShortName</string>
-		<string>DefaultPageZoom</string>
 		<string>AutoOpenSafeDownloads</string>
 		<string>EnableEnhancedPrivacyInRegularBrowsing</string>
 		<string>EnableNarrowTabs</string>
