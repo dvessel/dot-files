@@ -99,6 +99,9 @@ function op.delete {
     print "!!$@[$3] - `s.error backup key does not exist!`" >&2
     return 1
   fi
+  if [[ -z `s.getSettingsIndex $1` ]]; then
+    rm $bdpath/$1.plist
+  fi
 }
 
 # $1 domain
