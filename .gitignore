@@ -13,10 +13,6 @@
 .config/iterm2
 .config/litecli/history
 .config/litecli/log
-.config/zed/.*
-.config/zed/conversations
-.config/zed/embeddings
-.config/zed/prompts
 .cups
 .ddev
 .diffusionbee
