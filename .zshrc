@@ -18,6 +18,12 @@ fi
 if type antidote &>/dev/null; then
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   ANTIDOTE_HOME=~/.cache/antidote
+  # mattmc3/zephyr plugins:zfunctions
+  ZFUNCDIR=~/.local/zfunctions
+  # dvessel/zsh-completion-generator
+  GENCOMPL_FPATH=~/.local/zcompletions
+  # mattmc3/zephyr plugins:zman
+  ZMAN_URL=https://zsh-manual.netlify.app
   antidote load
 else
   # Normally handled by antidote plugin:
