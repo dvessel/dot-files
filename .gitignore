@@ -7,13 +7,13 @@
 .codeium
 .colima
 .conda
+.config/iterm2
+.config/litecli/history
+.config/litecli/log
 .config/nvim/lazy-lock.json
 .config/vscodium/globalStorage
 .config/vscodium/History
 .config/vscodium/workspaceStorage
-.config/iterm2
-.config/litecli/history
-.config/litecli/log
 .cups
 .ddev
 .diffusionbee
