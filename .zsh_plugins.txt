@@ -13,7 +13,7 @@
 # Example: https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
 
 # With antidote, using Zephyr's completion plugin is recommended. This plugin is meant
-# to be run near the TOP of your .zsh_plugins.txt file. Includes zsh-users/zsh-completions.
+# to be run near the TOP of your .zsh_plugins.txt file.
 mattmc3/zephyr path:plugins/completion
 
 # Path set to .zsh-theme since it will source multiple otherwise.
