@@ -5,7 +5,6 @@
 .cache
 .CFUserTextEncoding
 .codeium
-.colima
 .conda
 .config/iterm2
 .config/litecli/history
@@ -14,14 +13,9 @@
 .config/vscodium/globalStorage
 .config/vscodium/History
 .config/vscodium/workspaceStorage
-.cups
-.ddev
 .diffusionbee
-.docker
 .ipython
 .jupyter
-.lesshst
-.lima
 .local/bin
 .local/include
 .local/lib
@@ -30,12 +24,9 @@
 # CrossOver .mailcap, .mime.types
 .mailcap
 .mime.types
-.mutagen
 .ngrok2
 .npm
 .ollama
-.python_history
-.sqlite_history
 .ssh
 .swiftpm
 .thumbnails
