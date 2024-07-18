@@ -16,6 +16,7 @@
 .diffusionbee
 .ipython
 .jupyter
+.lesshst
 .local/bin
 .local/include
 .local/lib
