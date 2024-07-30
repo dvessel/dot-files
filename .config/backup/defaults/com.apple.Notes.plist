@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ICMGlobalZoomFactorIndexKey</key>
-	<integer>2</integer>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>FileLock Note</key>
@@ -22,7 +20,6 @@
 	<key>SettingsIndex</key>
 	<array>
 		<string>NSUserKeyEquivalents</string>
-		<string>ICMGlobalZoomFactorIndexKey</string>
 	</array>
 </dict>
 </plist>

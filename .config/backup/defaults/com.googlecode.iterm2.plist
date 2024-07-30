@@ -947,7 +947,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>LilexNF-Regular 15</string>
+			<string>LilexNF-Regular 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -1153,7 +1153,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>LilexNF-Regular 15</string>
+					<string>LilexNF-Regular 14</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -1186,7 +1186,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1209,7 +1209,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1240,7 +1240,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -1275,7 +1275,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2075,7 +2075,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>LilexNF-Regular 24</string>
+			<string>LilexNF-Regular 21</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -2283,7 +2283,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>LilexNF-Regular 24</string>
+					<string>LilexNF-Regular 18</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -2316,7 +2316,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 24</string>
+								<string>LilexNF-Regular 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2339,7 +2339,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 24</string>
+								<string>LilexNF-Regular 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2370,7 +2370,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 24</string>
+								<string>LilexNF-Regular 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -2405,7 +2405,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 24</string>
+								<string>LilexNF-Regular 18</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3205,7 +3205,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>LilexNF-Regular 15</string>
+			<string>LilexNF-Regular 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -3411,7 +3411,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>LilexNF-Regular 15</string>
+					<string>LilexNF-Regular 14</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -3444,7 +3444,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3467,7 +3467,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3498,7 +3498,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -3533,7 +3533,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -4333,7 +4333,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>LilexNF-Regular 15</string>
+			<string>LilexNF-Regular 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -4539,7 +4539,7 @@
 					<key>auto-rainbow style</key>
 					<integer>0</integer>
 					<key>font</key>
-					<string>LilexNF-Regular 15</string>
+					<string>LilexNF-Regular 14</string>
 					<key>remove empty components</key>
 					<true/>
 				</dict>
@@ -4572,7 +4572,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -4595,7 +4595,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -4626,7 +4626,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>
@@ -4661,7 +4661,7 @@
 								<key>auto-rainbow style</key>
 								<integer>0</integer>
 								<key>font</key>
-								<string>LilexNF-Regular 15</string>
+								<string>LilexNF-Regular 14</string>
 								<key>remove empty components</key>
 								<true/>
 							</dict>

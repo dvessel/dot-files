@@ -4,12 +4,8 @@
 <dict>
 	<key>NSFixedPitchFont</key>
 	<string>IMWritingMonoNF-Regular</string>
-	<key>NSFixedPitchFontSize</key>
-	<string>16</string>
 	<key>NSFont</key>
 	<string>IMWritingDuoNFP-Regular</string>
-	<key>NSFontSize</key>
-	<string>16</string>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>MessageSend</key>
@@ -18,8 +14,6 @@
 	<key>SettingsIndex</key>
 	<array>
 		<string>NSUserKeyEquivalents</string>
-		<string>NSFixedPitchFontSize</string>
-		<string>NSFontSize</string>
 		<string>NSFixedPitchFont</string>
 		<string>NSFont</string>
 	</array>

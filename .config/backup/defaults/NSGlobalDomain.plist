@@ -39,7 +39,7 @@
 	<key>NSRepeatCountBinding</key>
 	<string>^r</string>
 	<key>NSTableViewDefaultSizeMode</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>NSTextKillRingSize</key>
 	<integer>5</integer>
 	<key>NSUserKeyEquivalents</key>
