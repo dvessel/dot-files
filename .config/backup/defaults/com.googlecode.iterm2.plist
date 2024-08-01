@@ -705,7 +705,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>86</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -843,7 +843,7 @@
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<real>0.88</real>
 			<key>HotKey Activated By Modifier</key>
 			<false/>
 			<key>HotKey Alternate Shortcuts</key>
@@ -1833,7 +1833,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>86</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -1971,7 +1971,7 @@
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<real>0.90000000000000002</real>
 			<key>HotKey Activated By Modifier</key>
 			<false/>
 			<key>HotKey Alternate Shortcuts</key>
@@ -2963,7 +2963,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>86</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -3101,7 +3101,7 @@
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<real>0.88</real>
 			<key>HotKey Activated By Modifier</key>
 			<false/>
 			<key>HotKey Alternate Shortcuts</key>
@@ -4091,7 +4091,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>86</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -4229,7 +4229,7 @@
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<real>0.88</real>
 			<key>HotKey Activated By Modifier</key>
 			<true/>
 			<key>HotKey Alternate Shortcuts</key>
