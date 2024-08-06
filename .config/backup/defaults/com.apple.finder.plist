@@ -210,7 +210,7 @@
 		<key>ExtendedListViewSettingsV2</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
@@ -389,7 +389,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -405,7 +405,7 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>80</real>
+			<real>36</real>
 			<key>labelOnBottom</key>
 			<false/>
 			<key>showIconPreview</key>
@@ -413,14 +413,14 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>viewOptionsVersion</key>
 			<string>1</string>
 		</dict>
 		<key>ListViewSettings</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
