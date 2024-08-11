@@ -20,6 +20,8 @@ brew "git-delta"
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -40,11 +42,17 @@ brew "switchaudio-osx"
 brew "tag"
 # Log file highlighter
 brew "tailspin"
+# Feature-rich console based todo list manager
+brew "task"
 # Developer targeted fonts with a high number of glyphs
 cask "font-im-writing-nerd-font"
 # Developer targeted fonts with a high number of glyphs
 cask "font-lilex-nerd-font"
+# Desktop automation application
+cask "hammerspoon"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Minimal installer for conda
 cask "miniconda"
+# Binary releases of VS Code without MS branding/telemetry/licensing
+cask "vscodium"
