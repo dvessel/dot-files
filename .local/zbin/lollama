@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-local cmd=${1:-run} supported_cmd=( show run cp rm )
+local cmd=${1:-run} supported_cmd=( show run pull cp rm )
 
 if (( $supported_cmd[(I)$cmd] )); then
   if [[ -n $1 ]]; then
