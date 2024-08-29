@@ -15,6 +15,7 @@
 .config/vscodium/workspaceStorage
 .diffusionbee
 .ipython
+.jan
 .jupyter
 .lesshst
 .local/bin
