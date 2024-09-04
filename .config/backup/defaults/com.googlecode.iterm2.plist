@@ -705,7 +705,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>86</integer>
+			<integer>80</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -965,7 +965,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
-			<integer>32</integer>
+			<integer>30</integer>
 			<key>Screen</key>
 			<integer>-2</integer>
 			<key>Scrollback Lines</key>
@@ -1833,7 +1833,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>86</integer>
+			<integer>80</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -2095,7 +2095,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
-			<integer>32</integer>
+			<integer>30</integer>
 			<key>Screen</key>
 			<integer>-2</integer>
 			<key>Scrollback Lines</key>
@@ -2963,7 +2963,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>86</integer>
+			<integer>80</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -3223,7 +3223,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
-			<integer>32</integer>
+			<integer>30</integer>
 			<key>Screen</key>
 			<integer>-2</integer>
 			<key>Scrollback Lines</key>
@@ -4091,7 +4091,7 @@
 			<key>Close Sessions On End</key>
 			<integer>1</integer>
 			<key>Columns</key>
-			<integer>86</integer>
+			<integer>80</integer>
 			<key>Command</key>
 			<string>/bin/zsh -l</string>
 			<key>Cursor Boost (Dark)</key>
@@ -4351,7 +4351,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
-			<integer>32</integer>
+			<integer>30</integer>
 			<key>Screen</key>
 			<integer>-2</integer>
 			<key>Scrollback Lines</key>
