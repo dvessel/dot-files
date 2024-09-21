@@ -63,7 +63,6 @@
 		<string>WebKitPreferences.privateClickMeasurementEnabled</string>
 		<string>WebKitPreferences.tabFocusesLinks</string>
 		<string>WebKitTabToLinksPreferenceKey</string>
-		<string>WebsiteSpecificSearchEnabled</string>
 	</array>
 	<key>ShowStandaloneTabBar</key>
 	<false/>
@@ -75,7 +74,5 @@
 	<true/>
 	<key>WebKitTabToLinksPreferenceKey</key>
 	<true/>
-	<key>WebsiteSpecificSearchEnabled</key>
-	<false/>
 </dict>
 </plist>
