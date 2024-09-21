@@ -101,7 +101,7 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
       (( $n < $maxcount )) || maxcount=$n
     done
 
-    lsdesc=`brew desc $src --eval-all --search ".+"`
+    lsdesc=`brew desc $src --eval-all --name "/.+/"`
     repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`; do
       # ${xyz//\+/\\\\+} used to escape '+' which can be part of the name.
       lsdesc=`print -- $lsdesc | \

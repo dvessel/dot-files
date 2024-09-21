@@ -11,7 +11,7 @@ if (( $supported_cmd[(I)$cmd] )); then
     ollama list |
     sort |
     fzf --prompt="❯ ollama $cmd " --header-lines=1 $( [[ $cmd == rm ]] && printf --multi ) |
-    cut -f1
+    cut -d ' ' -f1
   ))
 
   if [[ -n $model ]]; then
