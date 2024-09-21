@@ -22,34 +22,20 @@
 		<string>^c</string>
 		<key>ViewHide Reader</key>
 		<string>~ </string>
-		<key>ViewReload and Hide IP Address</key>
-		<string>@$r</string>
-		<key>ViewReload and Show IP Address</key>
-		<string>@$r</string>
 		<key>ViewShow Reader</key>
 		<string>~ </string>
-		<key>ViewTranslationTranslate to English</key>
-		<string>@~l</string>
-		<key>ViewTranslationView Original</key>
-		<string>@~o</string>
-		<key>WindowDuplicate Tab</key>
-		<string>@d</string>
 		<key>WindowMute Other Tab</key>
 		<string>@~,</string>
 		<key>WindowMute Other Tabs</key>
 		<string>@~,</string>
 		<key>WindowMute This Tab</key>
 		<string>@~m</string>
-		<key>WindowPin Tab</key>
-		<string>@$p</string>
 		<key>WindowUnmute Other Tab</key>
 		<string>@~,</string>
 		<key>WindowUnmute Other Tabs</key>
 		<string>@~,</string>
 		<key>WindowUnmute This Tab</key>
 		<string>@~m</string>
-		<key>WindowUnpin Tab</key>
-		<string>@$p</string>
 	</dict>
 	<key>OpenNewTabsInFront</key>
 	<false/>
