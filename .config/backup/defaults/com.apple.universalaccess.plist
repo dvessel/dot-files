@@ -4,12 +4,28 @@
 <dict>
 	<key>FontSizeCategory</key>
 	<dict>
+		<key>com.apple.MobileSMS</key>
+		<string>UseGlobal</string>
+		<key>com.apple.Notes</key>
+		<string>UseGlobal</string>
 		<key>com.apple.finder</key>
 		<string>Custom</string>
+		<key>com.apple.iBooksX</key>
+		<string>UseGlobal</string>
+		<key>com.apple.iCal</key>
+		<string>UseGlobal</string>
+		<key>com.apple.mail</key>
+		<string>UseGlobal</string>
+		<key>com.apple.news</key>
+		<string>UseGlobal</string>
+		<key>com.apple.stocks</key>
+		<string>UseGlobal</string>
+		<key>com.apple.weather</key>
+		<string>UseGlobal</string>
 		<key>global</key>
-		<string>DEFAULT</string>
+		<string>L</string>
 		<key>version</key>
-		<string>2.0</string>
+		<string>3.0</string>
 	</dict>
 	<key>SettingsIndex</key>
 	<array>

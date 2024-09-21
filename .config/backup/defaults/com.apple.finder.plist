@@ -21,7 +21,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{451, 340}, {825, 416}}</string>
+			<string>{{615, 444}, {825, 416}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -33,7 +33,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>11</real>
+			<real>13</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -49,7 +49,7 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>36</real>
+			<real>40</real>
 			<key>labelOnBottom</key>
 			<false/>
 			<key>showIconPreview</key>
@@ -57,15 +57,13 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>11</real>
+			<real>13</real>
 			<key>viewOptionsVersion</key>
 			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>FXDefaultSearchScope</key>
 	<string>SCcf</string>
-	<key>FXEnableRemoveFromICloudDriveWarning</key>
-	<false/>
 	<key>FinderSpawnTab</key>
 	<false/>
 	<key>FontSizeCategory</key>
@@ -85,7 +83,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{451, 340}, {825, 416}}</string>
+			<string>{{615, 444}, {825, 416}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -146,7 +144,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{451, 340}, {825, 416}}</string>
+			<string>{{615, 444}, {825, 416}}</string>
 		</dict>
 	</dict>
 	<key>NewWindowTarget</key>
@@ -167,7 +165,6 @@
 		<string>NewWindowTargetPath</string>
 		<string>NewWindowTarget</string>
 		<string>FinderSpawnTab</string>
-		<string>FXEnableRemoveFromICloudDriveWarning</string>
 		<string>FXDefaultSearchScope</string>
 		<string>FontSizeCategory</string>
 		<string>StandardViewSettings</string>
@@ -188,7 +185,7 @@
 			<key>ColumnWidth</key>
 			<integer>275</integer>
 			<key>FontSize</key>
-			<integer>12</integer>
+			<real>13</real>
 			<key>PreviewDisclosureState</key>
 			<true/>
 			<key>SharedArrangeBy</key>
@@ -211,7 +208,7 @@
 		<key>ExtendedListViewSettingsV2</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
@@ -368,7 +365,7 @@
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>useRelativeDates</key>
 			<true/>
 			<key>viewOptionsVersion</key>
@@ -390,7 +387,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -406,7 +403,7 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>36</real>
+			<real>40</real>
 			<key>labelOnBottom</key>
 			<false/>
 			<key>showIconPreview</key>
@@ -414,14 +411,14 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>viewOptionsVersion</key>
 			<string>1</string>
 		</dict>
 		<key>ListViewSettings</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
@@ -537,7 +534,7 @@
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>useRelativeDates</key>
 			<true/>
 			<key>viewOptionsVersion</key>

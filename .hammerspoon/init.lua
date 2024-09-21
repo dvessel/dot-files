@@ -14,7 +14,7 @@ local uiPrefs = {
   highlightColor = {0.5, 0.5, 0.5, 0.5},
   showSelectedThumbnail = false,
   textColor = {1, 1, 1},
-  textSize = 12,
+  textSize = 14,
   thumbnailSize = 128,
   titleBackgroundColor = {alpha=0},
 }
