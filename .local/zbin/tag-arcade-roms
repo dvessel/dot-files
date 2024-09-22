@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+_brew_check tag libxmlb || return 1
+
 function main {
   zparseopts -D -E -F - \
     {v,-version}:=version \
