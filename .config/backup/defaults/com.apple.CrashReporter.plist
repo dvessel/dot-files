@@ -10,6 +10,6 @@
 		<string>UseUNC</string>
 	</array>
 	<key>UseUNC</key>
-	<integer>1</integer>
+	<true/>
 </dict>
 </plist>
