@@ -44,6 +44,8 @@ brew "tag"
 brew "tailspin"
 # Feature-rich console based todo list manager
 brew "task"
+# Internet file retriever
+brew "wget"
 # Developer targeted fonts with a high number of glyphs
 cask "font-im-writing-nerd-font"
 # Developer targeted fonts with a high number of glyphs
