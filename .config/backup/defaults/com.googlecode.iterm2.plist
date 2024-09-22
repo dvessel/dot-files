@@ -228,8 +228,6 @@
 		<string>@/</string>
 		<key>ViewToggle Full Screen</key>
 		<string>@^f</string>
-		<key>WindowMinimize All</key>
-		<string>@~m</string>
 	</dict>
 	<key>New Bookmarks</key>
 	<array>
