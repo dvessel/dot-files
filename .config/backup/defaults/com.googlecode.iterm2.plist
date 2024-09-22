@@ -4749,7 +4749,7 @@
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing_modern.xml?shard=89</string>
+	<string>https://iterm2.com/appcasts/testing_modern.xml?shard=1</string>
 	<key>SaveProfilesToRecentDocuments</key>
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>
