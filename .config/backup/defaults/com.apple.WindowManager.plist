@@ -6,6 +6,8 @@
 	<integer>0</integer>
 	<key>EnableStandardClickToShowDesktop</key>
 	<true/>
+	<key>EnableTiledWindowMargins</key>
+	<false/>
 	<key>HideDesktop</key>
 	<false/>
 	<key>SettingsIndex</key>
@@ -14,6 +16,7 @@
 		<string>StandardHideDesktopIcons</string>
 		<string>AppWindowGroupingBehavior</string>
 		<string>EnableStandardClickToShowDesktop</string>
+		<string>EnableTiledWindowMargins</string>
 	</array>
 	<key>StandardHideDesktopIcons</key>
 	<false/>
