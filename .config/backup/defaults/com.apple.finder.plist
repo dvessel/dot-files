@@ -185,7 +185,7 @@
 			<key>ColumnWidth</key>
 			<integer>275</integer>
 			<key>FontSize</key>
-			<real>13</real>
+			<integer>13</integer>
 			<key>PreviewDisclosureState</key>
 			<true/>
 			<key>SharedArrangeBy</key>
@@ -208,7 +208,7 @@
 		<key>ExtendedListViewSettingsV2</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
@@ -365,7 +365,7 @@
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>useRelativeDates</key>
 			<true/>
 			<key>viewOptionsVersion</key>
@@ -387,7 +387,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -411,14 +411,14 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>viewOptionsVersion</key>
 			<string>1</string>
 		</dict>
 		<key>ListViewSettings</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
@@ -534,7 +534,7 @@
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>useRelativeDates</key>
 			<true/>
 			<key>viewOptionsVersion</key>
