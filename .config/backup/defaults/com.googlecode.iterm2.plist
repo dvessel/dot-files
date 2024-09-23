@@ -1256,7 +1256,7 @@
 								<key>base: priority</key>
 								<real>0.0</real>
 								<key>format</key>
-								<string>M.d k:m</string>
+								<string>M.dd H:mm</string>
 								<key>localize</key>
 								<integer>0</integer>
 								<key>maxwidth</key>
@@ -2386,7 +2386,7 @@
 								<key>base: priority</key>
 								<real>0.0</real>
 								<key>format</key>
-								<string>M.d k:m</string>
+								<string>M.dd H:mm</string>
 								<key>localize</key>
 								<integer>0</integer>
 								<key>maxwidth</key>
@@ -3430,8 +3430,6 @@
 								<real>+infinity</real>
 								<key>minwidth</key>
 								<integer>0</integer>
-								<key>path</key>
-								<string>path</string>
 								<key>shared font</key>
 								<string></string>
 							</dict>
@@ -3514,7 +3512,7 @@
 								<key>base: priority</key>
 								<real>0.0</real>
 								<key>format</key>
-								<string>M.d k:m</string>
+								<string>M.dd H:mm</string>
 								<key>localize</key>
 								<integer>0</integer>
 								<key>maxwidth</key>
@@ -4558,8 +4556,6 @@
 								<real>+infinity</real>
 								<key>minwidth</key>
 								<integer>0</integer>
-								<key>path</key>
-								<string>path</string>
 								<key>shared font</key>
 								<string></string>
 							</dict>
@@ -4642,7 +4638,7 @@
 								<key>base: priority</key>
 								<real>0.0</real>
 								<key>format</key>
-								<string>M.d k:m</string>
+								<string>M.dd H:mm</string>
 								<key>localize</key>
 								<integer>0</integer>
 								<key>maxwidth</key>
