@@ -4,7 +4,6 @@
 # Dot files not to track.
 .cache
 .CFUserTextEncoding
-.codeium
 .conda
 .config/iterm2
 .config/litecli/history
@@ -26,15 +25,12 @@
 # CrossOver .mailcap, .mime.types
 .mailcap
 .mime.types
-.ngrok2
 .npm
 .ollama
 .ssh
-.swiftpm
 .thumbnails
 .tldrc
 .Trash
-.twinny
 .viminfo
 .vscode*
 .webui_secret_key
