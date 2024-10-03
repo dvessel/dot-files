@@ -12,9 +12,8 @@
 #
 # Example: https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
 
-# With antidote, using Zephyr's completion plugin is recommended. This plugin is meant
-# to be run near the TOP of your .zsh_plugins.txt file.
-mattmc3/zephyr path:plugins/completion
+# This is the recommended plugin for handling compinit and setting completion zstyles.
+mattmc3/ez-compinit
 
 # Path set to .zsh-theme since it will source multiple otherwise.
 romkatv/powerlevel10k path:powerlevel10k.zsh-theme
@@ -31,6 +30,6 @@ nilsonholger/osx-zsh-completions kind:fpath
 zsh-users/zsh-completions path:src kind:fpath
 
 Aloxaf/fzf-tab
-zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions
 jeffreytse/zsh-vi-mode

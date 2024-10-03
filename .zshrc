@@ -16,8 +16,10 @@ if type brew &>/dev/null; then
 fi
 
 if type antidote &>/dev/null; then
-  zstyle ':antidote:bundle' use-friendly-names 'yes'
   ANTIDOTE_HOME=~/.cache/antidote
+  zstyle ':antidote:bundle' use-friendly-names 'yes'
+  # mattmc3/ez-compinit
+  zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
   # mattmc3/zephyr plugins:zfunctions
   ZFUNCDIR=~/.local/zfunctions
   # dvessel/zsh-completion-generator
@@ -27,8 +29,8 @@ if type antidote &>/dev/null; then
   antidote load
 else
   # Normally handled by antidote plugin:
-  # - `mattmc3/zephyr path:plugins/completion`
-  autoload -Uz compinit; compinit
+  # - mattmc3/ez-compinit
+  autoload -Uz compinit && compinit
 fi
 
 # Add local paths and prevent duplicates.
