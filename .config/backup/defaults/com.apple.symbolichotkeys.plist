@@ -591,13 +591,13 @@
 		<key>163</key>
 		<dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>51</integer>
-					<integer>20</integer>
+					<integer>113</integer>
+					<integer>12</integer>
 					<integer>393216</integer>
 				</array>
 				<key>type</key>
@@ -1096,7 +1096,7 @@
 		<key>27</key>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
@@ -1240,14 +1240,14 @@
 		<key>36</key>
 		<dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>96</integer>
-					<integer>50</integer>
-					<integer>393216</integer>
+					<integer>65535</integer>
+					<integer>103</integer>
+					<integer>8388608</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1256,14 +1256,14 @@
 		<key>37</key>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>92</integer>
-					<integer>42</integer>
-					<integer>393216</integer>
+					<integer>65535</integer>
+					<integer>103</integer>
+					<integer>8519680</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1694,8 +1694,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>49</integer>
-					<integer>18</integer>
+					<integer>119</integer>
+					<integer>13</integer>
 					<integer>393216</integer>
 				</array>
 				<key>type</key>
@@ -1742,8 +1742,8 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>50</integer>
-					<integer>19</integer>
+					<integer>101</integer>
+					<integer>14</integer>
 					<integer>393216</integer>
 				</array>
 				<key>type</key>
