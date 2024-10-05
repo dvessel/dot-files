@@ -1,33 +1,17 @@
 /*
  * Bypass any bindings for the next keystroke:
  * > defaults write -g NSQuotedKeystrokeBinding -string "^q"
+ *
  * Repeat binding, ^r + number will repeat next input x number of times:
  * > defaults write -g NSRepeatCountBinding -string "^r"
+ *
  * Cycle through kill ring for yankAndSelect:
  * > defaults write -g NSTextKillRingSize -int 5
  *
  * ^ = control
  * ~ = option
  * @ = command
- *
- * Existing keybinds:
- * ^z : Go->Back
- * ^x : Go->Forward
- * ^c : App Specific. Avoid ^~c as well.
- * ^Q : Window->Move Window to Left Side of Screen
- * ^W : Window->Move Window to Right Side of Screen
- * ^E : Window->Revert
- * ^Z : Window->Zoom
- * ^~Z: Window->Zoom All
- * ^M : Window->Minimize
- * ^~M: Window->Minimize All
- * ^R : Window->Remove Window from Set
- * ^1 : Switch to Desktop 1
- * ^2 : Switch to Desktop 2, increments with added spaces.
- * ^! : Move left a Space
- * ^@ : Move right a Space
- * ^# : Show Notification Center
- * ^S : Turn Stage Manager on/off
+ * $ = shift (of limited use)
  */
 
 {
