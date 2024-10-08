@@ -12,6 +12,7 @@
 .config/vscodium/globalStorage
 .config/vscodium/History
 .config/vscodium/workspaceStorage
+.continue
 .diffusionbee
 .ipython
 .jan
@@ -35,6 +36,7 @@
 .vscode*
 .webui_secret_key
 .wget-hsts
+.zcompcache
 .zsh_history
 .zsh_plugins.zsh
 .zsh_sessions
