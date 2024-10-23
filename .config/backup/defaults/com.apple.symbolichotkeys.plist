@@ -616,11 +616,12 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>1048584</integer>
-					<integer>18446744073708503031</integer>
+					<integer>32</integer>
+					<integer>49</integer>
+					<integer>1572864</integer>
 				</array>
 				<key>type</key>
-				<string>modifier</string>
+				<string>standard</string>
 			</dict>
 		</dict>
 		<key>17</key>
@@ -664,11 +665,11 @@
 				<key>parameters</key>
 				<array>
 					<integer>32</integer>
-					<integer>49</integer>
-					<integer>2148532224</integer>
+					<integer>55</integer>
+					<integer>1048600</integer>
 				</array>
 				<key>type</key>
-				<string>modifier</string>
+				<string>SAE1.0</string>
 			</dict>
 		</dict>
 		<key>179</key>
