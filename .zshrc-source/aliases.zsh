@@ -40,7 +40,7 @@ alias rsync-update='rsync -avzu --progress -h --exclude=.DS_Store'
 alias rsync-synchronize='rsync -avzu --delete --progress -h --exclude=.DS_Store'
 
 # Clear completions cache.
-alias zcc='rm -rf ~/.cache/zsh/*'
+alias zcc='rm -rf ~/.cache/zsh/* ~/.zcompcache/*'
 
 # Install brew and all dependent plugins.
 if ! type brew &>/dev/null; then
