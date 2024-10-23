@@ -5,7 +5,7 @@
 	<key>AppleAccentColor</key>
 	<integer>0</integer>
 	<key>AppleActionOnDoubleClick</key>
-	<string>None</string>
+	<string>Minimize</string>
 	<key>AppleFontSmoothing</key>
 	<integer>0</integer>
 	<key>AppleHighlightColor</key>
