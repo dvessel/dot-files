@@ -27,11 +27,11 @@
 	<key>DesktopViewSettings</key>
 	<dict>
 		<key>GroupBy</key>
-		<string>Kind</string>
+		<string>None</string>
 		<key>IconViewSettings</key>
 		<dict>
 			<key>arrangeBy</key>
-			<string>dateModified</string>
+			<string>kind</string>
 			<key>axTextSize</key>
 			<real>13</real>
 			<key>backgroundColorBlue</key>
