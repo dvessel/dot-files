@@ -45,8 +45,6 @@
   "^~H"= moveWordBackwardAndModifySelection:;
   "^~L"= moveWordForwardAndModifySelection:;
   "^B" = moveWordBackwardAndModifySelection:;
-  "^E" = noop:; // Window->Revert
-  "^W" = noop:; // Window->Move Window to Right Side of Screen
 
   "^0" = moveToBeginningOfLine:;
   "^~0"= moveToBeginningOfParagraph:;
