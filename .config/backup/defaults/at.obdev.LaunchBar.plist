@@ -5,7 +5,7 @@
 	<key>ClipboardHistoryIgnoreApplications</key>
 	<array>
 		<string>com.apple.keychainaccess</string>
-		<string>com.apple.systempreferences</string>
+		<string>com.apple.Passwords</string>
 	</array>
 	<key>LaunchBarHotKey</key>
 	<string>4096@49</string>
