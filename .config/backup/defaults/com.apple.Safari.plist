@@ -11,7 +11,7 @@
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>BookmarksCopy Text Fragment</key>
-		<string>@^l</string>
+		<string>@^c</string>
 		<key>HistoryBack</key>
 		<string>^z</string>
 		<key>HistoryForward</key>
