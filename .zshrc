@@ -20,7 +20,6 @@ if type antidote &>/dev/null; then
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   # mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
-  zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
   # mattmc3/zephyr plugins:zfunctions
   ZFUNCDIR=~/.local/zfunctions
   # dvessel/zsh-completion-generator
