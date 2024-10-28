@@ -37,7 +37,7 @@
 	<key>show-process-indicators</key>
 	<false/>
 	<key>show-recents</key>
-	<true/>
+	<false/>
 	<key>tilesize</key>
 	<real>48</real>
 	<key>wvous-bl-corner</key>
