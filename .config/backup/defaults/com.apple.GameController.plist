@@ -5,14 +5,8 @@
 	<key>SettingsIndex</key>
 	<array>
 		<string>bluetoothPrefsMenuLongPressAction</string>
-		<string>bluetoothPrefsShareLongPressSystemGestureMode</string>
-		<string>bluetoothPrefsShareDoublePressSystemGestureMode</string>
 	</array>
 	<key>bluetoothPrefsMenuLongPressAction</key>
 	<false/>
-	<key>bluetoothPrefsShareDoublePressSystemGestureMode</key>
-	<integer>-1</integer>
-	<key>bluetoothPrefsShareLongPressSystemGestureMode</key>
-	<integer>-1</integer>
 </dict>
 </plist>
