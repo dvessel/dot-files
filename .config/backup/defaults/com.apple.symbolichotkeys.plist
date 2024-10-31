@@ -46,7 +46,7 @@
 				<array>
 					<integer>49</integer>
 					<integer>18</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -62,7 +62,7 @@
 				<array>
 					<integer>50</integer>
 					<integer>19</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -94,7 +94,7 @@
 				<array>
 					<integer>51</integer>
 					<integer>20</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -110,7 +110,7 @@
 				<array>
 					<integer>52</integer>
 					<integer>21</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -126,7 +126,7 @@
 				<array>
 					<integer>53</integer>
 					<integer>23</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -142,7 +142,7 @@
 				<array>
 					<integer>54</integer>
 					<integer>22</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -158,7 +158,7 @@
 				<array>
 					<integer>55</integer>
 					<integer>26</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -174,7 +174,7 @@
 				<array>
 					<integer>56</integer>
 					<integer>28</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -190,7 +190,7 @@
 				<array>
 					<integer>57</integer>
 					<integer>25</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -206,7 +206,7 @@
 				<array>
 					<integer>48</integer>
 					<integer>29</integer>
-					<integer>393216</integer>
+					<integer>262144</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
