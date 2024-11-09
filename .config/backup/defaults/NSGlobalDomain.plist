@@ -19,7 +19,7 @@
 	<key>AppleShowScrollBars</key>
 	<string>WhenScrolling</string>
 	<key>AppleSpacesSwitchOnActivate</key>
-	<false/>
+	<true/>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
 	<key>InitialKeyRepeat</key>
