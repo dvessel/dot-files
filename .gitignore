@@ -30,6 +30,7 @@
 .npm
 .ollama
 .ssh
+.swiftpm
 .thumbnails
 .tldrc
 .Trash
