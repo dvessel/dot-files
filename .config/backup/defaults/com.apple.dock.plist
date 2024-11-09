@@ -33,7 +33,7 @@
 	<key>launchanim</key>
 	<false/>
 	<key>mru-spaces</key>
-	<true/>
+	<false/>
 	<key>show-process-indicators</key>
 	<false/>
 	<key>show-recents</key>
