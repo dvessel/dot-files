@@ -64,6 +64,8 @@
 		<string>@^s</string>
 		<key>WindowCenter</key>
 		<string>^$c</string>
+		<key>WindowDuplicate Tab</key>
+		<string>^$d</string>
 		<key>WindowFill</key>
 		<string>^$f</string>
 		<key>WindowFull Screen TileLeft of Screen</key>
@@ -78,8 +80,12 @@
 		<string>^$m</string>
 		<key>WindowMinimize All</key>
 		<string>~^$m</string>
-		<key>WindowRemove Window from Set</key>
+		<key>WindowMove &amp; ResizeReturn to Previous Size</key>
 		<string>^$r</string>
+		<key>WindowMove Tab to New Window</key>
+		<string>^$t</string>
+		<key>WindowRemove Window from Set</key>
+		<string>^$d</string>
 		<key>WindowZoom</key>
 		<string>^$z</string>
 		<key>WindowZoom All</key>
