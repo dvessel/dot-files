@@ -125,8 +125,17 @@
 		<string>NSTextKillRingSize</string>
 		<string>AppleAntiAliasingThreshold</string>
 		<string>AppleSmoothFixedFontsSizeThreshold</string>
+		<string>com.apple.mouse.doubleClickThreshold</string>
+		<string>com.apple.springing.delay</string>
+		<string>com.apple.trackpad.scrolling</string>
 	</array>
+	<key>com.apple.mouse.doubleClickThreshold</key>
+	<real>0.5</real>
 	<key>com.apple.sound.beep.feedback</key>
 	<integer>0</integer>
+	<key>com.apple.springing.delay</key>
+	<real>0.0</real>
+	<key>com.apple.trackpad.scrolling</key>
+	<real>0.58819999999999995</real>
 </dict>
 </plist>
