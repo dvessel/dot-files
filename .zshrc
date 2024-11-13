@@ -12,7 +12,7 @@ if type brew &>/dev/null; then
             `brew --prefix fzf`/shell/{completion,key-bindings}.zsh
   do ! test -r $zs || source $zs; done
 
-  fpath=(`brew --prefix`/share/zsh/site-functions $fpath)
+  fpath=(/{opt/homebrew,usr/local}/share/zsh/site-functions $fpath)
 fi
 
 if type antidote &>/dev/null; then
