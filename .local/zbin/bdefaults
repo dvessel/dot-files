@@ -271,7 +271,7 @@ function {
         fi
         _heademitted=1
 
-      done < <( s.getSettingsIndex $d )
+      done < <( [[ -n $key ]] && print $key || s.getSettingsIndex $d )
       test -z $key && unset _heademitted
 
     done < <( [[ -n $domain ]] && print $domain || s.getBackupDomains )
