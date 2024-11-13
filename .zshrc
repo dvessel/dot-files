@@ -33,6 +33,10 @@ else
   autoload -Uz compinit && compinit
 fi
 
+if type conda &>/dev/null; then
+  eval "$(conda 'shell.zsh' 'hook' 2> /dev/null)"
+fi
+
 # Add local paths and prevent duplicates.
 typeset -aU  path=(~/.local/{bin,zbin} $path)
 typeset -aU fpath=(~/.local/zcompletions $fpath)
