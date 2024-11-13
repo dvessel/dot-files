@@ -1,0 +1,31 @@
+#compdef open
+
+# zsh completions for 'open'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '-a[opens with the specified application.]'
+  '--arch[open with the given cpu architecture type and subtype.]'
+  '-b[opens with the specified application bundle identifier.]'
+  '-e[opens with TextEdit.]'
+  '-t[opens with default text editor.]'
+  '-f[reads input from standard input and opens with TextEdit.]'
+  {-F,--fresh}'[launches the app fresh, that is, without restoring windows. Saved persistent state is lost, excluding Untitled documents.]'
+  {-R,--reveal}'[selects in the Finder instead of opening.]'
+  {-W,--wait-apps}'[blocks until the used applications are closed (even if they were already running).]'
+  '--args[all remaining arguments are passed in argv to the applications main() function instead of opened.]'
+  {-n,--new}'[open a new instance of the application even if one is already running.]'
+  {-j,--hide}'[launches the app hidden.]'
+  {-g,--background}'[does not bring the application to the foreground.]'
+  {-h,--header}'[searches header file locations for headers matching the given filenames, and opens them.]'
+  '-s[for -h, the SDK to use; if supplied, only SDKs whose names contain the argument value are searched.]'
+  {-u,--url}'[open this URL, even if it matches exactly a filepath]'
+  {-i,--stdin}'[PATH     Launches the application with stdin connected to PATH; defaults to /dev/null]'
+  {-o,--stdout}'[launches the application with /dev/stdout connected to PATH;]'
+  '--stderr[launches the application with /dev/stderr connected to PATH to]'
+  '--env[VAR      Add an enviroment variable to the launched process, where VAR is formatted AAA=foo or just AAA for a null string value.]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
