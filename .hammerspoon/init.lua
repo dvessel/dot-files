@@ -1,7 +1,6 @@
 -- require('hs.ipc')
 
 -- hs.loadSpoon("ReloadConfiguration")
--- hs.loadSpoon('EmmyLua')
 hs.loadSpoon('ControlEscape')
 
 -- spoon.ReloadConfiguration:start()
