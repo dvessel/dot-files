@@ -75,7 +75,7 @@ if [[ ! -f $scandir/.romlist ]]; then
 fi
 
 local headers prefix fzargs=() accepts_multi
-headers=( "`mame -version`" )
+headers=( )
 
 # -listmidi and -listnetwork completely unrelated. Do not prefix.
 if [[ -n $1 && $1 =~ ^(-(list[^(midi|network)]|verify)[a-z]+) ]]; then
