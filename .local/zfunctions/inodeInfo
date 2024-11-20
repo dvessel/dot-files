@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-zparseopts -D -E -F - {v,-volume}:=vol || return 1
-GetFileInfo /.vol/`stat -f %d ${vol[-1]:-./}`/$1
