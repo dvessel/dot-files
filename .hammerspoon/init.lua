@@ -1,10 +1,10 @@
 require('hs.ipc')
 
+-- hs.loadSpoon('EmmyLua')
 hs.loadSpoon("ReloadConfiguration")
 hs.loadSpoon('ControlEscape')
 hs.loadSpoon("HoldToQuit")
 hs.loadSpoon("AppWindowSwitcher")
--- hs.loadSpoon('EmmyLua')
 
 spoon.ReloadConfiguration:start()
 spoon.ControlEscape:start()
