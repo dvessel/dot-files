@@ -29,7 +29,7 @@ alias show='chflags nohidden'
 alias hide-ext='SetFile -a E'
 alias show-ext='SetFile -a e'
 
-alias unquarantine='xattr -d com.apple.quarantine'
+alias unquarantine='xattr -r -d com.apple.quarantine'
 
 alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
