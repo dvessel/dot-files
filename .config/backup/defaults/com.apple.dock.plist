@@ -45,9 +45,9 @@
 	<key>wvous-bl-modifier</key>
 	<integer>0</integer>
 	<key>wvous-br-corner</key>
-	<integer>14</integer>
+	<integer>1</integer>
 	<key>wvous-br-modifier</key>
-	<integer>262144</integer>
+	<integer>0</integer>
 	<key>wvous-tl-corner</key>
 	<integer>1</integer>
 	<key>wvous-tl-modifier</key>
