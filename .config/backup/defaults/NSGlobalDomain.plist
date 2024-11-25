@@ -29,7 +29,7 @@
 	<key>InitialKeyRepeat</key>
 	<real>25</real>
 	<key>KeyRepeat</key>
-	<real>1</real>
+	<real>2</real>
 	<key>NSApplicationShowExceptions</key>
 	<true/>
 	<key>NSCloseAlwaysConfirmsChanges</key>
