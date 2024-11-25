@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSFixedPitchFont</key>
-	<string>IMWritingMonoNF-Regular</string>
+	<string>LilexNF-Regular</string>
 	<key>NSFont</key>
-	<string>IMWritingDuoNFP-Regular</string>
+	<string>Helvetica</string>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>MessageSend</key>

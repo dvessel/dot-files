@@ -47,8 +47,6 @@ brew "task"
 # Internet file retriever
 brew "wget"
 # Developer targeted fonts with a high number of glyphs
-cask "font-im-writing-nerd-font"
-# Developer targeted fonts with a high number of glyphs
 cask "font-lilex-nerd-font"
 # Desktop automation application
 cask "hammerspoon"
