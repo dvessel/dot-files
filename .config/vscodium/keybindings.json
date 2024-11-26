@@ -119,6 +119,16 @@
   {
     "key": "ctrl+cmd+m",
     "command": "editor.action.toggleMinimap"
+  },
+  {
+    "key": "ctrl+cmd+`",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   }
 
 ]
