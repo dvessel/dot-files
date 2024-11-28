@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 # Powerlevel10k instant prompt.
-zh=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
-test ! -f $zh || source $zh
+zs=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
+test ! -f $zs || source $zs
 
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
