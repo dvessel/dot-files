@@ -1,0 +1,46 @@
+#compdef wit
+
+# zsh completions for 'wit'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {-V,--version}'[stop parsing the command line, print a version info and]'
+  {-h,--help}'[stop parsing the command line, print a help message and]'
+  '--xhelp[stop parsing the command line and print a help message]'
+  '--width[define the width (number of columns) for help and some]'
+  {-q,--quiet}'[be quiet and print only error messages.]'
+  {-v,--verbose}'[be verbose and print more progress information. Multiple]'
+  {-P,--progress}'[print progress counter. If --verbose is set at least]'
+  '--scan-progress[a message for each found image while scanning the]'
+  {-L,--logging}'[this debug option enables the logging of internal memory]'
+  {-E,--esc}'[define an alternative escape character for destination]'
+  '--color[modus\]]'
+  '--256-colors[short cut for --color=256-colors: Force colorized text]'
+  '--no-colors[short cut for --color=off: Deactivate colorized text. This]'
+  '--io[setup the IO mode for experiments. The standard file IO is]'
+  {-f,--force}'[force operation.]'
+  '--dsync[mode\] This option enables the usage of flag O_DSYNC when opening]'
+  {-T,--titles}'[read file for disc titles. -T/ disables automatic search]'
+  '--utf-8[enables UTF-8 support for filenames (default).]'
+  '--no-utf-8[disables UTF-8 support for filenames.]'
+  '--lang[define the language for titles.]'
+  '--cert[scan a file for certificates and add them to the internal]'
+  {-t,--test}'[run in test mode, modify nothing.]'
+  '--align-wdf[minhole\]]'
+  '--gcz-zip[if creating a GCZ image, a blockwise z-compression is]'
+  '--gcz-block[the value defines the block size, if creating a GCZ image.]'
+  '--allow-fst[mode\]]'
+  '--allow-nkit[mode\]]'
+  '--sh[dump info using SH syntax. Use --var name as prefix.]'
+  '--bash[dump info using BASH syntax. Use --var name as prefix.]'
+  '--json[dump info using JSON syntax. Options --var and --array are]'
+  '--php[dump infos using PHP syntax. Use --var name as variable]'
+  '--makedoc[dump infos using MakeDoc syntax. Use --var name as]'
+  '--var[use VARNAME as variable name or prefix on script output.]'
+  '--array[use an array on script output if possible. If arrays are]'
+  '--avar[shortcut for: --array --var name]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

@@ -1,0 +1,28 @@
+#compdef caire
+
+# zsh completions for 'caire'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '-angle[face rotation angle]'
+  '-blur[blur radius (default 4)]'
+  '-color[seam color (default "#ff0000")]'
+  '-conc[number of files to process concurrently (default 10)]'
+  '-debug[use debugger]'
+  '-face[use face detection]'
+  '-height[new height]'
+  '-in[source (default "-")]'
+  '-mask[mask file path for retaining area]'
+  '-out[destination (default "-")]'
+  '-perc[reduce image by percentage]'
+  '-preview[show GUI window (default true)]'
+  '-rmask[mask file path for removing area]'
+  '-shape[shape type used for debugging: circle|line (default "circle")]'
+  '-sobel[sobel filter threshold (default 2)]'
+  '-square[reduce image to square dimensions]'
+  '-width[new width]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

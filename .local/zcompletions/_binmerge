@@ -1,0 +1,17 @@
+#compdef binmerge
+
+# zsh completions for 'binmerge'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--outdir[specified]'
+  {-h,--help}'[show this help message and exit]'
+  {-l,--license}'[prints license info and exits]'
+  {-v,--verbose}'[print more verbose messages]'
+  {-s,--split}'[reverses operation, splitting merged files back to]'
+  {-o,--outdir}'[output directory. defaults to the same directory as]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

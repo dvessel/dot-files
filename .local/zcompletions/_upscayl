@@ -1,0 +1,27 @@
+#compdef upscayl
+
+# zsh completions for 'upscayl'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '-h[show this help]'
+  '-i[input image path (jpg/png/webp) or directory]'
+  '-o[output image path (jpg/png/webp) or directory]'
+  '-z[scale according to the model (can be 2, 3, 4. default=4)]'
+  '-s[custom output scale (can be 2, 3, 4. default=4)]'
+  '-r[resize output to dimension (default=WxH:default), use -r help for more details]'
+  '-w[resize output to a width (default=W:default), use -r help for more details]'
+  '-c[compression of the output image, default 0 and varies to 100]'
+  '-t[tile size (>=32/0=auto, default=0) can be 0,0,0 for multi-gpu]'
+  '-m[folder path to the pre-trained models. default=models]'
+  '-n[model name (default=realesrgan-x4plus, can be realesr-animevideov3 | realesrgan-x4plus-anime | realesrnet-x4plus or any other model)]'
+  '-g[gpu device to use (default=auto) can be 0,1,2 for multi-gpu]'
+  '-j[thread count for load/proc/save (default=1:2:2) can be 1:2,2,2:2 for multi-gpu]'
+  '-x[enable tta mode]'
+  '-f[output image format (jpg/png/webp, default=ext/png)]'
+  '-v[verbose output]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

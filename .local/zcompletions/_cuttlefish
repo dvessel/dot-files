@@ -1,0 +1,38 @@
+#compdef cuttlefish
+
+# zsh completions for 'cuttlefish'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {-h,--help}'[display this help message]'
+  {-j,--jobs}'[the number of jobs to convert with; if n is omitted, use all]'
+  {-q,--quiet}'[suppress all non-error output]'
+  {-v,--verbose}'[verbose output]'
+  {-i,--input}'[the input image for a standard texture]'
+  {-a,--array}'[file           the input image for an array or 3D texture:]'
+  {-c,--cube}'[file           the input image for a cube map:]'
+  {-C,--cube-array}'[face file   the input image for a cube map:]'
+  {-I,--input-list}'[file     specify a file with a list of image paths:]'
+  {-r,--resize}'[h \[filter\]     resizes the image:]'
+  {-m,--mipmap}'[\[filter\] generate mipmaps:]'
+  '--flipx[flip the images in the X direction]'
+  '--flipy[flip the images in the Y direction]'
+  '--rotate[rotate by an angle]'
+  {-n,--normalmap}'[\[h\]     generate a normalmap from a bitmap]'
+  {-g,--grayscale}'[convert the image to grayscale]'
+  {-s,--swizzle}'[swizzle the channels of the image, a]'
+  '--srgb[convert from sRGB to linear space; where]'
+  '--pre-multiply[pre-multiply the alpha]'
+  {-d,--dimension}'[the texture dimesion; d may be: 1, 2 (default), 3]'
+  {-f,--format}'[(*)    the format to store the texture; f may be:]'
+  {-t,--type}'[the type stored in each channel; t may be:]'
+  '--alpha[the type of alpha; a may be:]'
+  {-Q,--quality}'[the quality of compression; may be: lowest, low]'
+  {-o,--output}'[(*) the output file for the texture]'
+  '--file-format[the output file format; may be: dds, ktx, pvr; default]'
+  '--create-dir[create the parent directory for the output file if it]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

@@ -1,0 +1,17 @@
+#compdef pearcleaner
+
+# zsh completions for 'pearcleaner'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {--run,-r}'[launch Pearcleaner in Debug mode to see console logs]'
+  {--list,-l}'[list application files available for uninstall at the specified path]'
+  {--list-orphaned,-lo}'[list orphaned files available for removal]'
+  {--uninstall,-u}'[uninstall only the application bundle at the specified path]'
+  {--uninstall-all,-ua}'[uninstall application bundle and ALL related files at the specified path]'
+  {--remove-orphaned,-ro}'[remove ALL orphaned files (To ignore files, add them to the exception list within Pearcleaner settings)]'
+  {--help,-h}'[show this help message]'
+)
+
+_arguments -s $arguments
