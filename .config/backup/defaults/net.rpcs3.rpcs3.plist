@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppleMenuBarVisibleInFullscreen</key>
-	<true/>
+	<false/>
 	<key>SettingsIndex</key>
 	<array>
 		<string>AppleMenuBarVisibleInFullscreen</string>
