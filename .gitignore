@@ -17,7 +17,6 @@
 .diffusionbee
 .hammerspoon/Spoons/EmmyLua.spoon
 .ipython
-.jan
 .jupyter
 .lesshst
 .local/bin
@@ -37,7 +36,6 @@
 .Trash
 .viminfo
 .vscode*
-.webui_secret_key
 .wget-hsts
 .zcompcache
 .zsh_history
