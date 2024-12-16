@@ -1,0 +1,43 @@
+# changesFrom from 'bundle-default-arm64e':
+# Simple python script to download Bandcamp albums
+brew "bandcamp-dl"
+# Content aware image resize tool
+brew "caire"
+# Cross-platform make
+brew "cmake"
+# Monitor a directory for changes and run a shell command
+brew "fswatch"
+# Turn movies into GIFs
+brew "gifify"
+# Command-line tool for generating regular expressions
+brew "grex"
+# Library for querying compressed XML metadata
+brew "libxmlb"
+# CLI for SQLite Databases with auto-completion and syntax highlighting
+brew "litecli"
+# Apple Silicon Monitor Top written in Golang
+brew "mactop"
+# Create, run, and share large language models (LLMs)
+brew "ollama", restart_service: true
+# Learn vim commands via a game
+brew "pacvim"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Perl-powered file rename script with many helpful built-ins
+brew "rename"
+# Tools for Multiple Arcade Machine Emulator
+brew "rom-tools"
+# Simplified and community-driven man pages
+brew "tldr"
+# XML command-line utilities
+brew "xmlstarlet"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# ROM updater and validation tool for OpenEmu's MAME core.
+brew "dvessel/oetools/oeadvscan"
+# Run Stable Diffusion locally
+cask "diffusionbee"
+# Operating system maintenance and cleaning utility
+cask "maintenance"
+# Frontend for emulators, game engines, and media players (Metal graphics API)
+cask "retroarch-metal@nightly"
