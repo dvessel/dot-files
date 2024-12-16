@@ -22,6 +22,8 @@ brew "imagemagick"
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Curses-based tool for viewing and analyzing log files
+brew "lnav"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -40,8 +42,6 @@ brew "setweblocthumb"
 brew "switchaudio-osx"
 # Manipulate and query tags on macOS files
 brew "tag"
-# Log file highlighter
-brew "tailspin"
 # Feature-rich console based todo list manager
 brew "task"
 # Internet file retriever

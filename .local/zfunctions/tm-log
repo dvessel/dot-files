@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-if _brew_check tailspin; then
-  log show --style syslog --info --start "$(date -j -v-${@:-1H} +'%Y-%m-%d %H:%M:%S')" --predicate 'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"' | tspin
+if _brew_check lnav; then
+  log show --style syslog --info --start "$(date -j -v-${@:-1H} +'%Y-%m-%d %H:%M:%S')" --predicate 'processImagePath contains "backupd" and subsystem beginswith "com.apple.TimeMachine"' | lnav
 fi
