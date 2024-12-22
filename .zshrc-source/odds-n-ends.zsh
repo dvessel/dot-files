@@ -14,6 +14,13 @@ if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
 fi
 alias lcut='/Applications/LosslessCut.app/Contents/MacOS/LosslessCut'
 
+alias dpnative2x1.6='displayplacer "id:1 mode:48"'
+alias dpnative2x='displayplacer "id:1 mode:54"'
+alias dpmore2x1.6='displayplacer "id:1 mode:66"'
+alias dpmore2x-default='displayplacer "id:1 mode:72"'
+alias dpnative1x='displayplacer "id:1 mode:126"'
+
+
 alias sync-980-emulation='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
   ~/Games/Emulation /Volumes/980Pro'
 alias sync-storage-mame='rsync -avL --itemize-changes --delete --exclude=.DS_Store \

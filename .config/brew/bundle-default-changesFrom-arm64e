@@ -5,6 +5,8 @@ brew "bandcamp-dl"
 brew "caire"
 # Cross-platform make
 brew "cmake"
+# Utility to configure multi-display resolutions and arrangements
+brew "displayplacer"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
 # Turn movies into GIFs
