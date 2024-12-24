@@ -2,6 +2,7 @@
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
+  "chat.commandCenter.enabled": false,
   "diffEditor.experimental.showMoves": true,
   "editor.accessibilitySupport": "off",
   "editor.cursorBlinking": "phase",
