@@ -23,6 +23,8 @@ brew "mactop"
 brew "ollama", restart_service: true
 # Learn vim commands via a game
 brew "pacvim"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Perl-powered file rename script with many helpful built-ins
