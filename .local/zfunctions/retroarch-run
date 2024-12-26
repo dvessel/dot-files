@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if _brew_check displayplacer; then
+  displayplacer "id:1 mode:54"
+  open -b com.libretro.dist.RetroArch --wait-apps $@
+  displayplacer "id:1 mode:72"
+fi
