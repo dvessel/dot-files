@@ -10,18 +10,18 @@
 () {
 
   zparseopts -D -E -F - {q,-quiet}=quiet || return 1
-  typeset -a formulae
+  typeset -a formulae existing missing
 
-  for f in $@; test -d `brew --prefix $f` || {
-    formulae+=$f
-  }
+  formulae=( `brew list --formulae` )
+  existing=( ${formulae:*argv} )
+  missing=( ${argv:|existing} )
 
-  if [[ -z $formulae ]]; then
+  if [[ -z $missing ]]; then
     return 0
   elif [[ -n $quiet ]]; then
     return 1
   else
-    printf "Required homebrew formulae not installed: %s\n" "${(j[ ])formulae}" >&2
+    printf "Required homebrew formulae not installed: %s\n" "${(j[ ])missing}" >&2
     return 1
   fi
 
