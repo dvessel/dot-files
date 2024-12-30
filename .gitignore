@@ -9,7 +9,6 @@
 .config/litecli/history
 .config/litecli/log
 .config/lnav
-.config/nvim/lazy-lock.json
 .config/vscodium/globalStorage
 .config/vscodium/History
 .config/vscodium/workspaceStorage
