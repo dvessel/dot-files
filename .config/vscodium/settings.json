@@ -33,6 +33,12 @@
   "editor.wordWrapColumn": 120,
   "explorer.confirmDelete": false,
   "explorer.excludeGitIgnore": true,
+  "files.associations": {
+    "*.lpl": "json",
+    "*.opt": "properties",
+    "*.rmp": "properties",
+    "*.slangp": "properties"
+  },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
