@@ -57,7 +57,6 @@
   "terminal.integrated.lineHeight": 1.2,
   "window.autoDetectColorScheme": true,
   "window.closeWhenEmpty": true,
-  "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "on",
   "window.openWithoutArgumentsInNewWindow": "on",
   "window.restoreFullscreen": true,
