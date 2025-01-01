@@ -16,8 +16,6 @@
 	<true/>
 	<key>DisableAdaptiveFrameRateInInteractiveApps</key>
 	<true/>
-	<key>DisableMetalWhenIdle</key>
-	<true/>
 	<key>DisableWindowSizeSnap</key>
 	<false/>
 	<key>GlobalKeyMap</key>
@@ -214,8 +212,6 @@
 	<true/>
 	<key>MetalDeferCurrentDrawable</key>
 	<false/>
-	<key>MetalRedrawPeriod</key>
-	<real>3600</real>
 	<key>MinimalTabStyleOutlineStrength</key>
 	<real>0.10000000000000001</real>
 	<key>NSUserKeyEquivalents</key>
@@ -3637,9 +3633,7 @@
 		<string>TabStyleWithAutomaticOption</string>
 		<string>New Bookmarks</string>
 		<string>DisableAdaptiveFrameRateInInteractiveApps</string>
-		<string>MetalRedrawPeriod</string>
 		<string>MetalDeferCurrentDrawable</string>
-		<string>UseExperimentalFontMetrics</string>
 		<string>AlternateMouseScroll</string>
 		<string>MinimalTabStyleOutlineStrength</string>
 		<string>BellRateLimit</string>
@@ -3652,7 +3646,6 @@
 		<string>SwitchPaneModifier</string>
 		<string>SwitchTabModifier</string>
 		<string>SwitchWindowModifier</string>
-		<string>DisableMetalWhenIdle</string>
 		<string>SeparateStatusBarsPerPane</string>
 		<string>ShowPaneTitles</string>
 		<string>TerminalMargin</string>
@@ -3688,8 +3681,6 @@
 	<integer>10</integer>
 	<key>TerminalVMargin</key>
 	<integer>5</integer>
-	<key>UseExperimentalFontMetrics</key>
-	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<true/>
 	<key>VerticalBarCursorWidth</key>
