@@ -3,13 +3,13 @@
 # Helper used to check for installed brew formulae.
 #
 # Usage:
-#  _brew_check [-q|--quiet] [formulae] ...
+#  _brew_check [-s|--silent] [formulae] ...
 #
 # Add as many formulae as needed. Status code 1 (error) and stderr
-# message on failed checks unless --quiet is passed.
+# message on failed checks unless --silent is passed.
 () {
 
-  zparseopts -D -E -F - {q,-quiet}=quiet || return 1
+  zparseopts -D -E -F - {s,-silent}=silent || return 1
   typeset -a formulae existing missing
 
   formulae=( `brew list --formulae` )
@@ -18,7 +18,7 @@
 
   if [[ -z $missing ]]; then
     return 0
-  elif [[ -n $quiet ]]; then
+  elif [[ -n $silent ]]; then
     return 1
   else
     printf "Required homebrew formulae not installed: %s\n" "${(j[ ])missing}" >&2
