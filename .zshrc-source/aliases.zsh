@@ -1,15 +1,18 @@
 #!/usr/bin/env zsh
 
-alias -g ll='lsd -l'
-alias -g la='lsd -lA'
-alias -g lt='lsd --tree'
-alias -g tl='lsd --blocks=date,name --date=relative --sort=time'
-alias -g sl='lsd --blocks=size,name --total-size --size=default --sort=size'
-alias -g ml='lsd --blocks=permission,user,group,name'
-alias -g tsl='lsd --blocks=date,size,name --date=relative --total-size --sort=time'
-alias -g stl='lsd --blocks=size,date,name --total-size --date=relative --sort=size'
-alias -g cl='/usr/bin/clear'
-alias -g cx='/usr/bin/clear -x'
+if _brew_check -s lsd; then
+  alias ll='lsd -l'
+  alias la='lsd -lA'
+  alias lt='lsd --tree'
+  alias tl='lsd --blocks=date,name --date=relative --sort=time'
+  alias sl='lsd --blocks=size,name --total-size --size=default --sort=size'
+  alias ml='lsd --blocks=permission,user,group,name'
+  alias tsl='lsd --blocks=date,size,name --date=relative --total-size --sort=time'
+  alias stl='lsd --blocks=size,date,name --total-size --date=relative --sort=size'
+else
+  alias ll='ls -l --color=auto'
+  alias la='ls -lA --color=auto'
+fi
 
 alias l='ls --color=auto'
 alias h='ls -d --color=auto .*'
@@ -17,12 +20,18 @@ alias d='pwd'
 alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
 for i ({1..9}) alias "$i"="cd +$i"
 
-alias b='bat'
-alias bp='batpipe'
+alias cl='/usr/bin/clear'
+alias cx='/usr/bin/clear -x'
+
+if _brew_check -s bat-extras; then
+  alias b='bat'
+  alias bp='batpipe'
+  alias man='batman'
+fi
+
 alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
 alias vs='codium'
-alias man='batman'
 
 alias hide='chflags hidden'
 alias show='chflags nohidden'
