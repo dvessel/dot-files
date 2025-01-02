@@ -13,12 +13,16 @@ brew "fswatch"
 brew "gifify"
 # Command-line tool for generating regular expressions
 brew "grex"
+# Interactive JSON filter using jq
+brew "jnv"
 # Library for querying compressed XML metadata
 brew "libxmlb"
 # CLI for SQLite Databases with auto-completion and syntax highlighting
 brew "litecli"
 # Apple Silicon Monitor Top written in Golang
 brew "mactop"
+# Create icns files from the command-line
+brew "makeicns"
 # Create, run, and share large language models (LLMs)
 brew "ollama", restart_service: true
 # Learn vim commands via a game
@@ -31,6 +35,8 @@ brew "pkgconf"
 brew "rename"
 # Tools for Multiple Arcade Machine Emulator
 brew "rom-tools"
+# Rich git commit graph in your terminal
+brew "serie"
 # Simplified and community-driven man pages
 brew "tldr"
 # XML command-line utilities
