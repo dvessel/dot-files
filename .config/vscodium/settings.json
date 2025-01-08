@@ -12,6 +12,7 @@
   "editor.fontFamily": "Lilex Nerd Font",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
+  "editor.guides.bracketPairs": true,
   "editor.minimap.enabled": false,
   "editor.minimap.showSlider": "always",
   "editor.occurrencesHighlight": "off",
