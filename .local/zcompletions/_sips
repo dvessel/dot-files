@@ -1,0 +1,52 @@
+#compdef sips
+
+# zsh completions for 'sips'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {-g,--getProperty}'[]'
+  {-X,--extractTag}'[tagFile]'
+  '--verify[]'
+  {-1,--oneLine}'[]'
+  {-g,--getProperty}'[]'
+  {-x,--extractProfile}'[]'
+  {-1,--oneLine}'[]'
+  {-s,--setProperty}'[value]'
+  {-d,--deleteProperty}'[]'
+  '--deleteTag[]'
+  '--copyTag[dstTag]'
+  '--loadTag[tagFile]'
+  '--repair[]'
+  {-o,--out}'[]'
+  {-s,--setProperty}'[value]'
+  {-d,--deleteProperty}'[]'
+  {-e,--embedProfile}'[]'
+  {-E,--embedProfileIfNone}'[]'
+  {-m,--matchTo}'[]'
+  {-M,--matchToWithIntent}'[intent]'
+  '--deleteColorManagementProperties[]'
+  {-r,--rotate}'[]'
+  {-f,--flip}'[]'
+  {-c,--cropToHeightWidth}'[pixelsW]'
+  '--cropOffset[offsetH]'
+  {-p,--padToHeightWidth}'[pixelsW]'
+  '--padColor[]'
+  {-z,--resampleHeightWidth}'[pixelsW]'
+  '--resampleWidth[]'
+  '--resampleHeight[]'
+  {-Z,--resampleHeightWidthMax}'[]'
+  {-i,--addIcon}'[]'
+  '--optimizeColorForSharing[]'
+  {-o,--out}'[]'
+  {-j,--js}'[]'
+  '--debug[enable debugging output]'
+  {-h,--help}'[show help]'
+  {-H,--helpProperties}'[show help for properties]'
+  '--man[generate man pages]'
+  {-v,--version}'[show the version]'
+  '--formats[show the read/write formats]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
