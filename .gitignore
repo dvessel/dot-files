@@ -29,6 +29,7 @@
 .npm
 .ollama
 .ssh
+.sqlite_history
 .swiftpm
 .thumbnails
 .tldrc
