@@ -1,0 +1,18 @@
+#compdef rashortcuts
+
+# zsh completions for 'rashortcuts'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--favorites[favorites playlist]'
+  '--history[history playlist]'
+  {-p,--playlist}'[path/to/playlist.lpl]'
+  '--process-all[process all entries for a given playlist]'
+  '--process-existing[re-process existing shortcuts in the working path]'
+  {-t,--template}'[path/to/template-folder]'
+  {-h,--help}'[view help.]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
