@@ -1,21 +1,21 @@
 #!/usr/bin/env zsh
 
 if _brew_check -s lsd; then
+  alias l='lsd'
+  alias h='lsd -d .*'
   alias ll='lsd -l'
   alias la='lsd -lA'
   alias lt='lsd --tree'
   alias tl='lsd --blocks=date,name --date=relative --sort=time'
   alias sl='lsd --blocks=size,name --total-size --size=default --sort=size'
   alias ml='lsd --blocks=permission,user,group,name'
-  alias tsl='lsd --blocks=date,size,name --date=relative --total-size --sort=time'
-  alias stl='lsd --blocks=size,date,name --total-size --date=relative --sort=size'
 else
+  alias l='ls --color=auto'
+  alias h='ls -d --color=auto .*'
   alias ll='ls -l --color=auto'
   alias la='ls -lA --color=auto'
 fi
 
-alias l='ls --color=auto'
-alias h='ls -d --color=auto .*'
 alias d='pwd'
 alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
 for i ({1..9}) alias "$i"="cd +$i"
@@ -24,8 +24,10 @@ alias cl='/usr/bin/clear'
 alias cx='/usr/bin/clear -x'
 
 if _brew_check -s bat-extras; then
-  alias b='bat'
-  alias bp='batpipe'
+  alias bdiff='batdiff'
+  alias bgrep='batgrep'
+  alias bpipe='batpipe'
+  alias bwatch='batwatch'
   alias man='batman'
 fi
 
