@@ -24,7 +24,9 @@ brew "mactop"
 # Create icns files from the command-line
 brew "makeicns"
 # Create, run, and share large language models (LLMs)
-brew "ollama", restart_service: true
+brew "ollama", restart_service: :changed
+# Command-line Git information tool
+brew "onefetch"
 # Learn vim commands via a game
 brew "pacvim"
 # Swiss-army knife of markup format conversion
