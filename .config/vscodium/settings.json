@@ -12,7 +12,6 @@
   "editor.fontFamily": "Lilex Nerd Font",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
-  "editor.guides.bracketPairs": true,
   "editor.minimap.enabled": false,
   "editor.minimap.showSlider": "always",
   "editor.occurrencesHighlight": "off",
@@ -21,12 +20,12 @@
   "editor.quickSuggestionsDelay": 200,
   "editor.renderLineHighlight": "all",
   "editor.rulers": [
+    50,
     72,
-    80,
-    120
+    80
   ],
   "editor.scrollbar.horizontal": "visible",
-  "editor.scrollbar.horizontalScrollbarSize": 4,
+  "editor.scrollbar.horizontalScrollbarSize": 2,
   "editor.scrollbar.verticalScrollbarSize": 10,
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
