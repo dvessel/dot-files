@@ -2,8 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AI Prompt</key>
+	<string>Return commands suitable for \(shell) on \(uname).
+- Do not provide commentary.
+- Do not format with markdown.
+- Prioritize commands included with MacOS.
+- Your answer will be passed to the shell unmodified.
+The command should do this: \(ai.prompt)</string>
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
+	<key>AiMaxTokens</key>
+	<integer>32768</integer>
+	<key>AiModel</key>
+	<string>qwen2.5-coder:7b-instruct-q5_K_M</string>
+	<key>AitermURL</key>
+	<string>http://localhost:11434/v1/chat/completions</string>
+	<key>AitermUseLegacyAPI</key>
+	<false/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>BellRateLimit</key>
@@ -3662,6 +3677,11 @@
 		<string>SplitPaneDimmingAmount</string>
 		<string>GlobalKeyMap</string>
 		<string>ClickToSelectCommand</string>
+		<string>AI Prompt</string>
+		<string>AiMaxTokens</string>
+		<string>AiModel</string>
+		<string>AitermURL</string>
+		<string>AitermUseLegacyAPI</string>
 	</array>
 	<key>ShowPaneTitles</key>
 	<false/>
