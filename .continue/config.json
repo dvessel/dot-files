@@ -40,9 +40,9 @@
     }
   ],
   "tabAutocompleteModel": {
-    "title": "Qwen2.5-Coder 3B",
+    "title": "Qwen2.5-Coder 1.5B",
     "provider": "ollama",
-    "model": "qwen2.5-coder:3b-instruct-q6_K"
+    "model": "qwen2.5-coder:1.5b-instruct-q5_K_M"
   },
   "embeddingsProvider": {
     "provider": "ollama",
