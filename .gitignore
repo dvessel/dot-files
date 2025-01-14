@@ -12,7 +12,8 @@
 .config/vscodium/globalStorage
 .config/vscodium/History
 .config/vscodium/workspaceStorage
-.continue
+.continue/*
+!.continue/config.json
 .diffusionbee
 .hammerspoon/Spoons/EmmyLua.spoon
 .ipython
