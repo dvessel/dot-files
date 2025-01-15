@@ -28,7 +28,10 @@
 .mailcap
 .mime.types
 .npm
-.ollama
+.ollama/history
+.ollama/id_*
+.ollama/models/*
+!.ollama/models/manifests
 .ssh
 .sqlite_history
 .swiftpm
