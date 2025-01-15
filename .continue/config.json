@@ -1,7 +1,7 @@
 {
   "allowAnonymousTelemetry": false,
   "ui": {
-    "codeBlockToolbarPosition": "bottom",
+    "codeBlockToolbarPosition": "top",
     "fontSize": 18,
     "displayRawMarkdown": false,
     "showChatScrollbar": true,
