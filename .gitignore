@@ -28,9 +28,9 @@
 .mailcap
 .mime.types
 .npm
-.ollama/history
-.ollama/id_*
+.ollama/*
 .ollama/models/*
+!.ollama/models
 !.ollama/models/manifests
 .ssh
 .sqlite_history
