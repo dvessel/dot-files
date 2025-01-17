@@ -9,7 +9,7 @@
   helper = !/opt/homebrew/bin/gh auth git-credential
 [core]
   whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
-  editor = code
+  editor = codium
   excludesfile = ~/.config/git/ignore
   pager = delta
 [interactive]
@@ -32,7 +32,7 @@
   navigate = true
   features = style-adjustments
   hyperlinks = true
-  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+  hyperlinks-file-link-format = "vscodium://file/{path}:{line}"
 [delta "style-adjustments"]
   file-decoration-style = none
   hunk-header-decoration-style = none
