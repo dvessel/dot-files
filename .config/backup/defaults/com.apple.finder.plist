@@ -403,7 +403,7 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>240</real>
+			<real>188</real>
 			<key>labelOnBottom</key>
 			<true/>
 			<key>scrollPositionX</key>
@@ -413,7 +413,7 @@
 			<key>showIconPreview</key>
 			<true/>
 			<key>showItemInfo</key>
-			<false/>
+			<true/>
 			<key>textSize</key>
 			<real>15</real>
 			<key>viewOptionsVersion</key>
