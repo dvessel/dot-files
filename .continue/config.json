@@ -9,6 +9,26 @@
   },
   "models": [
     {
+      "title": "DeepSeek R1 7B",
+      "provider": "ollama",
+      "model": "deepseek-r1:7b"
+    },
+    {
+      "title": "DeepSeek R1 8B",
+      "provider": "ollama",
+      "model": "deepseek-r1:8b-llama-distill-q8_0"
+    },
+    {
+      "title": "DeepSeek R1 14B",
+      "provider": "ollama",
+      "model": "deepseek-r1:14b-qwen-distill-q8_0"
+    },
+    {
+      "title": "DeepSeek R1 32B",
+      "provider": "ollama",
+      "model": "deepseek-r1:32b"
+    },
+    {
       "title": "Qwen2.5 7B",
       "provider": "ollama",
       "model": "qwen2.5:7b"
@@ -40,10 +60,15 @@
     }
   ],
   "tabAutocompleteModel": {
-    "title": "Qwen2.5-Coder 1.5B",
+    "title": "DeepSeek R1 1.5B",
     "provider": "ollama",
-    "model": "qwen2.5-coder:1.5b-instruct-q5_K_M"
+    "model": "deepseek-r1:1.5b-qwen-distill-q8_0"
   },
+  // "tabAutocompleteModel": {
+  //   "title": "Qwen2.5-Coder 1.5B",
+  //   "provider": "ollama",
+  //   "model": "qwen2.5-coder:1.5b-instruct-q5_K_M"
+  // },
   "embeddingsProvider": {
     "provider": "ollama",
     "model": "nomic-embed-text"
