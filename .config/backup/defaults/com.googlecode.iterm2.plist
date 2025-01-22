@@ -26,7 +26,7 @@ The command should do this: \(ai.prompt)</string>
 	<key>CheckTestRelease</key>
 	<true/>
 	<key>ClickToSelectCommand</key>
-	<false/>
+	<true/>
 	<key>DimInactiveSplitPanes</key>
 	<true/>
 	<key>DisableAdaptiveFrameRateInInteractiveApps</key>
