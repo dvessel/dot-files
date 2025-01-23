@@ -19,6 +19,7 @@
 .ipython
 .jupyter
 .lesshst
+.lmstudio-home-pointer
 .local/bin
 .local/include
 .local/lib
