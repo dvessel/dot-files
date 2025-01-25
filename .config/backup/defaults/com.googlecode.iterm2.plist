@@ -14,7 +14,7 @@ The command should do this: \(ai.prompt)</string>
 	<key>AiMaxTokens</key>
 	<integer>32768</integer>
 	<key>AiModel</key>
-	<string>qwen2.5-coder:7b-instruct-q5_K_M</string>
+	<string>qwen2.5-coder:7b-instruct-temp0.7</string>
 	<key>AitermURL</key>
 	<string>http://localhost:11434/v1/chat/completions</string>
 	<key>AitermUseLegacyAPI</key>

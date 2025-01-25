@@ -36,23 +36,23 @@
     {
       "title": "Qwen2.5-Coder 7B",
       "provider": "ollama",
-      "model": "qwen2.5-coder:7b-instruct-q5_K_M"
+      "model": "qwen2.5-coder:7b-instruct-temp0.7"
     },
     {
       "title": "Qwen2.5-Coder 14B",
       "provider": "ollama",
-      "model": "qwen2.5-coder:14b-instruct-q5_K_M"
+      "model": "qwen2.5-coder:14b-instruct-temp0.7"
     },
     {
       "title": "Qwen2.5-Coder 32B",
       "provider": "ollama",
-      "model": "qwen2.5-coder:32b-instruct-q4_K_M"
+      "model": "qwen2.5-coder:32b-instruct-temp0.7"
     }
   ],
   "tabAutocompleteModel": {
     "title": "Qwen2.5-Coder 1.5B",
     "provider": "ollama",
-    "model": "qwen2.5-coder:1.5b-instruct-q5_K_M"
+    "model": "qwen2.5-coder:1.5b-instruct-temp0.7"
   },
   "embeddingsProvider": {
     "provider": "ollama",
