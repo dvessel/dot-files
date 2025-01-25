@@ -11,12 +11,12 @@
     {
       "title": "DeepSeek R1 14B",
       "provider": "ollama",
-      "model": "deepseek-r1:14b-qwen-distill-q8_0"
+      "model": "deepseek-r1:14b-qwen-distill-temp0.6"
     },
     {
       "title": "DeepSeek R1 32B",
       "provider": "ollama",
-      "model": "deepseek-r1:32b-qwen-distill-q4_K_M"
+      "model": "deepseek-r1:32b-qwen-distill-temp0.6"
     },
     {
       "title": "Qwen2.5 7B",
