@@ -982,7 +982,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Scrollback Lines</key>
 			<integer>1000000</integer>
 			<key>Scrollback in Alternate Screen</key>
-			<false/>
+			<true/>
 			<key>Selected Text Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1036,7 +1036,7 @@ The command should do this: \(ai.prompt)</string>
 				<key>action</key>
 				<string>best editor</string>
 				<key>editor</key>
-				<string>com.github.atom</string>
+				<string>com.vscodium</string>
 				<key>text</key>
 				<string></string>
 			</dict>
@@ -2114,7 +2114,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Scrollback Lines</key>
 			<integer>1000000</integer>
 			<key>Scrollback in Alternate Screen</key>
-			<false/>
+			<true/>
 			<key>Selected Text Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -2168,7 +2168,7 @@ The command should do this: \(ai.prompt)</string>
 				<key>action</key>
 				<string>best editor</string>
 				<key>editor</key>
-				<string>com.github.atom</string>
+				<string>com.vscodium</string>
 				<key>text</key>
 				<string></string>
 			</dict>
@@ -3244,7 +3244,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Scrollback Lines</key>
 			<integer>1000000</integer>
 			<key>Scrollback in Alternate Screen</key>
-			<false/>
+			<true/>
 			<key>Selected Text Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -3298,7 +3298,7 @@ The command should do this: \(ai.prompt)</string>
 				<key>action</key>
 				<string>best editor</string>
 				<key>editor</key>
-				<string>com.github.atom</string>
+				<string>com.vscodium</string>
 				<key>text</key>
 				<string></string>
 			</dict>
