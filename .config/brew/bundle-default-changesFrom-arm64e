@@ -9,36 +9,46 @@ brew "cmake"
 brew "displayplacer"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Turn movies into GIFs
 brew "gifify"
 # Command-line tool for generating regular expressions
 brew "grex"
 # Interactive JSON filter using jq
 brew "jnv"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Library for querying compressed XML metadata
 brew "libxmlb"
 # CLI for SQLite Databases with auto-completion and syntax highlighting
 brew "litecli"
+# Curses-based tool for viewing and analyzing log files
+brew "lnav"
 # Apple Silicon Monitor Top written in Golang
 brew "mactop"
 # Create icns files from the command-line
 brew "makeicns"
 # Create, run, and share large language models (LLMs)
 brew "ollama", restart_service: :changed
-# Command-line Git information tool
-brew "onefetch"
+# 7-Zip (high compression file archiver) implementation
+brew "p7zip"
 # Learn vim commands via a game
 brew "pacvim"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
-# Perl-powered file rename script with many helpful built-ins
-brew "rename"
+# PNG image optimizing utility
+brew "pngquant"
 # Tools for Multiple Arcade Machine Emulator
 brew "rom-tools"
-# Rich git commit graph in your terminal
-brew "serie"
+# Assigns custom icons to webloc files
+brew "setweblocthumb"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
 # Simplified and community-driven man pages
 brew "tldr"
 # XML command-line utilities

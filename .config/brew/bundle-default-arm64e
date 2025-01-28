@@ -4,8 +4,6 @@ brew "antidote"
 brew "bat"
 # Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# Get/set bluetooth power and discoverable state
-brew "blueutil"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -16,34 +14,16 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
-# Simple terminal UI for git commands
-brew "lazygit"
-# Curses-based tool for viewing and analyzing log files
-brew "lnav"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# 7-Zip (high compression file archiver) implementation
-brew "p7zip"
-# PNG image optimizing utility
-brew "pngquant"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Assigns custom icons to webloc files
-brew "setweblocthumb"
-# Change macOS audio source from the command-line
-brew "switchaudio-osx"
 # Manipulate and query tags on macOS files
 brew "tag"
-# Feature-rich console based todo list manager
-brew "task"
 # Internet file retriever
 brew "wget"
 # Developer targeted fonts with a high number of glyphs
