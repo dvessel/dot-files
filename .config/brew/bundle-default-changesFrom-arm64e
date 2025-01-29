@@ -47,8 +47,6 @@ brew "pngquant"
 brew "rom-tools"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
-# Change macOS audio source from the command-line
-brew "switchaudio-osx"
 # Simplified and community-driven man pages
 brew "tldr"
 # XML command-line utilities
