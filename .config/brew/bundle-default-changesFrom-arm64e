@@ -35,8 +35,6 @@ brew "makeicns"
 brew "ollama", restart_service: :changed
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
-# Learn vim commands via a game
-brew "pacvim"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Package compiler and linker metadata toolkit
