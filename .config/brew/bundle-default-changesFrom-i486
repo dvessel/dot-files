@@ -1,5 +1,3 @@
 # changesFrom from 'bundle-default-i486':
 # Compiler for SIMD programming on the CPU
 brew "ispc"
-# Multiple Arcade Machine Emulator
-brew "mame"

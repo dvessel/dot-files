@@ -31,6 +31,8 @@ brew "lnav"
 brew "mactop"
 # Create icns files from the command-line
 brew "makeicns"
+# Multiple Arcade Machine Emulator
+brew "mame"
 # Create, run, and share large language models (LLMs)
 brew "ollama", restart_service: :changed
 # 7-Zip (high compression file archiver) implementation
