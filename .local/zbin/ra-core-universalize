@@ -1,24 +1,19 @@
 #!/usr/bin/env zsh
 
 typeset -A archs=( [x86_64]=arm64 [arm64]=x86_64 )
+arch=( `lipo -archs $1` )
+dylib=$1:t
 
-for i in ${@:-~/Games/Support/RetroArch/cores/*.dylib}; do
-  local url= tmp=$i:r dylib=$i:t arch=( `lipo -archs $i` )
+if [[ -n $archs[$arch] ]]; then
+  url=http://buildbot.libretro.com/nightly/apple/osx/$archs[$arch]/latest/$dylib.zip
+  if curl -o /dev/null --silent --head --fail $url; then
+    tmpdir=`mktemp -d`
+    curl -Lo $tmpdir/$dylib.zip $url
+    unzip $tmpdir/$dylib.zip -d $tmpdir
 
-  if [[ -n $archs[$arch] ]]; then
-    tag -r "Universal Binary" $i
-
-    url=http://buildbot.libretro.com/nightly/apple/osx/$archs[$arch]/latest/$dylib.zip
-    if curl -o /dev/null --silent --head --fail $url; then
-      mkdir $tmp
-      curl -Lo $tmp/$dylib.zip $url
-      unzip $tmp/$dylib.zip -d $tmp
-
-      if lipo -create $i $tmp/$dylib -output $tmp/universal-$dylib; then
-        mv -f $tmp/universal-$dylib $i
-        tag -a "Universal Binary" $i
-      fi
-      rm -rf $tmp
+    if lipo -create $1 $tmpdir/$dylib -output $tmpdir/universal-$dylib; then
+      mv -f $tmpdir/universal-$dylib $1
     fi
+    rm -rf $tmpdir
   fi
-done
+fi
