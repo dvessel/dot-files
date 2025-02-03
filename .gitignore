@@ -33,6 +33,7 @@
 .ollama/models/*
 !.ollama/models
 !.ollama/models/manifests
+!.ollama/models/tracking-blobs
 .ssh
 .sqlite_history
 .swiftpm
