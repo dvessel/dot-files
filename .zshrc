@@ -12,7 +12,7 @@ if type brew &>/dev/null; then
   # Formulae must be installed for both arm and x86.
   for zs in `brew --prefix antidote`/share/antidote/antidote.zsh \
             `brew --prefix fzf`/shell/{completion,key-bindings}.zsh
-  do ! test -r $zs || source $zs; done
+  do ! test -r $zs || source $zs; done; unset zs
 
   fpath=(/{opt/homebrew,usr/local}/share/zsh/site-functions $fpath)
 fi
