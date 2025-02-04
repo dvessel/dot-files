@@ -1,8 +1,10 @@
 #!/usr/bin/env zsh
 
 # Powerlevel10k instant prompt.
-zs=~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
-test ! -f $zs || source $zs
+test ! -f ~/.cache/p10k-instant-prompt-${(%):-%n}.zsh \
+|| source ~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
+
+source ~/.zshrc-source/options.zsh
 
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
@@ -43,5 +45,7 @@ fi
 typeset -aU  path=(~/.local/{bin,zbin} $path)
 typeset -aU fpath=(~/.local/zcompletions $fpath)
 
-for zs in ~/.zshrc-source/*.zsh(N); source $zs
-unset zs
+source ~/.zshrc-source/aliases.zsh
+source ~/.zshrc-source/fzf.zsh
+source ~/.zshrc-source/p10k.zsh
+source ~/.zshrc-source/odds-n-ends.zsh
