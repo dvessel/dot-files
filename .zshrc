@@ -27,6 +27,8 @@ if type antidote &>/dev/null; then
   GENCOMPL_FPATH=~/.local/zcompletions
   # - mattmc3/zephyr plugins:zman
   ZMAN_URL=https://zsh-manual.netlify.app
+  # - jeffreytse/zsh-vi-mode
+  ZVM_VI_EDITOR=$EDITOR
 
   ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
