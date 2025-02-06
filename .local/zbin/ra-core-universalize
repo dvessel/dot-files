@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
-typeset -A archs=( [x86_64]=arm64 [arm64]=x86_64 )
+typeset -A arch_flip=( [x86_64]=arm64 [arm64]=x86_64 )
 arch=( `lipo -archs $1` )
 dylib=$1:t
 
-if [[ -n $archs[$arch] ]]; then
-  url=http://buildbot.libretro.com/nightly/apple/osx/$archs[$arch]/latest/$dylib.zip
+if [[ -n $arch_flip[$arch] ]]; then
+  url=http://buildbot.libretro.com/nightly/apple/osx/$arch_flip[$arch]/latest/$dylib.zip
   if curl -o /dev/null --silent --head --fail $url; then
     tmpdir=`mktemp -d`
     curl -Lo $tmpdir/$dylib.zip $url
