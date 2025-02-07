@@ -4,6 +4,7 @@
   },
   "chat.commandCenter.enabled": false,
   "continue.pauseTabAutocompleteOnBattery": true,
+  "continue.telemetryEnabled": false,
   "diffEditor.experimental.showMoves": true,
   "editor.accessibilitySupport": "off",
   "editor.cursorBlinking": "phase",
