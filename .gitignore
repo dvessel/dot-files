@@ -10,6 +10,7 @@
 !.config/litecli/config
 .config/lnav
 .config/vscodium/*
+!.config/vscodium/installed-extensions.txt
 !.config/vscodium/keybindings.json
 !.config/vscodium/settings.json
 !.config/vscodium/snippets
