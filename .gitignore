@@ -41,7 +41,7 @@
 .tldrc
 .Trash
 .viminfo
-.vscode*
+.vscode-oss
 .wget-hsts
 .zcompcache
 .zsh_history
