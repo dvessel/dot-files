@@ -1,0 +1,45 @@
+#compdef codium
+
+# zsh completions for 'codium'
+local arguments
+
+arguments=(
+  {-d,--diff}'[<file> <file>]'
+  {-m,--merge}'[<path1> <path2> <base> <result>]'
+  {-a,--add}'[<folder> Add to the last active window.]'
+  '--remove[<folder> Remove from the last active window.]'
+  {-g,--goto}'[<file:line\[:character\]>]'
+  {-n,--new-window}
+  {-r,--reuse-window}
+  {-w,--wait}'[Wait for the files to be closed before returning.]'
+  '--locale[<locale> The locale to use (e.g. en-US or zh-TW).]'
+  '--user-data-dir[<dir> User data directory.]'
+  '--profile[<profileName> Opens the folder or workspace with a profile.]'
+  {-h,--help}'[Print usage.]'
+  '--extensions-dir[<dir> Root path for extensions.]'
+  '--list-extensions[List installed extensions.]'
+  '--show-versions[Use with --list-extensions.]'
+  '--category[<category> Filters extensions by category, use with --list-extensions.]'
+  '--install-extension[<ext-id | path> Installs or updates an extension.]'
+  '--pre-release[Install pre-release versions, use with --install-extension.]'
+  '--uninstall-extension[<ext-id> Uninstalls an extension.]'
+  '--update-extensions[Update all extensions.]'
+  '--enable-proposed-api[<ext-id> Enables proposed API features for extensions.]'
+  {-v,--version}
+  '--verbose[Print verbose output (implies --wait).]'
+  '--log[<level> Log level to use. Default is info.]'
+  {-s,--status}'[Print process usage and diagnostics information.]'
+  '--prof-startup[Run CPU profiler during startup.]'
+  '--disable-extensions[Disable all extensions.]'
+  '--disable-extension[<ext-id> Disable the provided extension.]'
+  '--sync[<on | off> Turn sync on or off.]'
+  '--inspect-extensions[<port> Debugging and profiling.]'
+  '--inspect-brk-extensions[<port> Debugging and profiling with pause.]'
+  '--disable-lcd-text[Disable LCD font rendering.]'
+  '--disable-gpu[Disable GPU hardware acceleration.]'
+  '--disable-chromium-sandbox'
+  '--telemetry[Shows all telemetry events which VS code collects.]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
