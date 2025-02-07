@@ -35,6 +35,9 @@
   "editor.wordWrapColumn": 120,
   "explorer.confirmDelete": false,
   "explorer.excludeGitIgnore": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
   "files.associations": {
     "*.lpl": "json",
     "*.opt": "properties",
