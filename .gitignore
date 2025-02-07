@@ -6,12 +6,13 @@
 .CFUserTextEncoding
 .conda
 .config/iterm2
-.config/litecli/history
-.config/litecli/log
+.config/litecli/*
+!.config/litecli/config
 .config/lnav
-.config/vscodium/globalStorage
-.config/vscodium/History
-.config/vscodium/workspaceStorage
+.config/vscodium/*
+!.config/vscodium/keybindings.json
+!.config/vscodium/settings.json
+!.config/vscodium/snippets
 .continue/*
 !.continue/config.json
 .diffusionbee
@@ -37,7 +38,6 @@
 .ssh
 .sqlite_history
 .swiftpm
-.thumbnails
 .tldrc
 .Trash
 .viminfo
