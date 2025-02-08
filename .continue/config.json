@@ -29,6 +29,11 @@
       "model": "deepseek-r1:14b-c32k-t.6"
     },
     {
+      "title": "DeepSeek R1 32B c2k",
+      "provider": "ollama",
+      "model": "deepseek-r1:32b-c2k-t.6"
+    },
+    {
       "title": "DeepSeek R1 32B c4k",
       "provider": "ollama",
       "model": "deepseek-r1:32b-c4k-t.6"
@@ -52,6 +57,11 @@
       "title": "Qwen2.5-Coder 14B c32k",
       "provider": "ollama",
       "model": "qwen2.5-coder:14b-c32k-t.7"
+    },
+    {
+      "title": "Qwen2.5-Coder 32B c4k",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:32b-c4k-t.7"
     },
     {
       "title": "Qwen2.5-Coder 32B c8k",
