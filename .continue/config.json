@@ -1,12 +1,4 @@
 {
-  "allowAnonymousTelemetry": false,
-  "ui": {
-    "codeBlockToolbarPosition": "top",
-    "fontSize": 15,
-    "displayRawMarkdown": false,
-    "showChatScrollbar": true,
-    "codeWrap": false
-  },
   "models": [
     {
       "title": "Magicoder 7B c32k",
