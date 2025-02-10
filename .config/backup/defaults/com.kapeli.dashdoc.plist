@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>HistoryBack</key>
+		<string>^z</string>
+		<key>HistoryForward</key>
+		<string>^x</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>
