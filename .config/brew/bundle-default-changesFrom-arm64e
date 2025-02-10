@@ -31,8 +31,6 @@ brew "lnav"
 brew "lua-language-server"
 # Apple Silicon Monitor Top written in Golang
 brew "mactop"
-# Create icns files from the command-line
-brew "makeicns"
 # Multiple Arcade Machine Emulator
 brew "mame"
 # Create, run, and share large language models (LLMs)
