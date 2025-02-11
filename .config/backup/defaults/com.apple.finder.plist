@@ -83,7 +83,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{615, 420}, {825, 464}}</string>
+			<string>{{615, 410}, {825, 464}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -403,13 +403,13 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>188</real>
+			<real>192</real>
 			<key>labelOnBottom</key>
 			<true/>
 			<key>scrollPositionX</key>
-			<real>533</real>
-			<key>scrollPositionY</key>
 			<real>0.0</real>
+			<key>scrollPositionY</key>
+			<real>467</real>
 			<key>showIconPreview</key>
 			<true/>
 			<key>showItemInfo</key>
