@@ -1,18 +1,32 @@
 #!/usr/bin/env zsh
 
-local cmd=${1:-run} supported_cmd=( show run pull cp rm )
+local cmd=${1:-run} supported_cmd=( show run stop pull cp rm )
 
 if (( $supported_cmd[(I)$cmd] )); then
   if [[ -n $1 ]]; then
     shift
   fi
 
-  local model=($(
-    ollama list |
-    sort |
-    fzf --prompt="❯ ollama $cmd " --header-lines=1 $( [[ $cmd == rm ]] && printf --multi ) |
-    cut -d ' ' -f1
-  ))
+  if [[ $cmd == pull ]]; then
+    # TODO: pull from this unofficial source.
+    # https://craigahobbs.github.io/ollama-chat/models/models.json
+    print "Not implemented."
+
+  elif [[ $cmd == stop ]]; then
+    local model=($(
+      ollama ps |
+      sort |
+      fzf --prompt="❯ ollama $cmd " --header-lines=1 --multi |
+      cut -d ' ' -f1
+    ))
+  else
+    local model=($(
+      ollama list |
+      sort |
+      fzf --prompt="❯ ollama $cmd " --header-lines=1 $( [[ $cmd == rm ]] && printf --multi ) |
+      cut -d ' ' -f1
+    ))
+  fi
 
   if [[ -n $model ]]; then
     print "ollama $cmd $model $@"
