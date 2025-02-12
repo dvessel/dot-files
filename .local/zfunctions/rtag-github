@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+while read -r p; do
+	printf "\e[1;30m%s\e[0m\n" $p
+	tag -a "GitHub Repo" "$p"
+done < <( rgit-paths )
