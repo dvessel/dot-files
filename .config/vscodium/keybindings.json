@@ -139,7 +139,7 @@
     "command": "-workbench.action.toggleAuxiliaryBar"
   },
   {
-    "key": "tab",
+    "key": "ctrl+l",
     "command": "editor.action.inlineSuggest.acceptNextLine"
   }
 ]
