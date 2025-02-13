@@ -1,0 +1,20 @@
+{
+  "columns": [
+    "Name",
+    "Size",
+    "Quant",
+    "Family",
+    "Modified",
+    "ID"
+  ],
+  "docker_container": "",
+  "editor": "/opt/homebrew/bin/nvim",
+  "lm_studio_file_paths": "",
+  "log_file_path": "",
+  "log_level": "info",
+  "ollama_api_key": "",
+  "ollama_api_url": "http://127.0.0.1:11434",
+  "sort_order": "name",
+  "strip_string": "",
+  "theme": "dark-neon"
+}

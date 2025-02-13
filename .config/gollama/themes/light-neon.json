@@ -1,0 +1,133 @@
+{
+  "name": "light-neon",
+  "description": "Light theme with neon accents",
+  "colours": {
+    "header_foreground": "238",
+    "header_border": "237",
+    "selected": "#FFE5FF",
+    "selected_bg": "#4F0082",
+    "prompt_text": "#8B00FF",
+    "input_text": "#4B0082",
+    "placeholder_text": "#6600CC",
+    "cursor_bg": "#4B0082",
+    "error": "#FF0000",
+    "success": "#8B008B",
+    "info": "92",
+    "warning": "#FF1493",
+    "item_name": [
+      "#000000",
+      "#400044"
+    ],
+    "item_id": "#222222",
+    "item_date": "#433444",
+    "item_sha": "#444444",
+    "item_border": "92",
+    "item_highlight": "93",
+    "help_text": "#444444",
+    "help_bg": "#FFFFFF",
+    "compare_header": "#8B008B",
+    "compare_command": "#6A0DAD",
+    "compare_local": "#0000CD",
+    "compare_remote": "#008B8B",
+    "compare_modified": "#8B4513",
+    "compare_added": "#006400",
+    "compare_removed": "#8B0000",
+    "compare_separator": "#CCCCCC",
+    "search_highlight": "#5000D3",
+    "search_text": "#000000",
+    "search_header": "#000000",
+    "vram_exceeds": "#8B0000",
+    "vram_within": "#006400",
+    "vram_unknown": "#8B4513",
+    "ranges": {
+      "size_ranges": [
+        {
+          "threshold": 50,
+          "colour": "#FF0055"
+        },
+        {
+          "threshold": 20,
+          "colour": "#FF00AA"
+        },
+        {
+          "threshold": 10,
+          "colour": "#AA00FF"
+        },
+        {
+          "threshold": 0,
+          "colour": "#6600FF"
+        }
+      ],
+      "quant_types": [
+        {
+          "level": "IQ1",
+          "colour": "#FF0055"
+        },
+        {
+          "level": "Q2",
+          "colour": "#FF0077"
+        },
+        {
+          "level": "IQ2",
+          "colour": "#FF00AA"
+        },
+        {
+          "level": "Q3",
+          "colour": "#FF00DD"
+        },
+        {
+          "level": "IQ3",
+          "colour": "#CC00FF"
+        },
+        {
+          "level": "Q4",
+          "colour": "#AA00FF"
+        },
+        {
+          "level": "IQ4",
+          "colour": "#8800FF"
+        },
+        {
+          "level": "Q5",
+          "colour": "#6600FF"
+        },
+        {
+          "level": "Q6",
+          "colour": "#4400FF"
+        },
+        {
+          "level": "Q8",
+          "colour": "#2200FF"
+        },
+        {
+          "level": "F16",
+          "colour": "#0000FF"
+        }
+      ]
+    }
+  },
+  "family": {
+    "alpaca": "#FF0099",
+    "bert": "#00AAFF",
+    "command-r": "#FF00BB",
+    "deepseek": "#0044FF",
+    "deepseek2": "#0066FF",
+    "gemma": "#CC00FF",
+    "gemma2": "#CC3AF9",
+    "granite": "#0022FF",
+    "llama": "#FF0055",
+    "mllama": "#FF0077",
+    "nomic": "#00EEFF",
+    "nomic-bert": "#00CCFF",
+    "phi": "#4400FF",
+    "phi2": "#2200FF",
+    "phi3": "#0000FF",
+    "placeholder": "#00FFFF",
+    "qwen": "#AA00FF",
+    "qwen2": "#8800FF",
+    "qwen3": "#6600FF",
+    "starcoder": "#FF00DD",
+    "starcoder2": "#EE00FF",
+    "vicuna": "#0088FF"
+  }
+}
