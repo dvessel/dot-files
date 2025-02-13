@@ -3,6 +3,7 @@
 if _brew_check -s lsd; then
   alias l='lsd'
   alias a='lsd -A'
+  alias .='lsd -d .*'
   alias ll='lsd -l'
   alias la='lsd -lA'
   alias lt='lsd --tree'
@@ -12,6 +13,7 @@ if _brew_check -s lsd; then
 else
   alias l='ls --color=auto'
   alias a='ls -A --color=auto'
+  alias .='ls -d --color=auto .*'
   alias ll='ls -l --color=auto'
   alias la='ls -lA --color=auto'
 fi
