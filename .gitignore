@@ -25,6 +25,7 @@
 .local/bin
 .local/include
 .local/lib
+.local/pkg
 .local/share
 .local/state
 # CrossOver .mailcap, .mime.types
