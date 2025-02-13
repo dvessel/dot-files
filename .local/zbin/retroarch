@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+zparseopts -D -E - -metal-hud=metal_hud
+
+if [[ -n $metal_hud ]]; then
+  export MTL_HUD_ENABLED=1
+fi
+
+app_dir=`mdfind kMDItemCFBundleIdentifier = com.libretro.dist.RetroArch | head -n 1`
+if [[ -n $app_dir ]]; then
+  $app_dir/Contents/MacOS/RetroArch $@
+else
+  echo "RetroArch not found" >&2
+  exit 1
+fi
