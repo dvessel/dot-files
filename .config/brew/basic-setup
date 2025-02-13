@@ -2,13 +2,5 @@
 brew "antidote"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
-# Developer targeted fonts with a high number of glyphs
-cask "font-lilex-nerd-font"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
