@@ -18,21 +18,21 @@ if type brew &>/dev/null; then
 fi
 
 if type antidote &>/dev/null; then
-  # Plug-in options. @see .zsh_plugins.txt
+  # Plug-in options. @see .zsh_plugins
   # - mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
+  zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
   # - mattmc3/zephyr plugins:zfunctions
   export ZFUNCDIR=~/.local/zfunctions
   # - dvessel/zsh-completion-generator
   export GENCOMPL_FPATH=~/.local/zcompletions
-  # - mattmc3/zephyr plugins:zman
-  export ZMAN_URL=https://zsh-manual.netlify.app
-  # - jeffreytse/zsh-vi-mode
-  export ZVM_VI_EDITOR=$EDITOR
 
   export ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
-  antidote load
+  if [[ ! ~/.zsh_plugins.zsh -nt ~/.zsh_plugins ]]; then
+    antidote bundle <~/.zsh_plugins >~/.zsh_plugins.zsh
+  fi
+  source ~/.zsh_plugins.zsh
 else
   # Normally handled by antidote plugin:
   # - mattmc3/ez-compinit

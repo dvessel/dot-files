@@ -2,34 +2,25 @@
 #
 # .zsh_plugins.txt - antidote plugins file
 #
-
 # The `.zsh_plugins.txt` file is used by antidote to configure Zsh bundles. Bundles are
 # just a fancy way of referring to Zsh utilities, frameworks, prompts, or plugins.
 #
-# NOTE: Order matters in this file! Some bundles need to be last, and others are
-# prerequisites. Read the documentation for the plugins you use to ensure proper
-# configuration.
-#
 # Example: https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
 
-# This is the recommended plugin for handling compinit and setting completion zstyles.
-mattmc3/ez-compinit
-
-# Path set to .zsh-theme since it will source multiple otherwise.
 romkatv/powerlevel10k path:powerlevel10k.zsh-theme
 
-mattmc3/zephyr path:plugins/zfunctions
-mattmc3/zephyr path:plugins/macos
-mattmc3/zman
-
 # zsh auto completions.
-dvessel/zsh-completion-generator
+mattmc3/ez-compinit
 conda-incubator/conda-zsh-completion kind:fpath
 keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
 zsh-users/zsh-completions path:src kind:fpath
+dvessel/zsh-completion-generator
 
 Aloxaf/fzf-tab
-zsh-users/zsh-syntax-highlighting kind:defer
-zsh-users/zsh-autosuggestions
 jeffreytse/zsh-vi-mode
+mattmc3/zephyr path:plugins/zfunctions
+mattmc3/zman
+
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
