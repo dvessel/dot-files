@@ -22,15 +22,15 @@ if type antidote &>/dev/null; then
   # - mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
   # - mattmc3/zephyr plugins:zfunctions
-  ZFUNCDIR=~/.local/zfunctions
+  export ZFUNCDIR=~/.local/zfunctions
   # - dvessel/zsh-completion-generator
-  GENCOMPL_FPATH=~/.local/zcompletions
+  export GENCOMPL_FPATH=~/.local/zcompletions
   # - mattmc3/zephyr plugins:zman
-  ZMAN_URL=https://zsh-manual.netlify.app
+  export ZMAN_URL=https://zsh-manual.netlify.app
   # - jeffreytse/zsh-vi-mode
-  ZVM_VI_EDITOR=$EDITOR
+  export ZVM_VI_EDITOR=$EDITOR
 
-  ANTIDOTE_HOME=~/.cache/antidote
+  export ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   antidote load
 else

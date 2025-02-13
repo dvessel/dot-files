@@ -5,7 +5,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt no_case_glob
 
 # Word boundaries for keyboard traversal. Defaults: *?_-.[]~=/&;!#$%^(){}<>
-WORDCHARS='~*?'
+export WORDCHARS='~*?'
 
 setopt share_history          # Reads/writes history to keep sessions in sync.
                               # inc_append_history not needed.
@@ -27,8 +27,8 @@ setopt hist_beep              # Beep when accessing non-existent history.
 # HISTSIZE to a larger number than SAVEHIST in order to allow room for the
 # duplicated events, otherwise this option will behave like hist_ignore_all_dups
 # once the history fills up with unique events.
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 setopt AUTO_PUSHD         # Push the current directory visited on the stack.
 setopt PUSHD_IGNORE_DUPS  # Do not store duplicates in the stack.
