@@ -2,7 +2,7 @@
 
 if _brew_check -s lsd; then
   alias l='lsd'
-  alias h='lsd -d .*'
+  alias a='lsd -A'
   alias ll='lsd -l'
   alias la='lsd -lA'
   alias lt='lsd --tree'
@@ -11,7 +11,7 @@ if _brew_check -s lsd; then
   alias ml='lsd --blocks=permission,user,group,name'
 else
   alias l='ls --color=auto'
-  alias h='ls -d --color=auto .*'
+  alias a='ls -A --color=auto'
   alias ll='ls -l --color=auto'
   alias la='ls -lA --color=auto'
 fi
