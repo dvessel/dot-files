@@ -229,6 +229,10 @@ The command should do this: \(ai.prompt)</string>
 	<dict>
 		<key>EditEngage Artificial Intelligence</key>
 		<string>@i</string>
+		<key>EditMarks and AnnotationsNext Mark</key>
+		<string>@^j</string>
+		<key>EditMarks and AnnotationsPrevious Mark</key>
+		<string>@^k</string>
 		<key>ShellNew Tab with Current Profile</key>
 		<string>@t</string>
 		<key>ViewShow Composer</key>
