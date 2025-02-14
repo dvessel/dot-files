@@ -22,8 +22,7 @@ alias d='pwd'
 alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
 for i ({1..9}) alias "$i"="cd +$i"
 
-alias cl='/usr/bin/clear'
-alias cx='/usr/bin/clear -x'
+alias cl='/usr/bin/clear -x'
 
 if _brew_check -s bat-extras; then
   alias bdiff='batdiff'
