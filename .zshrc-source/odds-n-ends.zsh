@@ -2,13 +2,6 @@
 
 # Odd bits being reviewed or doesn't have a fitting home.
 
-# compdef _gnu_generic foo
-if type brew &>/dev/null; then
-  compdef fbrew=brew
-fi
-if type batman &>/dev/null; then
-  compdef batman=man
-fi
 if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
   alias nvim=/opt/homebrew/bin/nvim
 fi

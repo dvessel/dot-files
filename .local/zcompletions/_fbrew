@@ -1,0 +1,5 @@
+#compdef fbrew
+#autoload
+
+# completions for fbrew match brew
+_brew
