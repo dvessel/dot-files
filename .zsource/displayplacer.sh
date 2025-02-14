@@ -1,13 +1,6 @@
 #!/usr/bin/env zsh
 
-# Odd bits being reviewed or doesn't have a fitting home.
-
-if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
-  alias nvim=/opt/homebrew/bin/nvim
-fi
-alias lcut='/Applications/LosslessCut.app/Contents/MacOS/LosslessCut'
-
-if _brew_check -s displayplacer; then
+if type displayplacer &>/dev/null; then
 
   alias dpmore:120hz='displayplacer     "id:1 mode:72"'
   alias dpmore:60hz='displayplacer      "id:1 mode:73"'
@@ -34,12 +27,3 @@ if _brew_check -s displayplacer; then
   alias dpnative-notchless:48hz='displayplacer    "id:1 mode:52"'
 
 fi
-
-alias sync-980-emulation='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
-  ~/Games/Emulation /Volumes/980Pro'
-alias sync-storage-mame='rsync -avL --itemize-changes --delete --exclude=.DS_Store \
-  ~/Games/Support/OpenEmu/AdvanceScan/_{unknown,import/_updates} /Volumes/Storage/Emulation/MAME'
-alias sync-local='sync-980-emulation && sync-storage-mame'
-alias sync-storage-to-remote='rsync -avzL --delete --progress -h --exclude=.DS_Store\
-  /Volumes/Storage/* dvessel-ds.local:/volume1/storage'
-alias sync-all='sync-local && sync-storage-to-remote'

@@ -3,7 +3,7 @@
 if _brew_check -s lsd; then
   alias l='lsd'
   alias a='lsd -A'
-  alias .='lsd -d .*'
+  alias l.='lsd -d .*'
   alias ll='lsd -l'
   alias la='lsd -lA'
   alias lt='lsd --tree'
@@ -13,7 +13,7 @@ if _brew_check -s lsd; then
 else
   alias l='ls --color=auto'
   alias a='ls -A --color=auto'
-  alias .='ls -d --color=auto .*'
+  alias l.='ls -d --color=auto .*'
   alias ll='ls -l --color=auto'
   alias la='ls -lA --color=auto'
 fi
@@ -46,13 +46,13 @@ alias unquarantine='xattr -r -d com.apple.quarantine'
 alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
 
-alias rsync-copy='rsync -avz --progress -h --exclude=.DS_Store'
-alias rsync-move='rsync -avz --progress -h --remove-source-files --exclude=.DS_Store'
-alias rsync-update='rsync -avzu --progress -h --exclude=.DS_Store'
-alias rsync-synchronize='rsync -avzu --delete --progress -h --exclude=.DS_Store'
-
 # Clear completions cache.
 alias zcc='rm -rf ~/{.cache/zsh,.zcompcache} && echo zcompcache\ cleared.'
+
+# Make neovim available in x86 Rosetta.
+if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
+  alias nvim=/opt/homebrew/bin/nvim
+fi
 
 # Install brew and all dependent plugins.
 if ! type brew &>/dev/null; then
