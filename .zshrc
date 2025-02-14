@@ -4,7 +4,7 @@
 test ! -f ~/.cache/p10k-instant-prompt-${(%):-%n}.zsh \
 || source ~/.cache/p10k-instant-prompt-${(%):-%n}.zsh
 
-source ~/.zshrc-source/options.zsh
+source ~/.zsource/options.zsh
 
 if type brew &>/dev/null; then
   export HOMEBREW_NO_ENV_HINTS=1
@@ -29,10 +29,10 @@ if type antidote &>/dev/null; then
 
   export ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
-  if [[ ! ~/.zsh_plugins.zsh -nt ~/.zsh_plugins ]]; then
-    antidote bundle <~/.zsh_plugins >~/.zsh_plugins.zsh
+  if [[ ! ~/.zsource/zplugins.zsh -nt ~/.zplugins ]]; then
+    antidote bundle <~/.zplugins >~/.zsource/zplugins.zsh
   fi
-  source ~/.zsh_plugins.zsh
+  source ~/.zsource/zplugins.zsh
 else
   # Normally handled by antidote plugin:
   # - mattmc3/ez-compinit
@@ -47,7 +47,7 @@ fi
 typeset -aU  path=(~/.local/{bin,zbin} $path)
 typeset -aU fpath=(~/.local/zcompletions $fpath)
 
-source ~/.zshrc-source/aliases.zsh
-source ~/.zshrc-source/fzf.zsh
-source ~/.zshrc-source/p10k.zsh
-source ~/.zshrc-source/odds-n-ends.zsh
+source ~/.zsource/p10k.zsh
+source ~/.zsource/aliases.zsh
+source ~/.zsource/fzf.zsh
+source ~/.zsource/odds-n-ends.zsh

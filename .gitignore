@@ -46,6 +46,5 @@
 .vscode*
 .wget-hsts
 .zcompcache
-.zsh_history
-.zsh_plugins.zsh
 .zsh_sessions
+.zsource/zplugins.zsh

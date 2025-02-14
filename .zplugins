@@ -19,6 +19,7 @@ dvessel/zsh-completion-generator
 
 Aloxaf/fzf-tab
 jeffreytse/zsh-vi-mode
+mattmc3/zephyr path:plugins/history
 mattmc3/zephyr path:plugins/zfunctions
 mattmc3/zman
 
