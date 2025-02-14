@@ -4,9 +4,6 @@
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt no_case_glob
 
-# Word boundaries for keyboard traversal. Defaults: *?_-.[]~=/&;!#$%^(){}<>
-export WORDCHARS='~*?'
-
 setopt AUTO_PUSHD         # Push the current directory visited on the stack.
 setopt PUSHD_IGNORE_DUPS  # Do not store duplicates in the stack.
 setopt PUSHD_SILENT       # Do not print the directory stack after pushd or popd.
