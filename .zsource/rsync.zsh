@@ -5,23 +5,29 @@ alias rsync-move='rsync -avz --progress -h --remove-source-files --exclude=.DS_S
 alias rsync-update='rsync -avzu --progress -h --itemize-changes --exclude=.DS_Store'
 alias rsync-synchronize='rsync -avzu --delete --progress -h --itemize-changes --exclude=.DS_Store'
 
-alias rsync-emulation::980pro='rsync-synchronize -L \
-  ~/Games/Emulation \
-  /Volumes/980Pro'
-alias rsync-advancescan::storage:emulation:mame='rsync-synchronize -L \
-  ~/Games/Support/OpenEmu/AdvanceScan/_{unknown,import/_updates} \
-  /Volumes/Storage/Emulation/MAME'
-alias rsync-storage::dvessel-ds.local:storage='rsync-synchronize -L \
-  /Volumes/Storage/* \
-  dvessel-ds.local:/volume1/storage'
+list=(
+  "rsync-emulation-ii-980pro"   #1. alias name
+  "test -d /Volumes/980Pro"     #2. condition
+  "~/Games/Emulation"           #3. source
+  "/Volumes/980Pro"             #4. destination
 
-__rsync_presets=(
-  'test -d /Volumes/980Pro'
-  rsync-emulation::980pro
-  'test -d /Volumes/Storage'
-  rsync-advancescan::storage:emulation:mame
-  'ping -c1 dvessel-ds.local &>/dev/null'
-  rsync-storage::dvessel-ds.local:storage
+  "rsync-advancescan-ii-storage-emulation-mame"
+  "test -d /Volumes/Storage"
+  "~/Games/Support/OpenEmu/AdvanceScan/_{unknown,import/_updates}"
+  "/Volumes/Storage/Emulation/MAME"
+
+  "rsync-storage-ii-diskstation-storage"
+  "test -d /Volumes/Storage && ping -c1 dvessel-ds.local &>/dev/null"
+  "/Volumes/Storage/*"
+  "dvessel-ds.local:/volume1/storage"
 )
-alias rsync-all="${(j[ && ])__rsync_presets}"
-unset __rsync_presets
+
+i=1; presets=()
+while (( $i < ${#list[@]} )); do
+  presets+="$list[$i]"
+  header="printf \"\e[1;30m%s\e[0m\n\" \"Syncing… $list[$i+2] -> $list[$i+3]\""
+  alias "$list[$i]"="$list[$i+1] && { $header; rsync-synchronize -L $list[$i+2] $list[$i+3] }"
+  i=$((i+4))
+done
+alias rsync-ii-all="${(j[;echo;])presets}"
+unset list presets i header
