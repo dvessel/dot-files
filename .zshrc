@@ -12,10 +12,12 @@ typeset -aU zsources
 zsources=( ~/.zsource/{options,p10k,antidote,*}.zsh )
 combined=~/.zsource/zsource!zsh
 
-for zsh in $zsources; if [[ ! $combined -nt $zsh ]]; then
+# Aggregate->Compile on modification. Use `zcc` to force it.
+for zsh ( $zsources ); if [[ ! $combined -nt $zsh ]]; then
   cat $zsources > $combined
   zcompile $combined
   break
 fi
 source $combined
-unset zsources combined
+
+unset zsources combined zsh
