@@ -7,8 +7,7 @@
     "Modified",
     "ID"
   ],
-  "docker_container": "",
-  "editor": "/opt/homebrew/bin/nvim",
+  "editor": "nvim",
   "lm_studio_file_paths": "",
   "log_file_path": "",
   "log_level": "info",
