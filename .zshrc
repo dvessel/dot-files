@@ -8,7 +8,14 @@ test ! -f ~/.cache/p10k-instant-prompt-${(%):-%n}.zsh \
 typeset -aU  path=(~/.local/{bin,zbin} $path)
 typeset -aU fpath=(/{opt/homebrew,usr/local}/share/zsh/site-functions $fpath)
 
-# Source ~/.zsorce/*.zsh while maintaining order for the set names.
-typeset -aU zsource=( ~/.zsource/{options,p10k,antidote,*}.zsh )
-source <(cat $zsource)
-unset zsource
+typeset -aU zsources
+# Collect ~/.zsource/*.zsh while maintaining order for set names.
+zsources=( ~/.zsource/{options,p10k,antidote,*}.zsh )
+combined=~/.zsource/zsource!zsh
+for zsh in $zsources; if [[ ! $combined -nt $zsh ]]; then
+  cat $zsources > $combined
+  zcompile $combined
+  break
+fi
+source $combined
+unset zsources combined

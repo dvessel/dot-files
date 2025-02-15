@@ -47,4 +47,4 @@
 .wget-hsts
 .zcompcache
 .zsh_sessions
-.zsource/*!zsh
+.zsource/*!zsh*
