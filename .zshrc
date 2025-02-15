@@ -6,7 +6,7 @@ test ! -f ~/.cache/p10k-instant-prompt-${(%):-%n}.zsh \
 
 # Add local paths and prevent duplicates.
 typeset -aU  path=(~/.local/{bin,zbin} $path)
-typeset -aU fpath=(~/.local/zcompletions /{opt/homebrew,usr/local}/share/zsh/site-functions $fpath)
+typeset -aU fpath=(/{opt/homebrew,usr/local}/share/zsh/site-functions $fpath)
 
 # Source ~/.zsorce/*.zsh while maintaining order for the set names.
 typeset -aU zsource=( ~/.zsource/{options,p10k,antidote,*}.zsh )

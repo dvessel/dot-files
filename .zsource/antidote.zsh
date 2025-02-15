@@ -8,7 +8,7 @@ if source `brew --prefix antidote`/share/antidote/antidote.zsh &>/dev/null; then
   # - mattmc3/zephyr plugins:zfunctions
   export ZFUNCDIR=~/.local/zfunctions
   # - dvessel/zsh-completion-generator
-  export GENCOMPL_FPATH=~/.local/zcompletions
+  export GENCOMPL_FPATH=~/.local/zfunctions
 
   export ANTIDOTE_HOME=~/.cache/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
