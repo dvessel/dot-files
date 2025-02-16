@@ -1,90 +1,95 @@
 {
   "models": [
     {
-      "title": "Magicoder 7B c32k",
+      "title": "Magicoder 7B",
       "provider": "ollama",
-      "model": "magicoder:7b-c32k-t.6"
+      "model": "magicoder:7b-s-cl-q6_K"
     },
     {
-      "title": "DeepSeek R1 14B c8k",
+      "title": "DeepSeek R1 14B ctx1k",
       "provider": "ollama",
-      "model": "deepseek-r1:14b-c8k-t.6"
+      "model": "deepseek-r1:14b-ctx1k"
     },
     {
-      "title": "DeepSeek R1 14B c16k",
+      "title": "DeepSeek R1 14B ctx2k",
       "provider": "ollama",
-      "model": "deepseek-r1:14b-c16k-t.6"
+      "model": "deepseek-r1:14b-ctx2k"
     },
     {
-      "title": "DeepSeek R1 14B c32k",
+      "title": "DeepSeek R1 14B ctx4k",
       "provider": "ollama",
-      "model": "deepseek-r1:14b-c32k-t.6"
+      "model": "deepseek-r1:14b-ctx4k"
     },
     {
-      "title": "DeepSeek R1 32B c2k",
+      "title": "DeepSeek R1 14B ctx8k",
       "provider": "ollama",
-      "model": "deepseek-r1:32b-c2k-t.6"
+      "model": "deepseek-r1:14b-ctx8k"
     },
     {
-      "title": "DeepSeek R1 32B c4k",
+      "title": "DeepSeek R1 32B ctx1k",
       "provider": "ollama",
-      "model": "deepseek-r1:32b-c4k-t.6"
+      "model": "deepseek-r1:32b-ctx1k"
     },
     {
-      "title": "DeepSeek R1 32B c8k",
+      "title": "DeepSeek R1 32B ctx2k",
       "provider": "ollama",
-      "model": "deepseek-r1:32b-c8k-t.6"
+      "model": "deepseek-r1:32b-ctx2k"
     },
     {
-      "title": "Qwen2.5-Coder 14B c8k",
+      "title": "DeepSeek R1 32B ctx4k",
       "provider": "ollama",
-      "model": "qwen2.5-coder:14b-c8k-t.7"
+      "model": "deepseek-r1:32b-ctx4k"
     },
     {
-      "title": "Qwen2.5-Coder 14B c16k",
+      "title": "DeepSeek R1 32B ctx8k",
       "provider": "ollama",
-      "model": "qwen2.5-coder:14b-c16k-t.7"
+      "model": "deepseek-r1:32b-ctx8k"
     },
     {
-      "title": "Qwen2.5-Coder 14B c32k",
+      "title": "Qwen2.5-Coder 14B ctx1k",
       "provider": "ollama",
-      "model": "qwen2.5-coder:14b-c32k-t.7"
+      "model": "qwen2.5-coder:14b-ctx1k"
     },
     {
-      "title": "Qwen2.5-Coder 32B c4k",
+      "title": "Qwen2.5-Coder 14B ctx2k",
       "provider": "ollama",
-      "model": "qwen2.5-coder:32b-c4k-t.7"
+      "model": "qwen2.5-coder:14b-ctx2k"
     },
     {
-      "title": "Qwen2.5-Coder 32B c8k",
+      "title": "Qwen2.5-Coder 14B ctx4k",
       "provider": "ollama",
-      "model": "qwen2.5-coder:32b-c8k-t.7"
+      "model": "qwen2.5-coder:14b-ctx4k"
     },
     {
-      "title": "Qwen2.5-Coder 32B c16k",
+      "title": "Qwen2.5-Coder 14B ctx8k",
       "provider": "ollama",
-      "model": "qwen2.5-coder:32b-c16k-t.7"
+      "model": "qwen2.5-coder:14b-ctx8k"
     },
     {
-      "title": "Qwen2.5 14B c8k",
+      "title": "Qwen2.5-Coder 32B ctx1k",
       "provider": "ollama",
-      "model": "qwen2.5:14b-c8k-t.7"
+      "model": "qwen2.5-coder:32b-ctx1k"
     },
     {
-      "title": "Qwen2.5 14B c16k",
+      "title": "Qwen2.5-Coder 32B ctx2k",
       "provider": "ollama",
-      "model": "qwen2.5:14b-c16k-t.7"
+      "model": "qwen2.5-coder:32b-ctx2k"
     },
     {
-      "title": "Qwen2.5 14B c32k",
+      "title": "Qwen2.5-Coder 32B ctx4k",
       "provider": "ollama",
-      "model": "qwen2.5:14b-c32k-t.7"
+      "model": "qwen2.5-coder:32b-ctx4k"
+    },
+    {
+      "title": "Qwen2.5-Coder 32B ctx8k",
+      "provider": "ollama",
+      "model": "qwen2.5-coder:32b-ctx8k"
     }
   ],
   "tabAutocompleteModel": {
-    "title": "Qwen2.5-Coder 1.5B c4k",
+    "title": "Qwen2.5-Coder 1.5B completion",
     "provider": "ollama",
-    "model": "qwen2.5-coder:1.5b-c4k-t.6"
+    "model": "qwen2.5-coder:1.5b-completion"
   },
   "embeddingsProvider": {
     "provider": "ollama",

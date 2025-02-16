@@ -8,9 +8,9 @@ The command should do this: \(ai.prompt)</string>
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AiMaxTokens</key>
-	<integer>4096</integer>
+	<integer>1024</integer>
 	<key>AiModel</key>
-	<string>llama3.2:3b-t.6</string>
+	<string>llama3.2:3b-instruct-q6_K</string>
 	<key>AitermURL</key>
 	<string>http://localhost:11434/v1/chat/completions</string>
 	<key>AitermUseLegacyAPI</key>
