@@ -40,7 +40,6 @@
 .ssh
 .sqlite_history
 .swiftpm
-.tldrc
 .Trash
 .viminfo
 .vscode*
