@@ -18,13 +18,12 @@
 !.continue/config.json
 .diffusionbee
 .hammerspoon/Spoons/EmmyLua.spoon
-.ipython
-.jupyter
 .lesshst
 .lmstudio-home-pointer
 .local/bin
 .local/include
 .local/lib
+# go packages
 .local/pkg
 .local/share
 .local/state
