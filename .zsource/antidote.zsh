@@ -19,9 +19,9 @@ autoload -Uz antidote
 if type antidote &>/dev/null; then
 
   zplugins=~/.zplugins
-  zpstatic=~/.zsource/zplugins!zsh
+  zpstatic=${XDG_CACHE_HOME:-~/.cache}/zsh/zplugins.zsh
 
-  export ANTIDOTE_HOME=~/.cache/antidote
+  export ANTIDOTE_HOME=${XDG_CACHE_HOME:-~/.cache}/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'
   zstyle ':antidote:bundle' file $zplugins
   zstyle ':antidote:static' file $zpstatic
