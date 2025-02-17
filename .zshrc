@@ -15,30 +15,30 @@ test ! -f ${XDG_CACHE_HOME:-~/.cache}/p10k-instant-prompt-${(%):-%n}.zsh \
 typeset -aU  path=(~/.local/{bin,zbin} $path)
 
 # Aggregate->Compile->Source
-function .zsource() {
-  zparseopts -D -E - -arch=arch
+function acsource() {
+  zparseopts -D -E - -arch-specific=arch_specific
   typeset -aU argv=($@)
-  local s zsource=${XDG_CACHE_HOME:-~/.cache}/zsh/zsource-${1}$(
-    test -z $arch || printf ".%s" `arch`
-  )
+  local s aggregate=${XDG_CACHE_HOME:-~/.cache}/zsh/${0}-${1}$(
+    test -z $arch_specific || printf "-%s" `arch`
+  ).zsh
   shift
-  for s ( $@ ); if [[ -f $s ]] && [[ ! $zsource -nt $s ]]
+  for s ( $@ ); if [[ -f $s ]] && [[ ! $aggregate -nt $s ]]
   then
-    mkdir -p $zsource:h
-    cat $@ > $zsource 2>/dev/null
-    zcompile $zsource
+    mkdir -p $aggregate:h
+    cat $@ > $aggregate 2>/dev/null
+    zcompile $aggregate
     break
   fi
-  source $zsource
+  source $aggregate
 }
 
 # Shell integrations.
-.zsource integrations.zsh --arch \
+acsource --arch-specific integrations \
   `brew --prefix fzf`/shell/*.zsh \
   `brew --caskroom`/miniconda/base/etc/profile.d/conda.sh
 
 # Aggregate ~/.zsource/*.zsh while maintaining order for set names.
-.zsource aggregate.zsh ~/.zsource/{options,p10k,antidote,*}.zsh
+acsource zsource ~/.zsource/{options,p10k,antidote,*}.zsh
 
 if type conda &>/dev/null; then
   conda activate base
