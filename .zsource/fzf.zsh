@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-# https://github.com/junegunn/fzf#setting-up-shell-integration
-source <(fzf --zsh)
-
 opts=(
   --reverse
   --scroll-off 7

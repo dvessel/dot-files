@@ -7,17 +7,22 @@ test ! -f ~/.cache/p10k-instant-prompt-${(%):-%n}.zsh \
 # Add local paths, keep [-U]nique.
 typeset -aU  path=(~/.local/{bin,zbin} $path)
 
-typeset -aU zsources
-# Collect ~/.zsource/*.zsh while maintaining order for set names.
-zsources=( ~/.zsource/{options,p10k,antidote,*}.zsh )
-combined=~/.zsource/zsource!zsh
+# Aggregate->Compile->Source
+function .zsource() {
+  typeset -aU argv=($@)
+  local s zsource=~/.zsource/$1
+  shift
+  for s ( $@ ); if [[ ! $zsource -nt $s ]]; then
+    cat $@ > $zsource
+    zcompile $zsource
+    break
+  fi
+  source $zsource
+}
 
-# Aggregate->Compile on modification. Use `zcc` to force it.
-for zsh ( $zsources ); if [[ ! $combined -nt $zsh ]]; then
-  cat $zsources > $combined
-  zcompile $combined
-  break
+if type fzf &>/dev/null; then
+  # fzf shell integration.
+  .zsource fzf-integration!zsh `brew --prefix fzf`/shell/*.zsh
 fi
-source $combined
-
-unset zsources combined zsh
+# Aggregate ~/.zsource/*.zsh while maintaining order for set names.
+.zsource zsource!zsh ~/.zsource/{options,p10k,antidote,*}.zsh
