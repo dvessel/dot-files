@@ -24,9 +24,14 @@ function .zsource() {
   source $zsource
 }
 
-if type fzf &>/dev/null; then
-  # fzf shell integration.
-  .zsource fzf-integration!zsh `brew --prefix fzf`/shell/*.zsh
-fi
+# Shell integrations.
+.zsource zintegration!zsh --arch \
+  `brew --prefix fzf`/shell/*.zsh \
+  `brew --caskroom`/miniconda/base/etc/profile.d/conda.sh
+
 # Aggregate ~/.zsource/*.zsh while maintaining order for set names.
 .zsource zsource!zsh ~/.zsource/{options,p10k,antidote,*}.zsh
+
+if type conda &>/dev/null; then
+  conda activate base
+fi
