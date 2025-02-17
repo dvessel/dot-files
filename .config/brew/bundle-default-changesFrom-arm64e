@@ -51,6 +51,8 @@ brew "rom-tools"
 brew "setweblocthumb"
 # Official tldr client written in Rust
 brew "tlrc"
+# Terminal multiplexer
+brew "tmux"
 # XML command-line utilities
 brew "xmlstarlet"
 # Feature-rich command-line audio/video downloader
