@@ -6,7 +6,6 @@
 	<array>
 		<string>autohide</string>
 		<string>autohide-delay</string>
-		<string>autohide-time-modifier</string>
 		<string>wvous-br-corner</string>
 		<string>wvous-br-modifier</string>
 		<string>expose-group-apps</string>
@@ -26,8 +25,6 @@
 	<true/>
 	<key>autohide-delay</key>
 	<real>86400</real>
-	<key>autohide-time-modifier</key>
-	<real>0.20000000298023221</real>
 	<key>expose-group-apps</key>
 	<true/>
 	<key>launchanim</key>
