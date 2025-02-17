@@ -5,7 +5,8 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
 
 # Case insensitive autocomplete and globbing.
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# @see man zshcompwid -> “COMPLETION MATCHING CONTROL”
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 setopt no_case_glob
 
 setopt share_history          # Reads/writes history to keep sessions in sync.
