@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# Enable caching for any completions which use it and set its path.
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
+
 # Case insensitive autocomplete and globbing.
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt no_case_glob

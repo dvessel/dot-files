@@ -45,5 +45,4 @@
 .viminfo
 .vscode*
 .wget-hsts
-.zcompcache
 .zhistory
