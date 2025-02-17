@@ -9,11 +9,15 @@ typeset -aU  path=(~/.local/{bin,zbin} $path)
 
 # Aggregate->Compile->Source
 function .zsource() {
+  zparseopts -D -E - -arch=arch
   typeset -aU argv=($@)
-  local s zsource=~/.zsource/$1
+  local s zsource=~/.zsource/${1}$(
+    test -z $arch || printf ".%s" `arch`
+  )
   shift
-  for s ( $@ ); if [[ ! $zsource -nt $s ]]; then
-    cat $@ > $zsource
+  for s ( $@ ); if [[ -f $s ]] && [[ ! $zsource -nt $s ]]
+  then
+    cat $@ > $zsource 2>/dev/null
     zcompile $zsource
     break
   fi
