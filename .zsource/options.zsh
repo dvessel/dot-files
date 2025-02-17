@@ -32,9 +32,9 @@ export HISTSIZE=10000
 export SAVEHIST=100000
 export HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/zhistory
 
-setopt AUTO_PUSHD         # Push the current directory visited on the stack.
-setopt PUSHD_IGNORE_DUPS  # Do not store duplicates in the stack.
-setopt PUSHD_SILENT       # Do not print the directory stack after pushd or popd.
+setopt auto_pushd         # Push the current directory visited on the stack.
+setopt pushd_ignore_dups  # Do not store duplicates in the stack.
+setopt pushd_silent       # Do not print the directory stack after pushd or popd.
 
 # PATH is cleared on arch switch. Make it available in x86. @see arch-toggle
 # fallback to OS provided vim.
