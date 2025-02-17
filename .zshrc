@@ -5,7 +5,7 @@ test ! -f ${XDG_CACHE_HOME:-~/.cache}/p10k-instant-prompt-${(%):-%n}.zsh \
 || source ${XDG_CACHE_HOME:-~/.cache}/p10k-instant-prompt-${(%):-%n}.zsh
 
 # Add local paths, keep [-U]nique.
-typeset -aU  path=(~/.local/{bin,zbin} $path)
+typeset -gU path=(~/.local/{bin,zbin} $path)
 
 # Aggregate->Compile->Source
 function acsource() {
