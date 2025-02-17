@@ -30,7 +30,7 @@ setopt hist_beep              # Beep when accessing non-existent history.
 # once the history fills up with unique events.
 export HISTSIZE=10000
 export SAVEHIST=100000
-export HISTFILE=~/.zhistory
+export HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/zhistory
 
 setopt AUTO_PUSHD         # Push the current directory visited on the stack.
 setopt PUSHD_IGNORE_DUPS  # Do not store duplicates in the stack.
