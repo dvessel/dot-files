@@ -1,5 +1,0 @@
-#compdef batman
-#autoload
-
-# completions for batman match man
-_man

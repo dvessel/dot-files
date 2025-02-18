@@ -23,15 +23,6 @@ alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
 for i ({1..9}) alias "$i"="cd +$i"
 
 alias cl='/usr/bin/clear -x'
-
-if type bat-modules &>/dev/null; then
-  alias bdiff='batdiff'
-  alias bgrep='batgrep'
-  alias bpipe='batpipe'
-  alias bwatch='batwatch'
-  alias man='batman'
-fi
-
 alias lb='open -b at.obdev.LaunchBar'
 alias ql='qlmanage -p &>/dev/null'
 alias vs='codium'
