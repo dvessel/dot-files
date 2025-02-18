@@ -10,8 +10,6 @@ brew "fzf"
 brew "gh"
 # Distributed revision control system
 brew "git"
-# Syntax-highlighting pager for git and diff output
-brew "git-delta"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Ambitious Vim-fork focused on extensibility and agility
