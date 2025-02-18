@@ -17,6 +17,14 @@ if type antidote &>/dev/null; then
   # - dvessel/zsh-completion-generator
   export GENCOMPL_FPATH=~/.local/zfunctions
 
+  # - jeffreytse/zsh-vi-mode
+  function zvm_after_init() {
+    zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
+    zvm_bindkey vicmd '?' history-incremental-pattern-search-forward
+    zvm_bindkey viins '^R' history-incremental-pattern-search-backward
+    zvm_bindkey viins '^S' history-incremental-pattern-search-forward
+  }
+
   # Core plug-in options. @see man antidote
   zplugins=~/.zplugins
   zpstatic=${XDG_CACHE_HOME:-~/.cache}/zsh/zplugins.zsh
