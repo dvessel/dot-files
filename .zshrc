@@ -25,7 +25,7 @@ function acsource() {
 
 # Shell integrations are arch-specific.
 acsource integrations-`arch` \
-  `brew --prefix fzf`/shell/*.zsh \
+  `brew --prefix fzf`/shell/*.zsh(N) \
   `brew --caskroom`/miniconda/base/etc/profile.d/conda.sh
 
 # Aggregate ~/.zsource/*.zsh while maintaining order for set names.
