@@ -5,30 +5,24 @@
 	<key>AI Prompt</key>
 	<string>Return a command suitable for \(shell) on \(uname). Do not provide commentary and output the command strictly in plain text to be passed to the shell.
 The command should do this: \(ai.prompt)</string>
-	<key>AdjustWindowForFontSizeChange</key>
-	<true/>
 	<key>AiMaxTokens</key>
 	<integer>1024</integer>
 	<key>AiModel</key>
 	<string>llama3.2:3b-instruct-q6_K</string>
 	<key>AitermURL</key>
 	<string>http://localhost:11434/v1/chat/completions</string>
-	<key>AitermUseLegacyAPI</key>
-	<false/>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>BellRateLimit</key>
 	<real>1.25</real>
 	<key>CheckTestRelease</key>
 	<true/>
-	<key>ClickToSelectCommand</key>
-	<true/>
-	<key>DimInactiveSplitPanes</key>
-	<true/>
-	<key>DisableAdaptiveFrameRateInInteractiveApps</key>
-	<true/>
-	<key>DisableWindowSizeSnap</key>
+	<key>CopySelection</key>
 	<false/>
+	<key>DisableWindowSizeSnap</key>
+	<true/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -219,10 +213,6 @@ The command should do this: \(ai.prompt)</string>
 			<string></string>
 		</dict>
 	</dict>
-	<key>MaxVertically</key>
-	<true/>
-	<key>MetalDeferCurrentDrawable</key>
-	<false/>
 	<key>MinimalTabStyleOutlineStrength</key>
 	<real>0.10000000000000001</real>
 	<key>NSUserKeyEquivalents</key>
@@ -648,7 +638,7 @@ The command should do this: \(ai.prompt)</string>
 				<real>1</real>
 			</dict>
 			<key>Background Image Mode</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>Badge Color (Dark)</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -676,7 +666,7 @@ The command should do this: \(ai.prompt)</string>
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.0</real>
+			<real>0.5</real>
 			<key>Blink Allowed</key>
 			<true/>
 			<key>Blinking Cursor</key>
@@ -684,7 +674,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Blur</key>
 			<false/>
 			<key>Blur Radius</key>
-			<real>0.10000000000000001</real>
+			<real>2</real>
 			<key>Bold Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -802,7 +792,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Cursor Type</key>
 			<integer>1</integer>
 			<key>Custom Command</key>
-			<string>Yes</string>
+			<string>No</string>
 			<key>Custom Directory</key>
 			<string>Advanced</string>
 			<key>Default Bookmark</key>
@@ -949,6 +939,8 @@ The command should do this: \(ai.prompt)</string>
 			<real>0.5</real>
 			<key>Mouse Reporting</key>
 			<true/>
+			<key>Mouse Reporting allow clicks and drags</key>
+			<true/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
@@ -974,7 +966,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Reduce Flicker</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Rows</key>
 			<integer>32</integer>
 			<key>Screen</key>
@@ -1776,7 +1768,7 @@ The command should do this: \(ai.prompt)</string>
 				<real>1</real>
 			</dict>
 			<key>Background Image Mode</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>Badge Color (Dark)</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1804,7 +1796,7 @@ The command should do this: \(ai.prompt)</string>
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.0</real>
+			<real>0.5</real>
 			<key>Blink Allowed</key>
 			<true/>
 			<key>Blinking Cursor</key>
@@ -1812,7 +1804,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Blur</key>
 			<false/>
 			<key>Blur Radius</key>
-			<real>0.10000000000000001</real>
+			<real>2</real>
 			<key>Bold Color (Dark)</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1932,7 +1924,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Cursor Type</key>
 			<integer>1</integer>
 			<key>Custom Command</key>
-			<string>Yes</string>
+			<string>No</string>
 			<key>Custom Directory</key>
 			<string>Advanced</string>
 			<key>Default Bookmark</key>
@@ -2106,7 +2098,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Reduce Flicker</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Rows</key>
 			<integer>35</integer>
 			<key>Screen</key>
@@ -2908,7 +2900,7 @@ The command should do this: \(ai.prompt)</string>
 				<real>1</real>
 			</dict>
 			<key>Background Image Mode</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>Badge Color (Dark)</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -2936,7 +2928,7 @@ The command should do this: \(ai.prompt)</string>
 				<real>1</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.0</real>
+			<real>0.49999999999999956</real>
 			<key>Blink Allowed</key>
 			<true/>
 			<key>Blinking Cursor</key>
@@ -3064,7 +3056,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Cursor Type</key>
 			<integer>1</integer>
 			<key>Custom Command</key>
-			<string>Yes</string>
+			<string>No</string>
 			<key>Custom Directory</key>
 			<string>Advanced</string>
 			<key>Default Bookmark</key>
@@ -3236,7 +3228,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Reduce Flicker</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Rows</key>
 			<integer>32</integer>
 			<key>Screen</key>
@@ -3631,30 +3623,36 @@ The command should do this: \(ai.prompt)</string>
 			<string>/Users/joon</string>
 		</dict>
 	</array>
+	<key>NotifyOnlyForCriticalShellIntegrationUpdates</key>
+	<false/>
+	<key>PointerActions</key>
+	<dict>
+		<key>Button,1,1,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kContextMenuPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeLeft,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPrevTabPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeRight,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kNextTabPointerAction</string>
+		</dict>
+	</dict>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>SUFeedURL</key>
 	<string>https://iterm2.com/appcasts/testing_modern.xml?shard=1</string>
 	<key>SaveProfilesToRecentDocuments</key>
 	<false/>
-	<key>SeparateStatusBarsPerPane</key>
-	<true/>
-	<key>SeparateWindowTitlePerTab</key>
-	<true/>
 	<key>SettingsIndex</key>
 	<array>
 		<string>NSUserKeyEquivalents</string>
-		<string>AdjustWindowForFontSizeChange</string>
-		<string>MaxVertically</string>
-		<string>SeparateWindowTitlePerTab</string>
-		<string>SmartPlacement</string>
-		<string>UseLionStyleFullscreen</string>
-		<string>StatusBarPosition</string>
-		<string>TabViewType</string>
-		<string>TabStyleWithAutomaticOption</string>
 		<string>New Bookmarks</string>
-		<string>DisableAdaptiveFrameRateInInteractiveApps</string>
-		<string>MetalDeferCurrentDrawable</string>
 		<string>AlternateMouseScroll</string>
 		<string>MinimalTabStyleOutlineStrength</string>
 		<string>BellRateLimit</string>
@@ -3667,51 +3665,35 @@ The command should do this: \(ai.prompt)</string>
 		<string>SwitchPaneModifier</string>
 		<string>SwitchTabModifier</string>
 		<string>SwitchWindowModifier</string>
-		<string>SeparateStatusBarsPerPane</string>
-		<string>ShowPaneTitles</string>
 		<string>TerminalMargin</string>
 		<string>TerminalVMargin</string>
-		<string>WindowNumber</string>
 		<string>VerticalBarCursorWidth</string>
-		<string>DimInactiveSplitPanes</string>
 		<string>SplitPaneDimmingAmount</string>
 		<string>GlobalKeyMap</string>
-		<string>ClickToSelectCommand</string>
 		<string>AI Prompt</string>
 		<string>AiMaxTokens</string>
 		<string>AiModel</string>
 		<string>AitermURL</string>
-		<string>AitermUseLegacyAPI</string>
+		<string>NotifyOnlyForCriticalShellIntegrationUpdates</string>
+		<string>CopySelection</string>
+		<string>AllowClipboardAccess</string>
+		<string>PointerActions</string>
 	</array>
-	<key>ShowPaneTitles</key>
-	<false/>
-	<key>SmartPlacement</key>
-	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.10000587833737863</real>
+	<real>0.20000000000000001</real>
 	<key>StatusBarHeight</key>
 	<real>28</real>
-	<key>StatusBarPosition</key>
-	<integer>0</integer>
 	<key>SwitchPaneModifier</key>
-	<integer>6</integer>
+	<integer>9</integer>
 	<key>SwitchTabModifier</key>
 	<integer>5</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>4</integer>
-	<key>TabStyleWithAutomaticOption</key>
-	<integer>5</integer>
-	<key>TabViewType</key>
-	<integer>0</integer>
 	<key>TerminalMargin</key>
 	<integer>10</integer>
 	<key>TerminalVMargin</key>
 	<integer>5</integer>
-	<key>UseLionStyleFullscreen</key>
-	<true/>
 	<key>VerticalBarCursorWidth</key>
 	<real>2</real>
-	<key>WindowNumber</key>
-	<false/>
 </dict>
 </plist>
