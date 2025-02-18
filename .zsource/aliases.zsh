@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if _brew_check -s lsd; then
+if type lsd &>/dev/null; then
   alias l='lsd'
   alias a='lsd -A'
   alias l.='lsd -d .*'
@@ -24,7 +24,7 @@ for i ({1..9}) alias "$i"="cd +$i"
 
 alias cl='/usr/bin/clear -x'
 
-if _brew_check -s bat-extras; then
+if type bat-modules &>/dev/null; then
   alias bdiff='batdiff'
   alias bgrep='batgrep'
   alias bpipe='batpipe'

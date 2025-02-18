@@ -41,7 +41,7 @@ setopt pushd_silent       # Do not print the directory stack after pushd or popd
 # fallback to OS provided vim.
 if type nvim &>/dev/null; then
   export EDITOR=nvim
-elif [[ -r /opt/homebrew/bin/nvim ]]; then
+elif test -r /opt/homebrew/bin/nvim; then
   export EDITOR=/opt/homebrew/bin/nvim
 else
   export EDITOR=vim

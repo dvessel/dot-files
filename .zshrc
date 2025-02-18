@@ -10,18 +10,19 @@ typeset -gU path=(~/.local/{bin,zbin} $path)
 # Aggregate->Compile->Source
 function acsource() {
   zparseopts -D -E - -arch-specific=arch_specific
-  typeset -aU argv=($@)
+  typeset -aU argv=( $@ )
   local s aggregate=${XDG_CACHE_HOME:-~/.cache}/zsh/${0}-${1}$(
     test -z $arch_specific || printf "-%s" `arch`
   ).zsh
   shift
-  for s ( $@ ); if [[ -f $s ]] && [[ ! $aggregate -nt $s ]]
-  then
-    mkdir -p $aggregate:h
-    cat $@ > $aggregate 2>/dev/null
-    zcompile $aggregate
-    break
-  fi
+  for s ( $@ ) {
+    if [[ ! -f $aggregate ]] || [[ $s -nt $aggregate ]]; then
+      mkdir -p $aggregate:h
+      cat $@ > $aggregate 2>/dev/null
+      zcompile $aggregate
+      break
+    fi
+  }
   source $aggregate
 }
 
