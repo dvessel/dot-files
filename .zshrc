@@ -30,7 +30,3 @@ acsource integrations-`arch` \
 
 # Aggregate ~/.zsource/*.zsh while maintaining order for set names.
 acsource zsource ~/.zsource/{options,p10k,antidote,*}.zsh
-
-if type conda &>/dev/null; then
-  conda activate base
-fi
