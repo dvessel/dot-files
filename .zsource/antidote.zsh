@@ -1,23 +1,23 @@
 #!/usr/bin/env zsh
 
-# Plug-in options. @see ~/.zplugins
-
-# - mattmc3/ez-compinit
-zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
-zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
-
-# - mattmc3/zephyr plugins:zfunctions
-export ZFUNCDIR=~/.local/zfunctions
-
-# - dvessel/zsh-completion-generator
-export GENCOMPL_FPATH=~/.local/zfunctions
-
 # Lazy-load antidote from its functions directory.
-fpath=( `brew --prefix antidote`/share/antidote/functions $fpath)
+fpath+=`brew --prefix antidote`/share/antidote/functions
 autoload -Uz antidote
 
 if type antidote &>/dev/null; then
+  # Plug-in options. @see ~/.zplugins
 
+  # - mattmc3/ez-compinit
+  zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
+  zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
+
+  # - mattmc3/zephyr plugins:zfunctions
+  export ZFUNCDIR=~/.local/zfunctions
+
+  # - dvessel/zsh-completion-generator
+  export GENCOMPL_FPATH=~/.local/zfunctions
+
+  # Core plug-in options. @see man antidote
   zplugins=~/.zplugins
   zpstatic=${XDG_CACHE_HOME:-~/.cache}/zsh/zplugins.zsh
 
@@ -29,7 +29,7 @@ if type antidote &>/dev/null; then
 
   test -f $zplugins || touch $zplugins
 
-  if [[ ! $zpstatic -nt $zplugins ]]; then
+  if test ! $zpstatic -nt $zplugins; then
     # Generate new static file when zplugins is updated.
     antidote load
   else
