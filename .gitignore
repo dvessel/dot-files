@@ -9,6 +9,7 @@
 .config/litecli/*
 !.config/litecli/config
 .config/lnav
+.config/tmux/plugins
 .config/vscodium/*
 !.config/vscodium/installed-extensions.txt
 !.config/vscodium/keybindings.json
