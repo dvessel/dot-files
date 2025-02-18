@@ -9,11 +9,8 @@ typeset -gU path=(~/.local/{bin,zbin} $path)
 
 # Aggregate->Compile->Source
 function acsource() {
-  zparseopts -D -E - -arch-specific=arch_specific
   typeset -aU argv=( $@ )
-  local s aggregate=${XDG_CACHE_HOME:-~/.cache}/zsh/${0}-${1}$(
-    test -z $arch_specific || printf "-%s" `arch`
-  ).zsh
+  local s aggregate=${XDG_CACHE_HOME:-~/.cache}/zsh/${0}-${1}.zsh
   shift
   for s ( $@ ) {
     if [[ ! -f $aggregate ]] || [[ $s -nt $aggregate ]]; then
@@ -26,8 +23,8 @@ function acsource() {
   source $aggregate
 }
 
-# Shell integrations.
-acsource --arch-specific integrations \
+# Shell integrations are arch-specific.
+acsource integrations-`arch` \
   `brew --prefix fzf`/shell/*.zsh \
   `brew --caskroom`/miniconda/base/etc/profile.d/conda.sh
 
