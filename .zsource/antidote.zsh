@@ -27,6 +27,8 @@ if type antidote &>/dev/null; then
   zstyle ':antidote:static' file $zpstatic
   zstyle ':antidote:*' zcompile 'yes'
 
+  test -f $zplugins || touch $zplugins
+
   if [[ ! $zpstatic -nt $zplugins ]]; then
     # Generate new static file when zplugins is updated.
     antidote load
