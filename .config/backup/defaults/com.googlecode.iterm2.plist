@@ -1295,7 +1295,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Thin Strokes</key>
-			<integer>0</integer>
+			<integer>4</integer>
 			<key>Title Components</key>
 			<integer>258</integer>
 			<key>Transparency</key>
@@ -2427,7 +2427,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Thin Strokes</key>
-			<integer>0</integer>
+			<integer>4</integer>
 			<key>Title Components</key>
 			<integer>258</integer>
 			<key>Transparency</key>
@@ -3555,7 +3555,7 @@ The command should do this: \(ai.prompt)</string>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Thin Strokes</key>
-			<integer>0</integer>
+			<integer>4</integer>
 			<key>Title Components</key>
 			<integer>258</integer>
 			<key>Transparency</key>
