@@ -37,6 +37,12 @@ setopt auto_pushd         # Push the current directory visited on the stack.
 setopt pushd_ignore_dups  # Do not store duplicates in the stack.
 setopt pushd_silent       # Do not print the directory stack after pushd or popd.
 
+# Enable run-help
+# https://zsh.sourceforge.io/Doc/Release/User-Contributions.html#Accessing-On_002dLine-Help
+export HELPDIR=/usr/share/zsh/`zsh --version | cut -d ' ' -f2`/help
+unalias run-help 2>/dev/null
+autoload run-help
+
 # PATH is cleared on arch switch. Make it available in x86. @see arch-toggle
 # fallback to OS provided vim.
 if type nvim &>/dev/null; then
