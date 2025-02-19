@@ -3,6 +3,7 @@
     "editor.defaultFormatter": "redhat.vscode-xml"
   },
   "chat.commandCenter.enabled": false,
+  "continue.enableTabAutocomplete": false,
   "continue.pauseTabAutocompleteOnBattery": true,
   "continue.telemetryEnabled": false,
   "diffEditor.experimental.showMoves": true,
