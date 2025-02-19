@@ -1,45 +1,15 @@
-# == Color ==
-# This has various color options. (Will be expanded in the future.)
+# https://github.com/lsd-rs/lsd?tab=readme-ov-file#config-file-content
+#
+
 color:
-  # When to colorize the output.
-  # When "classic" is set, this is set to "never".
-  # Possible values: never, auto, always
-  when: auto
-  # How to colorize the output.
-  # When "classic" is set, this is set to "no-color".
-  # Possible values: default, custom
-  # When "custom" is set, lsd will look in the config directory for `colors.yaml`.
   theme: custom
-
-# == Date ==
-# This specifies the date format for the date column. The freeform format
-# accepts a strftime like string.
-# When "classic" is set, this is set to "date".
-# Possible values: date, relative, '+<date_format>'
-# `date_format` will be a `strftime` formatted value. e.g. `date: '+%d %b %y %X'` will give you a date like this: 17 Jun 21 20:14:55
-# Below will output year.month.day 24:00: 23.02.21 13:04
-# date: '+%y.%m.%d %k:%M'
-
-# == Dereference ==
-# Whether to dereference symbolic links.
-# Possible values: false, true
-dereference: true
-
-# == Icons ==
 icons:
-  # When to use icons.
-  # When "classic" is set, this is set to "never".
-  # Possible values: always, auto, never
-  when: auto
-  # Which icon theme to use.
-  # Possible values: fancy, unicode
-  theme: fancy
-  # Separator between icon and the name
-  # IDEOGRAPHIC SPACE Unicode: U+3000
   separator: "  "
-
-# == Ignore Globs ==
-# A list of globs to ignore when listing.
+# @see strftime - date formatting: Mon Feb 17 11:22 AM 2025
+date: '+%a %b %e %l:%M %p %Y'
+literal: true
+recursion:
+  depth: 4
 ignore-globs:
   - .git
   - .DS_Store
@@ -47,22 +17,3 @@ ignore-globs:
   - .Spotlight-V100
   - .VolumeIcon.icns
   - Icon?
-
-# == Recursion ==
-recursion:
-  # Whether to enable recursion.
-  # Possible values: false, true
-  enabled: false
-  # How deep the recursion should go. This has to be a positive integer. Leave
-  # it unspecified for (virtually) infinite.
-  depth: 4
-
-# == Size ==
-# Specifies the format of the size column.
-# Possible values: default, short, bytes
-size: short
-
-# == Literal ==
-# Whether to show quotes on filenames.
-# Possible values: false, true
-literal: true
