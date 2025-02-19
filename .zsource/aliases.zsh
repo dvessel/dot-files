@@ -11,14 +11,14 @@ if type lsd &>/dev/null; then
   alias ml='lsd --blocks permission,user,group,links,name'
   alias sl='lsd --blocks size,links,name --total-size --sizesort'
   alias tl='lsd --blocks date,links,name --date relative --timesort'
-  alias -g -- ---='2>&1 --color=always --icon=always | less -F --quit-at-eof'
+  alias -g -- ---='2>&1 --color=always --icon=always | less -Fei'
 else
   alias l='ls --color=auto'
   alias a='ls -A --color=auto'
   alias l.='ls -d --color=auto .*'
   alias ll='ls -l --color=auto'
   alias la='ls -lA --color=auto'
-  alias -g -- ---='2>&1 --color=always | less -F --quit-at-eof'
+  alias -g -- ---='2>&1 --color=always | less -Fei'
 fi
 
 alias d='pwd'
