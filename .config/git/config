@@ -2,8 +2,10 @@
   name = joon
   email = 126473+dvessel@users.noreply.github.com
 [credential "https://github.com"]
+  helper = 
   helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
+  helper = 
   helper = !/opt/homebrew/bin/gh auth git-credential
 [core]
   whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
