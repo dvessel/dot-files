@@ -1,0 +1,13 @@
+# https://github.com/lsd-rs/lsd?tab=readme-ov-file#color-theme-file-content
+#
+user: 7
+group: 8
+date:
+  hour-old: 40
+  day-old: 35
+  older: 30
+size:
+  none: 8
+  small: 4
+  medium: 11
+  large: 1
