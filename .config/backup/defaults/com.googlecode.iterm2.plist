@@ -3678,6 +3678,7 @@ The command should do this: \(ai.prompt)</string>
 		<string>CopySelection</string>
 		<string>AllowClipboardAccess</string>
 		<string>PointerActions</string>
+		<string>UseExperimentalFontMetrics</string>
 	</array>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.20000000000000001</real>
@@ -3693,6 +3694,8 @@ The command should do this: \(ai.prompt)</string>
 	<integer>10</integer>
 	<key>TerminalVMargin</key>
 	<integer>5</integer>
+	<key>UseExperimentalFontMetrics</key>
+	<true/>
 	<key>VerticalBarCursorWidth</key>
 	<real>2</real>
 </dict>
