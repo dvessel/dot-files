@@ -140,7 +140,7 @@ function s.getBackupDomains {
 
 function s.header {
   # Uppercase first character.
-  printf "\e[1;30m%s\e[0m\n" "${(C)1::1}${1:1}"
+  printf "\e[1;15m%s\e[0m\n" "${(C)1::1}${1:1}"
 }
 function s.error {
   printf "\e[0;31m%s\e[0m" "${(j[ ])@}"
