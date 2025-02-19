@@ -1,0 +1,21 @@
+# This is the configuration file for Ghostty.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+theme = light:GitLab-Light,dark:GitLab-Dark-Grey
+font-family = Lilex Nerd Font
+font-size   = 15
+window-width  = 90
+window-height = 32
+window-padding-x = 15,0
+window-padding-y =  10
+window-padding-balance = false
+background-opacity = 0.95
+background-blur = true
+adjust-cursor-thickness = 2
+cursor-color = #FF0000
+mouse-hide-while-typing = true

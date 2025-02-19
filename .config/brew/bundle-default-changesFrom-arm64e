@@ -61,6 +61,8 @@ brew "yt-dlp"
 brew "dvessel/oetools/oeadvscan"
 # Run Stable Diffusion locally
 cask "diffusionbee"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty@tip"
 # Operating system maintenance and cleaning utility
 cask "maintenance"
 # Frontend for emulators, game engines, and media players (Metal graphics API)
