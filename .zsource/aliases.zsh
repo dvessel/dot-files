@@ -55,5 +55,5 @@ fi
 
 # Install brew and all dependent plugins.
 if ! type brew &>/dev/null; then
-  alias initial-setup='~/.local/zsetup.zsh'
+  alias initial-setup='~/.local/zscripts/setup.zsh'
 fi
