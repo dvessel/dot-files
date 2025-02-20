@@ -25,7 +25,7 @@ list=(
 i=1; presets=()
 while (( $i < ${#list[@]} )); do
   presets+="$list[$i]"
-  header="printf \"\e[1;30m%s\e[0m\n\" \"Syncing… $list[$i+2] -> $list[$i+3]\""
+  header="printf \"\e[1;15m%s\e[0m\n\" \"Syncing… $list[$i+2] -> $list[$i+3]\""
   alias "$list[$i]"="$list[$i+1] && { $header; rsync-synchronize -L $list[$i+2] $list[$i+3] }"
   i=$((i+4))
 done
