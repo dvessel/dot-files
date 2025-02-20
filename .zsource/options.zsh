@@ -57,4 +57,4 @@ elif test -r /opt/homebrew/bin/nvim; then
 else
   export EDITOR=vim
 fi
-export LESS='-R'
+export LESS='-Ri'
