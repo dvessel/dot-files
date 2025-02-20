@@ -1,24 +1,25 @@
 #!/usr/bin/env zsh
 
+# Adding a triple dash `---` to the end of the command will pipe to less.
+alias -g -- ---='2>&1 | less -Fei'
+
 if type lsd &>/dev/null; then
   alias l='lsd'
   alias a='lsd -A'
   alias l.='lsd -d .*'
-  alias ll='lsd -l  --blocks permission,date,name --dereference'
-  alias la='lsd -lA --blocks permission,date,name'
-  alias lt='lsd --blocks size,date,git,name --size short --date "+%l:%M %p %D" --tree'
-  alias gl='lsd -A --blocks git,date,links,name --date relative --gitsort --reverse'
-  alias ml='lsd --blocks permission,user,group,links,name'
-  alias sl='lsd --blocks size,links,name --total-size --sizesort'
-  alias tl='lsd --blocks date,links,name --date relative --timesort'
-  alias -g -- ---='2>&1 --color=always --icon=always | less -Fei'
+  alias ll='lsd --blocks permission,date,name -l --dereference --color=always --icon=always'
+  alias la='lsd --blocks permission,date,name -lA --color=always --icon=always'
+  alias lt='lsd --blocks size,date,git,name --tree --size short --date "+%l:%M %p %D" --color=always --icon=always'
+  alias gl='lsd --blocks git,date,links,name -AGr --date relative --color=always --icon=always'
+  alias ml='lsd --blocks permission,user,group,links,name --color=always --icon=always'
+  alias sl='lsd --blocks size,links,name -S --total-size --color=always --icon=always'
+  alias tl='lsd --blocks date,links,name -t --date relative --color=always --icon=always'
 else
   alias l='ls --color=auto'
   alias a='ls -A --color=auto'
   alias l.='ls -d --color=auto .*'
-  alias ll='ls -l --color=auto'
-  alias la='ls -lA --color=auto'
-  alias -g -- ---='2>&1 --color=always | less -Fei'
+  alias ll='ls -l --color=always'
+  alias la='ls -lA --color=always'
 fi
 
 alias d='pwd'
