@@ -9,13 +9,20 @@
 theme = light:GitLab-Light,dark:GitLab-Dark-Grey
 font-family = Lilex Nerd Font
 font-size   = 15
+
 window-width  = 90
-window-height = 32
+window-height = 30
 window-padding-x = 15,0
 window-padding-y =  10
-window-padding-balance = false
+
+window-colorspace = display-p3
 background-opacity = 0.95
 background-blur = true
+
 adjust-cursor-thickness = 2
 cursor-color = #FF0000
+cursor-style = bar
 mouse-hide-while-typing = true
+
+macos-titlebar-style = tabs
+macos-icon = blueprint
