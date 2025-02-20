@@ -4,7 +4,7 @@ local int basepath=`pwd`
 trap 'int=1' INT TERM
 
 while read -r p; do
-	printf "\n\e[1;30m%s\e[0m\n" $p
+	printf "\n\e[1;15m%s\e[0m\n" $p
 	cd "$basepath/$p"
 	git $@
 	test $int && break
