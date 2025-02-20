@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 
-# Adding a triple dash `---` to the end of the command will pipe to less.
-alias -g -- ---='2>&1 | less -Fei'
+# Triple dash `---` at the end of the command will pipe to bat/less.
+if type bat &>/dev/null; then
+  alias -g -- ---='2>&1 | bat --plain --pager "less -F"'
+else
+  alias -g -- ---='2>&1 | less -F'
+fi
 
 if type lsd &>/dev/null; then
   alias l='lsd'
