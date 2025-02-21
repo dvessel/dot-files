@@ -27,9 +27,9 @@
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
 	<key>InitialKeyRepeat</key>
-	<real>25</real>
+	<real>20</real>
 	<key>KeyRepeat</key>
-	<real>1.5</real>
+	<real>1</real>
 	<key>NSApplicationShowExceptions</key>
 	<true/>
 	<key>NSCloseAlwaysConfirmsChanges</key>
