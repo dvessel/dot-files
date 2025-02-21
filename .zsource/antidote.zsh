@@ -39,6 +39,7 @@ if type antidote &>/dev/null; then
 
   if test ! $zpstatic -nt $zplugins; then
     # Generate new static file when zplugins is updated.
+    mkdir -p $zpstatic:h
     antidote load
   else
     # Manually source when antidote doesn't need to load.
