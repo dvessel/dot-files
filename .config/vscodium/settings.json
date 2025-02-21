@@ -56,7 +56,7 @@
   "redhat.telemetry.enabled": false,
   "security.promptForLocalFileProtocolHandling": false,
   "telemetry.telemetryLevel": "off",
-  "terminal.external.osxExec": "iTerm.app",
+  "terminal.external.osxExec": "Ghostty.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorWidth": 2,
