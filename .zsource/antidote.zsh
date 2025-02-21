@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-# Lazy-load antidote from its functions directory.
-fpath+=`brew --prefix antidote`/share/antidote/functions
-autoload -Uz antidote
+if test -d $HOMEBREW_PREFIX/opt/antidote; then
+  # Lazy-load antidote from its functions directory.
+  fpath+=$HOMEBREW_PREFIX/opt/antidote/share/antidote/functions
+  autoload -Uz antidote
 
-if type antidote &>/dev/null; then
   # Plug-in options. @see ~/.zplugins
 
   # - mattmc3/ez-compinit
