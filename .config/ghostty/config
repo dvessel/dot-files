@@ -6,29 +6,44 @@
 # Additionally, each config option is also explained in detail
 # on Ghostty's website, at https://ghostty.org/docs/config.
 
-theme = light:GitLab-Light,dark:GitLab-Dark-Grey
 font-family = Lilex Nerd Font
+font-style = Medium
 font-size   = 15
 
-window-width  = 90
-window-height = 30
-window-padding-x = 15,0
-window-padding-y =  10
-
-window-colorspace = display-p3
-background-opacity = 0.95
-background-blur = true
-
-adjust-cursor-thickness = 2
-cursor-color = #FF0000
-cursor-style = bar
-mouse-hide-while-typing = true
+theme = light:GitLab-Light,dark:Dimidium
+minimum-contrast = 1.5
 
 macos-titlebar-style = tabs
 macos-icon = blueprint
 
-# HACK: ctrl-m/enter = CR, ctrl-i = Tab, ctrl-[ = Esc
-keybind = ctrl+enter=text:\x0D
+window-width  = 90
+window-height = 30
+window-padding-x = 15,0
+window-padding-y = 10
+
+background-opacity = 0.98
+background-blur    = 10
+unfocused-split-opacity = 0.6
+selection-invert-fg-bg = true
+
+adjust-cursor-thickness = 2
+cursor-color = #FF0000
+cursor-text  = #FFFFFF
+cursor-style = bar
+
+mouse-hide-while-typing = true
+
+initial-window = false
+
+# Limit in bytes. Default 10MB, set to 500MB.
+scrollback-limit = 500000000
+
+quick-terminal-animation-duration = 0.15
+quick-terminal-position = bottom
+quick-terminal-space-behavior = remain
+keybind = global:ctrl+shift+a=toggle_quick_terminal
+
+# HACK: ctrl-m = CR, ctrl-i = Tab, ctrl-[ = Esc
 keybind = ctrl+m=text:\x0D
 keybind = ctrl+i=text:\x09
 keybind = ctrl+[=text:\x1B
