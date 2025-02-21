@@ -48,7 +48,6 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "git.autorefresh": false,
   "git.openRepositoryInParentFolders": "never",
   "github.gitProtocol": "ssh",
   "markdown.preview.fontSize": 15,
