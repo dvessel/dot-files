@@ -43,7 +43,8 @@
     "*.lpl": "json",
     "*.opt": "properties",
     "*.rmp": "properties",
-    "*.slangp": "properties"
+    "*.slangp": "properties",
+    "config": "properties"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
