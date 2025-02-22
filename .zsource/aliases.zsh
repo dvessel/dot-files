@@ -2,9 +2,9 @@
 
 # Triple dash `---` at the end of the command will pipe to bat/less.
 if type bat &>/dev/null; then
-  alias -g -- ---='2>&1 | bat --plain --pager "less -F"'
+  alias -g -- ~~='2>&1 | bat --plain'
 else
-  alias -g -- ---='2>&1 | less -F'
+  alias -g -- ~~='2>&1 | less'
 fi
 
 if type lsd &>/dev/null; then
