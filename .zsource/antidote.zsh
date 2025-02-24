@@ -19,10 +19,15 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
 
   # - jeffreytse/zsh-vi-mode
   function zvm_after_init() {
+    # Unbind the default forward search.
+    bindkey -r -M viins '^S'
+    # Restore Aloxaf/fzf-tab history search.
+    zvm_bindkey viins '^R' fzf-history-widget
     zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
     zvm_bindkey vicmd '?' history-incremental-pattern-search-forward
-    zvm_bindkey viins '^R' history-incremental-pattern-search-backward
-    zvm_bindkey viins '^S' history-incremental-pattern-search-forward
+    # Active ctrl-[r|s] in interactive search mode triggered by vicmd search.
+    zvm_bindkey isearch '^R' history-incremental-pattern-search-backward
+    zvm_bindkey isearch '^S' history-incremental-pattern-search-forward
   }
 
   # Core plug-in options. @see man antidote
