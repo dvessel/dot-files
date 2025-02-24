@@ -30,3 +30,9 @@ acsource integrations-`arch` \
 
 # Aggregate ~/.zsource/*.zsh while maintaining order for set names.
 acsource zsource ~/.zsource/{options,p10k,antidote,*}.zsh
+
+if ! type compinit >/dev/null; then
+  # Normally handled by antidote plugin:
+  # @see ~/.zplugins - mattmc3/ez-compinit
+  autoload -Uz compinit; compinit
+fi

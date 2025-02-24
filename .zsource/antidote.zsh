@@ -45,8 +45,4 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
     # Manually source when antidote doesn't need to load.
     source $zpstatic
   fi
-else
-  # Normally handled by antidote plugin:
-  # - mattmc3/ez-compinit
-  autoload -Uz compinit && compinit
 fi
