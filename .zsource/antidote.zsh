@@ -26,8 +26,8 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
   }
 
   # Core plug-in options. @see man antidote
-  zplugins=~/.zplugins
-  zpstatic=${XDG_CACHE_HOME:-~/.cache}/zsh/zplugins.zsh
+  local zplugins=~/.zplugins
+  local zpstatic=${XDG_CACHE_HOME:-~/.cache}/zsh/zplugins.zsh
 
   export ANTIDOTE_HOME=${XDG_CACHE_HOME:-~/.cache}/antidote
   zstyle ':antidote:bundle' use-friendly-names 'yes'

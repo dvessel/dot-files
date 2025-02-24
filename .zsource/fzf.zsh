@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-opts=(
+local opts=(
   --reverse
   --scroll-off 7
   --info inline

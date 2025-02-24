@@ -5,7 +5,7 @@ alias rsync-move='rsync -avz --progress -h --remove-source-files --exclude=.DS_S
 alias rsync-update='rsync -avzu --progress -h --itemize-changes --exclude=.DS_Store'
 alias rsync-synchronize='rsync -avzu --delete --progress -h --itemize-changes --exclude=.DS_Store'
 
-list=(
+local list=(
   "rsync-emulation-ii-980pro"   #1. alias name
   "test -d /Volumes/980Pro"     #2. condition
   "~/Games/Emulation"           #3. source
@@ -22,7 +22,7 @@ list=(
   "dvessel-ds.local:/volume1/storage"
 )
 
-i=1; presets=()
+local i=1 presets=() header
 while (( $i < ${#list[@]} )); do
   presets+="$list[$i]"
   header="printf \"\e[1;15m%s\e[0m\n\" \"Syncing… $list[$i+2] -> $list[$i+3]\""
