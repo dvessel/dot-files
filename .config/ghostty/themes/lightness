@@ -8,7 +8,7 @@ adjust-cursor-thickness = 3
 cursor-style = bar
 
 window-colorspace = display-p3
-palette =  0 = #303030
+palette =  0 = #999999
 palette =  1 = #a31700
 palette =  2 = #0a7f3d
 palette =  3 = #af551d
