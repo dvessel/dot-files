@@ -35,6 +35,8 @@ brew "lua-language-server"
 brew "mactop"
 # Multiple Arcade Machine Emulator
 brew "mame"
+# Use NeoVim as a pager to view manpages, diffs, etc.
+brew "nvimpager"
 # Create, run, and share large language models (LLMs)
 brew "ollama", restart_service: :changed
 # 7-Zip (high compression file archiver) implementation

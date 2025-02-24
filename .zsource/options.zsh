@@ -43,11 +43,6 @@ export HELPDIR=/usr/share/zsh/`zsh --version | cut -d ' ' -f2`/help
 unalias run-help 2>/dev/null
 autoload run-help
 
-# https://github.com/sharkdp/bat?tab=readme-ov-file#man
-if type bat &>/dev/null; then
-  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
-fi
-
 # PATH is cleared on arch switch. Make it available in x86. @see arch-toggle
 # fallback to OS provided vim.
 if type nvim &>/dev/null; then
@@ -57,4 +52,10 @@ elif test -r /opt/homebrew/bin/nvim; then
 else
   export EDITOR=vim
 fi
+
+# Neovim pager.
+if type nvimpager &>/dev/null; then
+  export PAGER=nvimpager
+fi
+
 export LESS='-RFi'

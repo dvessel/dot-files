@@ -1,9 +1,8 @@
 #!/usr/bin/env zsh
 
-# Double tildes `~~` at the end of the command will pipe to bat/less.
-# Parameters can be set after ~~, e.g., `ls -la ~~ --[bat|less]-param``
+# Double tildes `~~` at the end of the command will pipe to a pager.
 if type bat &>/dev/null; then
-  alias -g -- ~~='2>&1 | bat --plain'
+  alias -g -- ~~='2>&1 | nvimpager'
 else
   alias -g -- ~~='2>&1 | less'
 fi
