@@ -149,6 +149,8 @@ local sids
 if sids=( `print -- $lsdesc | fzf --header-lines=1 --prompt="❯ brew $opts " \
   $((( $no_multi[(I)$opts[1]] )) || printf --multi) | grep -oE "^[^:]+"` )
 then
-  printf "\033[0;33m❯ brew %s %s\033[0m\n" "$opts" "$sids"
+  # Formatted with `setopt extended_history` in mind.
+  printf ": %s:0;%s\n" `date -j +%s` "brew $opts $sids" >> $HISTFILE
+  printf "\033[4m%s\033[0m\n" "brew $opts $sids"
   brew $opts $sids
 fi
