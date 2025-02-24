@@ -2,7 +2,7 @@
 
 # Enable caching for any completions which use it and set its path.
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ${XDG_CACHE_HOME:-~/.cache}/zsh/zcompcache
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
 # Case insensitive autocomplete and globbing.
 # @see man zshcompwid -> “COMPLETION MATCHING CONTROL”
@@ -24,7 +24,7 @@ setopt hist_reduce_blanks     # Remove superfluous blanks from each command line
 setopt hist_find_no_dups      # Do not display a previously found event.
 setopt hist_verify            # Do not execute immediately upon history expansion.
 
-export HISTFILE=${XDG_DATA_HOME:-~/.local/share}/zsh/zhistory
+export HISTFILE=$XDG_DATA_HOME/zsh/zhistory
 export HISTSIZE=1000000
 export SAVEHIST=833333    # 833333 x 1.2 = 999,999.6 | Stay under HISTSIZE.
                           # With `share_history` enabled, the history file will be

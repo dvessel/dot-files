@@ -46,7 +46,7 @@ alias hex2decimal='printf "%d\n"'
 alias decimal2hex='printf "0x0%x\n"'
 
 # Clear zsh related caches.
-alias zcc='rm -rf ${XDG_CACHE_HOME:-~/.cache}/zsh && echo zsh\ caches\ cleared.'
+alias zcc='rm -rf $XDG_CACHE_HOME/zsh && echo zsh\ caches\ cleared.'
 
 # Make neovim available in x86 Rosetta.
 if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
