@@ -14,5 +14,3 @@ zstyle ':fzf-tab:complete:*' fzf-flags $opts
 
 export FZF_DEFAULT_OPTS=${opts[@]}
 export FZF_COMPLETION_TRIGGER='..'
-
-unset opts

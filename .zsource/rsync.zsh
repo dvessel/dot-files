@@ -30,4 +30,3 @@ while (( $i < ${#list[@]} )); do
   i=$((i+4))
 done
 alias rsync-ii-all="${(j[;echo;])presets}"
-unset list presets i header
