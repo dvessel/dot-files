@@ -5,7 +5,7 @@ test ! -f $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh \
 || source $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh
 
 # Add local paths, keep [-U]nique.
-typeset -gU path=( ~/.local/{bin,zbin} $path )
+typeset -gU fpath path=( ~/.local/{bin,zbin} $path )
 
 # Aggregate->Compile->Source
 function acsource() {
@@ -30,3 +30,20 @@ acsource integrations-`arch` \
 
 # Aggregate ~/.zsource/*.zsh while maintaining order for set names.
 acsource zsource ~/.zsource/{options,p10k,antidote,*}.zsh
+
+# Tell `p10k configure` which file it should overwrite.
+typeset -g POWERLEVEL9K_CONFIG_FILE=$HOME/.zsource/p10k.zsh
+
+# Autoload zfunctions from the local directory.
+zfunctions=( $ZFUNCDIR/[^_]*(N.:t))
+if (( $#zfunctions > 0 )); then
+  fpath=( $ZFUNCDIR $fpath )
+  autoload -Uz $zfunctions
+fi
+unset zfunctions
+
+# Normally handled by antidote plugin:
+# @see ~/.zplugins - mattmc3/ez-compinit
+if ! type compinit >/dev/null; then
+  autoload -Uz compinit; compinit -d $XDG_CACHE_HOME/zsh/zcompdump
+fi

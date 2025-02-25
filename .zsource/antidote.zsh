@@ -11,9 +11,6 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
   zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
 
-  # - mattmc3/zephyr plugins:zfunctions
-  export ZFUNCDIR=~/.local/zfunctions
-
   # - dvessel/zsh-completion-generator
   export GENCOMPL_FPATH=~/.local/zfunctions
 

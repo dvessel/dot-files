@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+# https://github.com/mattmc3/zephyr/tree/main/plugins/zfunctions
+#function function-edit {
+  local zfdir=${ZFUNCDIR:-$HOME/.local/zfunctions}
+  if (( $# == 0 ))
+  then
+    echo "$0: Expected at least 1 args, got only 0." >&2
+    return 1
+  elif [[ ! -d $zfdir ]]
+  then
+    echo "$0: Directory not found '$zfdir'." >&2
+    return 1
+  fi
+  if [[ ! -f $zfdir/$1 ]]
+  then
+    local -a content code
+    if type $1 &>/dev/null; then
+      autoload +X $1 &>/dev/null
+      code=`type -f $1 | awk 'NR>2 {print prev} {gsub(/\t/, "  ", $0); prev=$0}'`
+    fi
+    content=("#!/usr/bin/env zsh" "#function $1 {" "$code" "#}")
+    printf '%s\n' "${content[@]}" > $zfdir/$1
+  fi
+  if [[ -n $VISUAL ]]
+  then
+    $VISUAL $zfdir/$1
+  else
+    ${EDITOR:-vim} $zfdir/$1
+  fi
+  autoload -Uz $1
+#}
