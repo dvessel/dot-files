@@ -26,10 +26,10 @@ keybind = super+backspace=text:\x15
 keybind = super+ctrl+j=jump_to_prompt:1
 keybind = super+ctrl+k=jump_to_prompt:-1
 
-keybind = home=scroll_to_top
-keybind = end=scroll_to_bottom
-keybind = page_up=scroll_page_up
-keybind = page_down=scroll_page_down
+keybind = super+home=scroll_to_top
+keybind = super+end=scroll_to_bottom
+keybind = super+page_up=scroll_page_up
+keybind = super+page_down=scroll_page_down
 
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
