@@ -1,29 +1,29 @@
 #!/usr/bin/env zsh
-
-local trash archive
-zparseopts -D -E -F - {t,-trash-archive}=trash || return 1
-
-for archive in "$@"; do
-  if [[ -f $archive ]]; then
-    case $archive in
-      *.(7z|iso|rar)) ! _brew_check p7zip ||
-              7z x $archive       ;;
-      *.bz2)  bunzip2 $archive    ;;
-      *.gz)   gunzip $archive     ;;
-      *.tar)  tar xf $archive     ;;
-      *.(tbz|tbz2|tar.bz2))
-              tar xjf $archive    ;;
-      *.(tgz|tar.gz))
-              tar xzf $archive    ;;
-      *.Z)    uncompress $archive ;;
-      *.zip)  unzip $archive      ;;
-      *)      print "'$archive' cannot be extracted." ;;
-    esac
-    if [[ $? == 0 && $trash ]]; then
-      trash $archive
-      print "'$archive' moved to trash."
+#function extract {
+  local trash archive
+  zparseopts -D -E -F - {t,-trash-archive}=trash || return 1
+  for archive in "$@"
+  do
+    if [[ -f $archive ]]
+    then
+      case $archive in
+        (*.(7z|iso|rar)) ! _brew_check p7zip || 7z x $archive ;;
+        (*.bz2) bunzip2 $archive ;;
+        (*.gz) gunzip $archive ;;
+        (*.tar) tar xf $archive ;;
+        (*.(tbz|tbz2|tar.bz2)) tar xjf $archive ;;
+        (*.(tgz|tar.gz)) tar xzf $archive ;;
+        (*.Z) uncompress $archive ;;
+        (*.zip) unzip $archive ;;
+        (*) print "'$archive' cannot be extracted." ;;
+      esac
+      if [[ $? == 0 && -n $trash ]]
+      then
+        trash $archive
+        print "'$archive' moved to trash."
+      fi
+    else
+      print "'$archive' is not a valid archive."
     fi
-  else
-    print "'$archive' is not a valid archive."
-	fi
-done
+  done
+#}

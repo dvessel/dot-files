@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-
 # Fragile, use with caution.
-man $1 | python $ZSH_COMPLETION_GENERATOR_SRCDIR/help2comp.py $1 >| \
-  $ZSH_COMPLETION_GENERATOR_DIR/_$1
+#function gencomp-man {
+  man $1 | python $ZSH_COMPLETION_GENERATOR_SRCDIR/help2comp.py $1 >| $ZSH_COMPLETION_GENERATOR_DIR/_$1
+#}

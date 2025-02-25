@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
-
-if _brew_check fd; then
-	fd --glob .git . --type d --hidden --no-ignore --exec=dirname
-fi
+#function rgit-paths {
+  if _brew_check fd
+  then
+    fd --glob .git . --type d --hidden --no-ignore --exec=dirname
+  fi
+#}

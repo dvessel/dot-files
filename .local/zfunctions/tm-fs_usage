@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
-
-if _brew_check lnav; then
-  sudo fs_usage -f filesys backupd | lnav
-fi
+#function tm-fs_usage {
+  if _brew_check lnav
+  then
+    sudo fs_usage -f filesys backupd | lnav
+  fi
+#}

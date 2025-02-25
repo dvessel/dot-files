@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
-
-ethernet-switch off
-sleep 2
-ethernet-switch on
+#function ethernet-restart {
+  ethernet-switch off
+  sleep 2
+  ethernet-switch on
+#}

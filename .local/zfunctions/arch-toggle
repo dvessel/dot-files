@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
-
-# PATH deleted for clear separation between arch.
-case `sysctl -n sysctl.proc_translated` in
-	(0) arch -d PATH --x86_64 /bin/zsh -l ;;
-	(1) exit ;;
-esac
+#function arch-toggle {
+  # PATH deleted for clear separation between arch.
+  case `sysctl -n sysctl.proc_translated` in
+    (0) arch -d PATH --x86_64 /bin/zsh -l ;;
+    (1) exit ;;
+  esac
+#}

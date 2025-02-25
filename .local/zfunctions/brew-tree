@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
-
-brew deps --include-build --tree ${@:---installed}
+#function brew-tree {
+  brew deps --include-build --tree ${@:---installed}
+#}

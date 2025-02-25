@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
-##? pfs - Print the current Finder selection
+# Print the current Finder selection.
 #function pfs {
-osascript 2>&1 <<EOF
+  osascript 2>&1 <<EOF
   tell application "Finder" to set the_selection to selection
   if the_selection is not {}
     repeat with an_item in the_selection

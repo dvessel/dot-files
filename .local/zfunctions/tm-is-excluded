@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
-
-tmutil isexcluded $@
+#function tm-is-excluded {
+  tmutil isexcluded $@
+#}

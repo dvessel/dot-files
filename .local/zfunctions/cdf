@@ -1,3 +1,5 @@
 #!/usr/bin/env zsh
-#? cdf - Change to the current Finder directory.
-cd "$(pfd)"
+# Change to the current Finder directory.
+#function cdf {
+  cd "$(pfd)"
+#}

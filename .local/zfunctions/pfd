@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
-##? pfd - Print the frontmost Finder directory.
+# Print the frontmost Finder directory.
 #function pfd {
-osascript 2> /dev/null <<EOF
+  osascript 2> /dev/null <<EOF
   tell application "Finder"
     return POSIX path of (target of first window as text)
   end tell

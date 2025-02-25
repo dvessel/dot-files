@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 # concat losslessly. Beware of keyframes.
-_brew_check ffmpeg || return 1
-
-local tmp=`mktemp`
-local out=$argv[-1]
-shift -p
-printf "file '%s'\n" $@ > $tmp
-ffmpeg -f concat -i $tmp -c copy $out
-rm $tmp
+#function ff-concat {
+  _brew_check ffmpeg || return 1
+  local tmp=`mktemp`
+  local out=$argv[-1]
+  shift -p
+  printf "file '%s'\n" $@ > $tmp
+  ffmpeg -f concat -i $tmp -c copy $out
+  rm $tmp
+#}

@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
-
-networksetup -setnetworkserviceenabled "Ethernet" "${1}"
+#function ethernet-switch {
+  networksetup -setnetworkserviceenabled "Ethernet" "${1}"
+#}

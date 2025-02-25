@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
-
-wifi-switch off
-sleep 2
-wifi-switch on
+#function wifi-restart {
+  wifi-switch off
+  sleep 2
+  wifi-switch on
+#}

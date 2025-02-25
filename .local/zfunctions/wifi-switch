@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
-
-networksetup -setairportpower "en0" "${1}"
+#function wifi-switch {
+  networksetup -setairportpower "en0" "${1}"
+#}

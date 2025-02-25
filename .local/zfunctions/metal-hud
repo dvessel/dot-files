@@ -1,19 +1,19 @@
 #!/usr/bin/env zsh
-
-case $1 in
-	(enable)	launchctl setenv MTL_HUD_ENABLED 1 ;;
-	(disable) launchctl unsetenv MTL_HUD_ENABLED ;;
-	(toggle)
-		if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]; then
-			launchctl unsetenv MTL_HUD_ENABLED
-		else
-			launchctl setenv MTL_HUD_ENABLED 1
-		fi
-	;;
-esac
-
-if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]; then
-	print enabled
-else
-	print disabled
-fi
+#function metal-hud {
+  case $1 in
+    (enable) launchctl setenv MTL_HUD_ENABLED 1 ;;
+    (disable) launchctl unsetenv MTL_HUD_ENABLED ;;
+    (toggle) if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
+      then
+        launchctl unsetenv MTL_HUD_ENABLED
+      else
+        launchctl setenv MTL_HUD_ENABLED 1
+      fi ;;
+  esac
+  if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
+  then
+    print enabled
+  else
+    print disabled
+  fi
+#}
