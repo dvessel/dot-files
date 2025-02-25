@@ -4,7 +4,7 @@ keybind = super+n=new_window
 keybind = super+t=new_tab
 keybind = super+d=new_split:right
 keybind = super+shift+d=new_split:down
-keybind = global:ctrl+shift+a=toggle_quick_terminal
+keybind = global:ctrl+shift+q=toggle_quick_terminal
 
 keybind = super+w=close_surface
 keybind = super+alt+w=close_tab
