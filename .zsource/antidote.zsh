@@ -12,7 +12,7 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
   zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
 
   # - dvessel/zsh-completion-generator
-  export GENCOMPL_FPATH=~/.local/zfunctions
+  export GENCOMPL_FPATH=$ZFUNCDIR
 
   # - jeffreytse/zsh-vi-mode
   function zvm_after_init() {
@@ -28,7 +28,7 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
   }
 
   # Core plug-in options. @see man antidote
-  local zplugins=~/.zplugins
+  local zplugins=$HOME/.zplugins
   local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
 
   export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote

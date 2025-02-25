@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Double tildes `~~` at the end of the command will pipe to a pager.
-if type bat &>/dev/null; then
+if type nvimpager &>/dev/null; then
   alias -g -- ~~='2>&1 | nvimpager'
 else
   alias -g -- ~~='2>&1 | less'
