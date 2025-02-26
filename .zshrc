@@ -35,7 +35,7 @@ acsource zsource ~/.zsource/{options,antidote,p10k,*}.zsh
 typeset -g POWERLEVEL9K_CONFIG_FILE=$HOME/.zsource/p10k.zsh
 
 # Autoload zfunctions from the local directory.
-zfunctions=( $ZFUNCDIR/[^_]*(N.:t))
+zfunctions=( $ZFUNCDIR/[^_]*(N.:t) )
 if (( $#zfunctions > 0 )); then
   fpath=( $ZFUNCDIR $fpath )
   autoload -Uz $zfunctions
