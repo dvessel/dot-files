@@ -12,14 +12,12 @@ function acsource() {
   typeset -aU argv=( $@ )
   local s aggregate=$XDG_CACHE_HOME/zsh/${0}-${1}.zsh
   shift
-  for s ( $@ ) {
-    if [[ ! -f $aggregate ]] || [[ $s -nt $aggregate ]]; then
-      mkdir -p $aggregate:h
-      cat $@ > $aggregate 2>/dev/null
-      zcompile $aggregate
-      break
-    fi
-  }
+  for s ( $@ ) if [[ ! -f $aggregate ]] || [[ $s -nt $aggregate ]]; then
+    mkdir -p $aggregate:h
+    cat $@ > $aggregate 2>/dev/null
+    zcompile $aggregate
+    break
+  fi
   source $aggregate
 }
 
