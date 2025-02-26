@@ -29,10 +29,10 @@ acsource integrations-`arch` \
   $HOMEBREW_PREFIX/Caskroom/miniconda/base/etc/profile.d/conda.sh
 
 # Aggregate ~/.zsource/*.zsh while maintaining order for set names.
-acsource zsource ~/.zsource/{options,antidote,p10k,*}.zsh
+acsource zsource ~/.zsource/{options,antidote,p10k-config,*}.zsh
 
 # Tell `p10k configure` which file it should overwrite.
-typeset -g POWERLEVEL9K_CONFIG_FILE=$HOME/.zsource/p10k.zsh
+typeset -g POWERLEVEL9K_CONFIG_FILE=$HOME/.zsource/p10k-config.zsh
 
 # Autoload zfunctions from the local directory.
 zfunctions=( $ZFUNCDIR/[^_]*(N.:t) )
