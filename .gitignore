@@ -1,4 +1,4 @@
-# Ignore visible files and folders.
+# Ignore visible folders.
 [^.]*/**
 
 # Dot files not to track.
