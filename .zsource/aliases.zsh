@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 # Double tildes `~~` at the end of the command will pipe to a pager.
-if type nvimpager &>/dev/null; then
-  alias -g -- ~~='2>&1 | nvimpager'
+if test -f /opt/homebrew/bin/bat; then
+  alias -g -- ~~='2>&1 | /opt/homebrew/bin/bat --plain'
 else
   alias -g -- ~~='2>&1 | less'
 fi

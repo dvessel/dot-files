@@ -45,9 +45,8 @@ else
   export EDITOR=vim
 fi
 
-# Neovim pager.
-if type nvimpager &>/dev/null; then
-  export PAGER=nvimpager
+if test -f /opt/homebrew/bin/bat; then
+  export PAGER=/opt/homebrew/bin/bat
 fi
 
 export LESS='-RFi'

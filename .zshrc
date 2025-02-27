@@ -5,7 +5,8 @@ test ! -f $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh \
 || source $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh
 
 # Add local paths, keep [-U]nique.
-typeset -gU fpath path=( ~/.local/{bin,zbin} $path )
+typeset -gU  path=( ~/.local/{bin,zbin} $path )
+typeset -gU fpath=( $fpath /{usr/local,opt/homebrew}/share/zsh/site-functions(N) )
 
 # Aggregate->Compile->Source
 function acsource() {
