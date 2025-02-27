@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 #
-# .zsh_plugins.txt - antidote plugins file
+# .zplugins - antidote plugins file
 #
-# The `.zsh_plugins.txt` file is used by antidote to configure Zsh bundles. Bundles are
-# just a fancy way of referring to Zsh utilities, frameworks, prompts, or plugins.
+# This file is used by antidote to configure Zsh bundles. Bundles are just a
+# fancy way of referring to Zsh utilities, frameworks, prompts, or plugins.
 #
 # Example: https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
 
