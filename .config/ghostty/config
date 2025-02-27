@@ -11,7 +11,6 @@ window-width  = 88
 window-height = 30
 window-padding-x = 20,0
 window-padding-y = 7
-window-step-resize = true
 
 macos-titlebar-style = tabs
 macos-icon = blueprint
