@@ -3,12 +3,10 @@ require('hs.ipc')
 -- hs.loadSpoon('EmmyLua')
 hs.loadSpoon("ReloadConfiguration")
 hs.loadSpoon('ControlEscape')
-hs.loadSpoon("HoldToQuit")
 hs.loadSpoon("AppWindowSwitcher")
 
 spoon.ReloadConfiguration:start()
 spoon.ControlEscape:start()
-spoon.HoldToQuit:start()
 spoon.AppWindowSwitcher:bindHotkeys({
    [""]                       = {"shift-ctrl", "`"},
    ["com.apple.Safari"]       = {"shift-ctrl", "1"},
