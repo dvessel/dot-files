@@ -4,8 +4,10 @@ theme = light:lightness,dark:darkness
 
 font-family = Lilex Nerd Font
 font-size   = 15
+font-thicken = true
+font-thicken-strength = 0
 
-window-width  = 90
+window-width  = 88
 window-height = 30
 window-padding-x = 20,0
 window-padding-y = 7
