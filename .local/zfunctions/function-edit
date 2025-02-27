@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # https://github.com/mattmc3/zephyr/tree/main/plugins/zfunctions
 #function function-edit {
-  local zfdir=${ZFUNCDIR:-$HOME/.local/zfunctions}
+  local zfdir=${ZFUNCDIR:-~/.local/zfunctions}
   if (( $# == 0 ))
   then
     echo "$0: Expected at least 1 args, got only 0." >&2

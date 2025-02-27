@@ -204,7 +204,7 @@ function {
     "`s.error Unknown arguments: $@`"
   )
 
-  bdpath=${bdpath[-1]:-${XDG_CONFIG_HOME:-$HOME/.config}/backup/defaults}
+  bdpath=${bdpath[-1]:-${XDG_CONFIG_HOME:-~/.config}/backup/defaults}
   if [[ ! -d $bdpath ]]; then
     case $op in
       backup)               mkdir -p $bdpath ;;

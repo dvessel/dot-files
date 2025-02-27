@@ -216,7 +216,7 @@ function xpath-query {
 }
 
 function mame-version {
-  local mamecore=$HOME/Library/Application\ Support/OpenEmu/Cores/MAME.oecoreplugin
+  local mamecore=~/Library/Application\ Support/OpenEmu/Cores/MAME.oecoreplugin
 
   if [[ -d $mamecore ]]; then
     # Remove decimals and truncate. MAME core version 0.250.0.1 results in 0250.
