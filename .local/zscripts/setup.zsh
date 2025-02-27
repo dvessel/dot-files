@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-if ! test -f ~/Library/Keybindings/DefaultKeyBinding.dict; then
+if ! test -f $HOME/Library/Keybindings/DefaultKeyBinding.dict; then
   print "Hard linking DefaultKeyBinding.dict to ~/Library/KeyBindings."
-  mkdir -p ~/Library/KeyBindings
-  ln ~/.config/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/
+  mkdir -p $HOME/Library/KeyBindings
+  ln ${XDG_CONFIG_HOME:-$HOME/.config}/KeyBindings/DefaultKeyBinding.dict $HOME/Library/KeyBindings/
 fi
 
 case `sysctl -n sysctl.proc_translated` in
@@ -20,9 +20,9 @@ fi
 
 if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 then
-  source ~/.zprofile
+  source $ZDOTDIR/.zprofile
   print "Ignore brew setup instructions. Homebrew \$PATH already set in .zprofile."
   print "Installing brew basic-setup…"
-  brew bundle --no-lock --file ~/.config/brew/basic-setup
+  brew bundle --no-lock --file ${XDG_CONFIG_HOME:-$HOME/.config}/brew/basic-setup
 fi
 unset __brew_path

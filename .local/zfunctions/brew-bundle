@@ -4,27 +4,27 @@
   zparseopts -D -E - {n,-name}:=name {-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set {c,-changes-from}:=changesFrom || return 1
   if [[ -z $name && -z $set ]]
   then
-    name=default 
-    set=(--formula --cask) 
+    name=default
+    set=(--formula --cask)
   elif [[ -z $name && ${#set[@]} == 1 ]]
   then
-    name=${set/--/} 
+    name=${set/--/}
   elif [[ -n $name ]]
   then
-    name=${name[-1]} 
+    name=${name[-1]}
   else
     print -- "--name <name> required for multiple listed: $set." >&2
     return 1
   fi
   if [[ -n $changesFrom ]]
   then
-    local base temp bundle
-    base=~/.config/brew/bundle-$changesFrom[-1]-`machine` 
+    local base temp bundle configdir=${XDG_CONFIG_HOME:-$HOME/.config}/brew
+    base=$configdir/bundle-$changesFrom[-1]-`machine`
     if [[ -f $base ]]
     then
-      temp=`mktemp` 
+      temp=`mktemp`
       brew bundle $@ $set --describe --no-lock --force --file $temp
-      bundle=~/.config/brew/bundle-$name-changesFrom-`machine` 
+      bundle=$configdir/bundle-$name-changesFrom-`machine`
       print "# changesFrom from 'bundle-$changesFrom[-1]-`machine`':" > $bundle
       while read l
       do
@@ -39,6 +39,6 @@
       return 1
     fi
   else
-    brew bundle $@ $set --describe --no-lock --file ~/.config/brew/bundle-$name-`machine`
+    brew bundle $@ $set --describe --no-lock --file $configdir/bundle-$name-`machine`
   fi
 #}

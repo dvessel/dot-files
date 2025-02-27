@@ -6,11 +6,14 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
 
+# zsh dotfile directory.
+export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+
 # Autoloading zfunctions and zcompletions.
 export ZFUNCDIR=${ZFUNCDIR:-$HOME/.local/zfunctions}
 
 # Disable session persistence when running Terminal.app.
-# It leaves behind ~/.zsh_sessions which can turn to bloat.
+# It leaves behind .zsh_sessions which can turn to bloat.
 if [[ $TERM_PROGRAM == Apple_Terminal ]]; then
   export SHELL_SESSIONS_DISABLE=1
 fi

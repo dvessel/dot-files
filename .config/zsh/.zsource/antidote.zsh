@@ -5,7 +5,7 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
   fpath+=$HOMEBREW_PREFIX/opt/antidote/share/antidote/functions
   autoload -Uz antidote
 
-  # Plug-in options. @see ~/.zplugins
+  # Plug-in options. @see .zplugins
 
   # - mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
@@ -31,7 +31,7 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
   }
 
   # Core plug-in options. @see man antidote
-  local zplugins=$HOME/.zplugins
+  local zplugins=$ZDOTDIR/.zplugins
   local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
 
   export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
