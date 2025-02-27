@@ -1,15 +1,15 @@
 --- === AppWindowSwitcher ===
 ---
---- macOS application aware, keyboard driven window switcher. Spoon
+--- macOS application aware, keyboard driven window switcher. Spoon 
 --- on top of Hammerspoon.
 ---
 --- Download: [https://github.com/Hammerspoon/Spoons/raw/master/Spoons/AppWindowSwitcher.spoon.zip](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/AppWindowSwitcher.spoon.zip)
 ---
---- Switches windows by focusing and raising them. All windows matching a
---- bundelID, a list of bundleID's, an application name matchtext,
---- or a list of application name matchtexts are switched by cycling
---- them. Cycling applies to visible windows of currently focused space
---- only. The spoon does not launch applications, it operates on open
+--- Switches windows by focusing and raising them. All windows matching a 
+--- bundelID, a list of bundleID's, an application name matchtext, 
+--- or a list of application name matchtexts are switched by cycling 
+--- them. Cycling applies to visible windows of currently focused space 
+--- only. The spoon does not launch applications, it operates on open 
 --- windows of running applications.
 ---
 --- Example `~/.hammerspoon/init.lua` configuration:
@@ -22,24 +22,24 @@
 ---         [{"com.apple.Safari",
 ---           "com.google.Chrome",
 ---           "com.kagi.kagimacOS",
----           "com.microsoft.edgemac",
+---           "com.microsoft.edgemac", 
 ---           "org.mozilla.firefox"}]     = {hyper, "q"},
 ---         ["Hammerspoon"]               = {hyper, "h"},
 ---         [{"O", "o"}]                  = {hyper, "o"},
 ---     })
 --- ```
---- In this example,
+--- In this example, 
 --- * `hyper-t` cycles all terminal windows (matching a single bundleID),
---- * `hyper-q` cycles all windows of the five browsers (matching either
+--- * `hyper-q` cycles all windows of the five browsers (matching either 
 ---   of the bundleIDs)
---- * `hyper-h` brings the Hammerspoon console forward (matching the
+--- * `hyper-h` brings the Hammerspoon console forward (matching the 
 ---   application title),
---- * `hyper-o` cycles all windows whose application title starts
+--- * `hyper-o` cycles all windows whose application title starts 
 ---   with "O" or "o".
 ---
 --- The cycling logic works as follows:
 --- * If the focused window is part of the application matching a hotkey,
----   then the last window (in terms of macOS windows stacking) of the matching
+---   then the last window (in terms of macOS windows stacking) of the matching 
 ---   application(s) will be brought forward and focused.
 --- * If the focused window is not part of the application matching a
 ---   hotkey, then the first window (in terms of macOS windows stacking) i
@@ -96,30 +96,30 @@ end
 --- Binds hotkeys for AppWindowSwitcher
 ---
 --- Parameters:
----  * mapping - A table containing hotkey modifier/key details for each application to manage
+---  * mapping - A table containing hotkey modifier/key details for each application to manage 
 ---
 --- Notes:
 --- The mapping table accepts these formats per table element:
 --- * A single text to match:
----   `["<matchtext>"] = {mods, key}`
+---   `["<matchtext>"] = {mods, key}` 
 --- * A list of texts, to assign multiple applications to one hotkey:
 ---   `[{"<matchtext>", "<matchtext>", ...}] = {mods, key}`
---- * `<matchtext>` can be either a bundleID, or a text which is substring matched against a windows application title start.
+--- * `<matchtext>` can be either a bundleID, or a text which is substring matched against a windows application title start. 
 ---
 --- Returns:
 ---  * The AppWindowSwitcher object
 function obj:bindHotkeys(mapping)
     for matchtexts, modsKey in pairs(mapping) do
-        obj.log.d("Mapping " .. hs.inspect(matchtexts) ..
+        obj.log.d("Mapping " .. hs.inspect(matchtexts) .. 
                   " to " .. hs.inspect(modsKey))
 
         if type(matchtexts) == "string" then
             matchtexts = {matchtexts} -- further code assumes a table
         end
         mods, key = table.unpack(modsKey)
-        hs.hotkey.bind(mods, key, function()
-            local focusedWindowBundleID =
-                hs.window.focusedWindow():application():bundleID()
+        hs.hotkey.bind(mods, key, function() 
+            local focusedWindowBundleID = 
+                hs.window.focusedWindow():application():bundleID() 
 
             newW = nil
             if obj.match(hs.window.focusedWindow(), matchtexts) then
@@ -140,9 +140,9 @@ function obj:bindHotkeys(mapping)
             end
             if newW then
                 newW:raise():focus()
-            -- else
-            --     hs.alert.show("No window open for " ..
-            --         hs.inspect(matchtexts))
+            else
+                hs.alert.show("No window open for " .. 
+                    hs.inspect(matchtexts))
             end
         end)
     end
