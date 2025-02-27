@@ -36,10 +36,7 @@ export HELPDIR=/usr/share/zsh/`zsh --version | cut -d ' ' -f2`/help
 unalias run-help 2>/dev/null
 autoload run-help
 
-if type nvim &>/dev/null; then
-  export EDITOR=nvim
-elif test -r /opt/homebrew/bin/nvim; then
-  # PATH is cleared on arch switch. Make it available in x86. @see arch-toggle
+if test -f /opt/homebrew/bin/nvim; then
   export EDITOR=/opt/homebrew/bin/nvim
 else
   export EDITOR=vim
