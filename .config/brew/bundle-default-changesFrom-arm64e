@@ -17,6 +17,8 @@ brew "gifify"
 brew "go"
 # Command-line tool for generating regular expressions
 brew "grex"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Interactive JSON filter using jq
 brew "jnv"
 # Lightweight and flexible command-line JSON processor
