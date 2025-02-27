@@ -33,13 +33,9 @@ acsource zsource $ZDOTDIR/.zsource/{options,antidote,p10k-config,*}.zsh
 # Tell `p10k configure` which file it should overwrite.
 typeset -g POWERLEVEL9K_CONFIG_FILE=$ZDOTDIR/.zsource/p10k-config.zsh
 
-# Autoload zfunctions from the local directory.
-zfunctions=( $ZFUNCDIR/[^_]*(N.:t) )
-if (( $#zfunctions > 0 )); then
-  fpath=( $ZFUNCDIR $fpath )
-  autoload -Uz $zfunctions
-fi
-unset zfunctions
+# Autoload zfunctions from $ZFUNCDIR.
+fpath=( $ZFUNCDIR $fpath )
+autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
 # Normally handled by antidote plugin: .zplugins->mattmc3/ez-compinit
 if ! type compinit >/dev/null; then
