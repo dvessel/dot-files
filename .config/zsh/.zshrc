@@ -8,19 +8,9 @@ test ! -f $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh \
 typeset -gU  path=( ~/.local/{bin,zbin} $path )
 typeset -gU fpath=( $fpath /{usr/local,opt/homebrew}/share/zsh/site-functions(N) )
 
-# Aggregate->Compile->Source
-function acsource() {
-  typeset -aU argv=( $@ )
-  local s aggregate=$XDG_CACHE_HOME/zsh/${0}-${1}.zsh
-  shift
-  for s ( $@ ) if [[ ! -f $aggregate ]] || [[ $s -nt $aggregate ]]; then
-    mkdir -p $aggregate:h
-    cat $@ > $aggregate 2>/dev/null
-    zcompile $aggregate
-    break
-  fi
-  source $aggregate
-}
+# Autoload zfunctions from $ZFUNCDIR.
+fpath=( $ZFUNCDIR $fpath )
+autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
 # Shell integrations are arch-specific.
 acsource integrations-`arch` \
@@ -29,10 +19,6 @@ acsource integrations-`arch` \
 
 # Aggregate .zsource/*.zsh while maintaining order for set names.
 acsource zsource $ZDOTDIR/.zsource/{options,antidote,p10k-config,*}.zsh
-
-# Autoload zfunctions from $ZFUNCDIR.
-fpath=( $ZFUNCDIR $fpath )
-autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
 # Normally handled by antidote plugin: .zplugins->mattmc3/ez-compinit
 if ! type compinit >/dev/null; then

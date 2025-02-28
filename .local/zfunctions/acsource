@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+# Aggregate->Compile->Source
+#function acsource {
+  typeset -aU argv=($@) 
+  local s aggregate=$XDG_CACHE_HOME/zsh/${0}-${1}.zsh 
+  shift
+  for s in $@
+  do
+    if [[ ! -f $aggregate ]] || [[ $s -nt $aggregate ]]
+    then
+      mkdir -p $aggregate:h
+      cat $@ > $aggregate 2> /dev/null
+      zcompile $aggregate
+      break
+    fi
+  done
+  source $aggregate
+#}
