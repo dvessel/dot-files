@@ -4,11 +4,6 @@
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 
-# Case insensitive autocomplete and globbing.
-# @see man zshcompwid -> “COMPLETION MATCHING CONTROL”
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-setopt no_case_glob
-
 setopt auto_pushd         # Push the current directory visited on the stack.
 setopt pushd_ignore_dups  # Do not store duplicates in the stack.
 setopt pushd_silent       # Do not print the directory stack after pushd or popd.
