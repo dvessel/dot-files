@@ -30,9 +30,6 @@ acsource integrations-`arch` \
 # Aggregate .zsource/*.zsh while maintaining order for set names.
 acsource zsource $ZDOTDIR/.zsource/{options,antidote,p10k-config,*}.zsh
 
-# Tell `p10k configure` which file it should overwrite.
-typeset -g POWERLEVEL9K_CONFIG_FILE=$ZDOTDIR/.zsource/p10k-config.zsh
-
 # Autoload zfunctions from $ZFUNCDIR.
 fpath=( $ZFUNCDIR $fpath )
 autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
