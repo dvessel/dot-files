@@ -6,10 +6,9 @@ test ! -f $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh \
 
 # Add local paths, keep [-U]nique.
 typeset -gU  path=( ~/.local/{bin,zbin} $path )
-typeset -gU fpath=( $fpath /{usr/local,opt/homebrew}/share/zsh/site-functions(N) )
+typeset -gU fpath=( $ZFUNCDIR $fpath /{usr/local,opt/homebrew}/share/zsh/site-functions(N) )
 
 # Autoload zfunctions from $ZFUNCDIR.
-fpath=( $ZFUNCDIR $fpath )
 autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
 # Shell integrations are arch-specific.
