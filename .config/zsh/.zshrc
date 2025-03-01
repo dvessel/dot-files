@@ -13,7 +13,7 @@ autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
 # Shell integrations are arch-specific.
 acsource integrations-`arch` \
-  $HOMEBREW_PREFIX/opt/fzf/shell/*.zsh(N) \
+  $HOMEBREW_PREFIX/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
   $HOMEBREW_PREFIX/Caskroom/miniconda/base/etc/profile.d/conda.sh
 
 # Aggregate .zsource/*.zsh while maintaining order for set names.
