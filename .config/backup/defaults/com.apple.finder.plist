@@ -387,7 +387,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>15</real>
+			<real>13</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -403,19 +403,19 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>192</real>
+			<real>188</real>
 			<key>labelOnBottom</key>
 			<true/>
 			<key>scrollPositionX</key>
 			<real>0.0</real>
 			<key>scrollPositionY</key>
-			<real>467</real>
+			<real>0.0</real>
 			<key>showIconPreview</key>
 			<true/>
 			<key>showItemInfo</key>
-			<true/>
+			<false/>
 			<key>textSize</key>
-			<real>15</real>
+			<real>13</real>
 			<key>viewOptionsVersion</key>
 			<string>1</string>
 		</dict>
