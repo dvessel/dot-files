@@ -1,5 +1,5 @@
 # Ignore visible folders.
-[^.]*/**
+[^.]*/*
 
 # Dot files not to track.
 .cache
