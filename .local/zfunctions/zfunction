@@ -1,0 +1,48 @@
+#!/usr/bin/env zsh
+# https://github.com/mattmc3/zephyr/tree/main/plugins/zfunctions
+#function zfunction {
+  zparseopts -D -E -F - {e,-edit,n,-new}:=edit {r,-refresh}=refresh || return 1
+  local zfdir=${ZFUNCDIR:-~/.local/zfunctions}
+  if [[ ! -d $zfdir ]]
+  then
+    echo "Directory not found '$zfdir'." >&2
+    return 1
+  fi
+  if [[ -n $refresh ]]
+  then
+    if [[ -n `printf "%s" $zfdir/[^_]*(N.:t)` ]]
+    then
+      unfunction $zfdir/[^_]*(N.:t)
+      autoload -Uz $zfdir/[^_]*(N.:t)
+    else
+      echo "Nothing to refresh." >&2
+      return 1
+    fi
+  elif [[ -n $edit ]]
+  then
+    local name=$edit[-1]
+    local op=$edit[1]
+    if [[ ! -f $zfdir/$name || $op == -n || $op == --new ]]
+    then
+      local -a content
+      if type $name &> /dev/null
+      then
+        autoload +X $name &> /dev/null
+        code=`type -f $name | awk 'NR>2 {print prev} {gsub(/\t/, "  ", $0); prev=$0}'`
+      fi
+      content=("#!/usr/bin/env zsh" "#function $name {" "$code" "#}")
+      printf '%s\n' "${content[@]}" > $zfdir/$name
+    fi
+    if [[ -n $VISUAL ]]
+    then
+      $VISUAL $zfdir/$name
+    else
+      ${EDITOR:-vim} $zfdir/$name
+    fi
+    unfunction $name
+    autoload -Uz $name
+  else
+    echo "Requires --[new|edit] <name> or --refresh." >&2
+    return 1
+  fi
+#}
