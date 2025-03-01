@@ -21,8 +21,7 @@
   elif [[ -n $edit ]]
   then
     local name=$edit[-1]
-    local op=$edit[1]
-    if [[ ! -f $zfdir/$name || $op == -n || $op == --new ]]
+    if [[ ! -f $zfdir/$name || $edit[1] == (-n|--new) ]]
     then
       local -a content
       if type $name &> /dev/null
