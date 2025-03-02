@@ -11,8 +11,8 @@ typeset -gU fpath=( $ZFUNCDIR $fpath /{usr/local,opt/homebrew}/share/zsh/site-fu
 # Autoload zfunctions from $ZFUNCDIR.
 autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
-# Shell integrations are arch-specific.
-acsource integrations-`arch` \
+# Shell integrations are arch-specific. arm64e|i486
+acsource integrations-`machine` \
   $HOMEBREW_PREFIX/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
   $HOMEBREW_PREFIX/Caskroom/miniconda/base/etc/profile.d/conda.sh
 
