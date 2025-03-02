@@ -16,9 +16,10 @@
     print -- "--name <name> required for multiple listed: $set." >&2
     return 1
   fi
+  local configdir=${XDG_CONFIG_HOME:-~/.config}/brew
   if [[ -n $changesFrom ]]
   then
-    local base temp bundle configdir=${XDG_CONFIG_HOME:-~/.config}/brew
+    local base temp bundle
     base=$configdir/bundle-$changesFrom[-1]-`machine`
     if [[ -f $base ]]
     then
