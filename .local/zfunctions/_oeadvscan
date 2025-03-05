@@ -1,0 +1,5 @@
+#compdef oeadvscan
+#autoload
+
+# completions for oeadvscan match advscan
+_advscan

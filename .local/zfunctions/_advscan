@@ -1,0 +1,33 @@
+#compdef advscan
+
+# zsh completions for 'advscan'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {-r,--rom}'[operate on rom sets]'
+  {-s,--sample}'[operate on sample sets]'
+  {-k,--disk}'[operate on disk files]'
+  {-a,--add-zip}'[add missing zips]'
+  {-b,--add-bin}'[add missing files in zips]'
+  {-d,--del-zip}'[delete unknown zips]'
+  {-u,--del-unknown}'[delete unknown files in zips]'
+  {-g,--del-garbage}'[delete garbage files]'
+  {-t,--del-text}'[delete unused text files]'
+  {-R,--rom-std}'[shortcut for -rabdug]'
+  {-S,--sample-std}'[shortcut for -sabdug]'
+  {-e,--equal}'[print list of roms with equal crc+size]'
+  {-i,--ident}'[identify roms by crc and size]'
+  {-b,--bbs}'[output a files.bbs for roms .zip]'
+  {-h,--help}'[help of the program]'
+  {-V,--version}'[version of the program]'
+  {-c,--cfg}'[select a configuration file]'
+  {-f,--filter}'[filter the game list]'
+  {-p,--report}'[write a rom based report]'
+  {-P,--report-zip}'[write a zip based report]'
+  {-n,--print-only}'[only print operations, do nothing]'
+  {-v,--verbose}'[verbose output]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
