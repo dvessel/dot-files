@@ -228,6 +228,7 @@
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
   # Don't shorten directories that contain any of these files. They are anchors.
   local anchor_files=(
+    .Trashes
     .bzr
     .citc
     .git
