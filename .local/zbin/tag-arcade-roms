@@ -2,23 +2,21 @@
 
 _brew_check tag libxmlb || return 1
 
-function color-tags {
+function present-tags {
   typeset -a tags
   for t in $@; do
+    t=${t/MAME /}
     case $t in
-      *Preliminary) tags+="\033[0;35m$t\033[0m" ;;
-      *BIOS)        tags+="\033[0;33m$t\033[0m" ;;
-      *Device)      tags+="\033[0;33m$t\033[0m" ;;
-      *Incomplete)  tags+="\033[0;31m$t\033[0m" ;;
-      +*)           tags+="\033[0;32m$t\033[0m" ;;
-      -*)           tags+="\033[4;31m$t\033[0m" ;;
+      Preliminary) tags+="\033[0;35m$t\033[0m" ;;
+      BIOS)        tags+="\033[0;33m$t\033[0m" ;;
+      Device)      tags+="\033[0;33m$t\033[0m" ;;
+      Mechanical)  tags+="\033[0;34m$t\033[0m" ;;
+      Incomplete)  tags+="\033[0;31m$t\033[0m" ;;
+      \+*)         tags+="\033[0;32m$t\033[0m" ;;
+      \-*)         tags+="\033[4;31m$t\033[0m" ;;
     esac
   done
   printf "${(j[,])tags}"
-}
-
-function format-missing {
-  printf "[%s] %s" $1 "`xpath-query "machine/description/text()" ${1%/*}`"
 }
 
 function mame-version {
@@ -26,6 +24,8 @@ function mame-version {
     local version=`mame -version`
     # Remove decimals and truncate. MAME version 0.250.0.1 results in 0250.
     print -- ${${${${version}/./}%%.*}%% *}
+  else
+    return 1
   fi
 }
 
@@ -43,63 +43,71 @@ function xpath-query {
     # redirects to hash file and stdout. stderr goes nowhere but stderr.
     print -- ${result/RESULT:/} | xpath -q -n -e $1 >&1 >> $hashdir/$h
   elif [[ $result =~ "^no results" ]]; then
-    f=( $scandir/${2:-$CURRENT}.(zip|7z|chd)(N) )
-    print -- $f >> $cachedir/unknown
+    f=( $scandir/${2:-$CURRENT}.(zip|7z|chd)(N.) )
+    self-log warning "${2:-$CURRENT} was not recognized: ${(j[,])f}"
     return 1
   else
-    printf "failed query: xb-tool query \n  %s\n  %s\n" $xmlb "mame/machine[@name='${2:-$CURRENT}']" >&2
+    self-log error "xb-tool query failed for ${2:-$CURRENT}"
     return 1
   fi
 }
 
 function xmlb-get {
-  local work_path=$cachedir:h
+  local work_path=$tempdir:h
   local xml_path=$work_path/mame${version}.xml
   local xmlb_path=$work_path/mame${version}.xmlb
   typeset -g xmlb=$xmlb_path
 
   [[ ! -f $xmlb_path ]] || return
 
-  local url=https://github.com/mamedev/mame/releases/download/mame${version}/mame${version}lx.zip
-  local archive=$work_path/mame${version}lx.zip
-
-  print "Getting xml file for ver.${version}…"
-  # Check for existing archive and make sure it's not corrupt.
-  if test ! -f $archive || ! unzip -tqq $archive &>/dev/null; then
-    if ! curl -o /dev/null --silent --head --fail $url || ! curl -#Lo $archive $url; then
-      print "Failed to download 'mame${version}lx.zip'. Check version number and try again." >&2
-      return 1
-    fi
-  fi
-
   if [[ ! -f $xml_path ]]; then
-    unzip -oq $archive -d $work_path
-
-    print "Compiling mame${version}.xmlb…\n"
-    if xb-tool -t machine compile $xmlb_path $xml_path; then
-      rm $xml_path
+    print "Getting xml file for ver.${version}…"
+    if type mame &>/dev/null && [[ `mame-version` == $version ]]; then
+      mame -listxml > $xml_path
     else
-      rm $xmlb_path
-      print "Failed to compile mame${version}.xmlb." >&2
-      return 1
+      local url=https://github.com/mamedev/mame/releases/download/mame${version}/mame${version}lx.zip
+      local archive=$work_path/mame${version}lx.zip
+      # Check for existing archive and make sure it's not corrupt.
+      if test ! -f $archive || ! unzip -tqq $archive &>/dev/null; then
+        if ! curl -o /dev/null --silent --head --fail $url || ! curl -#Lo $archive $url; then
+          print "Failed to download 'mame${version}lx.zip'. Check version number and try again." >&2
+          return 1
+        fi
+      fi
+      unzip -oq $archive -d $work_path
     fi
   fi
+  print "Compiling mame${version}.xmlb…\n"
+  if xb-tool -t machine compile $xmlb_path $xml_path; then
+    rm $xml_path
+  else
+    rm -f $xmlb_path
+    print "Failed to compile mame${version}.xmlb." >&2
+    return 1
+  fi
+}
+
+function self-log {
+  local category=$1; shift
+  mkdir -p $tempdir/logs
+  printf "%s %s %s\n" "`date -u +%Y-%m-%dT%H:%M:%SZ`" $category "$@" >> $tempdir/logs/$scanid.log
 }
 
 # Main #########################################################################
 
 zparseopts -D -E -F - \
   {v,-version}:=version \
-  {d,-dry-run}=dryrun \
-  {c,-clear-cache}=ccache || return 1
+  {d,-dry-run}=dryrun || return 1
 
-version=${version[-1]:-`mame-version`}
+version=${${version[-1]/./}:-`mame-version`}
 scandir=${${1:a}:-`eval print $(mame -showconfig|awk '$1=="rompath" {$1="";print $0}')`}
-cachedir=${TMPDIR}oemame/cache-$version
+tempdir=${TMPDIR}oemame/cache-$version
 
 if [[ ! -d $scandir ]]; then
   print "Scan directory does not exist:\n$scandir"  >&2
   return 1
+else
+  scanid=$scandir:t-`md5 -qs $scandir`
 fi
 
 if [[ -z $version ]]; then
@@ -110,116 +118,114 @@ fi
 xmlb-get
 [[ -f $xmlb ]] || return 1
 
-# tags directory is dependent on the contents of the scan directory.
-tagsdir=$cachedir/tags-`md5 -qs "$(readlink -f $scandir)"`
-depsdir=$cachedir/deps
-# very expensive to build.
-hashdir=$cachedir/hashes
+infodir=$tempdir/info
+# very expensive to build. needs work.
+hashdir=$tempdir/hashes
 
-# rebuild tags directory if the scan directory was modified or forced to clear.
-if [[ -n $ccache || ! $tagsdir -nt $scandir ]]; then
-  rm -rf $tagsdir
-fi
-mkdir -p $tagsdir $depsdir $hashdir
+mkdir -p $infodir $hashdir
 
-for f in $scandir/*.(zip|7z|chd)(N.); do
+for file in $scandir/*.(zip|7z|chd)(N.); do
   # CURRENT's scope extends to other functions.
-  CURRENT=$f:t:r
+  CURRENT=$file:t:r
 
-  currentdeps=$depsdir/$CURRENT.deps
-  if [[ ! -f $currentdeps ]]; then
-    touch $currentdeps
+  currentinfo=$infodir/$CURRENT.info
+  if [[ ! -s $currentinfo ]]; then
+    touch $currentinfo
 
-    # get chain of dependencies from bios/devices to clones for CURRENT.
-    while read -r dep; do
-      print -- $dep >> $currentdeps
+    while read -r info; do
+      # holds key:value. ignore empty values.
+      if [[ -n ${info/*:} ]]; then
+        print -- $info >> $currentinfo
+      fi
     done < <(
-      # get device dependency.
+      # status:good|imperfect|preliminary
+      print -- status:`xpath-query "string(machine/driver/@status)"`
+      # kind:bios|device|mechanical
+      for kind in bios device mechanical; \
+        (( `xpath-query "boolean(machine[@is$kind='yes'])"` )) && \
+          print -- kind:$kind
+      # get device dependencies. rom crc means it's been dumped.
       while read -r device; do
-        # device crc means it's been dumped.
-        if (( `xpath-query "boolean(machine/rom/@crc)" $device` )); then
-          print -- $device
-        fi
-      done < <( xpath-query "machine/device_ref/@name" | sort | uniq | sed 's/.*name="\(.*\)"/\1/1' )
-
-      # get rom dependency. clones will look for parents and parents/clones will look for bios.
+        (( `xpath-query "boolean(machine/rom/@crc)" $device` )) && \
+          print -- device:$device
+      # awk removes attribute names. we only want unique values.
+      done < <( xpath-query "machine/device_ref/@name" | awk -F\" '!x[$0]++ { print $2 }' )
+      # get rom dependencies. clone->parent->bios
       romof=`xpath-query "string(machine/@romof)" $CURRENT`
       while [[ -n $romof ]]; do
         if (( `xpath-query "boolean(machine/rom/@crc)" $romof` )); then
-          print -- $romof
+          print -- romof:$romof
         fi
         romof=`xpath-query "string(machine/@romof)" $romof`
       done
-
       # get dependent chd for CURRENT & parent.
-      for set in $CURRENT `xpath-query "string(machine/@cloneof)"`; do
-        while read -r disk; do
-          # merge names are inherited from a parent set. Ignore!
-          if ! (( `xpath-query "boolean(machine/disk/@merge)" $set` )); then
-            print -- $set/$disk
-          fi
-        done < <( xpath-query "machine/disk/@name" $set | sed 's/.*name="\(.*\)"/\1/1' )
-      done
+      for set ( $CURRENT `xpath-query "string(machine/@cloneof)"` ); \
+      while read -r disk; do
+        # merge disks inherited from parent sets. ignore it to prevent duplicate entires.
+        if ! (( `xpath-query "boolean(machine/disk/@merge)" $set` )); then
+          print -- disk:$set/$disk
+        fi
+      done < <( xpath-query "machine/disk/@name" $set | awk -F\" '{ print $2 }' )
     )
   fi
 
-  currenttags=$tagsdir/$CURRENT.tags
-  if [[ ! -f $currenttags ]]; then
-    touch $currenttags
-    ftags=( "MAME Preliminary" "MAME BIOS" "MAME Device" "MAME Incomplete" )
+  unset tags
+  unset __files
+  unset __incomplete
 
-    if (( `xpath-query "boolean(machine/driver[@status='preliminary'])"` )); then
-      print -- "MAME Preliminary" >> $currenttags
-    fi
-    if (( `xpath-query "boolean(machine[@isbios='yes'])"` )); then
-      print -- "MAME BIOS" >> $currenttags
-    elif (( `xpath-query "boolean(machine[@isdevice='yes'])"` )); then
-      print -- "MAME Device" >> $currenttags
-    fi
+  typeset -a tags tagfilters=(
+    "MAME Incomplete"
+    "MAME Preliminary"
+    "MAME BIOS"
+    "MAME Device"
+    "MAME Mechanical"
+  )
 
-    # tag chain of dependencies from clones to bios/devices.
-    unset __incomplete
-    while read -r dep; do
-      # incomplete dependencies checked early for presentation order.
-      __files=( $scandir/$dep.(zip|7z|chd)(N.) )
-      if [[ -z $__files && ! -v __incomplete ]]; then
-        print -- "MAME Incomplete" >> $currenttags
-        __incomplete=1
-      fi
-      ftags+=( \+$dep \-$dep )
-      if [[ -n $__files ]]; then
-        print -- "\+$dep" >> $currenttags
-      else
-        print -- "\-$dep" >> $currenttags
-        printf "%s requires %s\n" "`format-missing $CURRENT`" "`format-missing $dep`" >> $cachedir/missing
-      fi
-    done < <( cat $depsdir/$CURRENT.deps )
+  while read -r info; do
+    case $info in
+      status:preliminary) tags+="MAME Preliminary"  ;;
+      kind:bios)          tags+="MAME BIOS"         ;;
+      kind:device)        tags+="MAME Device"       ;;
+      kind:mechanical)    tags+="MAME Mechanical"   ;;
+      (device|romof|disk):*)
+        dependency=${info/*:}
+        case ${info/:*} in
+          device|romof) __files=( $scandir/$dependency.(zip|7z)(N.) ) ;;
+          disk)         __files=( $scandir/$dependency.chd(N.) )      ;;
+        esac
+        tagfilters+=( +$dependency -$dependency )
+        if [[ -n $__files ]]; then
+          tags+="+$dependency"
+        else
+          tags+="-$dependency"
+          if [[ ! -v __incomplete ]]; then
+            tags=( "MAME Incomplete" $tags )
+            __incomplete=1
+          fi
+          self-log warning "$(
+            printf "[%s] \"%s\" is missing %s [%s]\n" \
+              $CURRENT "$( xpath-query "machine/description/text()" )" ${info/:*} $dependency
+          )"
+        fi
+      ;;
+    esac
+  done < <( cat $infodir/$CURRENT.info )
+
+  if [[ -n $tags ]]; then
+    if [[ ! -n $dryrun ]]; then
+      () {
+        local IFS=$'\n' currenttags outsidetags rm ad
+        # do not alter tags set outside of this script.
+        currenttags=( `tag -gN $file` )
+        outsidetags=( ${currenttags:|tagfilters} )
+        rm=( `print -l -- ${currenttags:|outsidetags} | sort` )
+        ad=( `print -l -- $tags | sort | uniq` )
+        if [[ $rm != $ad ]]; then
+          tag -r ${(j[,])rm} $file
+          tag -a ${(j[,])tags} $file
+        fi
+      }
+    fi
+    printf "%-20s %s\n" $file:t "`present-tags $tags`"
   fi
-
-  if [[ -s $currenttags ]]; then
-    IFS=$'\n'
-    tags=( `cat $currenttags` )
-    if [[ -z $dryrun && -n $ftags ]]; then
-      # do not alter tags set outside of this script.
-      filetags=( `tag -gN $f` )
-      othertags=( ${filetags:|ftags} )
-      a=( `print -l -- ${filetags:|othertags} | sort` )
-      b=( `print -l -- $tags | sort`)
-      if [[ $a != $b ]]; then
-        tag -r ${(j[,])a} $f
-        tag -a ${(j[,])tags} $f
-      fi
-    fi
-    printf "%-20s %s\n" $f:t `color-tags $tags`
-  fi
-
 done
-
-# Cleanup ######################################################################
-
-for i in missing unknown; [[ -f $cachedir/$i ]] && {
-  printf "\n[%s] %s in '%s':\n%s\n" \
-    "`date -u +%Y-%m-%dT%H:%M:%SZ`" "$i" "${scandir:a}" \
-    "`cat $cachedir/$i | uniq`" | tee -a $cachedir/$i-history.txt
-  rm $cachedir/$i
-}
