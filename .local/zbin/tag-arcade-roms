@@ -138,6 +138,9 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
         print -- $info >> $currentinfo
       fi
     done < <(
+      print -- description:`xpath-query "machine/description/text()"`
+      print -- manufacturer:`xpath-query "machine/manufacturer/text()"`
+      print -- year:`xpath-query "machine/year/text()"`
       # status:good|imperfect|preliminary
       print -- status:`xpath-query "string(machine/driver/@status)"`
       # kind:bios|device|mechanical
@@ -187,6 +190,9 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
 
   while read -r info; do
     case $info in
+      description:*)  description=${info#*:}  ;;
+      manufacturer:*) manufacturer=${info#*:} ;;
+      year:*)         year=${info#*:}         ;;
       status:preliminary) tags+="MAME Preliminary"  ;;
       kind:bios)          tags+="MAME BIOS"         ;;
       kind:device)        tags+="MAME Device"       ;;
@@ -208,7 +214,7 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
           fi
           self-log warning "$(
             printf "[%s] \"%s\" is missing %s [%s]\n" \
-              $CURRENT "$( xpath-query "machine/description/text()" )" ${info/:*} $dependency
+              $CURRENT "$description" ${info/:*} $dependency
           )"
         fi
       ;;
