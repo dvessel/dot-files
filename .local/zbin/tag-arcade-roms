@@ -137,9 +137,13 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
         print -- $info >> $currentinfo
       fi
     done < <(
-      print -- description:`xpath-query "machine/description/text()"`
-      print -- manufacturer:`xpath-query "machine/manufacturer/text()"`
-      print -- year:`xpath-query "machine/year/text()"`
+      while read -r i; do
+        print -- ${i/&lt;unknown>}
+      done < <(
+        print -- description:`xpath-query "machine/description/text()"`
+        print -- manufacturer:`xpath-query "machine/manufacturer/text()"`
+        print -- year:`xpath-query "machine/year/text()"`
+      )
       # status:good|imperfect|preliminary
       print -- status:`xpath-query "string(machine/driver/@status)"`
       # kind:bios|device|mechanical
