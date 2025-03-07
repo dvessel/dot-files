@@ -43,7 +43,7 @@ function xpath-query {
     # redirects to hash file and stdout. stderr goes nowhere but stderr.
     print -- ${result/RESULT:/} | xpath -q -n -e $1 >&1 >> $hashdir/$h
   elif [[ $result =~ "^no results" ]]; then
-    f=( $scandir/${2:-$CURRENT}.(zip|7z|chd)(N.) )
+    f=( $scandir/${2:-$CURRENT}.(zip|7z|chd)(N) )
     self-log warning "${2:-$CURRENT} was not recognized: ${(j[,])f}"
     return 1
   else
@@ -123,7 +123,7 @@ xmlb-get
 touch $scanlog
 self-log info "initiating scan:$scandir"
 
-for file in $scandir/*.(zip|7z|chd)(N.); do
+for file in $scandir/*.(zip|7z|chd)(N); do
   # CURRENT's scope extends to other functions.
   CURRENT=$file:t:r
 
@@ -203,8 +203,8 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
       (device|romof|disk):*)
         dependency=${info/*:}
         case ${info/:*} in
-          device|romof) __files=( $scandir/$dependency.(zip|7z)(N.) ) ;;
-          disk)         __files=( $scandir/$dependency.chd(N.) )      ;;
+          device|romof) __files=( $scandir/$dependency.(zip|7z)(N) ) ;;
+          disk)         __files=( $scandir/$dependency.chd(N) )      ;;
         esac
         tagfilters+=( +$dependency -$dependency )
         if [[ -n $__files ]]; then
