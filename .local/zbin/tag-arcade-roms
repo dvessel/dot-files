@@ -89,8 +89,7 @@ function xmlb-get {
 
 function self-log {
   local category=$1; shift
-  mkdir -p $tempdir/logs
-  printf "%s %s %s\n" "`date -u +%Y-%m-%dT%H:%M:%SZ`" $category "$@" >> $tempdir/logs/$scanid.log
+  printf "%s\t%s\t%s\n" "`date -u +%Y-%m-%dT%H:%M:%SZ`" $category "$@" >> $scanlog
 }
 
 # Main #########################################################################
@@ -103,26 +102,26 @@ version=${${version[-1]/./}:-`mame-version`}
 scandir=${${1:a}:-`eval print $(mame -showconfig|awk '$1=="rompath" {$1="";print $0}')`}
 tempdir=${TMPDIR}oemame/cache-$version
 
-if [[ ! -d $scandir ]]; then
-  print "Scan directory does not exist:\n$scandir"  >&2
-  return 1
-else
-  scanid=$scandir:t-`md5 -qs $scandir`
-fi
-
 if [[ -z $version ]]; then
   print "Could not determine MAME version. Use --version <number>" >&2
   return 1
 fi
+if [[ ! -d $scandir ]]; then
+  print "Scan directory does not exist:\n$scandir"  >&2
+  return 1
+fi
+
+scanid=$scandir:t-`md5 -qs $scandir`
+scanlog=$tempdir/logs/$scanid.log
+infodir=$tempdir/info
+hashdir=$tempdir/hashes # TODO: very expensive to build. needs work.
+mkdir -p $scanlog:h $infodir $hashdir
 
 xmlb-get
 [[ -f $xmlb ]] || return 1
 
-infodir=$tempdir/info
-# very expensive to build. needs work.
-hashdir=$tempdir/hashes
-
-mkdir -p $infodir $hashdir
+touch $scanlog
+self-log info "initiating scan:$scandir"
 
 for file in $scandir/*.(zip|7z|chd)(N.); do
   # CURRENT's scope extends to other functions.
