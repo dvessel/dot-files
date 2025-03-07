@@ -111,8 +111,7 @@ if [[ ! -d $scandir ]]; then
   return 1
 fi
 
-scanid=$scandir:t-`md5 -qs $scandir`
-scanlog=$tempdir/logs/$scanid.log
+scanlog=$tempdir/scan.log
 infodir=$tempdir/info
 hashdir=$tempdir/hashes # TODO: very expensive to build. needs work.
 mkdir -p $scanlog:h $infodir $hashdir
@@ -120,7 +119,6 @@ mkdir -p $scanlog:h $infodir $hashdir
 xmlb-get
 [[ -f $xmlb ]] || return 1
 
-touch $scanlog
 self-log info "initiating scan:$scandir"
 
 for file in $scandir/*.(zip|7z|chd)(N); do
