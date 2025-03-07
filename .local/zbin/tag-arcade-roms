@@ -158,12 +158,16 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
         fi
         romof=`xpath-query "string(machine/@romof)" $romof`
       done
-      # get dependent chd for CURRENT & parent.
-      for set ( $CURRENT `xpath-query "string(machine/@cloneof)"` ); \
+      # get dependent chd for CURRENT & PARENT.
+      # all chd's must be placed in a folder named after the parent set.
+      # there are some inconsistencies when allowing clone folder names.
+      PARENT=`xpath-query "string(machine/@cloneof)" $CURRENT`
+      base=${PARENT:-$CURRENT}
+      for set in $CURRENT $PARENT; \
       while read -r disk; do
         # merge disks inherited from parent sets. ignore it to prevent duplicate entires.
         if ! (( `xpath-query "boolean(machine/disk/@merge)" $set` )); then
-          print -- disk:$set/$disk
+          print -- disk:$base/$disk
         fi
       done < <( xpath-query "machine/disk[@sha1]/@name" $set | awk -F\" '{ print $2 }' )
     )
