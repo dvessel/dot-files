@@ -144,16 +144,16 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
       for kind in bios device mechanical; \
         (( `xpath-query "boolean(machine[@is$kind='yes'])"` )) && \
           print -- kind:$kind
-      # get device dependencies. rom crc means it's been dumped.
+      # get device dependencies. rom sha1 means it's been dumped.
       while read -r device; do
-        (( `xpath-query "boolean(machine/rom/@crc)" $device` )) && \
+        (( `xpath-query "boolean(machine/rom/@sha1)" $device` )) && \
           print -- device:$device
       # awk removes attribute names. we only want unique values.
       done < <( xpath-query "machine/device_ref/@name" | awk -F\" '!x[$0]++ { print $2 }' )
       # get rom dependencies. clone->parent->bios
       romof=`xpath-query "string(machine/@romof)" $CURRENT`
       while [[ -n $romof ]]; do
-        if (( `xpath-query "boolean(machine/rom/@crc)" $romof` )); then
+        if (( `xpath-query "boolean(machine/rom/@sha1)" $romof` )); then
           print -- romof:$romof
         fi
         romof=`xpath-query "string(machine/@romof)" $romof`
@@ -165,7 +165,7 @@ for file in $scandir/*.(zip|7z|chd)(N.); do
         if ! (( `xpath-query "boolean(machine/disk/@merge)" $set` )); then
           print -- disk:$set/$disk
         fi
-      done < <( xpath-query "machine/disk/@name" $set | awk -F\" '{ print $2 }' )
+      done < <( xpath-query "machine/disk[@sha1]/@name" $set | awk -F\" '{ print $2 }' )
     )
   fi
 
