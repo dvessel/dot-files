@@ -125,9 +125,14 @@ for file in $scandir/*.(zip|7z|chd)(N); do
   # CURRENT's scope extends to other functions.
   CURRENT=$file:t:r
 
-  currentinfo=$infodir/$CURRENT.info
+  currentinfo=$infodir/$CURRENT
   if [[ ! -s $currentinfo ]]; then
+    if ! (( `xpath-query "boolean(machine/rom/@sha1)"` )); then
+      self-log warning "$file:t is not recognized."
+      continue
+    fi
     touch $currentinfo
+    self-log info "Created new info file: [$CURRENT] \"`xpath-query "machine/description/text()"`\""
 
     while read -r info; do
       # holds key:value. ignore empty values.
@@ -136,6 +141,7 @@ for file in $scandir/*.(zip|7z|chd)(N); do
       fi
     done < <(
       while read -r i; do
+        # omit unknown values.
         print -- ${i/&lt;unknown>}
       done < <(
         print -- description:`xpath-query "machine/description/text()"`
@@ -220,7 +226,7 @@ for file in $scandir/*.(zip|7z|chd)(N); do
         fi
       ;;
     esac
-  done < <( cat $infodir/$CURRENT.info )
+  done < <( cat $infodir/$CURRENT )
 
   if [[ -n $tags ]]; then
     if [[ ! -n $dryrun ]]; then
