@@ -11,10 +11,14 @@ function main {
   if test -z $1 && type mame >/dev/null; then
     scandir=`eval print $( mame -showconfig | awk '$1=="rompath" { $1=""; print $0 }')`
   fi
-  scandir=${scandir:-./}
+  scandir=${scandir:-${1:a}}
   version=${${version[-1]/./}:-`mame-version`}
   tempdir=${TMPDIR}oemame/cache-$version
 
+  if [[ -z $scandir ]]; then
+    print "No scan directory specified." >&2
+    return 1
+  fi
   if [[ ! -d $scandir ]]; then
     print "Scan directory does not exist:\n$scandir"  >&2
     return 1
@@ -46,7 +50,7 @@ function main {
     if [[ ! -s $currentinfo ]]; then
 
       if ! (( `xpath-query "boolean(machine/rom/@sha1)"` )); then
-        self-log warning "$currentfile:t is not recognized."
+        self-log warning "$currentfile:t not recognized."
         continue
       fi
 
@@ -108,8 +112,7 @@ function main {
       )
     fi
 
-    local parent=''
-    typeset -U settags=() ftags=(
+    local parent='' settags=() ftags=(
       "MAME Incomplete"
       "MAME Preliminary"
       "MAME BIOS"
@@ -140,14 +143,17 @@ function main {
         cloneof:*) parent=${info/*:} ;;
         disk:*)
           dependency=${info/*:}
+          # disk names with a comma are tagged with ':comma:' instead of a literal comma.
+          # This is a limitation of the tag command.
+          disktag=${dependency/,/:comma:}
           for set in $parent $current; do
-            ftags+=( +$set/$dependency -$set/$dependency )
+            ftags+=( +$set/$disktag -$set/$disktag )
             __depexists=( $scandir/$set/$dependency.chd(N) )
             if [[ ! -z $__depexists ]]; then
-              settags+="+$set/$dependency"
+              settags+="+$set/$disktag"
               break
             elif [[ $set == $current ]]; then
-              settags=( "MAME Incomplete" -$set/$dependency $settags )
+              settags=( "MAME Incomplete" -$set/$disktag $settags )
               self-log warning "[$current] \"$description\" is missing ${info/:*} [$dependency]."
             fi
           done
@@ -156,22 +162,27 @@ function main {
     done < <( cat $currentinfo )
 
     if [[ -n $settags ]]; then
-      [[ ! -n $dryrun ]] && () {
-        local IFS=$'\n'
-        # do not alter tags set outside of this script.
-        currenttags=( `tag -gN $currentfile` )
-        __othertags=( ${currenttags:|ftags} )
-        rm=( `print -l -- ${currenttags:|__othertags} | sort` )
-        ad=( `print -l -- $settags | sort` )
-        if [[ $rm != $ad ]]; then
-          tag -r ${(j[,])rm} $currentfile
-          tag -a ${(j[,])settags} $currentfile
-          self-log info "[$current] \"$description\" was tagged ${(j[,])settags}."
-        fi
-      }
+      [[ -n $dryrun ]] || set-tags
       printf "%-20s %s\n" $currentfile:t "`present-tags $settags`"
     fi
   done
+}
+
+# ignores tags set outside the scope of this script run.
+function set-tags {
+  local IFS=$'\n'
+  typeset -gaU settags ftags
+  typeset -aU currenttags
+
+  currenttags=( `tag -gN $currentfile` )
+  filetags=( ${currenttags:*ftags} )
+
+  # intersection of settags and filetags compared with settags.
+  if [[ ${settags:*filetags} != ${settags} ]]; then
+    tag -r ${(j[,])filetags} $currentfile
+    tag -a ${(j[,])settags} $currentfile
+    self-log info "[$current] \"$description\" was tagged ${(j[,])settags}."
+  fi
 }
 
 function present-tags {
