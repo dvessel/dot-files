@@ -112,7 +112,23 @@ function main {
       )
     fi
 
-    local parent='' settags=() ftags=(
+    unset {description,manufacturer,year,workstatus,kind,parent,devices,romof,disks}
+
+    while read -r info; do
+      case $info in
+        description:*)  description=${info#*:}  ;;
+        manufacturer:*) manufacturer=${info#*:} ;;
+        year:*)         year=${info#*:}         ;;
+        status:*)       workstatus=${info#*:}   ;;
+        kind:*)         kind=${info#*:}         ;;
+        cloneof:*)      parent=${info#*:}       ;;
+        device:*)       devices+=( ${info#*:} ) ;;
+        romof:*)        romof+=( ${info#*:} )   ;;
+        disk:*)         disks+=( ${info#*:} )   ;;
+      esac
+    done < <( cat $currentinfo )
+
+    local settags=() ftags=(
       "MAME Incomplete"
       "MAME Preliminary"
       "MAME BIOS"
@@ -120,46 +136,62 @@ function main {
       "MAME Mechanical"
     )
 
-    while read -r info; do
-      case $info in
-        description:*)  description=${info#*:}  ;;
-        manufacturer:*) manufacturer=${info#*:} ;;
-        year:*)         year=${info#*:}         ;;
-        status:preliminary) settags+="MAME Preliminary"  ;;
-        kind:bios)          settags+="MAME BIOS"         ;;
-        kind:device)        settags+="MAME Device"       ;;
-        kind:mechanical)    settags+="MAME Mechanical"   ;;
-        (device|romof):*)
-          dependency=${info/*:}
-          ftags+=( +$dependency -$dependency )
-          __depexists=( $scandir/$dependency.(zip|7z)(N) )
-          if [[ ! -z $__depexists ]]; then
-            settags+="+$dependency"
-          else
-            settags=( "MAME Incomplete" -$dependency $settags )
-            self-log warning "[$current] \"$description\" is missing ${info/:*} [$dependency]."
-          fi
-        ;;
-        cloneof:*) parent=${info/*:} ;;
-        disk:*)
-          dependency=${info/*:}
-          # disk names with a comma are tagged with ':comma:' instead of a literal comma.
-          # This is a limitation of the tag command.
-          disktag=${dependency/,/:comma:}
-          for set in $parent $current; do
-            ftags+=( +$set/$disktag -$set/$disktag )
-            __depexists=( $scandir/$set/$dependency.chd(N) )
-            if [[ ! -z $__depexists ]]; then
-              settags+="+$set/$disktag"
-              break
-            elif [[ $set == $current ]]; then
-              settags=( "MAME Incomplete" -$set/$disktag $settags )
-              self-log warning "[$current] \"$description\" is missing ${info/:*} [$dependency]."
-            fi
-          done
-        ;;
+    case $workstatus in
+      good)                                     ;;
+      imperfect)                                ;;
+      preliminary)  settags+="MAME Preliminary" ;;
+    esac
+
+    case $kind in
+      bios)         settags+="MAME BIOS"        ;;
+      device)       settags+="MAME Device"      ;;
+      mechanical)   settags+="MAME Mechanical"  ;;
+    esac
+
+    for _type in device romof disk; do
+      case $_type in
+        device) dependencies=( $devices ) ;;
+        romof)  dependencies=( $romof )   ;;
+        disk)   dependencies=( $disks )   ;;
       esac
-    done < <( cat $currentinfo )
+
+      for dependency in $dependencies; do
+        case $_type in
+          device)
+            type=device
+            __depexists=( $scandir/$dependency.(zip|7z)(N) )
+          ;;
+          romof)
+            # romof is either a parent rom or bios.
+            if [[ $dependency == $parent ]]; then
+              type=parent
+            else
+              type=bios
+            fi
+            __depexists=( $scandir/$dependency.(zip|7z)(N) )
+          ;;
+          disk)
+            type=disk
+            # check both parent and clone if that relationship exists.
+            for set in $parent $current; do
+              __depexists=( $scandir/$set/$dependency.chd(N) )
+              [[ -z $__depexists ]] || break
+            done
+            # disk names with a comma are tagged with ':comma:' instead of a literal comma.
+            # This is a limitation of the tag command. it's exceedingly rare but it's there.
+            dependency=${dependency/,/:comma:}
+          ;;
+        esac
+
+        ftags+=( +$type:$dependency -$type:$dependency )
+        if [[ ! -z $__depexists ]]; then
+          settags+="+$type:$dependency"
+        else
+          settags=( "MAME Incomplete" -$type:$dependency $settags )
+          self-log warning "[$current] \"$description\" is missing $type [$dependency]."
+        fi
+      done
+    done
 
     if [[ -n $settags ]]; then
       [[ -n $dryrun ]] || set-tags
