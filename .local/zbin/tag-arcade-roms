@@ -213,7 +213,7 @@ function set-tags {
   if [[ ${settags:*filetags} != ${settags} ]]; then
     tag -r ${(j[,])filetags} $currentfile
     tag -a ${(j[,])settags} $currentfile
-    self-log info "[$current] \"$description\" was tagged ${(j[,])settags}."
+    self-log info "[$current] \"$description\" was tagged [${(j[,])settags}]."
   fi
 }
 
