@@ -174,10 +174,7 @@ function main {
           disk)
             type=disk
             # check both parent and clone if that relationship exists.
-            for set in $parent $current; do
-              __depexists=( $scandir/$set/$dependency.chd(N) )
-              [[ -z $__depexists ]] || break
-            done
+            __depexists=( $scandir/{$parent,$current}/$dependency.chd(N) )
             # disk names with a comma are tagged with ':comma:' instead of a literal comma.
             # This is a limitation of the tag command. it's exceedingly rare but it's there.
             dependency=${dependency/,/:comma:}
