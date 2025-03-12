@@ -40,7 +40,7 @@ function main {
 
   local current{,file,info}
 
-  for currentfile in $scandir/*.(zip|7z|chd)(N); do
+  for currentfile in $scandir/*.(zip|7z)(N); do
     # current's scope extends to other functions.
     current=$currentfile:t:r
     __current=$current
@@ -79,7 +79,7 @@ function main {
         # kind:bios|device|mechanical
         for kind in bios device mechanical; \
           (( `xpath-query "boolean(machine[@is$kind='yes'])"` )) && \
-            print -- kind:$kind
+            print -- kind:$kind && break
 
         # get device dependencies. rom sha1 means it's been dumped.
         while read -r device; do
@@ -130,6 +130,7 @@ function main {
 
     local settags=() ftags=(
       "MAME Incomplete"
+      "MAME Imperfect"
       "MAME Preliminary"
       "MAME BIOS"
       "MAME Device"
@@ -138,7 +139,7 @@ function main {
 
     case $workstatus in
       good)                                     ;;
-      imperfect)                                ;;
+      imperfect)    settags+="MAME Imperfect"   ;;
       preliminary)  settags+="MAME Preliminary" ;;
     esac
 
@@ -204,7 +205,6 @@ function main {
 function set-tags {
   local IFS=$'\n'
   typeset -gaU settags ftags
-  typeset -aU currenttags
 
   currenttags=( `tag -gN $currentfile` )
   filetags=( ${currenttags:*ftags} )
@@ -223,6 +223,7 @@ function present-tags {
     t=${t/MAME /}
     case $t in
       Incomplete)  tags+="\033[3;31m$t\033[0m" ;;
+      Imperfect)   tags+="\033[3;35m$t\033[0m" ;;
       Preliminary) tags+="\033[3;35m$t\033[0m" ;;
       BIOS)        tags+="\033[0;33m$t\033[0m" ;;
       Device)      tags+="\033[0;33m$t\033[0m" ;;
