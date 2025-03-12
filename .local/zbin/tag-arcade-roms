@@ -222,13 +222,16 @@ function present-tags {
   for t in $@; do
     t=${t/MAME /}
     case $t in
-      Preliminary) tags+="\033[0;35m$t\033[0m" ;;
+      Incomplete)  tags+="\033[3;31m$t\033[0m" ;;
+      Preliminary) tags+="\033[3;35m$t\033[0m" ;;
       BIOS)        tags+="\033[0;33m$t\033[0m" ;;
       Device)      tags+="\033[0;33m$t\033[0m" ;;
-      Mechanical)  tags+="\033[0;34m$t\033[0m" ;;
-      Incomplete)  tags+="\033[0;31m$t\033[0m" ;;
-      \+*)         tags+="\033[0;32m$t\033[0m" ;;
+      Mechanical)  tags+="\033[0;33m$t\033[0m" ;;
       \-*)         tags+="\033[4;31m$t\033[0m" ;;
+      \+bios:*)    tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
+      \+device:*)  tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
+      \+parent:*)  tags+="\033[0;34m${t/:*}:\033[0m${t/*:}" ;;
+      \+disk:*)    tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
     esac
   done
   printf "${(j[,])tags}"
