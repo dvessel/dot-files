@@ -13,7 +13,7 @@ local list=(
 
   "rsync-advancescan-ii-storage-emulation-mame"
   "test -d /Volumes/980Pro && test -d /Volumes/Storage"
-  "/Volumes/980Pro/Support/MAME/{legacy,samples,updates}"
+  "/Volumes/980Pro/Support/MAME/*"
   "/Volumes/Storage/Emulation/MAME"
 
   "rsync-storage-ii-diskstation-storage"
