@@ -12,8 +12,8 @@ local list=(
   "/Volumes/980Pro"             #4. destination
 
   "rsync-advancescan-ii-storage-emulation-mame"
-  "test -d /Volumes/Storage"
-  "~/Games/Support/OpenEmu/AdvanceScan/_{unknown,import/_updates}"
+  "test -d /Volumes/980Pro && test -d /Volumes/Storage"
+  "/Volumes/980Pro/Support/MAME/{legacy,samples,updates}"
   "/Volumes/Storage/Emulation/MAME"
 
   "rsync-storage-ii-diskstation-storage"
