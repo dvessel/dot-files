@@ -102,6 +102,12 @@ function main {
           print -- cloneof:$parent
         fi
 
+        # dependent audio samples.
+        sampleof=`xpath-query "string(machine/@sampleof)"`
+        if [[ -n $sampleof ]]; then
+          print -- sampleof:$sampleof
+        fi
+
         # get chd dependencies. clone chd->parent chd
         for set in $current $parent; while read -r disk; do
           # merge disks inherited from parent sets. ignore it to prevent duplicate entires.
@@ -112,7 +118,7 @@ function main {
       )
     fi
 
-    unset {description,manufacturer,year,workstatus,kind,parent,devices,romof,disks}
+    unset {description,manufacturer,year,workstatus,kind,parent,sample,devices,romof,disks}
 
     while read -r info; do
       case $info in
@@ -122,6 +128,7 @@ function main {
         status:*)       workstatus=${info#*:}   ;;
         kind:*)         kind=${info#*:}         ;;
         cloneof:*)      parent=${info#*:}       ;;
+        sampleof:*)     sample=${info#*:}       ;;
         device:*)       devices+=( ${info#*:} ) ;;
         romof:*)        romof+=( ${info#*:} )   ;;
         disk:*)         disks+=( ${info#*:} )   ;;
@@ -149,13 +156,16 @@ function main {
       mechanical)   settags+="MAME Mechanical"  ;;
     esac
 
+    if [[ -n $sample ]]; then
+      settags+="sample:$sample"
+    fi
+
     for _type in device romof disk; do
       case $_type in
         device) dependencies=( $devices ) ;;
         romof)  dependencies=( $romof )   ;;
         disk)   dependencies=( $disks )   ;;
       esac
-
       for dependency in $dependencies; do
         case $_type in
           device)
