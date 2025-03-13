@@ -79,7 +79,7 @@ function main {
         # kind:bios|device|mechanical
         for kind in bios device mechanical; \
           (( `xpath-query "boolean(machine[@is$kind='yes'])"` )) && \
-            print -- kind:$kind && break
+            print -- kind:$kind
 
         # get device dependencies. rom sha1 means it's been dumped.
         while read -r device; do
