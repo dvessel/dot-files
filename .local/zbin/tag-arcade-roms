@@ -239,6 +239,7 @@ function present-tags {
       BIOS)        tags+="\033[0;33m$t\033[0m" ;;
       Device)      tags+="\033[0;33m$t\033[0m" ;;
       Mechanical)  tags+="\033[0;33m$t\033[0m" ;;
+      sample:*)    tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
       \-*)         tags+="\033[4;31m$t\033[0m" ;;
       \+bios:*)    tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
       \+device:*)  tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
