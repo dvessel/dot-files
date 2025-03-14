@@ -146,6 +146,7 @@ function main {
       "MAME BIOS"
       "MAME Device"
       "MAME Mechanical"
+      "sample:$sample"
     )
 
     case $workstatus in
