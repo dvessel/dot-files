@@ -73,13 +73,18 @@ if [[ -f $names.txt ]]; then
   cp -f $names.txt $names.$0:t-before.txt
 fi
 
-# hash the names of files holding the `new` state and dir listings of brew cellar or caskroom.
-local state=`printf "_%s" \
-  $names.${0:t}-new-*(N:t:r) \
-  $(brew $(c.pkgdef --cellar --caskroom))/*(N:t) | md5`
+# hash the names of files holding the `new` state and dir listings that would affect the list.
+local context=(
+  $names.${0:t}-new-*(N:t:r)
+  $(brew $(c.pkgdef --cellar --caskroom))/*(N:t)
+)
+if [[ $pkgdef == --formula ]]; then
+  context+=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
+fi
+local state=`print -- $context[@] | md5`
 
 if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
-  typeset -aU deps reqs new
+  typeset -aU deps reqs pins new
 
   if [[ $pkgdef == --formula ]]; then
     while read -r l ; do
@@ -89,6 +94,7 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
       esac
       # calling `brew ls --installed-*` isn't cheap. combine calls and sort it out.
     done < <( brew ls --installed-on-request --installed-as-dependency )
+    pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
   elif [[ $pkgdef == --cask ]]; then
     reqs=( `brew ls --cask`)
   fi
@@ -109,7 +115,8 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
     lsdesc=`print -- $lsdesc | \
       sed -uE "s/^(${(j[|])deps[$a,$z]//\+/\\\\+}):(.*)/\1:🌾 dependency.\2/" | \
       sed -uE "s/^(${(j[|])reqs[$a,$z]//\+/\\\\+}):(.*)/\1:🍺 installed.\2/" | \
-      sed -uE "s/^(${(j[|])new[$a,$z]//\+/\\\\+}):(.*)/\1:⏰ new.\2/"`
+      sed -uE "s/^(${(j[|])new[$a,$z]//\+/\\\\+}):(.*)/\1:⏰ new.\2/" | \
+      sed -uE "s/^(${(j[|])pins[$a,$z]//\+/\\\\+}):(.*)/\1:📌\2/"`
     a=$(( $a + $limit )) z=$(( $z + $limit ))
   done
 
@@ -127,16 +134,9 @@ case $brew_args[1] in
     # Can't uninstall a dependency.
     lsdesc=`print -- $lsdesc | grep -vE "🌾 dependency\."`
   ;;
-  pin)
-    # Mark pinned.
-    local pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
-    if [[ ${#pins} > 0 ]]; then
-      lsdesc=`print -- $lsdesc | sed -uE "s/^(${(j[|])pins}):(.*)/\1:📌\2/"`
-    fi
-  ;;
   unpin)
     # List only pinned formulae to unpin.
-    local pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
+    pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
     if [[ ${#pins} == 0 ]]; then
       print "Nothing to unpin." >&2
       return 1
@@ -145,22 +145,22 @@ case $brew_args[1] in
   ;;
 esac
 
+# list installed formulae or casks for commands targeting them.
 if (( $brew_commands_installed[(I)$brew_args[1]] )); then
-  typeset -a __lsdesc=( "==> Installed $(c.pkgdef Formulae Casks)" )
-  for g in "🍺 installed" "🌾 dependency"; do
-    while read -r l; do
-      if [[ ${l/*:/} == $g.* ]]; then
-        __lsdesc+=$l
-      fi
-    done < <( print -- $lsdesc )
-  done
-  lsdesc=${(j[\n])__lsdesc}
+  typeset -a __lsdesc="==> Installed $(c.pkgdef Formulae Casks)\n"
+  while read -r l; do
+    if [[ ${l/*:/} =~ "^(📌|🍺|🌾).*" ]]; then
+      __lsdesc+=$l\n
+    fi
+  done < <( print -- $lsdesc )
+  lsdesc=$__lsdesc
 fi
 
-local selected
-if selected=( `print -- $lsdesc | fzf --header-lines=1 --prompt="brew $brew_args " \
-  $((( $no_multi[(I)$brew_args[1]] )) || printf --multi) | grep -oE "^[^:]+"` )
-then
+local selected=(
+  `print -- $lsdesc | fzf --header-lines=1 --prompt="brew $brew_args " \
+  $( (( $no_multi[(I)$brew_args[1]] )) || printf --multi ) | grep -oE "^[^:]+"`
+)
+if [[ ! -z $selected ]]; then
   # Write into history the command that would have been run directly.
   # Formatted with `setopt extended_history` in mind.
   printf ": %s:0;%s\n" `date -j +%s` "brew $brew_args $selected" >> $HISTFILE
