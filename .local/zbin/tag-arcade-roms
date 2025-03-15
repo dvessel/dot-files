@@ -230,7 +230,7 @@ function set-tags {
 }
 
 function present-tags {
-  typeset -a tags
+  typeset -aU tags
   for t in $@; do
     t=${t/MAME /}
     case $t in
