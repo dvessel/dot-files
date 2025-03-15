@@ -6,17 +6,17 @@ alias rsync-update='rsync -avzu --progress -h --itemize-changes --exclude=.DS_St
 alias rsync-synchronize='rsync -avzu --delete --progress -h --itemize-changes --exclude=.DS_Store'
 
 local list=(
-  "rsync-emulation-ii-980pro"   #1. alias name
+  "sync-emulation→→980pro"   #1. alias name
   "test -d /Volumes/980Pro"     #2. condition
   "~/Games/Emulation"           #3. source
   "/Volumes/980Pro"             #4. destination
 
-  "rsync-advancescan-ii-storage-emulation-mame"
+  "sync-advancescan→→storage-emulation-mame"
   "test -d /Volumes/980Pro && test -d /Volumes/Storage"
   "/Volumes/980Pro/Support/MAME/*"
   "/Volumes/Storage/Emulation/MAME"
 
-  "rsync-storage-ii-diskstation-storage"
+  "sync-storage→→diskstation-storage"
   "test -d /Volumes/Storage && ping -c1 dvessel-ds.local &>/dev/null"
   "/Volumes/Storage/*"
   "dvessel-ds.local:/volume1/storage"
@@ -29,4 +29,4 @@ while (( $i < ${#list[@]} )); do
   alias "$list[$i]"="$list[$i+1] && { $header; rsync-synchronize -L $list[$i+2] $list[$i+3] }"
   i=$((i+4))
 done
-alias rsync-ii-all="${(j[;echo;])presets}"
+alias sync-all="${(j[;echo;])presets}"
