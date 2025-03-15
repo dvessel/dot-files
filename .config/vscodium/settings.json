@@ -33,6 +33,7 @@
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
+  "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
   "explorer.confirmDelete": false,
   "explorer.excludeGitIgnore": true,
