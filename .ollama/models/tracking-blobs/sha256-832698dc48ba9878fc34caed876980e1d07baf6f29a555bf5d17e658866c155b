@@ -1,6 +1,0 @@
-{{ .System }}
-
-@@ Instruction
-{{ .Prompt }}
-
-@@ Response
