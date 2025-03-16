@@ -123,6 +123,7 @@ function main {
     fi
 
     unset {description,manufacturer,year,workstatus,kind,parent,sample,devices,romof,disks}
+    typeset -a {kind,devices,romof,parent,sample,disks}
 
     while read -r info; do
       case $info in
@@ -130,16 +131,16 @@ function main {
         manufacturer:*) manufacturer=${info#*:} ;;
         year:*)         year=${info#*:}         ;;
         status:*)       workstatus=${info#*:}   ;;
-        kind:*)         kind=${info#*:}         ;;
-        cloneof:*)      parent=${info#*:}       ;;
-        sampleof:*)     sample=${info#*:}       ;;
-        device:*)       devices+=( ${info#*:} ) ;;
-        romof:*)        romof+=( ${info#*:} )   ;;
-        disk:*)         disks+=( ${info#*:} )   ;;
+        kind:*)         kind+=(${info#*:})      ;;
+        device:*)       devices+=(${info#*:})   ;;
+        romof:*)        romof+=(${info#*:})     ;; # [bios|parent].
+        cloneof:*)      parent=(${info#*:})     ;;
+        sampleof:*)     sample=(${info#*:})     ;;
+        disk:*)         disks+=(${info#*:})     ;;
       esac
     done < <( cat $currentinfo )
 
-    local settags=() ftags=(
+    typeset -U settags=() __ftags=(
       "MAME Incomplete"
       "MAME Imperfect"
       "MAME Preliminary"
@@ -155,71 +156,74 @@ function main {
       preliminary)  settags+="MAME Preliminary" ;;
     esac
 
-    case $kind in
-      bios)         settags+="MAME BIOS"        ;;
-      device)       settags+="MAME Device"      ;;
-      mechanical)   settags+="MAME Mechanical"  ;;
+    for k in $kind; case $k in
+        bios)         settags+="MAME BIOS"        ;;
+        device)       settags+="MAME Device"      ;;
+        mechanical)   settags+="MAME Mechanical"  ;;
+        coinop)                                   ;;
     esac
 
     if [[ -n $sample ]]; then
       settags+="sample:$sample"
     fi
 
-    for _type in device romof disk; do
-      case $_type in
-        device) dependencies=( $devices ) ;;
-        romof)  dependencies=( $romof )   ;;
-        disk)   dependencies=( $disks )   ;;
+    for type in device bios parent disk; do
+      case $type in
+        device) settag_add_dependencies $type $devices;;
+        bios)   settag_add_dependencies $type ${romof:|parent};;
+        parent) settag_add_dependencies $type $parent ;;
+        disk)   settag_add_dependencies $type $disks  ;;
       esac
-      for dependency in $dependencies; do
-        case $_type in
-          device)
-            type=device
-            __depexists=( $scandir/$dependency.(zip|7z)(N) )
-          ;;
-          romof)
-            # romof is either a parent rom or bios.
-            if [[ $dependency == $parent ]]; then
-              type=parent
-            else
-              type=bios
-            fi
-            __depexists=( $scandir/$dependency.(zip|7z)(N) )
-          ;;
-          disk)
-            type=disk
-            # check both parent and clone if that relationship exists.
-            __depexists=( $scandir/{$parent,$current}/$dependency.chd(N) )
-            # disk names with a comma are tagged with ':comma:' instead of a literal comma.
-            # This is a limitation of the tag command. it's exceedingly rare but it's there.
-            dependency=${dependency/,/:comma:}
-          ;;
-        esac
-
-        ftags+=( +$type:$dependency -$type:$dependency )
-        if [[ ! -z $__depexists ]]; then
-          settags+="+$type:$dependency"
-        else
-          settags=( "MAME Incomplete" -$type:$dependency $settags )
-          self-log warning "[$current] \"$description\" is missing $type [$dependency]."
-        fi
-      done
     done
 
     if [[ -n $settags ]]; then
-      [[ -n $dryrun ]] || set-tags
+      [[ -n $dryrun ]] || set-tags $settags
       printf "%-20s %s\n" $currentfile:t "`present-tags $settags`"
     fi
   done
 }
 
-# ignores tags set outside the scope of this script run.
+function settag_add_dependencies {
+  local IFS=$'\n' type=$1; shift
+  typeset -aU exists missed dependencies=( $@ )
+
+  (( ${#dependencies} )) || return
+
+  __ftags+=(
+    `printf "+$type:%s\n" $dependencies`
+    `printf "-$type:%s\n" $dependencies`
+  )
+
+  case $type in
+    device|bios|parent)
+      # eval to give $dependencies a chance to expand early.
+      eval "exists=( $scandir:q/(${(j[|])dependencies}).(zip|7z)(N:t:r) )"
+      missed=( ${dependencies:|exists} )
+    ;;
+    disk)
+      # check both parent and clone if that relationship exists.
+      eval "exists=( $scandir:q/($parent|$current)/(${(j[|])dependencies}).chd(N:t:r) )"
+      missed=( ${dependencies:|exists} )
+      # disk names with a comma are tagged with ':comma:' instead of a literal comma.
+      # This is a limitation of the tag command. it's exceedingly rare but it's there.
+      exists=( ${exists/,/:comma:} )
+      missed=( ${missed/,/:comma:} )
+    ;;
+  esac
+
+  (( ${#exists} )) && settags+=( `printf "+$type:%s\n" $exists` )
+  if (( ${#missed} )); then
+    settags=( "MAME Incomplete" `printf "-$type:%s\n" $missed` $settags )
+    self-log warning "[$__current] \"$description\" is missing $type [${(j[,])missed}]."
+  fi
+}
+
 function set-tags {
   local IFS=$'\n'
-  typeset -gaU settags ftags
+  typeset -aU currenttags filetags settags=( $@ )
 
   currenttags=( `tag -gN $currentfile` )
-  filetags=( ${currenttags:*ftags} )
+  filetags=( ${currenttags:*__ftags} )
 
   # intersection of settags and filetags compared with settags.
   if [[ ${settags:*filetags} != ${settags} ]]; then
@@ -246,6 +250,7 @@ function present-tags {
       \+device:*)  tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
       \+parent:*)  tags+="\033[0;34m${t/:*}:\033[0m${t/*:}" ;;
       \+disk:*)    tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
+      *)           tags+="\033[4;30m$t\033[0m" ;;
     esac
   done
   printf "${(j[,])tags}"
