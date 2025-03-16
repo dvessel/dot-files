@@ -5,6 +5,8 @@ _brew_check tag libxmlb || return 1
 function main {
 
   zparseopts -D -E -F - \
+    {v,-verify-dependencies}=verifydependencies \
+    {r,-reset-tags}=resettags \
     {v,-version}:=version \
     {d,-dry-run}=dryrun || return 1
 
@@ -122,8 +124,8 @@ function main {
       )
     fi
 
-    unset {description,manufacturer,year,workstatus,kind,parent,sample,devices,romof,disks}
-    typeset -a {kind,devices,romof,parent,sample,disks}
+    unset description manufacturer year workstatus kind parent sample devices romof disks
+    typeset -a kind devices romof parent sample disks
 
     while read -r info; do
       case $info in
@@ -157,10 +159,10 @@ function main {
     esac
 
     for k in $kind; case $k in
-        bios)         settags+="MAME BIOS"        ;;
-        device)       settags+="MAME Device"      ;;
-        mechanical)   settags+="MAME Mechanical"  ;;
-        coinop)                                   ;;
+      bios)         settags+="MAME BIOS"        ;;
+      device)       settags+="MAME Device"      ;;
+      mechanical)   settags+="MAME Mechanical"  ;;
+      coinop)                                   ;;
     esac
 
     if [[ -n $sample ]]; then
@@ -192,8 +194,16 @@ function settag_add_dependencies {
   __ftags+=(
     `printf "+$type:%s\n" $dependencies`
     `printf "-$type:%s\n" $dependencies`
+    `printf  "$type:%s\n" $dependencies`
   )
 
+  # not verified by default.
+  if [[ -z $verifydependencies ]]; then
+    settags+=( `printf "$type:%s\n" $dependencies` )
+    return
+  fi
+
+  # verify existance of dependencies
   case $type in
     device|bios|parent)
       # eval to give $dependencies a chance to expand early.
@@ -223,10 +233,14 @@ function set-tags {
   typeset -aU currenttags filetags settags=( $@ )
 
   currenttags=( `tag -gN $currentfile` )
-  filetags=( ${currenttags:*__ftags} )
+  # when resetting, use all current tags.
+  # otherwise, limit to tags set in __ftags.
+  test -n $resettags \
+    && filetags=( $currenttags ) \
+    || filetags=( ${currenttags:*__ftags} )
 
-  # intersection of settags and filetags compared with settags.
-  if [[ ${settags:*filetags} != ${settags} ]]; then
+  # intersection ${settags:*filetags} maintains order for comparison.
+  if [[ ${settags:*filetags} != $settags ]]; then
     tag -r ${(j[,])filetags} $currentfile
     tag -a ${(j[,])settags} $currentfile
     self-log info "[$current] \"$description\" was tagged [${(j[,])settags}]."
@@ -238,19 +252,19 @@ function present-tags {
   for t in $@; do
     t=${t/MAME /}
     case $t in
-      Incomplete)  tags+="\033[3;31m$t\033[0m" ;;
-      Imperfect)   tags+="\033[3;35m$t\033[0m" ;;
-      Preliminary) tags+="\033[3;35m$t\033[0m" ;;
-      BIOS)        tags+="\033[0;33m$t\033[0m" ;;
-      Device)      tags+="\033[0;33m$t\033[0m" ;;
-      Mechanical)  tags+="\033[0;33m$t\033[0m" ;;
-      sample:*)    tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
-      \-*)         tags+="\033[4;31m$t\033[0m" ;;
-      \+bios:*)    tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
-      \+device:*)  tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
-      \+parent:*)  tags+="\033[0;34m${t/:*}:\033[0m${t/*:}" ;;
-      \+disk:*)    tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
-      *)           tags+="\033[4;30m$t\033[0m" ;;
+      Incomplete)     tags+="\033[3;31m$t\033[0m" ;;
+      Imperfect)      tags+="\033[3;35m$t\033[0m" ;;
+      Preliminary)    tags+="\033[3;35m$t\033[0m" ;;
+      BIOS)           tags+="\033[0;33m$t\033[0m" ;;
+      Device)         tags+="\033[0;33m$t\033[0m" ;;
+      Mechanical)     tags+="\033[0;33m$t\033[0m" ;;
+      sample:*)       tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
+      \-*)            tags+="\033[4;31m$t\033[0m" ;;
+      (\+|)bios:*)    tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
+      (\+|)device:*)  tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
+      (\+|)parent:*)  tags+="\033[0;34m${t/:*}:\033[0m${t/*:}" ;;
+      (\+|)disk:*)    tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
+      *)              tags+="\033[4;30m$t\033[0m" ;;
     esac
   done
   printf "${(j[,])tags}"
