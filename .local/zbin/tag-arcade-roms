@@ -2,22 +2,59 @@
 
 _brew_check tag libxmlb || return 1
 
+function help {
+cat <<EOF
+
+Usage: $__self:t [options] [directory]
+Scan ROMs and set tags based on MAME metadata.
+
+Options:
+  -v, --verify-dependencies Verify dependencies (BIOS, devices, etc.) are present
+                            and prefix with '+' if it exists, '-' if it doesn't
+                            'MAME Incomplete' is added if any are missing.
+  -r, --reset-tags          Remove existing tags before applying new ones
+                            Usually unnecessary unless you want to clear all tags
+  -d, --dry-run             Show actions without modifying tags
+  --version <version>       Specify MAME xml version (default: MAME's version)
+  -h, --help                Show this help message
+
+Directory:
+  Path to scan for ROMs (default: MAME's configured rompath if available)
+
+Dependencies:
+  Requires the 'tag' utility (install with \`brew install tag\`)
+
+Examples:
+  $__self:t /path/to/roms     # Scan ROMs in specified directory
+  $__self:t -d                # Dry-run using default directory
+  $__self:t -vr roms          # Verify dependencies and reset tags
+
+EOF
+}
+
 function main {
 
   zparseopts -D -E -F - \
     {v,-verify-dependencies}=verifydependencies \
     {r,-reset-tags}=resettags \
-    {v,-version}:=version \
-    {d,-dry-run}=dryrun || return 1
+    {d,-dry-run}=dryrun \
+    -version:=version \
+    {h,-help}=help || {
+      help; return 1
+    }
 
-  if test -z $1 && type mame >/dev/null; then
+  if (( #help )); then
+    help; return
+  fi
+
+  if ! (( #1 )) && type mame >/dev/null; then
     scandir=`eval print $( mame -showconfig | awk '$1=="rompath" { $1=""; print $0 }')`
   fi
   scandir=${scandir:-${1:a}}
   version=${${version[-1]/./}:-`mame-version`}
   tempdir=${TMPDIR}oemame/cache-$version
 
-  if [[ -z $scandir ]]; then
+  if ! (( #scandir )); then
     print "No scan directory specified." >&2
     return 1
   fi
@@ -96,7 +133,7 @@ function main {
 
         # get rom dependencies. clone->parent->bios
         romof=`xpath-query "string(machine/@romof)" $current`
-        while [[ -n $romof ]]; do
+        while (( #romof )); do
           (( `xpath-query "boolean(machine/rom/@sha1)" $romof` )) && \
             print -- romof:$romof
           romof=`xpath-query "string(machine/@romof)" $romof`
@@ -104,13 +141,13 @@ function main {
 
         # only two levels here. clone->parent
         parent=`xpath-query "string(machine/@cloneof)"`
-        if [[ -n $parent ]]; then
+        if (( #parent )); then
           print -- cloneof:$parent
         fi
 
         # dependent audio samples.
         sampleof=`xpath-query "string(machine/@sampleof)"`
-        if [[ -n $sampleof ]]; then
+        if (( #sampleof )); then
           print -- sampleof:$sampleof
         fi
 
@@ -165,7 +202,7 @@ function main {
       coinop)                                   ;;
     esac
 
-    if [[ -n $sample ]]; then
+    if (( #sample )); then
       settags+="sample:$sample"
     fi
 
@@ -178,8 +215,8 @@ function main {
       esac
     done
 
-    if [[ -n $settags ]]; then
-      [[ -n $dryrun ]] || set-tags $settags
+    if (( #settags )); then
+      (( #dryrun )) || set-tags $settags
       printf "%-20s %s\n" $currentfile:t "`present-tags $settags`"
     fi
   done
@@ -189,7 +226,7 @@ function settag_add_dependencies {
   local IFS=$'\n' type=$1; shift
   typeset -aU exists missed dependencies=( $@ )
 
-  (( ${#dependencies} )) || return
+  (( #dependencies )) || return
 
   __ftags+=(
     `printf "+$type:%s\n" $dependencies`
@@ -198,7 +235,7 @@ function settag_add_dependencies {
   )
 
   # not verified by default.
-  if [[ -z $verifydependencies ]]; then
+  if ! (( #verifydependencies )); then
     settags+=( `printf "$type:%s\n" $dependencies` )
     return
   fi
@@ -221,9 +258,11 @@ function settag_add_dependencies {
     ;;
   esac
 
-  (( ${#exists} )) && settags+=( `printf "+$type:%s\n" $exists` )
-  if (( ${#missed} )); then
-    settags=( "MAME Incomplete" `printf "-$type:%s\n" $missed` $settags )
+  if (( #exists )); then
+    settags+=( `printf "+$type:%s\n" $exists` )
+  fi
+  if (( #missed )); then
+    settags=( "MAME Incomplete" `printf "-$type:%s\n" $missed` $settags ) \
     self-log warning "[$__current] \"$description\" is missing $type [${(j[,])missed}]."
   fi
 }
@@ -235,7 +274,7 @@ function set-tags {
   currenttags=( `tag -gN $currentfile` )
   # when resetting, use all current tags.
   # otherwise, limit to tags set in __ftags.
-  test -n $resettags \
+  (( #resettags )) \
     && filetags=( $currenttags ) \
     || filetags=( ${currenttags:*__ftags} )
 
@@ -342,5 +381,7 @@ function self-log {
   local category=$1; shift
   printf "%s\t%s\t%s\n" "`date -u +%Y-%m-%dT%H:%M:%SZ`" $category "$@" >> $scanlog
 }
+
+__self=`realpath $0`
 
 main $@
