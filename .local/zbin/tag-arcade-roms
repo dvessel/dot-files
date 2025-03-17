@@ -169,10 +169,10 @@ function main {
         description:*)  description=${info#*:}  ;;
         manufacturer:*) manufacturer=${info#*:} ;;
         year:*)         year=${info#*:}         ;;
-        status:*)       workstatus=${info#*:}   ;;
-        kind:*)         kind+=(${info#*:})      ;;
+        status:*)       workstatus=${info#*:}   ;; # good|imperfect|preliminary
+        kind:*)         kind+=(${info#*:})      ;; # bios|device|mechanical,coinop
         device:*)       devices+=(${info#*:})   ;;
-        romof:*)        romof+=(${info#*:})     ;; # [bios|parent].
+        romof:*)        romof+=(${info#*:})     ;; # bios,parent
         cloneof:*)      parent=(${info#*:})     ;;
         sampleof:*)     sample=(${info#*:})     ;;
         disk:*)         disks+=(${info#*:})     ;;
@@ -195,25 +195,20 @@ function main {
       preliminary)  settags+="MAME Preliminary" ;;
     esac
 
-    for k in $kind; case $k in
+    for thiskind in $kind; case $thiskind in
       bios)         settags+="MAME BIOS"        ;;
       device)       settags+="MAME Device"      ;;
       mechanical)   settags+="MAME Mechanical"  ;;
       coinop)                                   ;;
     esac
 
-    if (( #sample )); then
-      settags+="sample:$sample"
-    fi
-
-    for type in device bios parent disk; do
-      case $type in
-        device) settag_add_dependencies $type $devices;;
-        bios)   settag_add_dependencies $type ${romof:|parent};;
-        parent) settag_add_dependencies $type $parent ;;
-        disk)   settag_add_dependencies $type $disks  ;;
-      esac
-    done
+    for depkind in device bios parent disk sample; case $depkind in
+      device) settag_add_dependencies $depkind $devices;;
+      bios)   settag_add_dependencies $depkind ${romof:|parent};;
+      parent) settag_add_dependencies $depkind $parent ;;
+      disk)   settag_add_dependencies $depkind $disks  ;;
+      sample) settag_add_dependencies $depkind $sample ;;
+    esac
 
     if (( #settags )); then
       (( #dryrun )) || set-tags $settags
@@ -223,25 +218,25 @@ function main {
 }
 
 function settag_add_dependencies {
-  local IFS=$'\n' type=$1; shift
+  local IFS=$'\n' kind=$1; shift
   typeset -aU exists missed dependencies=( $@ )
 
   (( #dependencies )) || return
 
   __ftags+=(
-    `printf "+$type:%s\n" $dependencies`
-    `printf "-$type:%s\n" $dependencies`
-    `printf  "$type:%s\n" $dependencies`
+    `printf "+$kind:%s\n" $dependencies`
+    `printf "-$kind:%s\n" $dependencies`
+    `printf  "$kind:%s\n" $dependencies`
   )
 
   # not verified by default.
   if ! (( #verifydependencies )); then
-    settags+=( `printf "$type:%s\n" $dependencies` )
+    settags+=( `printf "$kind:%s\n" $dependencies` )
     return
   fi
 
   # verify existance of dependencies
-  case $type in
+  case $kind in
     device|bios|parent)
       # eval to give $dependencies a chance to expand early.
       eval "exists=( $scandir:q/(${(j[|])dependencies}).(zip|7z)(N:t:r) )"
@@ -256,14 +251,19 @@ function settag_add_dependencies {
       exists=( ${exists/,/:comma:} )
       missed=( ${missed/,/:comma:} )
     ;;
+    sample)
+      # sample location can vary. no existance check for now, maybe never.
+      settags+=( `printf "$kind:%s\n" $dependencies` )
+      return
+    ;;
   esac
 
   if (( #exists )); then
-    settags+=( `printf "+$type:%s\n" $exists` )
+    settags+=( `printf "+$kind:%s\n" $exists` )
   fi
   if (( #missed )); then
-    settags=( "MAME Incomplete" `printf "-$type:%s\n" $missed` $settags ) \
-    self-log warning "[$__current] \"$description\" is missing $type [${(j[,])missed}]."
+    settags=( "MAME Incomplete" `printf "-$kind:%s\n" $missed` $settags ) \
+    self-log warning "[$__current] \"$description\" is missing $kind [${(j[,])missed}]."
   fi
 }
 
