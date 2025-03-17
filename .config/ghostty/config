@@ -7,10 +7,11 @@ font-size   = 15
 font-thicken = true
 font-thicken-strength = 0
 
-window-width  = 88
-window-height = 30
-window-padding-x = 20,0
-window-padding-y = 7
+window-width  = 87
+window-height = 29
+window-padding-x = 20,10
+window-padding-y = 10,0
+window-padding-color = extend
 
 macos-titlebar-style = tabs
 macos-icon = blueprint
