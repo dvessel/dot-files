@@ -265,7 +265,7 @@ function tag-set-dependencies {
     __tags+=( `printf "+$kind:%s\n" $exists` )
   fi
   if (( #missed )); then
-    __tags=( "MAME Incomplete" `printf "-$kind:%s\n" $missed` $__tags ) \
+    __tags=( "MAME Incomplete" `printf "-$kind:%s\n" $missed` $__tags )
     self-log warning "[$__current] \"$description\" is missing $kind [${(j[,])missed}]."
   fi
 }
