@@ -77,7 +77,7 @@ function main {
 
   self-log info "initiating scan:$scandir"
 
-  local current{,file,info}
+  local current{,file,info,tmp}
 
   for currentfile in $scandir/*.(zip|7z)(N); do
     # current's scope extends to other functions.
@@ -93,14 +93,12 @@ function main {
         continue
       fi
 
-      touch $currentinfo
-      self-log info \
-        "Created new info file: [$current] \"`xpath-query "machine/description/text()"`\""
+      currenttmp=$tempdir/.`uuidgen`
 
       while read -r info; do
         # holds key:value. ignore empty values.
         if [[ -n ${info/*:} ]]; then
-          print -- $info >> $currentinfo
+          print -- $info >> $currenttmp
         fi
       done < <(
         while read -r info; do
@@ -159,6 +157,10 @@ function main {
           fi
         done < <( xpath-query "machine/disk[@sha1]/@name" $set | awk -F\" '{ print $2 }' )
       )
+
+      mv $currenttmp $currentinfo
+      self-log info \
+        "new info file created: [$current] \"`xpath-query "machine/description/text()"`\""
     fi
 
     unset description manufacturer year workstatus kind parent sample devices romof disks
