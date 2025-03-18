@@ -12,6 +12,8 @@ brew "gh"
 brew "git"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# No Nonsense Neovim Client in Rust
+brew "neovide"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # PAM module for reattaching to the user's GUI (Aqua) session

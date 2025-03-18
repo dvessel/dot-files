@@ -49,10 +49,14 @@ alias decimal2hex='printf "0x0%x\n"'
 # Clear zsh related caches.
 alias zcc='rm -rf $XDG_CACHE_HOME/zsh && echo zsh\ caches\ cleared.'
 
-# Make neovim available in x86 Rosetta.
+# Make neovim & neovide available in x86 Rosetta.
 if ! type nvim &>/dev/null && test -f /opt/homebrew/bin/nvim; then
   alias nvim=/opt/homebrew/bin/nvim
 fi
+if ! type neovide &>/dev/null && test -f /opt/homebrew/bin/neovide; then
+  alias neovide='/opt/homebrew/bin/neovide'
+fi
+alias nvid='neovide'
 
 # Install brew and all dependent plugins.
 if ! type brew &>/dev/null; then

@@ -1,0 +1,37 @@
+#compdef neovide
+
+# zsh completions for 'neovide'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--log[if to enable logging to a file in the current directory]'
+  '--server[connect to the named pipe or socket at ADDRESS]'
+  '--wsl[run NeoVim in WSL rather than on the host \[env: NEOVIDE_WSL=\]]'
+  '--frame[which window decorations to use (do note that the window might not be resizable if this is "none") \[env: NEOVIDE_FRAME=\] \[default: full\] \[possible values: full, transparent, buttonless, none\]]'
+  '--no-multigrid[disable the Multigrid extension (disables smooth scrolling, window animations, and floating blur) \[env: NEOVIDE_NO_MULTIGRID=\]]'
+  '--mouse-cursor-icon[which mouse cursor icon to use \[env: NEOVIDE_MOUSE_CURSOR_ICON=\] \[default: arrow\] \[possible values: arrow, i-beam\]]'
+  '--title-hidden[sets title hidden for the window \[env: NEOVIDE_TITLE_HIDDEN=\]]'
+  '--fork[spawn a child process and leak it \[env: NEOVIDE_FORK=\]]'
+  '--no-fork[be "blocking" and let the shell persist as parent process. Takes precedence over `--fork`. \[DEFAULT\]]'
+  '--no-idle[render every frame, takes more power and CPU time but possibly helps with frame timing issues \[env: NEOVIDE_IDLE=\]]'
+  '--tabs[enable opening multiple files supplied in tabs \[DEFAULT\] \[env: NEOVIDE_TABS=\]]'
+  '--no-tabs[disable opening multiple files supplied in tabs (theyre still buffers)]'
+  '--srgb[request sRGB when initializing the window, may help with GPUs with weird pixel formats. Default on Windows \[env: NEOVIDE_SRGB=\]]'
+  '--no-srgb[do not request sRGB when initializing the window, may help with GPUs with weird pixel formats. Default on Linux and macOS]'
+  '--vsync[request VSync on the window \[DEFAULT\] \[env: NEOVIDE_VSYNC=\]]'
+  '--no-vsync[do not try to request VSync on the window]'
+  '--neovim-bin[which NeoVim binary to invoke headlessly instead of `nvim` found on $PATH \[env: NEOVIM_BIN=\]]'
+  '--wayland[_app_id <WAYLAND_APP_ID>]'
+  '--x11-wm-class[11_WM_CLASS>]'
+  '--x11-wm-class-instance[11_WM_CLASS_INSTANCE>]'
+  '--grid[the initial grid size of the window \[<columns>x<lines>\]. Defaults to columns/lines from init.vim/lua if no value is given. If --grid is not set then its inferred from the window size]'
+  '--size[the size of the window in pixels]'
+  '--maximized[maximize the window on startup (not equivalent to fullscreen) \[env: NEOVIDE_MAXIMIZED=\]]'
+  '--opengl[force opengl on Windows or macOS \[env: NEOVIDE_OPENGL=\]]'
+  {-h,--help}'[print help]'
+  {-V,--version}'[print version]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
