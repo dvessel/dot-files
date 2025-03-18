@@ -179,51 +179,54 @@ function main {
       esac
     done < <( cat $currentinfo )
 
-    typeset -U settags=() __ftags=(
-      "MAME Incomplete"
+    typeset -U __tags=()
+
+    tag-set status $workstatus
+    tag-set kind $kind
+    tag-set-dependencies device $devices
+    tag-set-dependencies bios ${romof:|parent}
+    tag-set-dependencies parent $parent
+    tag-set-dependencies disk $disks
+    tag-set-dependencies sample $sample
+
+    if (( #__tags )); then
+      (( #dryrun )) || tag-apply
+      printf "%-20s %s\n" $currentfile:t "`present-tags $__tags`"
+    fi
+  done
+}
+
+function tag-set {
+  local key=$1 value
+  shift
+
+  if [[ ! -v __ftags ]]; then
+    typeset -gU __ftags=(
       "MAME Imperfect"
       "MAME Preliminary"
       "MAME BIOS"
       "MAME Device"
       "MAME Mechanical"
-      "sample:$sample"
     )
+  fi
 
-    case $workstatus in
-      good)                                     ;;
-      imperfect)    settags+="MAME Imperfect"   ;;
-      preliminary)  settags+="MAME Preliminary" ;;
-    esac
-
-    for thiskind in $kind; case $thiskind in
-      bios)         settags+="MAME BIOS"        ;;
-      device)       settags+="MAME Device"      ;;
-      mechanical)   settags+="MAME Mechanical"  ;;
-      coinop)                                   ;;
-    esac
-
-    for depkind in device bios parent disk sample; case $depkind in
-      device) settag_add_dependencies $depkind $devices;;
-      bios)   settag_add_dependencies $depkind ${romof:|parent};;
-      parent) settag_add_dependencies $depkind $parent ;;
-      disk)   settag_add_dependencies $depkind $disks  ;;
-      sample) settag_add_dependencies $depkind $sample ;;
-    esac
-
-    if (( #settags )); then
-      (( #dryrun )) || set-tags $settags
-      printf "%-20s %s\n" $currentfile:t "`present-tags $settags`"
-    fi
-  done
+  for value in $@; case $key:$value in
+    status:imperfect)   __tags+="MAME Imperfect"  ;;
+    status:preliminar)  __tags+="MAME Preliminary";;
+    kind:bios)          __tags+="MAME BIOS"       ;;
+    kind:device)        __tags+="MAME Device"     ;;
+    kind:mechanical)    __tags+="MAME Mechanical" ;;
+  esac
 }
 
-function settag_add_dependencies {
+function tag-set-dependencies {
   local IFS=$'\n' kind=$1; shift
   typeset -aU exists missed dependencies=( $@ )
 
   (( #dependencies )) || return
 
   __ftags+=(
+    "MAME Incomplete"
     `printf "+$kind:%s\n" $dependencies`
     `printf "-$kind:%s\n" $dependencies`
     `printf  "$kind:%s\n" $dependencies`
@@ -231,7 +234,7 @@ function settag_add_dependencies {
 
   # not verified by default.
   if ! (( #verifydependencies )); then
-    settags+=( `printf "$kind:%s\n" $dependencies` )
+    __tags+=( `printf "$kind:%s\n" $dependencies` )
     return
   fi
 
@@ -253,23 +256,23 @@ function settag_add_dependencies {
     ;;
     sample)
       # sample location can vary. no existance check for now, maybe never.
-      settags+=( `printf "$kind:%s\n" $dependencies` )
+      __tags+=( `printf "$kind:%s\n" $dependencies` )
       return
     ;;
   esac
 
   if (( #exists )); then
-    settags+=( `printf "+$kind:%s\n" $exists` )
+    __tags+=( `printf "+$kind:%s\n" $exists` )
   fi
   if (( #missed )); then
-    settags=( "MAME Incomplete" `printf "-$kind:%s\n" $missed` $settags ) \
+    __tags=( "MAME Incomplete" `printf "-$kind:%s\n" $missed` $__tags ) \
     self-log warning "[$__current] \"$description\" is missing $kind [${(j[,])missed}]."
   fi
 }
 
-function set-tags {
+function tag-apply {
   local IFS=$'\n'
-  typeset -aU currenttags filetags settags=( $@ )
+  typeset -aU currenttags filetags
 
   currenttags=( `tag -gN $currentfile` )
   # when resetting, use all current tags.
@@ -277,17 +280,20 @@ function set-tags {
   (( #resettags )) \
     && filetags=( $currenttags ) \
     || filetags=( ${currenttags:*__ftags} )
+  # reset filters.
+  unset __ftags
 
-  # intersection ${settags:*filetags} maintains order for comparison.
-  if [[ ${settags:*filetags} != $settags ]]; then
+  # intersection ${__tags:*filetags} maintains order for comparison.
+  if [[ ${__tags:*filetags} != $__tags ]]; then
     tag -r ${(j[,])filetags} $currentfile
-    tag -a ${(j[,])settags} $currentfile
-    self-log info "[$current] \"$description\" was tagged [${(j[,])settags}]."
+    tag -a ${(j[,])__tags} $currentfile
+    self-log info "[$current] \"$description\" was tagged [${(j[,])__tags}]."
   fi
 }
 
 function present-tags {
   typeset -aU tags
+
   for t in $@; do
     t=${t/MAME /}
     case $t in
