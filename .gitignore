@@ -7,7 +7,6 @@
 .conda
 # vscodium->markdown preview
 .config/crossnote
-.config/iterm2
 .config/litecli/*
 !.config/litecli/config
 .config/lnav

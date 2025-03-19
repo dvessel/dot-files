@@ -32,8 +32,6 @@ cask "font-lilex-nerd-font"
 cask "ghostty@tip"
 # Desktop automation application
 cask "hammerspoon"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Minimal installer for conda
 cask "miniconda"
 # Binary releases of VS Code without MS branding/telemetry/licensing
