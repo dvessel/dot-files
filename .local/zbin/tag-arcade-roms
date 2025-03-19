@@ -12,6 +12,8 @@ Options:
   -c, --check-dependencies  Verify dependencies (BIOS, devices, etc.) are present
                             and prefix with '+' if it exists, '-' if it doesn't
                             'MAME Incomplete' is added if any are missing.
+  -s, --sample-path <path>  Optional path to sample files
+                            If not provided, defaults to MAME's configured rompath.
   -r, --reset-tags          Remove existing tags before applying new ones
                             Usually unnecessary unless you want to clear all tags
   -d, --dry-run             Show actions without modifying tags
@@ -36,6 +38,7 @@ function main {
 
   zparseopts -D -E -F - \
     {c,-check-dependencies}=checkdependencies \
+    {s,-sample-path}:=samplepath \
     {r,-reset-tags}=resettags \
     {d,-dry-run}=dryrun \
     {v,-version}:=version \
@@ -48,9 +51,12 @@ function main {
   fi
 
   if ! (( #1 )) && type mame >/dev/null; then
-    scandir=`eval print $( mame -showconfig | awk '$1=="rompath" { $1=""; print $0 }')`
+    mameconfig=`mame -showconfig`
+    scandir=`eval print $( print -- $mameconfig | awk '$1=="rompath" { $1=""; print $0 }' )`
+    sampdir=`eval print $( print -- $mameconfig | awk '$1=="samplepath" { $1=""; print $0 }' )`
   fi
   scandir=${scandir:-${1:a}}
+  sampdir=${samplepath[-1]:-$sampdir}
   version=${${version[-1]/./}:-`mame-version`}
   tempdir=${TMPDIR}oemame/cache-$version
 
@@ -59,9 +65,17 @@ function main {
     return 1
   fi
   if [[ ! -d $scandir ]]; then
-    print "Scan directory does not exist:\n$scandir"  >&2
+    print "Scan directory does not exist: $scandir"  >&2
     return 1
   fi
+
+  # check for sample directory only when called with --sample-path option.
+  # it will use mameconfig otherwise which is more lax about --check-dependencies.
+  if [[ -n $samplepath && ! -d $sampdir ]]; then
+    print "Sample directory does not exist: $sampdir" >&2
+    return 1
+  fi
+
   if [[ -z $version ]]; then
     print "Could not determine MAME version. Use --version <number>" >&2
     return 1
@@ -257,9 +271,13 @@ function tag-set-dependencies {
       missed=( ${missed/,/:comma:} )
     ;;
     sample)
-      # sample location can vary. no existance check for now, maybe never.
-      __tags+=( `printf "$kind:%s\n" $dependencies` )
-      return
+      if [[ -d $sampdir ]]; then
+        exists=( $sampdir:q/$dependencies.(zip|7z)(N:t:r) )
+        missed=( ${dependencies:|exists} )
+      else
+        __tags+=( `printf "$kind:%s\n" $dependencies` )
+        return
+      fi
     ;;
   esac
 
@@ -305,12 +323,12 @@ function present-tags {
       BIOS)           tags+="\033[0;33m$t\033[0m" ;;
       Device)         tags+="\033[0;33m$t\033[0m" ;;
       Mechanical)     tags+="\033[0;33m$t\033[0m" ;;
-      sample:*)       tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
       \-*)            tags+="\033[4;31m$t\033[0m" ;;
       (\+|)bios:*)    tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
       (\+|)device:*)  tags+="\033[0;33m${t/:*}:\033[0m${t/*:}" ;;
       (\+|)parent:*)  tags+="\033[0;34m${t/:*}:\033[0m${t/*:}" ;;
       (\+|)disk:*)    tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
+      (\+|)sample:*)  tags+="\033[0;36m${t/:*}:\033[0m${t/*:}" ;;
       *)              tags+="\033[4;30m$t\033[0m" ;;
     esac
   done
