@@ -32,10 +32,7 @@ unalias run-help 2>/dev/null
 autoload run-help
 
 if test -f /opt/homebrew/bin/nvim; then
-  export NEOVIDE_FORK=1
-  export NEOVIDE_FRAME=transparent
-  export NEOVIM_BIN=/opt/homebrew/bin/nvim
-  export EDITOR=$NEOVIM_BIN
+  export EDITOR=/opt/homebrew/bin/nvim
 else
   export EDITOR=vim
 fi

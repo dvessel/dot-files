@@ -1,0 +1,3 @@
+fork = true
+frame = "transparent"
+neovim-bin = "/opt/homebrew/bin/nvim"
