@@ -56,7 +56,6 @@ fi
 if ! type neovide &>/dev/null && test -f /opt/homebrew/bin/neovide; then
   alias neovide='/opt/homebrew/bin/neovide'
 fi
-alias nvid='neovide'
 
 # Install brew and all dependent plugins.
 if ! type brew &>/dev/null; then
