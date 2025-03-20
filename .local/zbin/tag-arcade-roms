@@ -51,9 +51,9 @@ function main {
   fi
 
   if ! (( #1 )) && type mame >/dev/null; then
-    mameconfig=`mame -showconfig`
-    scandir=`eval print $( print -- $mameconfig | awk '$1=="rompath" { $1=""; print $0 }' )`
-    sampdir=`eval print $( print -- $mameconfig | awk '$1=="samplepath" { $1=""; print $0 }' )`
+    read -r scandir sampdir < <( eval print -- $(
+      mame -showconfig | awk '$1 == "rompath" || $1 == "samplepath" { $1=""; print }'
+    ))
   fi
   scandir=${scandir:-${1:a}}
   sampdir=${samplepath[-1]:-$sampdir}
