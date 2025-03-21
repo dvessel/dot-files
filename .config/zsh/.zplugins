@@ -14,6 +14,7 @@ mattmc3/ez-compinit
 conda-incubator/conda-zsh-completion kind:fpath
 keith/zsh-xcode-completions path:src kind:fpath
 nilsonholger/osx-zsh-completions kind:fpath
+ocodo/ollama_zsh_completion kind:fpath
 zsh-users/zsh-completions path:src kind:fpath
 dvessel/zsh-completion-generator
 
