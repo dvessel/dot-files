@@ -1,0 +1,15 @@
+#compdef tag-roms
+
+# zsh completions for 'tag-roms'
+local arguments
+
+arguments=(
+  {-c,--check-dependencies}'[verify dependencies (BIOS, devices, etc.) are present]'
+  {-s,--sample-path}'[optional path to sample files]'
+  {-r,--reset-tags}'[remove existing tags before applying new ones]'
+  {-d,--dry-run}'[show actions without modifying tags]'
+  {-h,--help}'[show this help message]'
+  ':directory:_directories'
+)
+
+_arguments -s $arguments

@@ -2,9 +2,20 @@
 
 _brew_check tag libxmlb || return 1
 
-function help {
-cat <<EOF
+function main {
+  zparseopts -D -E -F - \
+    {c,-check-dependencies}=checkdependencies \
+    {s,-sample-path}:=samplepath \
+    {r,-reset-tags}=resettags \
+    {d,-dry-run}=dryrun \
+    {v,-version}:=version \
+    {h,-help}=help || {
+      print "see --help" >&2
+      return 1
+    }
 
+  if (( #help )); then
+cat <<- --------
 Usage: $__self:t [options] [directory]
 Scan ROMs and set tags based on MAME metadata.
 
@@ -30,24 +41,8 @@ Examples:
   $__self:t /path/to/roms     # Scan ROMs in specified directory
   $__self:t -d                # Dry-run using default directory
   $__self:t -vr roms          # Verify dependencies and reset tags
-
-EOF
-}
-
-function main {
-
-  zparseopts -D -E -F - \
-    {c,-check-dependencies}=checkdependencies \
-    {s,-sample-path}:=samplepath \
-    {r,-reset-tags}=resettags \
-    {d,-dry-run}=dryrun \
-    {v,-version}:=version \
-    {h,-help}=help || {
-      help; return 1
-    }
-
-  if (( #help )); then
-    help; return
+--------
+return
   fi
 
   if ! (( #1 )) && type mame >/dev/null; then
