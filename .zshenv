@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# zsh dotfile directory.
+export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
@@ -11,8 +14,8 @@ export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
   for xdg in $@; [[ -d ${(P)xdg} ]] || mkdir -p ${(P)xdg}
 } XDG_{CONFIG,CACHE,DATA,STATE}_HOME
 
-# zsh dotfile directory.
-export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+# Docker config home.
+export DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.config/docker}
 
 # Autoloading zfunctions and zcompletions.
 export ZFUNCDIR=${ZFUNCDIR:-$HOME/.local/zfunctions}

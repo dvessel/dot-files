@@ -7,6 +7,7 @@
 .conda
 # vscodium->markdown preview
 .config/crossnote
+.config/docker
 .config/litecli/*
 !.config/litecli/config
 .config/lnav
@@ -37,6 +38,7 @@
 !.ollama/models
 !.ollama/models/manifests
 !.ollama/models/tracking-blobs
+.orbstack
 .ssh
 .sqlite_history
 .swiftpm

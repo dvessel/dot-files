@@ -65,6 +65,8 @@ brew "dvessel/oetools/oeadvscan"
 cask "diffusionbee"
 # Operating system maintenance and cleaning utility
 cask "maintenance"
+# Replacement for Docker Desktop
+cask "orbstack"
 # Frontend for emulators, game engines, and media players (Metal graphics API)
 cask "retroarch-metal@nightly"
 # Virtual machines UI using QEMU
