@@ -52,10 +52,8 @@ else
 fi
 
 local names=`brew --cache`/api/`c.pkgdef formula_names cask_names`
-local descs=`brew --cache`/`c.pkgdef descriptions cask_descriptions`.json
 local fzf_list=`brew --cache`/fzf${pkgdef}-list-`machine`.txt
 
-# - delete *descriptions.json. It's not refreshed with new formulae/casks.
 # - delete fzf_list to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
 # - delete the new names older than 3 days.
@@ -64,7 +62,7 @@ if [[ -f $names.$0:t-before.txt && -f $names.txt ]]; then
   local names_new=$names.$0:t-new-`print -- $new_keys[@] | md5`.txt
   if [[ ${#new_keys} > 0 && ! -f $names_new ]]; then
     printf "%s\n" $new_keys > $names_new
-    rm -f $descs $fzf_list
+    rm -f $fzf_list
   fi
   # clear new entries older than 3 days.
   for f in $names.$0:t-new-*.txt(Nm+3); rm $f
