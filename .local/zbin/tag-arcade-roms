@@ -121,15 +121,18 @@ return
 
         # status:good|imperfect|preliminary
         print -- status:`xpath-query "string(machine/driver/@status)"`
+        # emulation:good|imperfect|preliminary
+        print -- emulation:`xpath-query "string(machine/driver/@emulation)"`
+        # savestate:supported|unsupported
+        print -- savestate:`xpath-query "string(machine/driver/@savestate)"`
 
         # kind:bios|device|mechanical
         for kind in bios device mechanical; \
           (( `xpath-query "boolean(machine[@is$kind='yes'])"` )) && \
             print -- kind:$kind
         # kind to differentiate coin-operated machines, i.e., arcade machines.
-        if (( `xpath-query "boolean(machine/input/@coins)"` )); then
+        (( `xpath-query "boolean(machine/input/@coins)"` )) && \
           print -- kind:coinop
-        fi
 
         # get device dependencies. rom sha1 means it's been dumped.
         while read -r device; do
@@ -148,23 +151,18 @@ return
 
         # only two levels here. clone->parent
         parent=`xpath-query "string(machine/@cloneof)"`
-        if (( #parent )); then
+        (( #parent )) && \
           print -- cloneof:$parent
-        fi
 
         # dependent audio samples.
         sampleof=`xpath-query "string(machine/@sampleof)"`
-        if (( #sampleof )); then
+        (( #sampleof )) && \
           print -- sampleof:$sampleof
-        fi
 
-        # get chd dependencies. clone chd->parent chd
-        for set in $current $parent; while read -r disk; do
-          # merge disks inherited from parent sets. ignore it to prevent duplicate entires.
-          if ! (( `xpath-query "boolean(machine/disk[@name='$disk']/@merge)" $set` )); then
-            print -- disk:$disk
-          fi
-        done < <( xpath-query "machine/disk[@sha1]/@name" $set | awk -F\" '{ print $2 }' )
+        # dependent chds.
+        while read -r disk; do
+          print -- disk:$disk
+        done < <( xpath-query "machine/disk[@sha1]/@name" | awk -F\" '{ print $2 }' )
       )
 
       mv $currenttmp $currentinfo
