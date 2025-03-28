@@ -145,13 +145,13 @@ esac
 
 # list installed formulae or casks for commands targeting them.
 if (( $brew_commands_installed[(I)$brew_args[1]] )); then
-  typeset -a __lsdesc="==> Installed $(c.pkgdef Formulae Casks)\n"
+  typeset -a __lsdesc=( "==> Installed $(c.pkgdef Formulae Casks)" )
   while read -r l; do
     if [[ ${l/*:/} =~ "^(📌|🍺|🌾).*" ]]; then
-      __lsdesc+=$l\n
+      __lsdesc+=$l
     fi
   done < <( print -- $lsdesc )
-  lsdesc=$__lsdesc
+  lsdesc=${(j[\n])__lsdesc}
 fi
 
 local selected=(
