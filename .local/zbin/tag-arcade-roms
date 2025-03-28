@@ -196,6 +196,8 @@ return
       "MAME Mechanical"
     )
 
+    __description=$description
+
     tag-set status $workstatus
     tag-set kind $kind
     tag-set-dependencies device $devices
@@ -217,7 +219,7 @@ function tag-set {
 
   for value in $@; case $key:$value in
     status:imperfect)   __tags+="MAME Imperfect"  ;;
-    status:preliminary)  __tags+="MAME Preliminary";;
+    status:preliminary) __tags+="MAME Preliminary";;
     kind:bios)          __tags+="MAME BIOS"       ;;
     kind:device)        __tags+="MAME Device"     ;;
     kind:mechanical)    __tags+="MAME Mechanical" ;;
@@ -275,7 +277,7 @@ function tag-set-dependencies {
   fi
   if (( #missed )); then
     __tags=( "MAME Incomplete" `printf "-$kind:%s\n" $missed` $__tags )
-    self-log warning "[$__current] \"$description\" is missing $kind [${(j[,])missed}]."
+    self-log warning "[$__current] \"$__description\" is missing $kind [${(j[,])missed}]."
   fi
 }
 
@@ -294,7 +296,7 @@ function tag-apply {
   if [[ ${__tags:*filetags} != $__tags ]]; then
     tag -r ${(j[,])filetags} $currentfile
     tag -a ${(j[,])__tags} $currentfile
-    self-log info "[$current] \"$description\" was tagged [${(j[,])__tags}]."
+    self-log info "[$current] \"$__description\" was tagged [${(j[,])__tags}]."
   fi
 }
 
