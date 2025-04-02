@@ -21,7 +21,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{615, 420}, {825, 464}}</string>
+			<string>{{615, 410}, {825, 464}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -387,7 +387,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -415,7 +415,7 @@
 			<key>showItemInfo</key>
 			<false/>
 			<key>textSize</key>
-			<real>13</real>
+			<real>14</real>
 			<key>viewOptionsVersion</key>
 			<string>1</string>
 		</dict>
