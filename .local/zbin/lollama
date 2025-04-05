@@ -15,14 +15,12 @@ if (( $supported_cmd[(I)$cmd] )); then
   elif [[ $cmd == stop ]]; then
     local model=($(
       ollama ps |
-      sort |
       fzf --prompt="❯ ollama $cmd " --header-lines=1 --multi |
       cut -d ' ' -f1
     ))
   else
     local model=($(
       ollama list |
-      sort |
       fzf --prompt="❯ ollama $cmd " --header-lines=1 $( [[ $cmd == rm ]] && printf --multi ) |
       cut -d ' ' -f1
     ))
