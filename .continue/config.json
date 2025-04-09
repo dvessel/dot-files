@@ -1,40 +1,10 @@
 {
   "models": [
     {
-      "title": "Gemma3 12B",
-      "provider": "ollama",
-      "model": "gemma3:12b-it-q8_0"
-    },
-    {
-      "title": "Gemma3 27B",
-      "provider": "ollama",
-      "model": "gemma3:27b"
-    },
-    {
-      "title": "QWQ",
-      "provider": "ollama",
-      "model": "qwq:latest"
-    },
-    {
-      "title": "DeepSeek R1 14B",
-      "provider": "ollama",
-      "model": "deepseek-r1:14b-t.6"
-    },
-    {
-      "title": "DeepSeek R1 32B",
-      "provider": "ollama",
-      "model": "deepseek-r1:32b-t.6"
-    },
-    {
-      "title": "Qwen2.5-Coder 14B",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:14b-t.7"
-    },
-    {
-      "title": "Qwen2.5-Coder 32B",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:32b-t.7"
-    },
+      "model": "AUTODETECT",
+      "title": "Autodetect",
+      "provider": "ollama"
+    }
   ],
   "tabAutocompleteModel": [
     {
