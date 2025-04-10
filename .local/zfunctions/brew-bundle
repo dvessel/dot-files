@@ -20,13 +20,13 @@
   if [[ -n $changesFrom ]]
   then
     local base temp bundle
-    base=$configdir/bundle-$changesFrom[-1]-`machine`
+    base=$configdir/bundle-$changesFrom[-1]-`uname -m`
     if [[ -f $base ]]
     then
       temp=`mktemp`
       brew bundle $@ $set --describe --force --file $temp
-      bundle=$configdir/bundle-$name-changesFrom-`machine`
-      print "# changesFrom from 'bundle-$changesFrom[-1]-`machine`':" > $bundle
+      bundle=$configdir/bundle-$name-changesFrom-`uname -m`
+      print "# changesFrom from 'bundle-$changesFrom[-1]-`uname -m`':" > $bundle
       while read l
       do
         if ! grep -Fq $l $base
@@ -40,6 +40,6 @@
       return 1
     fi
   else
-    brew bundle $@ $set --describe --file $configdir/bundle-$name-`machine`
+    brew bundle $@ $set --describe --file $configdir/bundle-$name-`uname -m`
   fi
 #}

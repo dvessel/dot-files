@@ -52,7 +52,7 @@ else
 fi
 
 local names=`brew --cache`/api/`c.pkgdef formula_names cask_names`
-local fzf_list=`brew --cache`/fzf${pkgdef}-list-`machine`.txt
+local fzf_list=`brew --cache`/fzf${pkgdef}-list-`uname -m`.txt
 
 # - delete fzf_list to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
