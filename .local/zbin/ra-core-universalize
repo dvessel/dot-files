@@ -7,12 +7,13 @@ dylib=$1:t
 if [[ -n $arch_flip[$arch] ]]; then
   url=http://buildbot.libretro.com/nightly/apple/osx/$arch_flip[$arch]/latest/$dylib.zip
   if curl -o /dev/null --silent --head --fail $url; then
+    sleep 0.5
     tmpdir=`mktemp -d`
-    curl -Lo $tmpdir/$dylib.zip $url
-    unzip $tmpdir/$dylib.zip -d $tmpdir
-
-    if lipo -create $1 $tmpdir/$dylib -output $tmpdir/universal-$dylib; then
-      mv -f $tmpdir/universal-$dylib $1
+    if curl -Lo $tmpdir/$dylib.zip $url; then
+      unzip $tmpdir/$dylib.zip -d $tmpdir 
+      if lipo -create $1 $tmpdir/$dylib -output $tmpdir/universal-$dylib; then
+        mv -vf $tmpdir/universal-$dylib $1
+      fi
     fi
     rm -rf $tmpdir
   fi
