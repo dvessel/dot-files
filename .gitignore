@@ -11,6 +11,7 @@
 .config/litecli/*
 !.config/litecli/config
 .config/lnav
+.config/macmon.json
 .config/tmux/plugins
 .config/vscodium/*
 !.config/vscodium/installed-extensions.txt

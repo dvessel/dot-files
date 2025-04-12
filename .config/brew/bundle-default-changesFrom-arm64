@@ -1,4 +1,4 @@
-# changesFrom from 'bundle-default-arm64e':
+# changesFrom from 'bundle-default-arm64':
 # Simple python script to download Bandcamp albums
 brew "bandcamp-dl"
 # Content aware image resize tool
@@ -33,8 +33,8 @@ brew "litecli"
 brew "lnav"
 # Language Server for the Lua language
 brew "lua-language-server"
-# Apple Silicon Monitor Top written in Golang
-brew "mactop"
+# Sudoless performance monitoring for Apple Silicon processors
+brew "macmon"
 # Multiple Arcade Machine Emulator
 brew "mame"
 # Create, run, and share large language models (LLMs)
