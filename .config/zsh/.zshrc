@@ -20,6 +20,6 @@ acsource integrations-`uname -m` \
 acsource zsource $ZDOTDIR/.zsource/{options,antidote,p10k-config,*}.zsh
 
 # Normally handled by antidote plugin: .zplugins->mattmc3/ez-compinit
-if ! type compinit >/dev/null; then
+if ! type compinit &>/dev/null; then
   autoload -Uz compinit; compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 fi
