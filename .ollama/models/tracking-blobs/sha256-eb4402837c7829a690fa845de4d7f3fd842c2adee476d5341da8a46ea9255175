@@ -1,3 +1,4 @@
+{{- if .Messages }}
 {{- if or .System .Tools }}<|im_start|>system
 {{- if .System }}
 {{ .System }}
@@ -40,3 +41,10 @@ For each function call, return a json object with function name and arguments wi
 {{- if and (ne .Role "assistant") $last }}<|im_start|>assistant
 {{ end }}
 {{- end }}
+{{- else }}
+{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ end }}{{ .Response }}{{ if .Response }}<|im_end|>{{ end }}
