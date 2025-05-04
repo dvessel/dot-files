@@ -616,9 +616,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>101</integer>
-					<integer>14</integer>
-					<integer>262144</integer>
+					<integer>110</integer>
+					<integer>45</integer>
+					<integer>393216</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1196,9 +1196,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>126</integer>
-					<integer>10878976</integer>
+					<integer>50</integer>
+					<integer>19</integer>
+					<integer>393216</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1212,9 +1212,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>125</integer>
-					<integer>10878976</integer>
+					<integer>51</integer>
+					<integer>20</integer>
+					<integer>393216</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1292,9 +1292,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>119</integer>
-					<integer>13</integer>
-					<integer>917504</integer>
+					<integer>65535</integer>
+					<integer>123</integer>
+					<integer>8781824</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1308,9 +1308,9 @@
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>101</integer>
-					<integer>14</integer>
-					<integer>917504</integer>
+					<integer>65535</integer>
+					<integer>124</integer>
+					<integer>8781824</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1342,7 +1342,7 @@
 				<array>
 					<integer>65535</integer>
 					<integer>126</integer>
-					<integer>11403264</integer>
+					<integer>8781824</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -1358,7 +1358,7 @@
 				<array>
 					<integer>65535</integer>
 					<integer>125</integer>
-					<integer>11403264</integer>
+					<integer>8781824</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
