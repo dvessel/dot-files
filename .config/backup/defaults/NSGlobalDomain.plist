@@ -62,36 +62,12 @@
 		<string>@^s</string>
 		<key>ViewShow Sidebar</key>
 		<string>@^s</string>
-		<key>WindowCenter</key>
-		<string>^$c</string>
 		<key>WindowDuplicate Tab</key>
 		<string>^$d</string>
-		<key>WindowFill</key>
-		<string>^$f</string>
-		<key>WindowFull Screen TileLeft of Screen</key>
-		<string>@^w</string>
-		<key>WindowFull Screen TileMake Window Full Screen</key>
-		<string>@^t</string>
-		<key>WindowFull Screen TileReplace Tiled Window</key>
-		<string>@^r</string>
-		<key>WindowFull Screen TileRight of Screen</key>
-		<string>@^e</string>
-		<key>WindowMinimize</key>
-		<string>^$m</string>
-		<key>WindowMinimize All</key>
-		<string>~^$m</string>
-		<key>WindowMove &amp; ResizeReturn to Previous Size</key>
-		<string>^$r</string>
 		<key>WindowMove Tab to New Window</key>
 		<string>^$t</string>
 		<key>WindowRemove Window from Set</key>
 		<string>^$d</string>
-		<key>WindowZoom</key>
-		<string>^$z</string>
-		<key>WindowZoom All</key>
-		<string>~^$z</string>
-		<key>Lock Screen</key>
-		<string>@$</string>
 	</dict>
 	<key>NSWindowResizeTime</key>
 	<real>0.065000000000000002</real>
