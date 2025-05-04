@@ -8,9 +8,9 @@
   ],
   "tabAutocompleteModel": [
     {
-      "title": "Qwen2.5-Coder 1.5B completion",
+      "title": "Qwen2.5-Coder 1.5B",
       "provider": "ollama",
-      "model": "qwen2.5-coder:1.5b-completion"
+      "model": "qwen2.5-coder:1.5b-base-q8_0"
     }
   ],
   "embeddingsProvider": {
