@@ -19,7 +19,7 @@
 !.config/vscodium/settings.json
 !.config/vscodium/snippets
 .continue/*
-!.continue/config.json
+!.continue/config.yaml
 .diffusionbee
 .hammerspoon/Spoons/EmmyLua.spoon
 .lesshst

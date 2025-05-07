@@ -1,0 +1,19 @@
+name: local
+version: v1
+schema: v1
+models:
+  - name: qwen3:1.7b
+    provider: ollama
+    model: qwen3:1.7b-q8_0
+    roles:
+      - autocomplete
+
+  - name: nomic-embed-text
+    provider: ollama
+    model: nomic-embed-text:latest
+    roles:
+      - embed
+
+  - name: Ollama Autodetect
+    provider: ollama
+    model: AUTODETECT
