@@ -9,17 +9,5 @@ keybind = ctrl+[=text:\x1B
 keybind = super+ctrl+j=jump_to_prompt:1
 keybind = super+ctrl+k=jump_to_prompt:-1
 
-keybind = super+left_bracket=goto_split:previous
-keybind = super+right_bracket=goto_split:next
-keybind = super+shift+h=goto_split:left
-keybind = super+shift+l=goto_split:right
-keybind = super+shift+k=goto_split:up
-keybind = super+shift+j=goto_split:down
-keybind = super+alt+equal=equalize_splits
-keybind = super+alt+h=resize_split:left,10
-keybind = super+alt+l=resize_split:right,10
-keybind = super+alt+k=resize_split:up,10
-keybind = super+alt+j=resize_split:down,10
-
 keybind = super+s>o=write_screen_file:open
 keybind = super+s>p=write_screen_file:paste
