@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-# Double tildes `~~` at the end of the command will pipe to a pager.
+# Double back slashes appended to a command will pipe to a pager.
 if test -f /opt/homebrew/bin/bat; then
-  alias -g -- ---='2>&1 | /opt/homebrew/bin/bat --plain'
+  alias -g -- //='2>&1 | /opt/homebrew/bin/bat --plain'
 else
-  alias -g -- ---='2>&1 | less'
+  alias -g -- //='2>&1 | less'
 fi
 
 if type lsd &>/dev/null; then
