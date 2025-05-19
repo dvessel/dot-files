@@ -1514,17 +1514,6 @@
 		<dict>
 			<key>enabled</key>
 			<false/>
-			<key>value</key>
-			<dict>
-				<key>parameters</key>
-				<array>
-					<integer>65535</integer>
-					<integer>126</integer>
-					<integer>8650752</integer>
-				</array>
-				<key>type</key>
-				<string>standard</string>
-			</dict>
 		</dict>
 		<key>33</key>
 		<dict>
@@ -1545,18 +1534,7 @@
 		<key>34</key>
 		<dict>
 			<key>enabled</key>
-			<true/>
-			<key>value</key>
-			<dict>
-				<key>parameters</key>
-				<array>
-					<integer>65535</integer>
-					<integer>126</integer>
-					<integer>8781824</integer>
-				</array>
-				<key>type</key>
-				<string>standard</string>
-			</dict>
+			<false/>
 		</dict>
 		<key>35</key>
 		<dict>
