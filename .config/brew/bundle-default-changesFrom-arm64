@@ -5,6 +5,8 @@ brew "bandcamp-dl"
 brew "caire"
 # Cross-platform make
 brew "cmake"
+# CLI tool to convert your codebase into a single LLM prompt
+brew "code2prompt"
 # Utility to configure multi-display resolutions and arrangements
 brew "displayplacer"
 # Monitor a directory for changes and run a shell command
