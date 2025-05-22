@@ -29,6 +29,8 @@ brew "lazygit"
 brew "libxmlb"
 # CLI for SQLite Databases with auto-completion and syntax highlighting
 brew "litecli"
+# Access large language models from the command-line
+brew "llm"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Language Server for the Lua language
