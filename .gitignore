@@ -5,7 +5,6 @@
 .cache
 .CFUserTextEncoding
 .conda
-.config/bandcamp-dl.json
 # vscodium->markdown preview
 .config/crossnote
 .config/docker

@@ -1,0 +1,33 @@
+#compdef bandcamp-dl
+
+# zsh completions for 'bandcamp-dl'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  {-h,--help}'[show this help message and exit]'
+  {-v,--version}'[show version]'
+  {-d,--debug}'[verbose logging]'
+  '--artist[the artists slug (from the URL)]'
+  '--track[the tracks slug (from the URL, for use with --artist)]'
+  '--album[the albums slug (from the URL, for use with --artist)]'
+  '--template[output filename template, default:]'
+  '--base-dir[base location of which all files are downloaded]'
+  {-f,--full-album}'[download only if all tracks are available]'
+  {-o,--overwrite}'[overwrite tracks that already exist. Default is False.]'
+  {-n,--no-art}'[skip grabbing album art]'
+  {-e,--embed-lyrics}'[embed track lyrics (If available)]'
+  {-g,--group}'[use album/track Label as iTunes grouping]'
+  {-r,--embed-art}'[embed album art (If available)]'
+  {-y,--no-slugify}'[disable slugification of track, album, and artist]'
+  {-c,--ok-chars}'[specify allowed chars in slugify, default: -_~]'
+  {-s,--space-char}'[specify the char to use in place of spaces, default: -]'
+  {-a,--ascii-only}'[only allow ASCII chars (北京 (capital of china) -> bei-]'
+  {-k,--keep-spaces}'[retain whitespace in filenames]'
+  {-u,--keep-upper}'[retain uppercase letters in filenames]'
+  '--no-confirm[override confirmation prompts. Use with caution]'
+  '--embed-genres[embed album/track genres]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments

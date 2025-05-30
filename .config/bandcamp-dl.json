@@ -1,0 +1,18 @@
+{
+  "base-dir": "/Users/joon/Downloads",
+  "template": "%{artist}/%{album}/%{track} - %{title}",
+  "overwrite": false,
+  "no-art": false,
+  "embed-art": true,
+  "embed-lyrics": true,
+  "group": false,
+  "no-slugify": false,
+  "ok-chars": "-_~",
+  "space-char": "-",
+  "ascii-only": false,
+  "keep-spaces": true,
+  "keep-upper": true,
+  "no-confirm": false,
+  "debug": false,
+  "embed-genres": true
+}
