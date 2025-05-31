@@ -1,38 +1,18 @@
 # changesFrom from 'bundle-default-arm64':
 # Simple python script to download Bandcamp albums
 brew "bandcamp-dl"
-# Content aware image resize tool
-brew "caire"
-# Cross-platform make
-brew "cmake"
 # CLI tool to convert your codebase into a single LLM prompt
 brew "code2prompt"
 # Utility to configure multi-display resolutions and arrangements
 brew "displayplacer"
-# Select default apps for documents and URL schemes on macOS
-brew "duti"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# Turn movies into GIFs
-brew "gifify"
-# Open source programming language to build simple/reliable/efficient software
-brew "go"
-# Command-line tool for generating regular expressions
-brew "grex"
-# Command-line benchmarking tool
-brew "hyperfine"
-# Interactive JSON filter using jq
-brew "jnv"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Library for querying compressed XML metadata
-brew "libxmlb"
-# CLI for SQLite Databases with auto-completion and syntax highlighting
-brew "litecli"
 # Access large language models from the command-line
 brew "llm"
 # Curses-based tool for viewing and analyzing log files
@@ -49,8 +29,6 @@ brew "ollama", restart_service: :changed
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
 # PNG image optimizing utility
 brew "pngquant"
 # Tools for Multiple Arcade Machine Emulator
@@ -59,10 +37,8 @@ brew "rom-tools"
 brew "setweblocthumb"
 # Official tldr client written in Rust
 brew "tlrc"
-# Terminal multiplexer
-brew "tmux"
-# XML command-line utilities
-brew "xmlstarlet"
+# Yet another typing test, but crab flavoured
+brew "toipe"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # ROM updater and validation tool for OpenEmu's MAME core.
