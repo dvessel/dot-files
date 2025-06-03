@@ -109,6 +109,7 @@
 		<key>TB Item Identifiers</key>
 		<array>
 			<string>com.apple.finder.BACK</string>
+			<string>com.apple.finder.ACTN</string>
 			<string>com.apple.finder.SRCH</string>
 		</array>
 		<key>TB Size Mode</key>
