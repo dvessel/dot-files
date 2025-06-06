@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+#function rhistory {
+  setopt LOCAL_OPTIONS ERR_RETURN PIPE_FAIL
+  local all opts
+  zparseopts -D -E -F - {a,-all}=all || {
+    print 'usage: rhistory [--all]'
+    return 1
+  }
+  if [[ -z $all ]]
+  then
+    opts=(-I)
+  fi
+  fc -l -n $opts 1 | fzf --no-sort --tac --multi | while IFS='' read -r delete_command
+  do
+    printf 'Removing history entry "%s"\n' $delete_command
+    local HISTORY_IGNORE="${(b)delete_command}"
+    fc -W
+    fc -p $HISTFILE $HISTSIZE $SAVEHIST
+  done
+#}
