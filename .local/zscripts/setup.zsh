@@ -23,6 +23,6 @@ then
   source $ZDOTDIR/.zprofile
   print "Ignore brew setup instructions. Homebrew \$PATH already set in .zprofile."
   print "Installing brew basic-setup…"
-  brew bundle --no-lock --file ${XDG_CONFIG_HOME:-~/.config}/brew/basic-setup
+  brew bundle --file ${XDG_CONFIG_HOME:-~/.config}/brew/basic-setup
 fi
 unset __brew_path
