@@ -21,7 +21,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{616, 410}, {825, 464}}</string>
+			<string>{{452, 331}, {825, 416}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -31,9 +31,9 @@
 		<key>IconViewSettings</key>
 		<dict>
 			<key>arrangeBy</key>
-			<string>kind</string>
+			<string>dateLastOpened</string>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -57,7 +57,7 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>viewOptionsVersion</key>
 			<integer>1</integer>
 		</dict>
@@ -83,7 +83,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{616, 410}, {825, 464}}</string>
+			<string>{{452, 331}, {825, 416}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -145,7 +145,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{616, 410}, {825, 464}}</string>
+			<string>{{452, 331}, {825, 416}}</string>
 		</dict>
 	</dict>
 	<key>NewWindowTarget</key>
@@ -186,7 +186,7 @@
 			<key>ColumnWidth</key>
 			<integer>275</integer>
 			<key>FontSize</key>
-			<integer>13</integer>
+			<integer>12</integer>
 			<key>PreviewDisclosureState</key>
 			<true/>
 			<key>SharedArrangeBy</key>
@@ -209,7 +209,7 @@
 		<key>ExtendedListViewSettingsV2</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>14</real>
+			<real>13</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
@@ -366,7 +366,7 @@
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
-			<real>14</real>
+			<real>13</real>
 			<key>useRelativeDates</key>
 			<true/>
 			<key>viewOptionsVersion</key>
@@ -388,7 +388,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>14</real>
+			<real>13</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -402,9 +402,9 @@
 			<key>gridOffsetY</key>
 			<real>0.0</real>
 			<key>gridSpacing</key>
-			<real>100</real>
+			<real>85</real>
 			<key>iconSize</key>
-			<real>188</real>
+			<real>156</real>
 			<key>labelOnBottom</key>
 			<true/>
 			<key>scrollPositionX</key>
@@ -414,16 +414,16 @@
 			<key>showIconPreview</key>
 			<true/>
 			<key>showItemInfo</key>
-			<false/>
+			<true/>
 			<key>textSize</key>
-			<real>14</real>
+			<real>13</real>
 			<key>viewOptionsVersion</key>
 			<string>1</string>
 		</dict>
 		<key>ListViewSettings</key>
 		<dict>
 			<key>axTextSize</key>
-			<real>14</real>
+			<real>13</real>
 			<key>calculateAllSizes</key>
 			<true/>
 			<key>columns</key>
@@ -539,7 +539,7 @@
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
-			<real>14</real>
+			<real>13</real>
 			<key>useRelativeDates</key>
 			<true/>
 			<key>viewOptionsVersion</key>

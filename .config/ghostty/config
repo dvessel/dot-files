@@ -3,14 +3,12 @@
 theme = light:lightness,dark:darkness
 
 font-family = Lilex Nerd Font
-font-size   = 15
-font-thicken = true
-font-thicken-strength = 0
+font-size   = 14
 
-window-width  = 88
-window-height = 29
-window-padding-x = 20,0
-window-padding-y = 7,0
+window-width  = 79
+window-height = 25
+window-padding-x = 14,0
+window-padding-y = 0
 window-padding-color = extend
 
 macos-titlebar-style = tabs
