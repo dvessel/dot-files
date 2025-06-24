@@ -7,8 +7,6 @@ brew "code2prompt"
 brew "displayplacer"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Simple terminal UI for git commands
