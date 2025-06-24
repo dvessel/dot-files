@@ -11,8 +11,6 @@ brew "fswatch"
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Access large language models from the command-line
-brew "llm"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Language Server for the Lua language
