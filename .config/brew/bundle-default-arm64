@@ -33,6 +33,6 @@ cask "hammerspoon"
 # Minimal installer for conda
 cask "miniconda"
 # Neovim Client
-cask "neovide"
+cask "neovide-app"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
