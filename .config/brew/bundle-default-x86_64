@@ -4,5 +4,3 @@ brew "antidote"
 brew "fzf"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
-# PAM module for reattaching to the user's GUI (Aqua) session
-brew "pam-reattach"

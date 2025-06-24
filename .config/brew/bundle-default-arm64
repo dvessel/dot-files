@@ -14,8 +14,6 @@ brew "git"
 brew "lsd"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# PAM module for reattaching to the user's GUI (Aqua) session
-brew "pam-reattach"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Search tool like grep and The Silver Searcher
