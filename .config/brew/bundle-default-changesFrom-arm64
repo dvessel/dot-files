@@ -37,6 +37,8 @@ brew "setweblocthumb"
 brew "tlrc"
 # Yet another typing test, but crab flavoured
 brew "toipe"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # ROM updater and validation tool for OpenEmu's MAME core.
