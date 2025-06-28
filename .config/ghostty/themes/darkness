@@ -30,3 +30,6 @@ cursor-color = #FF0000
 cursor-text  = #FFFFFF
 selection-background = #aa1414
 selection-foreground = #aaa7a6
+
+# neovide style cursor trails.
+custom-shader = themes/cursor_trails.glsl
