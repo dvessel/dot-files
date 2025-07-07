@@ -4,6 +4,9 @@ float getSdfRectangle(in vec2 p, in vec2 xy, in vec2 b)
     return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0);
 }
 
+// Based on Inigo Quilez's 2D distance functions article: https://iquilezles.org/articles/distfunctions2d/
+// Potencially optimized by eliminating conditionals and loops to enhance performance and reduce branching
+
 float seg(in vec2 p, in vec2 a, in vec2 b, inout float s, float d) {
     vec2 e = b - a;
     vec2 w = p - a;
@@ -56,8 +59,12 @@ vec2 getRectangleCenter(vec4 rectangle) {
 float ease(float x) {
     return pow(1.0 - x, 3.0);
 }
+vec4 saturate(vec4 color, float factor) {
+    float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.)); // luminance
+    return mix(vec4(gray), color, factor);
+}
 
-const vec4 TRAIL_COLOR = vec4(1., 0., 0., 1.0);
+vec4 TRAIL_COLOR = iCurrentCursorColor;
 const float OPACITY = 0.6;
 const float DURATION = 0.3; //IN SECONDS
 
@@ -98,10 +105,13 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     float lineLength = distance(centerCC, centerCP);
 
     vec4 newColor = vec4(fragColor);
+
+    vec4 trail = TRAIL_COLOR;
+    trail = saturate(trail, 2.5);
     // Draw trail
-    newColor = mix(newColor, TRAIL_COLOR, antialising(sdfTrail));
+    newColor = mix(newColor, trail, antialising(sdfTrail));
     // Draw current cursor
-    newColor = mix(newColor, TRAIL_COLOR, antialising(sdfCurrentCursor));
+    newColor = mix(newColor, trail, antialising(sdfCurrentCursor));
     newColor = mix(newColor, fragColor, step(sdfCurrentCursor, 0.));
     // newColor = mix(fragColor, newColor, OPACITY);
     fragColor = mix(fragColor, newColor, step(sdfCurrentCursor, easedProgress * lineLength));
