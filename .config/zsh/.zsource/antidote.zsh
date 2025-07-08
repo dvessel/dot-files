@@ -9,7 +9,7 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
 
   # - mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
-  zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
+  zstyle ':plugin:ez-compinit' 'use-cache' 'no'
 
   # - dvessel/zsh-completion-generator
   export GENCOMPL_FPATH=$ZFUNCDIR
