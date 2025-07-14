@@ -4,12 +4,8 @@
 <dict>
 	<key>NSFixedPitchFont</key>
 	<string>LilexNF-Regular</string>
-	<key>NSFixedPitchFontSize</key>
-	<string>14</string>
 	<key>NSFont</key>
 	<string>Helvetica</string>
-	<key>NSFontSize</key>
-	<string>14</string>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>MessageSend</key>
@@ -20,8 +16,6 @@
 		<string>NSUserKeyEquivalents</string>
 		<string>NSFixedPitchFont</string>
 		<string>NSFont</string>
-		<string>NSFixedPitchFontSize</string>
-		<string>NSFontSize</string>
 	</array>
 </dict>
 </plist>
