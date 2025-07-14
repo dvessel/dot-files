@@ -6,21 +6,8 @@
 	<dict>
 		<key>(null) - 0944B5AC-8D0E-4390-A1B2-F26C00712ABF - runShortcutAsService</key>
 		<dict>
-			<key>enabled_context_menu</key>
-			<false/>
-			<key>enabled_services_menu</key>
-			<false/>
-			<key>presentation_modes</key>
-			<dict>
-				<key>ContextMenu</key>
-				<false/>
-				<key>FinderPreview</key>
-				<false/>
-				<key>ServicesMenu</key>
-				<false/>
-				<key>TouchBar</key>
-				<false/>
-			</dict>
+			<key>key_equivalent</key>
+			<string>@^6</string>
 		</dict>
 		<key>(null) - 804B9E31-A6D4-4BE3-BBA6-43B3FA23A808 - runShortcutAsService</key>
 		<dict>
