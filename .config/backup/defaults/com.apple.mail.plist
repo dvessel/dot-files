@@ -5,11 +5,11 @@
 	<key>NSFixedPitchFont</key>
 	<string>LilexNF-Regular</string>
 	<key>NSFixedPitchFontSize</key>
-	<string>14</string>
+	<integer>14</integer>
 	<key>NSFont</key>
 	<string>Helvetica</string>
 	<key>NSFontSize</key>
-	<string>14</string>
+	<integer>14</integer>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
 		<key>MessageSend</key>

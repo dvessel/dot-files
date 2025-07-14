@@ -41,7 +41,7 @@
 	<key>NSQuotedKeystrokeBinding</key>
 	<string>^q</string>
 	<key>NSTableViewDefaultSizeMode</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>NSTextKillRingSize</key>
 	<integer>5</integer>
 	<key>NSUserKeyEquivalents</key>
