@@ -14,6 +14,12 @@ models:
     roles:
       - embed
 
+  - name: qwen3-embedding
+    provider: ollama
+    model: dengcao/Qwen3-Embedding-0.6B:Q8_0
+    roles:
+      - embed
+
   - name: Ollama Autodetect
     provider: ollama
     model: AUTODETECT
