@@ -9,7 +9,7 @@
   helper = !/opt/homebrew/bin/gh auth git-credential
 [core]
   whitespace=fix,-indent-with-non-tab,-indent-with-tab,trailing-space,cr-at-eol
-  editor = codium
+  editor = nvim
   excludesfile = ~/.config/git/ignore
 [diff]
   tool = opendiff
