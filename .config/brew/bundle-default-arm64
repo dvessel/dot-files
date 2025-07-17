@@ -22,8 +22,7 @@ brew "ripgrep"
 brew "tag"
 # Internet file retriever
 brew "wget"
-# Developer targeted fonts with a high number of glyphs
-cask "font-lilex-nerd-font"
+cask "font-lilex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty@tip"
 # Desktop automation application

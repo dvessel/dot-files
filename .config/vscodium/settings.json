@@ -13,7 +13,7 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.cursorSurroundingLines": 7,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "Lilex Nerd Font",
+  "editor.fontFamily": "Lilex",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.minimap.enabled": false,
