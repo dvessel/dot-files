@@ -17,7 +17,7 @@ macos-icon = blueprint
 initial-window = false
 mouse-hide-while-typing = true
 
-quick-terminal-animation-duration = 0.15
+quick-terminal-animation-duration = 0.2
 quick-terminal-position = right
 quick-terminal-space-behavior = remain
 
