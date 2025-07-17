@@ -91,9 +91,9 @@ if vim.g.neovide then
   vim.g.neovide_theme = 'auto'
   vim.g.neovide_padding_top = 10
   -- Font size adjust keybind for Neovide.
-  vim.keymap.set({ "n", "v" }, "<D-=>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>")
-  vim.keymap.set({ "n", "v" }, "<D-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>")
-  vim.keymap.set({ "n", "v" }, "<D-0>", ":lua vim.g.neovide_scale_factor = 1<CR>")
+  vim.keymap.set({ 'n', 'v' }, '<D-=>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>')
+  vim.keymap.set({ 'n', 'v' }, '<D-->', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>')
+  vim.keymap.set({ 'n', 'v' }, '<D-0>', ':lua vim.g.neovide_scale_factor = 1<CR>')
 end
 
 -- Set <space> as the leader key
