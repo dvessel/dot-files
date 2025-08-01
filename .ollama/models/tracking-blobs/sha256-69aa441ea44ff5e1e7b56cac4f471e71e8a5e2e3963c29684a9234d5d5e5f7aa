@@ -1,0 +1,1 @@
+{"repeat_penalty":1.05,"stop":["\u003c|im_start|\u003e","\u003c|im_end|\u003e","\u003c|endoftext|\u003e"],"temperature":0.7,"top_k":20,"top_p":0.8}
