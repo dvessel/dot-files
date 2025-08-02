@@ -29,6 +29,8 @@ brew "pandoc"
 brew "pngquant"
 # Tools for Multiple Arcade Machine Emulator
 brew "rom-tools"
+# Fast command-line bittorrent client and server
+brew "rqbit"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
 # Official tldr client written in Rust
