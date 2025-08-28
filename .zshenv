@@ -20,8 +20,12 @@ export DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.config/docker}
 # Autoloading zfunctions and zcompletions.
 export ZFUNCDIR=${ZFUNCDIR:-$HOME/.local/zfunctions}
 
+# Homebrew options.
+export HOMEBREW_NO_ENV_HINTS=1
+
 # Disable session persistence when running Terminal.app.
 # It leaves behind .zsh_sessions which can turn to bloat.
 if [[ $TERM_PROGRAM == Apple_Terminal ]]; then
   export SHELL_SESSIONS_DISABLE=1
 fi
+
