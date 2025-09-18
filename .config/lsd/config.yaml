@@ -16,4 +16,3 @@ ignore-globs:
   - .fseventsd
   - .Spotlight-V100
   - .VolumeIcon.icns
-  - Icon?
