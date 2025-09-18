@@ -8,6 +8,12 @@ models:
     roles:
       - autocomplete
 
+  - name: embeddinggemma
+    provider: ollama
+    model: embeddinggemma:latest
+    roles:
+      - embed
+
   - name: nomic-embed-text
     provider: ollama
     model: nomic-embed-text:latest
