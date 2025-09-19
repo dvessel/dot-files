@@ -49,7 +49,7 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>40</real>
+			<real>48</real>
 			<key>labelOnBottom</key>
 			<false/>
 			<key>showIconPreview</key>
@@ -186,7 +186,7 @@
 			<key>ColumnWidth</key>
 			<integer>275</integer>
 			<key>FontSize</key>
-			<integer>12</integer>
+			<integer>14</integer>
 			<key>PreviewDisclosureState</key>
 			<true/>
 			<key>SharedArrangeBy</key>

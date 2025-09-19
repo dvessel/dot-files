@@ -3,7 +3,7 @@
 theme = light:lightness,dark:darkness
 
 font-family = Lilex
-font-size   = 13
+font-size   = 15
 
 window-width = 89
 window-height = 32
