@@ -52,7 +52,6 @@
 		<string>NSUserKeyEquivalents</string>
 		<string>OpenNewTabsInFront</string>
 		<string>TabCreationPolicy</string>
-		<string>ShowStandaloneTabBar</string>
 		<string>SearchProviderShortName</string>
 		<string>AutoOpenSafeDownloads</string>
 		<string>EnableEnhancedPrivacyInRegularBrowsing</string>
@@ -64,8 +63,6 @@
 		<string>WebKitPreferences.tabFocusesLinks</string>
 		<string>WebKitTabToLinksPreferenceKey</string>
 	</array>
-	<key>ShowStandaloneTabBar</key>
-	<false/>
 	<key>TabCreationPolicy</key>
 	<integer>0</integer>
 	<key>WebKitPreferences.privateClickMeasurementEnabled</key>

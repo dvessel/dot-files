@@ -4,9 +4,13 @@
 <dict>
 	<key>FontSizeCategory</key>
 	<dict>
+		<key>com.apple.Magnifier</key>
+		<string>UseGlobal</string>
 		<key>com.apple.MobileSMS</key>
 		<string>UseGlobal</string>
 		<key>com.apple.Notes</key>
+		<string>UseGlobal</string>
+		<key>com.apple.accessibility.AccessibilityReader</key>
 		<string>UseGlobal</string>
 		<key>com.apple.finder</key>
 		<string>Custom</string>
@@ -14,9 +18,13 @@
 		<string>UseGlobal</string>
 		<key>com.apple.iCal</key>
 		<string>UseGlobal</string>
+		<key>com.apple.journal</key>
+		<string>UseGlobal</string>
 		<key>com.apple.mail</key>
 		<string>UseGlobal</string>
 		<key>com.apple.news</key>
+		<string>UseGlobal</string>
+		<key>com.apple.reminders</key>
 		<string>UseGlobal</string>
 		<key>com.apple.stocks</key>
 		<string>UseGlobal</string>

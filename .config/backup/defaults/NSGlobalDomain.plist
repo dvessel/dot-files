@@ -12,12 +12,16 @@
 	<integer>0</integer>
 	<key>AppleHighlightColor</key>
 	<string>1.000000 0.733333 0.721569 Red</string>
+	<key>AppleIconAppearanceCustomTintColor</key>
+	<string>0.475000 0.770650 1.000000 1.000000</string>
+	<key>AppleIconAppearanceTintColor</key>
+	<string>Other</string>
 	<key>AppleInterfaceStyleSwitchesAutomatically</key>
 	<true/>
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<true/>
 	<key>AppleReduceDesktopTinting</key>
-	<true/>
+	<false/>
 	<key>AppleShowScrollBars</key>
 	<string>WhenScrolling</string>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -103,6 +107,8 @@
 		<string>com.apple.mouse.doubleClickThreshold</string>
 		<string>com.apple.springing.delay</string>
 		<string>com.apple.trackpad.scrolling</string>
+		<string>AppleIconAppearanceCustomTintColor</string>
+		<string>AppleIconAppearanceTintColor</string>
 	</array>
 	<key>com.apple.mouse.doubleClickThreshold</key>
 	<real>0.5</real>
