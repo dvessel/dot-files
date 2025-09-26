@@ -7,7 +7,7 @@
 		<key>(null) - 0944B5AC-8D0E-4390-A1B2-F26C00712ABF - runShortcutAsService</key>
 		<dict>
 			<key>key_equivalent</key>
-			<string>@^6</string>
+			<string>@$6</string>
 		</dict>
 		<key>(null) - 804B9E31-A6D4-4BE3-BBA6-43B3FA23A808 - runShortcutAsService</key>
 		<dict>
@@ -31,6 +31,11 @@
 		<dict>
 			<key>key_equivalent</key>
 			<string>$</string>
+		</dict>
+		<key>(null) - B2826BA2-E914-46BA-8424-4F7210359380 - runShortcutAsService</key>
+		<dict>
+			<key>key_equivalent</key>
+			<string>@$0</string>
 		</dict>
 		<key>(null) - C6DB1838-1C62-4B0C-8512-EC16316B9C32 - runShortcutAsService</key>
 		<dict>
