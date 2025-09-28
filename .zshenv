@@ -22,6 +22,7 @@ export ZFUNCDIR=${ZFUNCDIR:-$HOME/.local/zfunctions}
 
 # Homebrew options.
 export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_AUTO_UPDATE_SECS=3600
 
 # Disable session persistence when running Terminal.app.
 # It leaves behind .zsh_sessions which can turn to bloat.
