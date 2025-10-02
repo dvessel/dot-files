@@ -1,15 +1,12 @@
-
 {{- $lastUserIdx := -1 -}}
 {{- range $idx, $msg := .Messages -}}
 {{- if eq $msg.Role "user" }}{{ $lastUserIdx = $idx }}{{ end -}}
 {{- end }}
 {{- if or .System .Tools }}<|im_start|>system
-{{ if .System }}
-{{ .System }}
-{{- end }}
-{{- if .Tools }}
+{{ if .System }}{{ .System }}
 
-# Tools
+{{ end }}
+{{- if .Tools }}# Tools
 
 You may call one or more functions to assist with the user query.
 
@@ -32,13 +29,13 @@ For each function call, return a json object with function name and arguments wi
 {{- if eq .Role "user" }}<|im_start|>user
 {{ .Content }}<|im_end|>
 {{ else if eq .Role "assistant" }}<|im_start|>assistant
-{{ if (and $.IsThinkSet (and .Thinking (or $last (gt $i $lastUserIdx)))) -}}
-<think>{{ .Thinking }}</think>
-{{ end -}}
-{{ if .Content }}{{ .Content }}
-{{- else if .ToolCalls }}<tool_call>
-{{ range .ToolCalls }}{"name": "{{ .Function.Name }}", "arguments": {{ .Function.Arguments }}}
-{{ end }}</tool_call>
+{{ if .Content }}{{ .Content }}{{ end }}
+{{- if .ToolCalls }}
+{{- range .ToolCalls }}
+<tool_call>
+{"name": "{{ .Function.Name }}", "arguments": {{ .Function.Arguments }}}
+</tool_call>
+{{- end }}
 {{- end }}{{ if not $last }}<|im_end|>
 {{ end }}
 {{- else if eq .Role "tool" }}<|im_start|>user
