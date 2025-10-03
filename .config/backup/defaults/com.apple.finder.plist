@@ -15,13 +15,13 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<true/>
+			<false/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{452, 331}, {825, 416}}</string>
+			<string>{{578, 421}, {900, 446}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -33,7 +33,7 @@
 			<key>arrangeBy</key>
 			<string>dateLastOpened</string>
 			<key>axTextSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -49,7 +49,7 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>48</real>
+			<real>44</real>
 			<key>labelOnBottom</key>
 			<false/>
 			<key>showIconPreview</key>
@@ -57,7 +57,7 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>12</real>
+			<real>13</real>
 			<key>viewOptionsVersion</key>
 			<integer>1</integer>
 		</dict>
@@ -77,13 +77,13 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<true/>
+			<false/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{452, 331}, {825, 416}}</string>
+			<string>{{578, 420}, {900, 448}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -139,13 +139,13 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<true/>
+			<false/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{452, 331}, {825, 416}}</string>
+			<string>{{578, 421}, {900, 446}}</string>
 		</dict>
 	</dict>
 	<key>NewWindowTarget</key>
@@ -184,9 +184,9 @@
 			<key>ColumnShowIcons</key>
 			<true/>
 			<key>ColumnWidth</key>
-			<integer>275</integer>
+			<integer>300</integer>
 			<key>FontSize</key>
-			<integer>14</integer>
+			<integer>15</integer>
 			<key>PreviewDisclosureState</key>
 			<true/>
 			<key>SharedArrangeBy</key>
