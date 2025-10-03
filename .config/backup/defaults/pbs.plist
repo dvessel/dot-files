@@ -51,16 +51,43 @@
 		<dict>
 			<key>key_equivalent</key>
 			<string>@$</string>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<true/>
+				<key>ServicesMenu</key>
+				<true/>
+				<key>TouchBar</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>(null) - Finder 3 Column View - runWorkflowAsService</key>
 		<dict>
 			<key>key_equivalent</key>
 			<string>@$</string>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<true/>
+				<key>ServicesMenu</key>
+				<true/>
+				<key>TouchBar</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>(null) - Finder 4 Column View - runWorkflowAsService</key>
 		<dict>
 			<key>key_equivalent</key>
 			<string>@$</string>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<true/>
+				<key>ServicesMenu</key>
+				<true/>
+				<key>TouchBar</key>
+				<true/>
+			</dict>
 		</dict>
 		<key>co.gitup.mac - Open in GitUp - openRepository</key>
 		<dict>
