@@ -109,7 +109,10 @@
 		<string>com.apple.trackpad.scrolling</string>
 		<string>AppleIconAppearanceCustomTintColor</string>
 		<string>AppleIconAppearanceTintColor</string>
+		<string>com.apple.SwiftUI.DisableSolarium</string>
 	</array>
+	<key>com.apple.SwiftUI.DisableSolarium</key>
+	<false/>
 	<key>com.apple.mouse.doubleClickThreshold</key>
 	<real>0.5</real>
 	<key>com.apple.sound.beep.feedback</key>
