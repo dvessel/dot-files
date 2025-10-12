@@ -4,6 +4,7 @@ local opts=(
   --reverse
   --scroll-off 7
   --info inline
+  --gutter │
   --pointer ┃
   --marker ⁕ 
   --ellipsis …
