@@ -14,6 +14,12 @@ models:
     roles:
       - embed
 
+  - name: nomic-embed-text
+    provider: ollama
+    model: nomic-embed-text:latest
+    roles:
+      - embed
+
   - name: Ollama Autodetect
     provider: ollama
     model: AUTODETECT
