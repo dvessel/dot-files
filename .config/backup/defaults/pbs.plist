@@ -337,62 +337,6 @@
 				<false/>
 			</dict>
 		</dict>
-		<key>com.apple.dt.instruments.backgroundinstruments - Time Profile Active Application - timeProfileFrontMost</key>
-		<dict>
-			<key>enabled_context_menu</key>
-			<false/>
-			<key>enabled_services_menu</key>
-			<false/>
-			<key>presentation_modes</key>
-			<dict>
-				<key>ContextMenu</key>
-				<false/>
-				<key>ServicesMenu</key>
-				<false/>
-			</dict>
-		</dict>
-		<key>com.apple.dt.instruments.backgroundinstruments - Time Profile App Under Mouse - timeProfileUnderMouse</key>
-		<dict>
-			<key>enabled_context_menu</key>
-			<false/>
-			<key>enabled_services_menu</key>
-			<false/>
-			<key>presentation_modes</key>
-			<dict>
-				<key>ContextMenu</key>
-				<false/>
-				<key>ServicesMenu</key>
-				<false/>
-			</dict>
-		</dict>
-		<key>com.apple.dt.instruments.backgroundinstruments - Time Profile Entire System - timeProfileSystem</key>
-		<dict>
-			<key>enabled_context_menu</key>
-			<false/>
-			<key>enabled_services_menu</key>
-			<false/>
-			<key>presentation_modes</key>
-			<dict>
-				<key>ContextMenu</key>
-				<false/>
-				<key>ServicesMenu</key>
-				<false/>
-			</dict>
-		</dict>
-		<key>com.apple.dt.instruments.backgroundinstruments - Toggle Instruments Recording - toggleRecordingState</key>
-		<dict>
-			<key>enabled_context_menu</key>
-			<false/>
-			<key>enabled_services_menu</key>
-			<false/>
-			<key>presentation_modes</key>
-			<dict>
-				<key>ContextMenu</key>
-				<false/>
-				<key>ServicesMenu</key>
-				<false/>
-			</dict>
-		</dict>
 		<key>com.apple.finder - Finder/Open - open</key>
 		<dict>
 			<key>enabled_context_menu</key>
