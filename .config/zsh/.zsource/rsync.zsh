@@ -6,20 +6,16 @@ alias rsync-update='rsync -avzu --progress -h --itemize-changes --exclude=.DS_St
 alias rsync-synchronize='rsync -avzu --delete --progress -h --itemize-changes --exclude=.DS_Store'
 
 local list=(
-  "sync-emulation→→980pro"   #1. alias name
-  "test -d /Volumes/980Pro"     #2. condition
-  "~/Games/Emulation"           #3. source
-  "/Volumes/980Pro"             #4. destination
+  "sync-emulation"
+  # ROMs are symlinked from 980Pro to ~/Games/Emulation.
+  "test -d /Volumes/980Pro && ping -c1 dvessel-ds.local &>/dev/null"
+  "~/Games/{Emulation,Guides}"
+  "dvessel-ds.local:/volume1/storage/Emulation"
 
-  "sync-advancescan→→storage-emulation-mame"
-  "test -d /Volumes/980Pro && test -d /Volumes/Storage"
-  "/Volumes/980Pro/Support/MAME/*"
-  "/Volumes/Storage/Emulation/MAME"
-
-  "sync-storage→→diskstation-storage"
-  "test -d /Volumes/Storage && ping -c1 dvessel-ds.local &>/dev/null"
-  "/Volumes/Storage/*"
-  "dvessel-ds.local:/volume1/storage"
+  "sync-advscan"
+  "ping -c1 dvessel-ds.local &>/dev/null"
+  "~/Games/Support/AdvanceScan/backup/*"
+  "dvessel-ds.local:/volume1/storage/Emulation/MAME"
 )
 
 local i=1 presets=() header
