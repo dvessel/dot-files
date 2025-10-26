@@ -21,7 +21,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{578, 421}, {900, 446}}</string>
+			<string>{{578, 430}, {900, 428}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -31,7 +31,7 @@
 		<key>IconViewSettings</key>
 		<dict>
 			<key>arrangeBy</key>
-			<string>dateLastOpened</string>
+			<string>name</string>
 			<key>axTextSize</key>
 			<real>13</real>
 			<key>backgroundColorBlue</key>
@@ -83,7 +83,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{578, 399}, {900, 493}}</string>
+			<string>{{578, 430}, {900, 428}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -109,7 +109,7 @@
 		<true/>
 		<key>TB Item Identifiers</key>
 		<array>
-			<string>NSToolbarSpaceItem</string>
+			<string>com.apple.finder.BACK</string>
 			<string>com.apple.finder.SRCH</string>
 		</array>
 		<key>TB Size Mode</key>
@@ -145,7 +145,7 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>WindowBounds</key>
-			<string>{{578, 421}, {900, 446}}</string>
+			<string>{{578, 430}, {900, 428}}</string>
 		</dict>
 	</dict>
 	<key>NewWindowTarget</key>
