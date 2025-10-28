@@ -36,7 +36,7 @@
 	<key>show-recents</key>
 	<false/>
 	<key>tilesize</key>
-	<real>48</real>
+	<real>64</real>
 	<key>wvous-bl-corner</key>
 	<integer>1</integer>
 	<key>wvous-bl-modifier</key>
