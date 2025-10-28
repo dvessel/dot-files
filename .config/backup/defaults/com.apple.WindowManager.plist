@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AnimationSpeed</key>
+	<real>1.25</real>
 	<key>AppWindowGroupingBehavior</key>
 	<integer>0</integer>
 	<key>EnableStandardClickToShowDesktop</key>
@@ -17,6 +19,7 @@
 		<string>AppWindowGroupingBehavior</string>
 		<string>EnableStandardClickToShowDesktop</string>
 		<string>EnableTiledWindowMargins</string>
+		<string>AnimationSpeed</string>
 	</array>
 	<key>StandardHideDesktopIcons</key>
 	<false/>
