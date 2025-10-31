@@ -24,4 +24,6 @@ quick-terminal-space-behavior = remain
 # Limit in bytes. Default 10MB, set to 500MB.
 scrollback-limit = 500000000
 
+bell-features = no-attention
+
 config-file = keybinds
