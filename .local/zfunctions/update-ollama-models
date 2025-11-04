@@ -3,10 +3,11 @@
   local models list
   models=`ollama ls | awk '(NR > 1) {print $1}'` 
   list=(${(f)models}) 
-  for m in ${(i)list}
-  do
-    print -- "Updating $m."
-    ollama pull $m
+  # Pull in reverse order to maintain original sorting. Most recently updated always on top.
+  for (( i=${#list[@]}; i>0; i-- )); do
+    print -- "Updating ${list[i]}."
+    ollama pull ${list[i]}
+    # Sorting granularity down to seconds.
     sleep 1
-done
+  done
 #}
