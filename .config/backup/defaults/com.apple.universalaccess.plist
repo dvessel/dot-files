@@ -50,6 +50,6 @@
 	<key>closeViewNearPoint</key>
 	<real>4</real>
 	<key>reduceTransparency</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
