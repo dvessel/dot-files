@@ -17,8 +17,8 @@ macos-icon = blueprint
 initial-window = false
 mouse-hide-while-typing = true
 
-quick-terminal-animation-duration = 0.2
 quick-terminal-position = right
+quick-terminal-size = 33%,100%
 quick-terminal-space-behavior = remain
 
 # Limit in bytes. Default 10MB, set to 500MB.
