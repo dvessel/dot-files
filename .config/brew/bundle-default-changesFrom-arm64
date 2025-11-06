@@ -41,6 +41,8 @@ brew "tlrc"
 brew "toipe"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# XML command-line utilities
+brew "xmlstarlet"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # ROM updater and validation tool for OpenEmu's MAME core.
