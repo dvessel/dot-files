@@ -33,7 +33,7 @@
 			<key>arrangeBy</key>
 			<string>name</string>
 			<key>axTextSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>backgroundColorBlue</key>
 			<real>1</real>
 			<key>backgroundColorGreen</key>
@@ -49,7 +49,7 @@
 			<key>gridSpacing</key>
 			<real>100</real>
 			<key>iconSize</key>
-			<real>44</real>
+			<real>40</real>
 			<key>labelOnBottom</key>
 			<false/>
 			<key>showIconPreview</key>
@@ -57,7 +57,7 @@
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
-			<real>13</real>
+			<real>12</real>
 			<key>viewOptionsVersion</key>
 			<integer>1</integer>
 		</dict>
@@ -186,7 +186,7 @@
 			<key>ColumnWidth</key>
 			<integer>300</integer>
 			<key>FontSize</key>
-			<integer>15</integer>
+			<integer>13</integer>
 			<key>PreviewDisclosureState</key>
 			<true/>
 			<key>SharedArrangeBy</key>
