@@ -6,7 +6,7 @@ font-family = Lilex
 font-size   = 13
 
 window-width = 89
-window-height = 32
+window-height = 29
 window-padding-x = 14,0
 window-padding-y = 0
 window-padding-color = extend
