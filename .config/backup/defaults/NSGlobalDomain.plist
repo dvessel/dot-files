@@ -8,6 +8,8 @@
 	<string>Maximize</string>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>4</integer>
+	<key>AppleDisableTagBasedIconTinting</key>
+	<true/>
 	<key>AppleFontSmoothing</key>
 	<integer>0</integer>
 	<key>AppleHighlightColor</key>
@@ -109,6 +111,7 @@
 		<string>com.apple.trackpad.scrolling</string>
 		<string>AppleIconAppearanceCustomTintColor</string>
 		<string>AppleIconAppearanceTintColor</string>
+		<string>AppleDisableTagBasedIconTinting</string>
 	</array>
 	<key>com.apple.mouse.doubleClickThreshold</key>
 	<real>0.5</real>
