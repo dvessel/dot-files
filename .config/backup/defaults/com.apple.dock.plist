@@ -34,7 +34,7 @@
 	<key>show-process-indicators</key>
 	<false/>
 	<key>show-recents</key>
-	<false/>
+	<true/>
 	<key>tilesize</key>
 	<real>64</real>
 	<key>wvous-bl-corner</key>
@@ -42,7 +42,7 @@
 	<key>wvous-bl-modifier</key>
 	<integer>0</integer>
 	<key>wvous-br-corner</key>
-	<integer>1</integer>
+	<integer>14</integer>
 	<key>wvous-br-modifier</key>
 	<integer>0</integer>
 	<key>wvous-tl-corner</key>
