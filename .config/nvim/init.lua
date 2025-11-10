@@ -86,7 +86,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 
 -- Neovide Options
 if vim.g.neovide then
-  vim.o.guifont = 'Lilex:h14'
+  vim.o.guifont = 'Lilex Nerd Font:h14'
   -- Enable auto dark/light mode theme switch.
   vim.g.neovide_theme = 'auto'
   vim.g.neovide_padding_top = 10

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSFixedPitchFont</key>
-	<string>Lilex-Regular</string>
+	<string>LilexNF-Regular</string>
 	<key>NSFont</key>
 	<string>Helvetica</string>
 	<key>NSUserKeyEquivalents</key>

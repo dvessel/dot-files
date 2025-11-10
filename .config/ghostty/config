@@ -2,7 +2,7 @@
 
 theme = light:lightness,dark:darkness
 
-font-family = Lilex
+font-family = Lilex Nerd Font
 font-size   = 13
 
 window-width = 89
