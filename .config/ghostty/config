@@ -18,7 +18,7 @@ initial-window = false
 mouse-hide-while-typing = true
 
 quick-terminal-position = center
-quick-terminal-size = 42.7%,48%
+quick-terminal-size = 42.7%,55%
 quick-terminal-space-behavior = remain
 
 # Limit in bytes. Default 10MB, set to 500MB.
