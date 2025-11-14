@@ -9,7 +9,7 @@
 	<key>EnableStandardClickToShowDesktop</key>
 	<true/>
 	<key>EnableTiledWindowMargins</key>
-	<true/>
+	<false/>
 	<key>HideDesktop</key>
 	<false/>
 	<key>SettingsIndex</key>
