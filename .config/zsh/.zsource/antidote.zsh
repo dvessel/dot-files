@@ -30,6 +30,30 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
     zvm_bindkey isearch '^S' history-incremental-pattern-search-forward
   }
 
+  # - marlonrichert/zsh-hist
+  #  https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
+  function fzf-delete-history-widget() {
+    local selected num
+    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+    fc -pa $HISTFILE
+    local selected=($(
+      fc -rl 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' | FZF_DEFAULT_OPTS="$(
+        __fzf_defaults "" "-n2..,.. --bind=ctrl-r:toggle-sort,ctrl-z:ignore ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m --multi --bind 'enter:become(echo {+1})'"
+      )" $(__fzfcmd)
+    ))
+    local ret=$?
+    if [ -n "$selected[*]" ]; then
+      hist delete $selected[*]
+    fi
+    zle reset-prompt
+    return $ret
+  }
+  # ctrl-opt-r to trigger widget.
+  zle     -N              fzf-delete-history-widget
+  bindkey -M emacs '^[^R' fzf-delete-history-widget
+  bindkey -M vicmd '^[^R' fzf-delete-history-widget
+  bindkey -M viins '^[^R' fzf-delete-history-widget
+
   # Core plug-in options. @see man antidote
   local zplugins=$ZDOTDIR/.zplugins
   local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
