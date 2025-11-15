@@ -33,13 +33,12 @@ if test -d $HOMEBREW_PREFIX/opt/antidote; then
   # - marlonrichert/zsh-hist
   #  https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
   function fzf-delete-history-widget() {
-    local selected num
     setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
     fc -pa $HISTFILE
     local selected=($(
-      fc -rl 1 | awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' | FZF_DEFAULT_OPTS="$(
-        __fzf_defaults "" "-n2..,.. --bind=ctrl-r:toggle-sort,ctrl-z:ignore ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m --multi --bind 'enter:become(echo {+1})'"
-      )" $(__fzfcmd)
+      printf '%s\t%s\000' "${(kv)history[@]}" | perl -0 -ne 'if (!$seen{(/^\s*[0-9]+\**\t(.*)/s, $1)}++) { s/\n/\n\t/g; print; }' | FZF_DEFAULT_OPTS=$(
+        __fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --wrap-sign '\t↳ ' ${FZF_CTRL_R_OPTS-} --prompt='! ' --query=${(qqq)LBUFFER} +m --multi --read0 --bind 'enter:become(echo {+1})'"
+      ) $(__fzfcmd)
     ))
     local ret=$?
     if [ -n "$selected[*]" ]; then
