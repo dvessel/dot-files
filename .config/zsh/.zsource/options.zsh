@@ -14,6 +14,7 @@ setopt extended_history       # Force saves with timestamps. Could get lost on t
 setopt hist_expire_dups_first # Drop duplicate event first when trimming history.
 setopt hist_save_no_dups      # Do not write a duplicate event to the history file.
 setopt hist_ignore_dups       # Don't save an event that was just saved again.
+setopt hist_ignore_all_dups   # Delete old entry if new entry is a duplicate.
 setopt hist_ignore_space      # Remove record an event starting with a space.
 setopt hist_find_no_dups      # Do not display a previously found event.
 setopt hist_verify            # Do not execute immediately upon history expansion.
