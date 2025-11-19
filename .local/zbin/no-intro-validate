@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 
-_brew_check fd tag libxmlb || return 1
+_brew_check tag libxmlb || return 1
 
 local int db tag_valid
 zparseopts -D -E -F - {t,-tag-valid}=tag_valid || return 1
 trap 'int=1' INT TERM
-db=~/Games/Support/console-db.xmlb
+db=~/Games/Support/no-intro.xmlb
 while read i; do
 	h=`unzip -p $i | md5`
 	xb-tool query $db "datafile/game/rom[@md5='$h']" | sed 's/^RESULT: //1' |
@@ -16,4 +16,4 @@ while read i; do
 		tag -a "No-Intro Validated" "$i:a"
 	fi
 	test $int && break
-done < <( fd .zip ${@:-.} )
+done < <( find ${@:-.} -name "*.zip" )
