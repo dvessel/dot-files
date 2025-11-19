@@ -1,5 +1,6 @@
-# Ignore visible files & folders.
-[^.]*
+# Ignore visible folders and symlinks.
+[^.]*/*
+iCloudDocs
 
 # Dot files not to track.
 .cache
