@@ -89,6 +89,22 @@
 				<true/>
 			</dict>
 		</dict>
+		<key>at.obdev.LaunchBar - Send to LaunchBar - sendToLaunchBar</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<true/>
+			<key>enabled_services_menu</key>
+			<true/>
+			<key>key_equivalent</key>
+			<string>@^l</string>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<true/>
+				<key>ServicesMenu</key>
+				<true/>
+			</dict>
+		</dict>
 		<key>co.gitup.mac - Open in GitUp - openRepository</key>
 		<dict>
 			<key>enabled_context_menu</key>
