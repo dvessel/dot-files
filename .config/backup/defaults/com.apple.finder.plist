@@ -121,8 +121,12 @@
 		<string>^c</string>
 		<key>GoEnclosing Folder in New Window</key>
 		<string>~^c</string>
+		<key>ViewHide Preview</key>
+		<string>@^d</string>
 		<key>ViewHide Preview Options</key>
 		<string>@~j</string>
+		<key>ViewShow Preview</key>
+		<string>@^d</string>
 		<key>ViewShow Preview Options</key>
 		<string>@~j</string>
 	</dict>
