@@ -119,6 +119,20 @@
 				<false/>
 			</dict>
 		</dict>
+		<key>com.alienator88.Pearcleaner - Uninstall with Pearcleaner - handleServiceRequest</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
 		<key>com.apple.ChineseTextConverterService - Convert Text from Simplified to Traditional Chinese - convertTextToTraditionalChinese</key>
 		<dict>
 			<key>enabled_context_menu</key>
@@ -231,14 +245,16 @@
 		</dict>
 		<key>com.apple.Stickies - Make Sticky - makeStickyFromTextService</key>
 		<dict>
-			<key>enabled_services_menu</key>
-			<false/>
+			<key>enabled_context_menu</key>
+			<true/>
+			<key>key_equivalent</key>
+			<string>@^y</string>
 			<key>presentation_modes</key>
 			<dict>
 				<key>ContextMenu</key>
-				<false/>
+				<true/>
 				<key>ServicesMenu</key>
-				<false/>
+				<true/>
 			</dict>
 		</dict>
 		<key>com.apple.Terminal - New Terminal Tab at Folder - newTerminalAtFolder</key>
@@ -574,6 +590,20 @@
 			</dict>
 		</dict>
 		<key>com.resilio.Sync - Sync to this device - accentuatebts</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>me.damir.dropover-mac - Add to Dropover - addToDropoverService</key>
 		<dict>
 			<key>enabled_context_menu</key>
 			<false/>
