@@ -6,8 +6,12 @@ alias rsync-update='rsync -avzu --progress -h --itemize-changes --exclude=.DS_St
 alias rsync-synchronize='rsync -avzu --delete --progress -h --itemize-changes --exclude=.DS_Store'
 
 local list=(
+  # 1. alias name
+  # 2. test condition
+  # 3. source
+  # 4. destiationnnn
   "sync-emulation"
-  # ROMs are symlinked from 980Pro to ~/Games/Emulation.
+  # ROMs are symlinked from 980Pro to ~/Games/Emulation. Make sure it's mounted.
   "test -d /Volumes/980Pro && ping -c1 dvessel-ds.local &>/dev/null"
   "~/Games/{Emulation,Guides}"
   "dvessel-ds.local:/volume1/storage/Emulation"
@@ -18,11 +22,13 @@ local list=(
   "dvessel-ds.local:/volume1/storage/Emulation/MAME"
 )
 
-local i=1 presets=() header
+local i=1 presets=()
 while (( $i < ${#list[@]} )); do
   presets+="$list[$i]"
-  header="printf \"\e[1;15m%s\e[0m\n\" \"Syncing… $list[$i+2] -> $list[$i+3]\""
-  alias "$list[$i]"="$list[$i+1] && { $header; rsync-synchronize -L $list[$i+2] $list[$i+3] }"
+  alias "$list[$i]"="$list[$i+1] && {
+    printf \"\e[1;15m%s\e[0m\n\" \"Syncing… $list[$i+2] -> $list[$i+3]\"
+    rsync-synchronize -L --exclude={'.romlist','.sorted'} $list[$i+2] $list[$i+3]
+  }"
   i=$((i+4))
 done
 alias sync-all="${(j[;echo;])presets}"
