@@ -1,7 +1,6 @@
 #compdef rashortcuts
 
 # zsh completions for 'rashortcuts'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(
@@ -9,7 +8,7 @@ arguments=(
   '--history[history playlist]'
   {-p,--playlist}'[path/to/playlist.lpl]'
   '--process-all[process all entries for a given playlist]'
-  '--force-arch[force the architecture to arm64 or x86_64 based on the core.]'
+  '--process-existing[like all but process existing in the output directory]'
   {-t,--template}'[path/to/template-folder]'
   {-h,--help}'[view help.]'
   '*:filename:_files'
