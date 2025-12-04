@@ -29,6 +29,8 @@ brew "p7zip"
 brew "pandoc"
 # PNG image optimizing utility
 brew "pngquant"
+# Fast, stateless LLM for your shell: qq answers; qa runs commands
+brew "qqqa"
 # Tools for Multiple Arcade Machine Emulator
 brew "rom-tools"
 # Fast command-line bittorrent client and server
