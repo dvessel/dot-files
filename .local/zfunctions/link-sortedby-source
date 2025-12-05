@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+#function link-sortedby-source {
+zparseopts -D -E -F - {r,-reset}=reset
+local base=~/Games/Emulation/Arcade
+if [[ -n $reset ]]
+then
+	rm -rf $base/.sorted
+fi
+for rs in $base/*.zip
+do
+	info=~/Projects/emulation/mame-info/info/$rs:t:r
+	[[ `sed -n 's/^kind:\(.*\)/\1/p' $info` != '' ]] && continue
+	source=`sed -n 's/^source:\(.*\)/\1/p' $info` 
+	if [[ ! -f $base/.sorted/source-$source/$rs:t ]]
+	then
+		mkdir -p $base/.sorted/source-$source
+		ln $rs $base/.sorted/source-$source/$rs:t
+		echo "linked: .sorted/source-$source/$rs:t"
+	fi
+done
+#}
