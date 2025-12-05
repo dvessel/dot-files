@@ -69,6 +69,7 @@
   "window.closeWhenEmpty": true,
   "window.customTitleBarVisibility": "windowed",
   "window.density.editorTabHeight": "compact",
+  "window.newWindowDimensions": "inherit",
   "window.openWithoutArgumentsInNewWindow": "on",
   "workbench.activityBar.location": "top",
   "workbench.colorCustomizations": {
