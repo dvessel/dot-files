@@ -8,7 +8,7 @@ then
 fi
 for rs in $base/*.zip
 do
-	info=~/Projects/emulation/mame-info/info/$rs:t:r
+	info=${TMPDIR}mame-info/info/$rs:t:r
 	[[ `sed -n 's/^kind:\(.*\)/\1/p' $info` != '' ]] && continue
 	source=`sed -n 's/^source:\(.*\)/\1/p' $info` 
 	if [[ ! -f $base/.sorted/source-$source/$rs:t ]]
