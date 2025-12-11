@@ -4,9 +4,8 @@
 color:
   theme: custom
 icons:
-  separator: "  "
-# @see strftime - date formatting: Mon Feb 17 11:22 AM 2025
-date: '+%a %b %e %l:%M %p %Y'
+# @see strftime - date formatting: 7:27 AM 12/06/25
+date: "+%l:%M%p %D"
 literal: true
 recursion:
   depth: 4
