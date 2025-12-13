@@ -12,8 +12,6 @@
 	<true/>
 	<key>AppleFontSmoothing</key>
 	<integer>0</integer>
-	<key>AppleHighlightColor</key>
-	<string>1.000000 0.733333 0.721569 Red</string>
 	<key>AppleIconAppearanceCustomTintColor</key>
 	<string>0.475000 0.891371 1.000000 1.000000</string>
 	<key>AppleIconAppearanceTintColor</key>
@@ -88,7 +86,6 @@
 		<string>NSWindowShouldDragOnGesture</string>
 		<string>AppleFontSmoothing</string>
 		<string>AppleAccentColor</string>
-		<string>AppleHighlightColor</string>
 		<string>AppleSpacesSwitchOnActivate</string>
 		<string>AppleWindowTabbingMode</string>
 		<string>InitialKeyRepeat</string>
