@@ -36,6 +36,8 @@
 	<real>1</real>
 	<key>NSApplicationShowExceptions</key>
 	<true/>
+	<key>NSAutomaticWindowAnimationsEnabled</key>
+	<false/>
 	<key>NSCloseAlwaysConfirmsChanges</key>
 	<false/>
 	<key>NSFullScreenDarkMenu</key>
@@ -109,6 +111,7 @@
 		<string>AppleIconAppearanceCustomTintColor</string>
 		<string>AppleIconAppearanceTintColor</string>
 		<string>AppleDisableTagBasedIconTinting</string>
+		<string>NSAutomaticWindowAnimationsEnabled</string>
 	</array>
 	<key>com.apple.mouse.doubleClickThreshold</key>
 	<real>0.5</real>
