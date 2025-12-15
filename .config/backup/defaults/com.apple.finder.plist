@@ -62,6 +62,8 @@
 			<integer>1</integer>
 		</dict>
 	</dict>
+	<key>DisableAllAnimations</key>
+	<true/>
 	<key>FXDefaultSearchScope</key>
 	<string>SCcf</string>
 	<key>FinderSpawnTab</key>
@@ -1308,6 +1310,7 @@
 		<string>StandardViewSettings</string>
 		<string>ShowMountedServersOnDesktop</string>
 		<string>PreviewPaneSettings</string>
+		<string>DisableAllAnimations</string>
 	</array>
 	<key>ShowMountedServersOnDesktop</key>
 	<true/>
