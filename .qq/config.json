@@ -13,7 +13,7 @@
   "profiles": {
     "ollama": {
       "model_provider": "ollama",
-      "model": "qwen3-vl:4b-instruct-q8_0"
+      "model": "gpt-oss:20b"
     }
   },
   "include_history": false,
