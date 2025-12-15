@@ -66,6 +66,8 @@
 	<true/>
 	<key>FXDefaultSearchScope</key>
 	<string>SCcf</string>
+	<key>FXPreferredViewStyle</key>
+	<string>clmv</string>
 	<key>FinderSpawnTab</key>
 	<false/>
 	<key>FontSizeCategory</key>
@@ -1311,6 +1313,7 @@
 		<string>ShowMountedServersOnDesktop</string>
 		<string>PreviewPaneSettings</string>
 		<string>DisableAllAnimations</string>
+		<string>FXPreferredViewStyle</string>
 	</array>
 	<key>ShowMountedServersOnDesktop</key>
 	<true/>
