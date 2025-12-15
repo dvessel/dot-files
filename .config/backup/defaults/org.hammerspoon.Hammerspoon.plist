@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MJConfigFile</key>
+	<string>/Users/joon/.config/hammerspoon/init.lua</string>
+	<key>SettingsIndex</key>
+	<array>
+		<string>MJConfigFile</string>
+	</array>
+</dict>
+</plist>

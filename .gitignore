@@ -23,7 +23,6 @@ iCloudDocs
 .continue/*
 !.continue/config.yaml
 .diffusionbee
-.hammerspoon/Spoons/EmmyLua.spoon
 .lesshst
 .local/bin
 .local/include
