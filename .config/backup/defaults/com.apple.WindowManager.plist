@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AnimationSpeed</key>
-	<real>1.25</real>
+	<real>1.5</real>
 	<key>AppWindowGroupingBehavior</key>
 	<integer>0</integer>
 	<key>EnableStandardClickToShowDesktop</key>
