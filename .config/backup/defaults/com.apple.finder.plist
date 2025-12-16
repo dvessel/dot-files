@@ -1446,7 +1446,7 @@
 					<key>visible</key>
 					<false/>
 					<key>width</key>
-					<integer>200</integer>
+					<integer>181</integer>
 				</dict>
 				<dict>
 					<key>ascending</key>
@@ -1603,7 +1603,7 @@
 					<key>visible</key>
 					<false/>
 					<key>width</key>
-					<integer>200</integer>
+					<integer>181</integer>
 				</dict>
 				<key>dateModified</key>
 				<dict>
