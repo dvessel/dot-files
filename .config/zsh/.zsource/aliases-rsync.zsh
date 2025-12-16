@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-alias rsync-copy='rsync -avz --progress -h --exclude=.DS_Store'
-alias rsync-move='rsync -avz --progress -h --remove-source-files --exclude=.DS_Store'
-alias rsync-update='rsync -avzu --progress -h --itemize-changes --exclude=.DS_Store'
-alias rsync-synchronize='rsync -avzu --delete --progress -h --itemize-changes --exclude=.DS_Store'
+alias rsync-copy='rsync -az --progress -h --exclude=.DS_Store'
+alias rsync-move='rsync -az --progress -h --remove-source-files --exclude=.DS_Store'
+alias rsync-update='rsync -azu --progress -h --itemize-changes --exclude=.DS_Store'
+alias rsync-synchronize='rsync -azu --delete --progress -h --itemize-changes --exclude=.DS_Store'
 
 local list=(
   # 1. alias name
