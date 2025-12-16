@@ -75,15 +75,12 @@
 		<key>WindowRemove Window from Set</key>
 		<string>^$d</string>
 	</dict>
-	<key>NSWindowResizeTime</key>
-	<real>0.065000000000000002</real>
 	<key>NSWindowShouldDragOnGesture</key>
 	<true/>
 	<key>SettingsIndex</key>
 	<array>
 		<string>NSUserKeyEquivalents</string>
 		<string>AppleMenuBarVisibleInFullscreen</string>
-		<string>NSWindowResizeTime</string>
 		<string>NSFullScreenDarkMenu</string>
 		<string>NSWindowShouldDragOnGesture</string>
 		<string>AppleFontSmoothing</string>
