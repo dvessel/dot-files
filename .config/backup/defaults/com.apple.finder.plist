@@ -1291,6 +1291,24 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>SearchRecentsViewSettings</key>
+	<dict>
+		<key>WindowState</key>
+		<dict>
+			<key>ContainerShowSidebar</key>
+			<false/>
+			<key>ShowSidebar</key>
+			<false/>
+			<key>ShowStatusBar</key>
+			<false/>
+			<key>ShowTabView</key>
+			<false/>
+			<key>ShowToolbar</key>
+			<false/>
+			<key>WindowBounds</key>
+			<string>{{414, 312}, {900, 459}}</string>
+		</dict>
+	</dict>
 	<key>SettingsIndex</key>
 	<array>
 		<string>ComputerViewSettings</string>
@@ -1311,6 +1329,7 @@
 		<string>ShowMountedServersOnDesktop</string>
 		<string>PreviewPaneSettings</string>
 		<string>DisableAllAnimations</string>
+		<string>SearchRecentsViewSettings</string>
 	</array>
 	<key>ShowMountedServersOnDesktop</key>
 	<true/>
