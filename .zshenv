@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# Load order of dotfiles:
+# 1. ~/.zshenv <-
+# 2. ~/.config/zsh/.zprofile
+# 3. ~/.config/zsh/.zshrc
+# 4. ~/.config/zsh/.zlogin
+
 # zsh dotfile directory.
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
 
@@ -29,4 +35,3 @@ export HOMEBREW_AUTO_UPDATE_SECS=3600
 if [[ $TERM_PROGRAM == Apple_Terminal ]]; then
   export SHELL_SESSIONS_DISABLE=1
 fi
-

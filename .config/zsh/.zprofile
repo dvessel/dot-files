@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# Load order of dotfiles:
+# 1. ~/.zshenv
+# 2. ~/.config/zsh/.zprofile <-
+# 3. ~/.config/zsh/.zshrc
+# 4. ~/.config/zsh/.zlogin
+
 () {
   local prefix
   # Initialize Homebrew.
