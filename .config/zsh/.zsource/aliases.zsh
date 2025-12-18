@@ -28,7 +28,7 @@ fi
 alias d='pwd'
 alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
 alias ho='cd $HOME'
-for i ({1..9}) alias "$i"="cd +$i"
+for i ({1..5}) alias "$i"="cd +$i"
 
 alias cl='/usr/bin/clear -x'
 alias lb='open -b at.obdev.LaunchBar'
