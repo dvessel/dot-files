@@ -21,8 +21,8 @@ else
   alias l='ls --color=auto'
   alias a='ls -A --color=auto'
   alias l.='ls -d --color=auto .*'
-  alias ll='ls -l --color=always'
-  alias la='ls -lA --color=always'
+  alias ll='ls -l --color=auto'
+  alias la='ls -lA --color=auto'
 fi
 
 alias d='pwd'
