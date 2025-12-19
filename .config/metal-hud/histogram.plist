@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>MTL_HUD_ELEMENTS</key>
-	<string>rosetta,layersize,fps,frameinterval,frameintervalhistogram,metalcpu,shaders,frameintervalgraph,presentdelay,gputime,refreshrate,client</string>
+	<string>rosetta,layersize,fps,frameinterval,frameintervalhistogram,metalcpu,shaders,frameintervalgraph,presentdelay,gputime,client</string>
 	<key>MTL_HUD_SHOW_METRICS_RANGE</key>
 	<true/>
 	<key>MTL_HUD_OPACITY</key>

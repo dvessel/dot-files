@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MTL_HUD_ELEMENTS</key>
+	<string>device,rosetta,layersize,memory,fps,frameinterval,frameintervalhistogram,metalcpu,gputimeline,shaders,framenumber,frameintervalgraph,presentdelay,gputime,thermal,layerscale,refreshrate,gamemode,client</string>
+	<key>MTL_HUD_INSIGHTS_ENABLED</key>
+	<true/>
+	<key>MTL_HUD_SHOW_METRICS_RANGE</key>
+	<true/>
+	<key>MTL_HUD_OPACITY</key>
+	<real>0.75</real>
+	<key>MTL_HUD_SCALE</key>
+	<real>0.15</real>
+</dict>
+</plist>

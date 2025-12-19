@@ -14,10 +14,16 @@ esac
 
 if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
 then
-	launchctl setenv MTL_HUD_CONFIG_FILE $HOME/.config/metal-hud.plist
-	print enabled
+	config_path=$HOME/.config/metal-hud/${2:-default}.plist
+	if [[ -f $config_path ]]
+	then
+		launchctl setenv MTL_HUD_CONFIG_FILE $config_path
+		print "Enabled with config ${2:-default}."
+	else
+		print "Enabled but configuration ${2:-default} does not exist."
+	fi
 else
 	launchctl unsetenv MTL_HUD_CONFIG_FILE
-	print disabled
+	print Disabled
 fi
 #}
