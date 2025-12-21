@@ -43,11 +43,16 @@
     "asvetliakov.vscode-neovim": 1
   },
   "files.associations": {
+    "*.cfg": "xml",
     "*.lpl": "json",
+    "*.lrtl": "json",
+    "config": "properties",
+    "*.info": "properties",
     "*.opt": "properties",
     "*.rmp": "properties",
-    "*.slangp": "properties",
-    "config": "properties"
+    "*.glsl": "shaderlab",
+    "*.slang": "shaderlab",
+    "*.slangp": "shaderlab"
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
