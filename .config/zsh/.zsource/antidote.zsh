@@ -20,7 +20,9 @@ if test -d /opt/homebrew/opt/antidote; then
     bindkey -r -M viins '^R'
     bindkey -r -M viins '^S'
     # Restore Aloxaf/fzf-tab history search.
-    zvm_bindkey viins '^R' fzf-history-widget
+    if type fzf-history-widget &>/dev/null; then
+      zvm_bindkey viins '^R' fzf-history-widget
+    fi
     zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
     zvm_bindkey vicmd '?' history-incremental-pattern-search-forward
     # Active ctrl-[r|s] in interactive search mode triggered by vicmd search.
@@ -49,16 +51,20 @@ if test -d /opt/homebrew/opt/antidote; then
     zle reset-prompt
     return $ret
   }
-  zle -N fzf-delete-history-widget
-  # ctrl-opt-r to trigger widget.
-  bindkey -M vicmd '^[^R' fzf-delete-history-widget
-  bindkey -M viins '^[^R' fzf-delete-history-widget
+  if type hist &>/dev/null; then
+    zle -N fzf-delete-history-widget
+    # ctrl-opt-r to trigger widget.
+    bindkey -M vicmd '^[^R' fzf-delete-history-widget
+    bindkey -M viins '^[^R' fzf-delete-history-widget
+  fi
 
   # - kylesnowschwartz/zsh-ai-cmd
   export ZSH_AI_CMD_PROVIDER=ollama
   export ZSH_AI_CMD_OLLAMA_MODEL=ministral-3:3b
-  bindkey -M vicmd '^O' _zsh_ai_cmd_suggest
-  bindkey -M viins '^O' _zsh_ai_cmd_suggest
+  if type _zsh_ai_cmd_suggest &>/dev/null; then
+    bindkey -M vicmd '^O' _zsh_ai_cmd_suggest
+    bindkey -M viins '^O' _zsh_ai_cmd_suggest
+  fi
 
   # Core plug-in options. @see man antidote
   local zplugins=$ZDOTDIR/.zplugins
