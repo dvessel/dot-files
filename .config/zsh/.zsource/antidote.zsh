@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-if test -d $HOMEBREW_PREFIX/opt/antidote; then
+if test -d /opt/homebrew/opt/antidote; then
   # Lazy-load antidote from its functions directory.
-  fpath+=$HOMEBREW_PREFIX/opt/antidote/share/antidote/functions
+  fpath+=/opt/homebrew/opt/antidote/share/antidote/functions
   autoload -Uz antidote
 
   # Plug-in options. @see .zplugins

@@ -1,5 +1,3 @@
-# Plugin manager for zsh, inspired by antigen and antibody
-brew "antidote"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Clone of ls with colorful output, file type icons, and more
