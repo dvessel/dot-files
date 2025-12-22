@@ -54,6 +54,12 @@ if test -d /opt/homebrew/opt/antidote; then
   bindkey -M vicmd '^[^R' fzf-delete-history-widget
   bindkey -M viins '^[^R' fzf-delete-history-widget
 
+  # - kylesnowschwartz/zsh-ai-cmd
+  export ZSH_AI_CMD_PROVIDER=ollama
+  export ZSH_AI_CMD_OLLAMA_MODEL=ministral-3:3b
+  bindkey -M vicmd '^O' _zsh_ai_cmd_suggest
+  bindkey -M viins '^O' _zsh_ai_cmd_suggest
+
   # Core plug-in options. @see man antidote
   local zplugins=$ZDOTDIR/.zplugins
   local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
