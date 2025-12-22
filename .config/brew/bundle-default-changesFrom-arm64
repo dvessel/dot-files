@@ -3,6 +3,8 @@
 brew "bandcamp-dl"
 # CLI tool to convert your codebase into a single LLM prompt
 brew "code2prompt"
+# JSON, YAML, TOML, XML, and CSV query and modification tool
+brew "dasel"
 # Utility to configure multi-display resolutions and arrangements
 brew "displayplacer"
 # macOS CLI for managing custom icons for files and folders
@@ -15,6 +17,8 @@ brew "imgdiff"
 brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Library for querying compressed XML metadata
+brew "libxmlb"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Language Server for the Lua language
@@ -31,8 +35,6 @@ brew "p7zip"
 brew "pandoc"
 # PNG image optimizing utility
 brew "pngquant"
-# Fast, stateless LLM for your shell: qq answers; qa runs commands
-brew "qqqa"
 # Tools for Multiple Arcade Machine Emulator
 brew "rom-tools"
 # Fast command-line bittorrent client and server
