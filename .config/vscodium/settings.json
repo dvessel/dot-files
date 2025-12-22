@@ -43,7 +43,6 @@
     "asvetliakov.vscode-neovim": 1
   },
   "files.associations": {
-    "*.cfg": "xml",
     "*.lpl": "json",
     "*.lrtl": "json",
     "config": "properties",
