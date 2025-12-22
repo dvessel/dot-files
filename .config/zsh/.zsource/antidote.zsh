@@ -19,10 +19,8 @@ if test -d /opt/homebrew/opt/antidote; then
     # Unbind the default backward/forward search.
     bindkey -r -M viins '^R'
     bindkey -r -M viins '^S'
-    if type fzf-history-widget &>/dev/null; then
-      # Restore Aloxaf/fzf-tab history search.
-      zvm_bindkey viins '^R' fzf-history-widget
-    fi
+    # Restore Aloxaf/fzf-tab history search.
+    zvm_bindkey viins '^R' fzf-history-widget
     zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
     zvm_bindkey vicmd '?' history-incremental-pattern-search-forward
     # Active ctrl-[r|s] in interactive search mode triggered by vicmd search.
@@ -33,23 +31,26 @@ if test -d /opt/homebrew/opt/antidote; then
   # - marlonrichert/zsh-hist
   #  https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
   function fzf-delete-history-widget() {
-    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
     fc -pa $HISTFILE
     local selected=($(
-      printf '%s\t%s\000' "${(kv)history[@]}" | perl -0 -ne 'if (!$seen{(/^\s*[0-9]+\**\t(.*)/s, $1)}++) { s/\n/\n\t/g; print; }' | FZF_DEFAULT_OPTS=$(
-        __fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --wrap-sign '\t↳ ' ${FZF_CTRL_R_OPTS-} --prompt='! ' --query=${(qqq)LBUFFER} +m --multi --read0 --bind 'enter:become(echo {+1})'"
+      printf '%s\t%s\000' "${(kv)history[@]}" |
+      perl -0 -ne 'if (!$seen{(/^\s*[0-9]+\**\t(.*)/s, $1)}++) { s/\n/\n\t/g; print; }' |
+      FZF_DEFAULT_OPTS=$(
+        __fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort
+        --wrap-sign '\t↳ ' ${FZF_CTRL_R_OPTS-} --prompt='! ' --query=${(qqq)LBUFFER}
+        +m --multi --read0 --bind 'enter:become(echo {+1})'"
       ) $(__fzfcmd)
     ))
     local ret=$?
-    if [ -n "$selected[*]" ]; then
+    if [[ -n "$selected[*]" ]]; then
       hist delete $selected[*]
     fi
     zle reset-prompt
     return $ret
   }
+  zle -N fzf-delete-history-widget
   # ctrl-opt-r to trigger widget.
-  zle     -N              fzf-delete-history-widget
-  bindkey -M emacs '^[^R' fzf-delete-history-widget
   bindkey -M vicmd '^[^R' fzf-delete-history-widget
   bindkey -M viins '^[^R' fzf-delete-history-widget
 
