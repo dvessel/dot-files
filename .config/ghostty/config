@@ -2,7 +2,9 @@
 
 theme = light:lightness,dark:darkness
 
+# 2nd font-family set for CJK fallback.
 font-family = Lilex Nerd Font
+font-family = Apple SD Gothic Neo
 font-size   = 13
 
 window-width = 89
