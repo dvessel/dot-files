@@ -5,6 +5,27 @@ if test -d /opt/homebrew/opt/antidote; then
   fpath+=/opt/homebrew/opt/antidote/share/antidote/functions
   autoload -Uz antidote
 
+  # Core plug-in options. @see man antidote
+  local zplugins=$ZDOTDIR/.zplugins
+  local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
+
+  export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
+  zstyle ':antidote:bundle' use-friendly-names 'yes'
+  zstyle ':antidote:bundle' file $zplugins
+  zstyle ':antidote:static' file $zpstatic
+  zstyle ':antidote:*' zcompile 'yes'
+
+  test -f $zplugins || touch $zplugins
+
+  if test ! $zpstatic -nt $zplugins; then
+    # Generate new static file when zplugins is updated.
+    mkdir -p $zpstatic:h
+    antidote load
+  else
+    # Manually source when antidote doesn't need to load.
+    source $zpstatic
+  fi
+
   # Plug-in options. @see .zplugins
 
   # - mattmc3/ez-compinit
@@ -66,24 +87,4 @@ if test -d /opt/homebrew/opt/antidote; then
     bindkey -M viins '^O' _zsh_ai_cmd_suggest
   fi
 
-  # Core plug-in options. @see man antidote
-  local zplugins=$ZDOTDIR/.zplugins
-  local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
-
-  export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
-  zstyle ':antidote:bundle' use-friendly-names 'yes'
-  zstyle ':antidote:bundle' file $zplugins
-  zstyle ':antidote:static' file $zpstatic
-  zstyle ':antidote:*' zcompile 'yes'
-
-  test -f $zplugins || touch $zplugins
-
-  if test ! $zpstatic -nt $zplugins; then
-    # Generate new static file when zplugins is updated.
-    mkdir -p $zpstatic:h
-    antidote load
-  else
-    # Manually source when antidote doesn't need to load.
-    source $zpstatic
-  fi
 fi
