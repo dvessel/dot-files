@@ -14,6 +14,10 @@
 		<string>@p</string>
 		<key>ViewHide Folders</key>
 		<string>@^s</string>
+		<key>ViewRecent NotesNext Note</key>
+		<string>^x</string>
+		<key>ViewRecent NotesPrevious Note</key>
+		<string>^z</string>
 		<key>ViewShow Folders</key>
 		<string>@^s</string>
 	</dict>
