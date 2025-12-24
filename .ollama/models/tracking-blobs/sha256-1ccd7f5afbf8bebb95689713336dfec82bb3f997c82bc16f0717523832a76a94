@@ -1,0 +1,1 @@
+{"model_format":"","model_family":"","model_families":null,"model_type":"","file_type":"","remote_host":"https://ollama.com:443","remote_model":"glm-4.7","capabilities":["completion","tools","thinking"],"context_length":202752,"base_name":"glm-4.7","architecture":"amd64","os":"linux","rootfs":{"type":"layers","diff_ids":[]}}
