@@ -32,7 +32,7 @@ if (( $supported_cmd[(I)$cmd] )); then
     ;;
   esac
 
-  local model=($( print -- $list | fzf $fzf_args | cut -d ' ' -f1 ))
+  local model=($( print -- $list | sort -V | fzf $fzf_args | cut -d ' ' -f1 ))
 
   if [[ -n $model ]]; then
     print "ollama $cmd $model $@"
