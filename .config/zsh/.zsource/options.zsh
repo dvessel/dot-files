@@ -8,6 +8,8 @@ setopt auto_pushd         # Push the current directory visited on the stack.
 setopt pushd_ignore_dups  # Do not store duplicates in the stack.
 setopt pushd_silent       # Do not print the directory stack after pushd or popd.
 
+export DIRSTACKSIZE=100   # Maximum size of the directory stack.
+
 setopt share_history          # Reads/writes history to keep sessions in sync.
                               # Overlaps with inc_append_history & extended_history.
 setopt extended_history       # Force saves with timestamps. Could get lost on trim.
