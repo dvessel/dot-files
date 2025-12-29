@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 #function unjail-appicon {
-if icns=`defaults read $1/Contents/Info.plist CFBundleIconName` 
-then
-	fileicon set -q $1 $1/Contents/Resources/$icns:r.icns
-else
-	echo "Could not determine icon file." >&2
-	return 1
-fi
+  if icns=`defaults read $1/Contents/Info.plist CFBundleIconName`
+  then
+    fileicon set -q $1 $1/Contents/Resources/$icns:r.icns
+  else
+    echo "Could not determine icon file." >&2
+    return 1
+  fi
 #}

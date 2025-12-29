@@ -1,32 +1,32 @@
 #!/usr/bin/env zsh
 #function link-sortedby-source {
-zparseopts -D -E -F - {r,-reset}=reset
-local base=~/Games/Emulation/Arcade
-local sorted=$base/.sorted
-local info=${TMPDIR}mame-info/info
-if [[ ! -d $info ]]
-then
-	build-mame-rom-info
-fi
-if [[ -n $reset ]]
-then
-	rm -rf $sorted
-	mkdir $sorted
-	tmutil addexclusion $sorted
-	if type tag &>/dev/null
-	then
-		tag -a "Time Machine - Excluded" $sorted
-	fi
-fi
-for rs in $base/*.zip
-do
-	[[ `sed -n 's/^kind:\(.*\)/\1/p' $info/$rs:t:r` != '' ]] && continue
-	source=`sed -n 's/^source:\(.*\)/\1/p' $info/$rs:t:r` 
-	if [[ ! -f $sorted/source-$source/$rs:t ]]
-	then
-		mkdir -p $sorted/source-$source
-		ln $rs $sorted/source-$source/$rs:t
-		echo "linked: .sorted/source-$source/$rs:t"
-	fi
-done
+  zparseopts -D -E -F - {r,-reset}=reset
+  local base=~/Games/Emulation/Arcade
+  local sorted=$base/.sorted
+  local info=${TMPDIR}mame-info/info
+  if [[ ! -d $info ]]
+  then
+    build-mame-rom-info
+  fi
+  if [[ -n $reset ]]
+  then
+    rm -rf $sorted
+    mkdir $sorted
+    tmutil addexclusion $sorted
+    if type tag &> /dev/null
+    then
+      tag -a "Time Machine - Excluded" $sorted
+    fi
+  fi
+  for rs in $base/*.zip
+  do
+    [[ `sed -n 's/^kind:\(.*\)/\1/p' $info/$rs:t:r` != '' ]] && continue
+    source=`sed -n 's/^source:\(.*\)/\1/p' $info/$rs:t:r`
+    if [[ ! -f $sorted/source-$source/$rs:t ]]
+    then
+      mkdir -p $sorted/source-$source
+      ln $rs $sorted/source-$source/$rs:t
+      echo "linked: .sorted/source-$source/$rs:t"
+    fi
+  done
 #}

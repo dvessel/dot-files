@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 #function update-ollama-models {
-ollama ls | awk '(NR > 1) {print $1}' | while read model 
-do
-	print -- "Updating $model."
-	ollama pull $model
-done
+  ollama ls | awk '(NR > 1) {print $1}' | while read model
+  do
+    print -- "Updating $model."
+    ollama pull $model
+  done
 #}

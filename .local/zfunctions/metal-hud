@@ -1,29 +1,27 @@
 #!/usr/bin/env zsh
 #function metal-hud {
-case $1 in
-	(enable) launchctl setenv MTL_HUD_ENABLED 1 ;;
-	(disable) launchctl unsetenv MTL_HUD_ENABLED ;;
-	(toggle)
-		if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
-		then
-			launchctl unsetenv MTL_HUD_ENABLED
-		else
-			launchctl setenv MTL_HUD_ENABLED 1
-		fi ;;
-esac
-
-if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
-then
-	config_path=$HOME/.config/metal-hud/${2:-default}.plist
-	if [[ -f $config_path ]]
-	then
-		launchctl setenv MTL_HUD_CONFIG_FILE $config_path
-		print "Enabled with config ${2:-default}."
-	else
-		print "Enabled but configuration ${2:-default} does not exist."
-	fi
-else
-	launchctl unsetenv MTL_HUD_CONFIG_FILE
-	print Disabled
-fi
+  case $1 in
+    (enable) launchctl setenv MTL_HUD_ENABLED 1 ;;
+    (disable) launchctl unsetenv MTL_HUD_ENABLED ;;
+    (toggle) if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
+      then
+        launchctl unsetenv MTL_HUD_ENABLED
+      else
+        launchctl setenv MTL_HUD_ENABLED 1
+      fi ;;
+  esac
+  if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
+  then
+    config_path=$HOME/.config/metal-hud/${2:-default}.plist
+    if [[ -f $config_path ]]
+    then
+      launchctl setenv MTL_HUD_CONFIG_FILE $config_path
+      print "Enabled with config ${2:-default}."
+    else
+      print "Enabled but configuration ${2:-default} does not exist."
+    fi
+  else
+    launchctl unsetenv MTL_HUD_CONFIG_FILE
+    print Disabled
+  fi
 #}
