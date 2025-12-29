@@ -1,0 +1,3 @@
+OLLAMA_HOST: localhost
+GOOSE_PROVIDER: ollama
+GOOSE_MODEL: glm-4.7:cloud

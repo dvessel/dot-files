@@ -1,6 +1,8 @@
 # changesFrom from 'bundle-default-arm64':
 # Simple python script to download Bandcamp albums
 brew "bandcamp-dl"
+# Open source, extensible AI agent that goes beyond code suggestions
+brew "block-goose-cli"
 # CLI tool to convert your codebase into a single LLM prompt
 brew "code2prompt"
 # JSON, YAML, TOML, XML, and CSV query and modification tool
