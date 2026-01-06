@@ -4,6 +4,8 @@
 local arguments
 
 arguments=(
+  {-x,--x86}'[run in x86 through Rosetta translation.]'
+  '--metal-hud[heads up display for Metal performance metrics.]'
   {-h,--help}'[show this help message.]'
   {-v,--verbose}'[verbose logging.]'
   '--log-file[log messages to FILE.]'

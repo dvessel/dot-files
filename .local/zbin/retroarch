@@ -1,15 +1,31 @@
 #!/usr/bin/env zsh
 
-zparseopts -D -E - -metal-hud=metal_hud
+zparseopts -D -E - {h,-help}=help {x,-x86}=x86 -metal-hud=metal_hud
+
+bundleid=com.libretro.dist.RetroArch
+
+# Call directly for help since `open` does not stream to stdout.
+if [[ -n $help ]]; then
+  if app_dir=`mdfind kMDItemCFBundleIdentifier = $bundleid | head -n 1`; then
+    $app_dir/Contents/MacOS/RetroArch $help
+  fi
+  exit
+fi
+
+if [[ -n $args ]]; then
+  args=( --args $args )
+fi
+
+if [[ -n $x86 ]]; then
+  args=( --arch x86_64 $args )
+fi
 
 if [[ -n $metal_hud ]]; then
-  export MTL_HUD_ENABLED=1
+  args=(
+    --env MTL_HUD_ENABLED=1
+    --env MTL_HUD_CONFIG_FILE=$HOME/.config/metal-hud/default.plist
+    $args
+  )
 fi
 
-app_dir=`mdfind kMDItemCFBundleIdentifier = com.libretro.dist.RetroArch | head -n 1`
-if [[ -n $app_dir ]]; then
-  $app_dir/Contents/MacOS/RetroArch $@
-else
-  echo "RetroArch not found" >&2
-  exit 1
-fi
+open -b $bundleid com.libretro.dist.RetroArch $args
