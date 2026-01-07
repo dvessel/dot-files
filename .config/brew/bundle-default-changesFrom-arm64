@@ -17,18 +17,12 @@ brew "fswatch"
 brew "imgdiff"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Simple terminal UI for git commands
-brew "lazygit"
 # Library for querying compressed XML metadata
 brew "libxmlb"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
-# Language Server for the Lua language
-brew "lua-language-server"
 # Sudoless performance monitoring for Apple Silicon processors
 brew "macmon"
-# Multiple Arcade Machine Emulator
-brew "mame"
 # Create, run, and share large language models (LLMs)
 brew "ollama", restart_service: :changed
 # 7-Zip (high compression file archiver) implementation
@@ -37,31 +31,17 @@ brew "p7zip"
 brew "pandoc"
 # PNG image optimizing utility
 brew "pngquant"
-# Tools for Multiple Arcade Machine Emulator
-brew "rom-tools"
 # Fast command-line bittorrent client and server
 brew "rqbit"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
 # Official tldr client written in Rust
 brew "tlrc"
-# Yet another typing test, but crab flavoured
-brew "toipe"
-# Extremely fast Python package installer and resolver, written in Rust
-brew "uv"
 # XML command-line utilities
 brew "xmlstarlet"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
-# ROM updater and validation tool for OpenEmu's MAME core.
-brew "dvessel/oetools/oeadvscan"
-# Run Stable Diffusion locally
-cask "diffusionbee"
 # Operating system maintenance and cleaning utility
 cask "maintenance"
-# Replacement for Docker Desktop
-cask "orbstack"
-# Frontend for emulators, game engines, and media players (Metal graphics API)
-cask "retroarch-metal@nightly"
-# Virtual machines UI using QEMU
-cask "utm"
+# Binary releases of VS Code without MS branding/telemetry/licensing
+cask "vscodium"

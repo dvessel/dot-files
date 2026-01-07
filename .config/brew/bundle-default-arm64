@@ -10,8 +10,12 @@ brew "fzf"
 brew "gh"
 # Distributed revision control system
 brew "git"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Language Server for the Lua language
+brew "lua-language-server"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -31,5 +35,5 @@ cask "hammerspoon"
 cask "miniconda"
 # Neovim Client
 cask "neovide-app"
-# Binary releases of VS Code without MS branding/telemetry/licensing
-cask "vscodium"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
