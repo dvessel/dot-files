@@ -2,11 +2,9 @@
 
 zparseopts -D -E - {h,-help}=help {x,-x86}=x86 -metal-hud=metal_hud
 
-bundleid=com.libretro.dist.RetroArch
-
 # Call directly for help since `open` does not stream to stdout.
 if [[ -n $help ]]; then
-  if app_dir=`mdfind kMDItemCFBundleIdentifier = $bundleid | head -n 1`; then
+  if app_dir=`mdfind kMDItemCFBundleIdentifier = com.libretro.dist.RetroArch | head -n 1`; then
     $app_dir/Contents/MacOS/RetroArch $help
   fi
   exit
@@ -28,4 +26,4 @@ if [[ -n $metal_hud ]]; then
   )
 fi
 
-open -b $bundleid com.libretro.dist.RetroArch $args
+open -b com.libretro.dist.RetroArch $args
