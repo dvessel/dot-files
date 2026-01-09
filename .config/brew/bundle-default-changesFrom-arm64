@@ -3,8 +3,6 @@
 brew "bandcamp-dl"
 # Open source, extensible AI agent that goes beyond code suggestions
 brew "block-goose-cli"
-# CLI tool to convert your codebase into a single LLM prompt
-brew "code2prompt"
 # Utility to configure multi-display resolutions and arrangements
 brew "displayplacer"
 # macOS CLI for managing custom icons for files and folders
