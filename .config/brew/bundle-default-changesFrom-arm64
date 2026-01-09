@@ -5,8 +5,6 @@ brew "bandcamp-dl"
 brew "block-goose-cli"
 # CLI tool to convert your codebase into a single LLM prompt
 brew "code2prompt"
-# JSON, YAML, TOML, XML, and CSV query and modification tool
-brew "dasel"
 # Utility to configure multi-display resolutions and arrangements
 brew "displayplacer"
 # macOS CLI for managing custom icons for files and folders
@@ -25,6 +23,8 @@ brew "lnav"
 brew "macmon"
 # Create, run, and share large language models (LLMs)
 brew "ollama", restart_service: :changed
+# Performant, and portable jq wrapper to support formats other than JSON
+brew "oq"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
