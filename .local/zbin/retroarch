@@ -1,11 +1,13 @@
 #!/usr/bin/env zsh
 
-zparseopts -D -E - {h,-help}=help {x,-x86}=x86 -metal-hud=metal_hud
+zparseopts -D -E - \
+  {x,-x86}=x86 -metal-hud=metal_hud \
+  {-features,h,-help,V,-version}=cargs
 
 # Call directly for help since `open` does not stream to stdout.
-if [[ -n $help ]]; then
+if [[ -n $cargs ]]; then
   if app_dir=`mdfind kMDItemCFBundleIdentifier = com.libretro.dist.RetroArch | head -n 1`; then
-    $app_dir/Contents/MacOS/RetroArch $help
+    $app_dir/Contents/MacOS/RetroArch $cargs
   fi
   exit
 fi
