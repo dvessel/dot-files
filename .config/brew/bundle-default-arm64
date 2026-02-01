@@ -14,8 +14,10 @@ brew "git"
 brew "lazygit"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
-# Language Server for the Lua language
-brew "lua-language-server"
+# Powerful, lightweight programming language
+brew "lua"
+# Package manager for the Lua programming language
+brew "luarocks"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -24,6 +26,8 @@ brew "prettier"
 brew "ripgrep"
 # Manipulate and query tags on macOS files
 brew "tag"
+# Parser generator tool
+brew "tree-sitter-cli"
 # Internet file retriever
 brew "wget"
 cask "font-lilex-nerd-font"
