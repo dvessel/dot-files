@@ -15,11 +15,11 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<false/>
+			<true/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{414, 312}, {900, 459}}</string>
 		</dict>
@@ -79,11 +79,11 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<false/>
+			<true/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{414, 312}, {900, 459}}</string>
 		</dict>
@@ -108,9 +108,10 @@
 		<key>TB Icon Size Mode</key>
 		<integer>1</integer>
 		<key>TB Is Shown</key>
-		<false/>
+		<true/>
 		<key>TB Item Identifiers</key>
 		<array>
+			<string>com.apple.finder.BACK</string>
 			<string>com.apple.finder.SRCH</string>
 		</array>
 		<key>TB Size Mode</key>
@@ -144,11 +145,11 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<false/>
+			<true/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{414, 312}, {900, 459}}</string>
 		</dict>
@@ -1299,11 +1300,11 @@
 			<key>ShowSidebar</key>
 			<false/>
 			<key>ShowStatusBar</key>
-			<false/>
+			<true/>
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{414, 312}, {900, 459}}</string>
 		</dict>
