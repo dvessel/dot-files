@@ -7,11 +7,15 @@ font-family = Lilex Nerd Font
 font-family = Apple SD Gothic Neo
 font-size   = 14
 
-window-width = 89
+window-width = 90
 window-height = 30
-window-padding-x = 14,0
+window-padding-x = 10,0
 window-padding-y = 0
 window-padding-color = extend
+
+# Centering for 2056×1329 (More Space) given the above values.
+window-position-x = 636
+window-position-y = 355
 
 macos-titlebar-style = tabs
 macos-icon = blueprint
@@ -20,7 +24,6 @@ initial-window = false
 mouse-hide-while-typing = true
 
 quick-terminal-position = center
-quick-terminal-size = 42.7%,51%
 quick-terminal-space-behavior = remain
 
 # Limit in bytes. Default 10MB, set to 500MB.
