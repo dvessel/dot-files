@@ -36,6 +36,7 @@ if test -d /opt/homebrew/opt/antidote; then
   export GENCOMPL_FPATH=$ZFUNCDIR
 
   # - jeffreytse/zsh-vi-mode
+  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
   function zvm_after_init() {
     # Unbind the default backward/forward search.
     bindkey -r -M viins '^R'
