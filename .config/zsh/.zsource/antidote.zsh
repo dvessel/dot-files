@@ -30,7 +30,7 @@ if test -d /opt/homebrew/opt/antidote; then
 
   # - mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
-  zstyle ':plugin:ez-compinit' 'use-cache' 'no'
+  zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
 
   # - dvessel/zsh-completion-generator
   export GENCOMPL_FPATH=$ZFUNCDIR
