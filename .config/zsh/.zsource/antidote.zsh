@@ -80,12 +80,4 @@ if test -d /opt/homebrew/opt/antidote; then
     bindkey -M viins '^[^R' fzf-delete-history-widget
   fi
 
-  # - kylesnowschwartz/zsh-ai-cmd
-  export ZSH_AI_CMD_PROVIDER=ollama
-  export ZSH_AI_CMD_OLLAMA_MODEL=ministral-3:3b
-  if type _zsh_ai_cmd_suggest &>/dev/null; then
-    bindkey -M vicmd '^O' _zsh_ai_cmd_suggest
-    bindkey -M viins '^O' _zsh_ai_cmd_suggest
-  fi
-
 fi
