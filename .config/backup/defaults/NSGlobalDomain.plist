@@ -21,7 +21,7 @@
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<true/>
 	<key>AppleReduceDesktopTinting</key>
-	<false/>
+	<true/>
 	<key>AppleShowScrollBars</key>
 	<string>WhenScrolling</string>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
