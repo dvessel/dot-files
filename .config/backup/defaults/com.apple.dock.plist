@@ -6,17 +6,9 @@
 	<array>
 		<string>autohide</string>
 		<string>autohide-delay</string>
-		<string>wvous-br-corner</string>
-		<string>wvous-br-modifier</string>
 		<string>expose-group-apps</string>
 		<string>mru-spaces</string>
 		<string>tilesize</string>
-		<string>wvous-bl-corner</string>
-		<string>wvous-bl-modifier</string>
-		<string>wvous-tl-corner</string>
-		<string>wvous-tl-modifier</string>
-		<string>wvous-tr-corner</string>
-		<string>wvous-tr-modifier</string>
 		<string>show-recents</string>
 		<string>show-process-indicators</string>
 		<string>launchanim</string>
@@ -37,21 +29,5 @@
 	<false/>
 	<key>tilesize</key>
 	<real>48</real>
-	<key>wvous-bl-corner</key>
-	<integer>1</integer>
-	<key>wvous-bl-modifier</key>
-	<integer>0</integer>
-	<key>wvous-br-corner</key>
-	<integer>14</integer>
-	<key>wvous-br-modifier</key>
-	<integer>262144</integer>
-	<key>wvous-tl-corner</key>
-	<integer>1</integer>
-	<key>wvous-tl-modifier</key>
-	<integer>0</integer>
-	<key>wvous-tr-corner</key>
-	<integer>1</integer>
-	<key>wvous-tr-modifier</key>
-	<integer>0</integer>
 </dict>
 </plist>
