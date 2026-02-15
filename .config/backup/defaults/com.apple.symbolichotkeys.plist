@@ -1456,7 +1456,7 @@
 				<array>
 					<integer>96</integer>
 					<integer>50</integer>
-					<integer>1048576</integer>
+					<integer>524288</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>
@@ -2142,14 +2142,14 @@
 		<key>9</key>
 		<dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>value</key>
 			<dict>
 				<key>parameters</key>
 				<array>
-					<integer>65535</integer>
-					<integer>118</integer>
-					<integer>8650752</integer>
+					<integer>96</integer>
+					<integer>50</integer>
+					<integer>1048576</integer>
 				</array>
 				<key>type</key>
 				<string>standard</string>

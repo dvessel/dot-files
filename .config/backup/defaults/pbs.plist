@@ -245,16 +245,16 @@
 		</dict>
 		<key>com.apple.Stickies - Make Sticky - makeStickyFromTextService</key>
 		<dict>
-			<key>enabled_context_menu</key>
-			<true/>
+			<key>enabled_services_menu</key>
+			<false/>
 			<key>key_equivalent</key>
 			<string>@^y</string>
 			<key>presentation_modes</key>
 			<dict>
 				<key>ContextMenu</key>
-				<true/>
+				<false/>
 				<key>ServicesMenu</key>
-				<true/>
+				<false/>
 			</dict>
 		</dict>
 		<key>com.apple.Terminal - New Terminal Tab at Folder - newTerminalAtFolder</key>
@@ -356,6 +356,62 @@
 			</dict>
 		</dict>
 		<key>com.apple.dt.Instruments - System Trace - targetFrontAppWithTemplate</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>com.apple.dt.instruments.backgroundinstruments - Time Profile Active Application - timeProfileFrontMost</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>com.apple.dt.instruments.backgroundinstruments - Time Profile App Under Mouse - timeProfileUnderMouse</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>com.apple.dt.instruments.backgroundinstruments - Time Profile Entire System - timeProfileSystem</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>com.apple.dt.instruments.backgroundinstruments - Toggle Instruments Recording - toggleRecordingState</key>
 		<dict>
 			<key>enabled_context_menu</key>
 			<false/>
