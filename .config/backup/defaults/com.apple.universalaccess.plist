@@ -37,14 +37,11 @@
 	</dict>
 	<key>SettingsIndex</key>
 	<array>
-		<string>closeViewDesiredZoomFactor</string>
 		<string>closeViewFarPoint</string>
 		<string>closeViewNearPoint</string>
 		<string>FontSizeCategory</string>
 		<string>reduceTransparency</string>
 	</array>
-	<key>closeViewDesiredZoomFactor</key>
-	<real>2</real>
 	<key>closeViewFarPoint</key>
 	<real>2</real>
 	<key>closeViewNearPoint</key>
