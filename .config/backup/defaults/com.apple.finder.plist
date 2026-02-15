@@ -19,9 +19,9 @@
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
-			<string>{{578, 415}, {900, 459}}</string>
+			<string>{{568, 398}, {920, 492}}</string>
 		</dict>
 	</dict>
 	<key>DesktopViewSettings</key>
@@ -83,9 +83,9 @@
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
-			<string>{{578, 415}, {900, 459}}</string>
+			<string>{{568, 398}, {920, 492}}</string>
 		</dict>
 	</dict>
 	<key>NSToolbar Configuration Browser</key>
@@ -108,7 +108,7 @@
 		<key>TB Icon Size Mode</key>
 		<integer>1</integer>
 		<key>TB Is Shown</key>
-		<false/>
+		<true/>
 		<key>TB Item Identifiers</key>
 		<array>
 			<string>com.apple.finder.BACK</string>
@@ -149,9 +149,9 @@
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
-			<string>{{578, 415}, {900, 459}}</string>
+			<string>{{568, 398}, {920, 492}}</string>
 		</dict>
 	</dict>
 	<key>NewWindowTarget</key>
@@ -1325,7 +1325,7 @@
 			<key>ColumnShowIcons</key>
 			<true/>
 			<key>ColumnWidth</key>
-			<integer>300</integer>
+			<integer>307</integer>
 			<key>FontSize</key>
 			<integer>13</integer>
 			<key>PreviewDisclosureState</key>
