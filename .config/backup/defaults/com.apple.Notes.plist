@@ -4,14 +4,6 @@
 <dict>
 	<key>NSUserKeyEquivalents</key>
 	<dict>
-		<key>FileLock Note</key>
-		<string>@l</string>
-		<key>FilePin Note</key>
-		<string>@p</string>
-		<key>FileRemove Lock</key>
-		<string>@l</string>
-		<key>FileUnpin Note</key>
-		<string>@p</string>
 		<key>ViewHide Folders</key>
 		<string>@^s</string>
 		<key>ViewRecent NotesNext Note</key>

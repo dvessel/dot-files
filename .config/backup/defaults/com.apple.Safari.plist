@@ -12,12 +12,6 @@
 	<dict>
 		<key>BookmarksCopy Text Fragment</key>
 		<string>@^c</string>
-		<key>FileDelete Tab Group</key>
-		<string>@^$w</string>
-		<key>HistoryBack</key>
-		<string>^z</string>
-		<key>HistoryForward</key>
-		<string>^x</string>
 		<key>HistoryReturn to Search Results</key>
 		<string>^c</string>
 		<key>ViewHide Reader</key>
