@@ -1,0 +1,83 @@
+#!/usr/bin/env zsh
+#function romsorted-by-source {
+  zparseopts -D -E -F - {r,-reset}=reset
+
+  local base=~/Games/Emulation/Arcade
+  local sorted=$base/.sorted
+  local infodir=$base/.rominfo/info
+
+  if ! rominfo-generate $base
+  then
+    return 1
+  fi
+
+  if [[ ! -d $sorted ]]
+  then
+    if mkdir $sorted
+    then
+      tmutil addexclusion $sorted
+      tag -a "Time Machine - Excluded" $sorted
+    else
+      return 1
+    fi
+  fi
+
+  if [[ -n $reset ]]
+  then
+    for sourcedir in $sorted/*(N)
+    do
+      rm -rf $sourcedir
+    done
+  fi
+
+  s.print() {
+    local c1=00
+    case ${1[1]} in
+      +)  c1=32 ;;
+      -)  c1=33 ;;
+    esac
+    printf "\e[1;30m%s\e[0m\n  \e[0;${c1}m%s\e[0m%s\n" "$(
+      jq -r --arg name $2:t:r '.machine[] | select(.name == $name) | .description' $infodir/$2:t:r.json
+    )" "$1:" "$2:h:t/$2:t"
+  }
+
+  for rom in $base/*.zip
+  do
+    if tag -Nlg $rom | grep -q "^Ignore$"
+    then
+      # when tagged with "Ignore", find in .sorted and remove.
+      find $sorted -type f -name $rom:t | while read -r ignored
+      do
+        s.print -ignore $ignored
+        rm $ignored
+      done
+      continue
+    fi
+    # speedup by ignoring roms already hardlined to .sorted.
+    if find $sorted -inum `stat -f %i $rom` | grep -q .
+    then
+      continue
+    fi
+
+    rominfo=$infodir/$rom:t:r.json
+    source=`jq --arg name $rom:t:r '.machine[] | select(
+      .name == $name and .isbios != "yes" and .isdevice != "yes"
+    ) | .source' $rominfo`
+
+    if [[ -n $source ]]
+    then
+      link=$sorted/source-$source:t:r/$rom:t
+      mkdir -p $link:h
+      ln -f $rom $link
+      s.print +linked $link
+    fi
+  done
+
+  # remove sorted roms when not hardlinked more than once.
+  # when deleting roms from $base dir, .sorted should follow.
+  find $sorted -type f ! -links +1 | while read -r removed
+  do
+    rm $removed
+    s.print -remove $removed
+  done
+#}
