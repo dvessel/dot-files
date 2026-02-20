@@ -29,14 +29,14 @@ brew "p7zip"
 brew "pandoc"
 # PNG image optimizing utility
 brew "pngquant"
+# Parse HTML at the command-line
+brew "pup"
 # Fast command-line bittorrent client and server
 brew "rqbit"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
 # Official tldr client written in Rust
 brew "tlrc"
-# XML command-line utilities
-brew "xmlstarlet"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Operating system maintenance and cleaning utility
