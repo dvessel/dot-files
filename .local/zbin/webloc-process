@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+url=`plutil -p $1 | sed -En 's/.*"(.*)"$/\1/p'`
+title="`curl -s --location $url | /opt/homebrew/bin/pup 'head title text{}' |
+	python3 -c "import sys, html; print(html.unescape(sys.stdin.read()))" | tr -s ' '`"
+
+if [[ -n $title ]]
+then
+	# Make label file system safe.
+	# - replace '(: |:)' with '：' [Unicode U+FF1A]
+	# - replace '/' with '᜵'  [Unicode U+1735]
+	new1=$1:h/${${${title//: /：}//:/：}//\//᜵}.webloc
+	mv $1 $new1
+	# hide extension.
+	SetFile -a E $new1
+	1=$new1
+fi
+
+osascript \
+	-e 'on run {f, c}' \
+	-e 'tell app "Finder" to set comment of (POSIX file f as alias) to c' \
+	-e 'end' file:///$1:a $url
+
+/opt/homebrew/bin/setWeblocThumb $1
