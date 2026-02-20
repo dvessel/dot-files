@@ -64,6 +64,8 @@
 		<string>@^s</string>
 		<key>WindowDuplicate Tab</key>
 		<string>^$d</string>
+		<key>WindowFull Screen TileMake Window Full Screen</key>
+		<string>^$f</string>
 		<key>WindowFull Screen TileReplace Tiled Window</key>
 		<string>@^r</string>
 		<key>WindowMove Tab to New Window</key>
