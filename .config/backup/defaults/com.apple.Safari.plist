@@ -18,6 +18,8 @@
 		<string>~ </string>
 		<key>ViewShow Reader</key>
 		<string>~ </string>
+		<key>WindowFull Screen TileLeft of Screen</key>
+		<string>@^w</string>
 		<key>WindowMute Other Tab</key>
 		<string>@~,</string>
 		<key>WindowMute Other Tabs</key>
