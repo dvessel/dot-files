@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+#function find-x86only {
+  zparseopts -D -E - {k,-kind}:=kind
+  local found
+
+  find ${@:-.} -name "*.${kind[-1]:-app}" | while read -r found
+  do
+    if [[ $found:e == app ]]
+    then
+      for bin in $found/Contents/MacOS/*(Ne:'file -b $REPLY | grep -q Mach-O':)
+      do
+        if lipo -info $bin | grep -qE "^Non-fat.*x86_64$"
+        then
+          printf "%s/\e[1;20m%s\e[0m\n" $found:h $found:t
+        fi
+      done
+    else
+      if file -b $found | grep -q Mach-O && lipo -info $found | grep -qE "^Non-fat.*x86_64$"
+      then
+        printf "%s/\e[1;20m%s\e[0m\n" $found:h $found:t
+      fi
+    fi
+  done
+#}
