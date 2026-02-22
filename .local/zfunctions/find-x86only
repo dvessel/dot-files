@@ -1,23 +1,56 @@
 #!/usr/bin/env zsh
+#
+# Accepts arguments for `find`. see `man find`.
+#
+# -k, --kind can be set more than once.
+#
 #function find-x86only {
-  zparseopts -D -E - {k,-kind}:=kind
-  local found
+  zparseopts -D -E -- {k,-kind}+:=kind || return 1
 
-  find ${@:-.} -name "*.${kind[-1]:-app}" | while read -r found
+  # Define directories containing the Mach-O binary. Use `.` if the find
+  # result is an immediate parent for the binary. If it's not defined
+  # here, then it checks the find results.
+  typeset -A inpath=(
+    [app]=Contents/MacOS
+    [appex]=Contents/MacOS
+    [bundle]=Contents/MacOS
+    [xpc]=Contents/MacOS
+    [framework]=.
+  )
+
+  local found parentpath names dname=( -name "*.app") filter=( -k --kind )
+
+  for k in ${kind:|filter}; names+=($(
+    [[ -n $names ]] &&
+      print -- -or
+      print -- -name "*.$k"
+  ))
+
+  find ${@:-.} ${names:-$dname} | while read -r found
   do
-    if [[ $found:e == app ]]
+    if [[ ! -z ${inpath[${found:e}]} ]]
     then
-      for bin in $found/Contents/MacOS/*(Ne:'file -b $REPLY | grep -q Mach-O':)
+      for bin in $found/${inpath[${found:e}]}/*(Ne:'file -b $REPLY | grep -q Mach-O':)
       do
         if lipo -info $bin | grep -qE "^Non-fat.*x86_64$"
         then
-          printf "%s/\e[1;20m%s\e[0m\n" $found:h $found:t
+          if [[ $parentpath != $app:h ]]
+          then
+            parentpath=$found:h
+            printf "%s\n" $parentpath
+          fi
+          printf "  \e[1;37m%s\e[0m\n  └ \e[0;33m%s\e[0m\n" $found:t ${inpath[${found:e}]}/$bin:t
         fi
       done
     else
       if file -b $found | grep -q Mach-O && lipo -info $found | grep -qE "^Non-fat.*x86_64$"
       then
-        printf "%s/\e[1;20m%s\e[0m\n" $found:h $found:t
+        if [[ $parentpath != $found:h ]]
+        then
+          parentpath=$found:h
+          printf "%s\n" $parentpath
+        fi
+        printf "  \e[0;33m%s\e[0m\n" $found:t
       fi
     fi
   done
