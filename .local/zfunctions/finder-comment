@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+#function finder-comment {
+  osascript -e 'on run {f, c}' -e 'tell app "Finder" to set comment of (POSIX file f as alias) to c' -e 'end' file:///$1:a $2 > /dev/null
+#}
