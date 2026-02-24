@@ -1,0 +1,1 @@
+{"model_format":"","model_family":"qwen3next","model_families":["qwen3next"],"model_type":"80B","file_type":"FP8","remote_host":"https://ollama.com:443","remote_model":"qwen3-coder-next","capabilities":["completion","tools"],"context_length":262144,"embedding_length":2048,"base_name":"qwen3-coder-next","architecture":"amd64","os":"linux","rootfs":{"type":"layers","diff_ids":[]}}

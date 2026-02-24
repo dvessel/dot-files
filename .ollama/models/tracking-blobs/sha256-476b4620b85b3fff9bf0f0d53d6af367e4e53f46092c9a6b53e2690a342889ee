@@ -1,1 +1,0 @@
-{"model_format":"","model_family":"qwen3moe","model_families":["qwen3moe"],"model_type":"480B","file_type":"BF16","remote_host":"https://ollama.com:443","remote_model":"qwen3-coder:480b","capabilities":["completion","tools"],"context_length":262144,"embedding_length":2048,"base_name":"qwen3-coder:480b","architecture":"amd64","os":"linux","rootfs":{"type":"layers","diff_ids":[]}}
