@@ -7,16 +7,17 @@ else
   alias -g -- ---='2>&1 | less'
 fi
 
-if type lsd &>/dev/null; then
-  alias l='lsd'
-  alias a='lsd -A'
-  alias l.='lsd -d .*'
-  alias ll='lsd --blocks permission,user,group,links,date,name --size short --dereference'
-  alias la='ll -A'
-  alias lt='lsd --tree --size short'
-  alias gl='lsd --blocks git,date,links,name -AG'
-  alias sl='lsd --blocks permission,user,group,size,date,name -S --total-size'
-  alias tl='ll --date relative -t'
+if type eza &>/dev/null; then
+  alias l='eza --no-quotes --icons --hyperlink'
+  alias a='l -a'
+  alias l.='l -d .*'
+  alias ll='l -l --time-style "+%D %l:%M%p" --dereference --color-scale all'
+  alias la='a -l --time-style "+%D %l:%M%p" --color-scale all'
+  alias lt='l --tree'
+  alias gi='ll --git --git-repos --git-ignore -aa'
+  alias gl='ll --git --git-repos'
+  alias sl='ll --total-size --sort size'
+  alias tl='ll --time-style relative --sort modified'
 else
   alias l='ls --color=auto'
   alias a='ls -A --color=auto'

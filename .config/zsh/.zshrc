@@ -17,13 +17,11 @@ typeset -gU fpath=( $ZFUNCDIR $fpath /{usr/local,opt/homebrew}/share/zsh/site-fu
 # Autoload zfunctions from $ZFUNCDIR.
 autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
-# Shell integrations are arch-specific. arm64|x86_64
-acsource integrations-`uname -m` \
-  $HOMEBREW_PREFIX/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
-  $HOMEBREW_PREFIX/Caskroom/miniconda/base/etc/profile.d/conda.sh
-
-# Aggregate .zsource/*.zsh while maintaining order for set names.
-acsource zsource $ZDOTDIR/.zsource/{options,antidote,p10k-config,*}.zsh
+# Shell integrations and aggregated .zsource/*.zsh. Maintain order for set names.
+acsource zsh-aggregate \
+  /opt/homebrew/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
+  /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh \
+  $ZDOTDIR/.zsource/{options,antidote,p10k-config,*}.zsh
 
 # Normally handled by antidote plugin: .zplugins->mattmc3/ez-compinit
 if ! type compinit &>/dev/null; then

@@ -2,6 +2,8 @@
 brew "antidote"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -12,8 +14,6 @@ brew "gh"
 brew "git"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Clone of ls with colorful output, file type icons, and more
-brew "lsd"
 # Powerful, lightweight programming language
 brew "lua"
 # Package manager for the Lua programming language

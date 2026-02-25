@@ -2,5 +2,5 @@
 brew "antidote"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Clone of ls with colorful output, file type icons, and more
-brew "lsd"
+# Modern, maintained replacement for ls
+brew "eza"
