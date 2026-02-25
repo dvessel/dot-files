@@ -1,2 +1,0 @@
-# Command-line fuzzy finder written in Go
-brew "fzf"

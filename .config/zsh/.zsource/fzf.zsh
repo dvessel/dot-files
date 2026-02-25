@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+if ! type fzf &>/dev/null; then
+  path+=/opt/homebrew/opt/fzf/bin
+fi
+
 local opts=(
   --reverse
   --scroll-off 7
