@@ -1,6 +1,5 @@
-# Based on Dimidium
 
-background-opacity = 0.98
+background-opacity = 0.9
 background-blur    = 10
 unfocused-split-opacity = 0.6
 
@@ -8,28 +7,28 @@ adjust-cursor-thickness = 3
 cursor-style = bar
 
 window-colorspace = display-p3
-palette =  0 = #444444
-palette =  1 = #cf494c
-palette =  2 = #60b442
-palette =  3 = #db9c11
-palette =  4 = #0575d8
-palette =  5 = #af5ed2
-palette =  6 = #1db6bb
-palette =  7 = #bab7b6
-palette =  8 = #4a4a4a
-palette =  9 = #ff643b
-palette = 10 = #37e57b
-palette = 11 = #fccd1a
-palette = 12 = #688dfd
-palette = 13 = #ed6fe9
-palette = 14 = #32e0fb
-palette = 15 = #d3d8d9
-background   = #141414
-foreground   = #bab7b6
-cursor-color = #FF0000
-cursor-text  = #FFFFFF
-selection-background = #aa1414
-selection-foreground = #aaa7a6
+palette =  0 = #dddddd
+palette =  1 = #ff4444
+palette =  2 = #60bb44
+palette =  3 = #ffcc66
+palette =  4 = #44bbee
+palette =  5 = #aa55dd
+palette =  6 = #44ccaa
+palette =  7 = #bbbbbb
+palette =  8 = #555555
+palette =  9 = #ff6633
+palette = 10 = #44ee77
+palette = 11 = #ffcc11
+palette = 12 = #6688ff
+palette = 13 = #ee66ee
+palette = 14 = #33eeff
+palette = 15 = #ffffff
+background   = #111111
+foreground   = #cccccc
+cursor-color = #ff0000
+cursor-text  = #ffffff
+selection-background = #880000
+selection-foreground = #ffcccc
 
 # neovide style cursor trails.
 custom-shader = themes/cursor_trails.glsl
