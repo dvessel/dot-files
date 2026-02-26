@@ -562,6 +562,50 @@
 			<key>showQuickActions</key>
 			<false/>
 		</dict>
+		<key>public.folder</key>
+		<dict>
+			<key>options</key>
+			<array>
+				<dict>
+					<key>isActive</key>
+					<true/>
+					<key>name</key>
+					<string>kPreviewOptionsItemTagAttribute</string>
+				</dict>
+				<dict>
+					<key>isActive</key>
+					<true/>
+					<key>name</key>
+					<string>kMDItemUserCreatedDate</string>
+				</dict>
+				<dict>
+					<key>isActive</key>
+					<true/>
+					<key>name</key>
+					<string>kMDItemUserModifiedDate</string>
+				</dict>
+				<dict>
+					<key>isActive</key>
+					<true/>
+					<key>name</key>
+					<string>kMDItemLastUsedDate</string>
+				</dict>
+				<dict>
+					<key>isActive</key>
+					<false/>
+					<key>name</key>
+					<string>kMDItemKeywords</string>
+				</dict>
+				<dict>
+					<key>isActive</key>
+					<false/>
+					<key>name</key>
+					<string>kMDItemWhereFroms</string>
+				</dict>
+			</array>
+			<key>showQuickActions</key>
+			<false/>
+		</dict>
 		<key>public.font</key>
 		<dict>
 			<key>options</key>
