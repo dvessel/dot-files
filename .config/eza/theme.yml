@@ -3,55 +3,50 @@ colourful: true
 filekinds:
   normal: {foreground: Default}
   directory: {foreground: Blue, is_bold: false}
-  symlink: {foreground: Cyan}
+  symlink: {foreground: Cyan, is_underline: true}
   pipe: {foreground: Yellow}
   block_device: {foreground: Yellow, is_bold: true}
   char_device: {foreground: Yellow, is_bold: true}
   socket: {foreground: Red, is_bold: true}
   special: {foreground: Yellow}
-  executable: {foreground: Green, is_bold: true}
-  mount_point: {foreground: Blue, is_bold: true, is_underline: true}
+  executable: {foreground: Yellow, is_bold: false}
+  mount_point: {foreground: Blue, is_bold: true}
 
 perms:
-  user_read: {foreground: Yellow, is_bold: false}
-  user_write: {foreground: Red, is_bold: false}
-  user_execute_file: {foreground: Green, is_bold: false, is_underline: true}
-  user_execute_other: {foreground: Green, is_bold: false}
-  group_read: {foreground: Yellow}
-  group_write: {foreground: Red}
-  group_execute: {foreground: Green}
-  other_read: {foreground: Yellow}
-  other_write: {foreground: Red}
-  other_execute: {foreground: Green}
+  user_read: {foreground: Blue, is_bold: false}
+  user_write: {foreground: Yellow, is_bold: false}
+  user_execute_file: {foreground: Red, is_bold: false, is_underline: false}
+  user_execute_other: {foreground: Red, is_bold: false, is_dimmed: true}
+  group_read: {foreground: Blue}
+  group_write: {foreground: Yellow}
+  group_execute: {foreground: Red}
+  other_read: {foreground: Blue}
+  other_write: {foreground: Yellow}
+  other_execute: {foreground: Red}
   special_user_file: {foreground: Purple}
   special_other: {foreground: Purple}
   attribute: {foreground: Default}
 
 size:
-  major: {foreground: Green, is_bold: true}
-  minor: {foreground: Green}
-  number_byte: {foreground: Green, is_bold: false}
-  number_kilo: {foreground: Green, is_bold: false}
-  number_mega: {foreground: Green, is_bold: false}
-  number_giga: {foreground: Green, is_bold: true}
-  number_huge: {foreground: Green, is_bold: true}
-  unit_byte: {foreground: Green}
-  unit_kilo: {foreground: Green}
-  unit_mega: {foreground: Green}
-  unit_giga: {foreground: Green}
-  unit_huge: {foreground: Green}
+  major: {foreground: Blue, is_bold: false}
+  minor: {foreground: Blue}
+  number_byte: {foreground: Blue, is_bold: false, is_dimmed: true}
+  number_kilo: {foreground: Blue, is_bold: false, is_dimmed: true}
+  number_mega: {foreground: Blue, is_bold: false}
+  number_giga: {foreground: Purple, is_bold: false}
+  number_huge: {foreground: Red, is_bold: true}
 
 users:
-  user_you: {foreground: Yellow, is_bold: false}
-  user_root: {foreground: Default}
-  user_other: {foreground: Default}
-  group_yours: {foreground: Yellow, is_bold: false}
-  group_other: {foreground: Default}
-  group_root: {foreground: Default}
+  user_you: {foreground: Blue, is_bold: false}
+  user_root: {foreground: Red}
+  user_other: {foreground: Default, is_dimmed: true}
+  group_yours: {foreground: Blue, is_bold: false}
+  group_root: {foreground: Red}
+  group_other: {foreground: Default, is_dimmed: true}
 
 links:
-  normal: {foreground: Red, is_bold: false}
-  multi_link_file: {foreground: Red, background: Default, is_bold: true}
+  normal: {foreground: Blue, is_bold: false}
+  multi_link_file: {foreground: Purple, background: Default, is_bold: false}
 
 git:
   new: {foreground: Green}
@@ -76,29 +71,29 @@ security_context:
   range: {foreground: Cyan}
 
 file_type:
-  image: {foreground: Purple}
-  video: {foreground: Purple, is_bold: false}
-  music: {foreground: Purple}
-  lossless: {foreground: Green, is_bold: true}
+  image: {foreground: Default}
+  video: {foreground: Default, is_bold: false, is_italic: true}
+  music: {foreground: Default, is_italic: true}
+  lossless: {foreground: Default, is_bold: false, is_italic: true}
   crypto: {foreground: Red, is_bold: true}
   document: {foreground: Default}
-  compressed: {foreground: Default}
-  temp: {foreground: DarkGray}
-  compiled: {foreground: Yellow}
-  build: {foreground: Yellow, is_bold: true, is_underline: true}
-  source: {foreground: Yellow, is_bold: true}
+  compressed: {foreground: Default, is_dimmed: true}
+  temp: {foreground: Default, is_dimmed: true}
+  compiled: {foreground: Green}
+  build: {foreground: Yellow, is_bold: false, is_underline: true}
+  source: {foreground: Yellow, is_bold: false, is_italic: true}
 
-punctuation: {foreground: DarkGray, is_bold: true}
+punctuation: {foreground: Default, is_bold: false, is_dimmed: true}
 date: {foreground: Blue}
 inode: {foreground: Purple}
 blocks: {foreground: Cyan}
-header: {foreground: Default, is_underline: true}
+header: {foreground: Blue, is_bold: true, is_dimmed: true, is_underline: true}
 octal: {foreground: Purple}
 flags: {foreground: Default}
 
-symlink_path: {foreground: Cyan}
+symlink_path: {foreground: Cyan, is_dimmed: true}
 control_char: {foreground: Red}
-broken_symlink: {foreground: Red}
+broken_symlink: {foreground: Red, is_underline: true, is_italic: true}
 broken_path_overlay: {foreground: Default, is_underline: true}
 
 filenames:
