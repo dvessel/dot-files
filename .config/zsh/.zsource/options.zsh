@@ -33,15 +33,18 @@ export HELPDIR=/usr/share/zsh/`zsh --version | cut -d ' ' -f2`/help
 unalias run-help 2>/dev/null
 autoload run-help
 
-if test -f /opt/homebrew/bin/nvim; then
-  export EDITOR=/opt/homebrew/bin/nvim
-else
-  export EDITOR=vim
+# Make available in x86 Rosetta.
+if ! type nvim &>/dev/null; then
+  path+=/opt/homebrew/opt/nvim/bin
+fi
+if ! type neovide &>/dev/null; then
+  path+=/opt/homebrew/opt/neovide/bin
+fi
+if ! type bat &>/dev/null; then
+  path+=/opt/homebrew/opt/bat/bin
 fi
 
-if test -f /opt/homebrew/bin/bat; then
-  export PAGER=/opt/homebrew/bin/bat
-  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -lman'"
-fi
-
+export EDITOR=nvim
+export PAGER=bat
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -lman'"
 export LESS='-RFi'
