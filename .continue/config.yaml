@@ -4,7 +4,7 @@ schema: v1
 models:
   - name: qwen2.5-coder:1.5b-base
     provider: ollama
-    model: qwen2.5-coder:1.5b-base-q8_0
+    model: qwen2.5-coder:1.5b-base
     roles:
       - autocomplete
 
