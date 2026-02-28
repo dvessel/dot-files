@@ -1,0 +1,2258 @@
+#compdef goose
+
+autoload -U is-at-least
+
+_goose() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_goose_commands" \
+"*::: :->goose" \
+&& ret=0
+    case $state in
+    (goose)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-command-$line[1]:"
+        case $line[1] in
+            (configure)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" : \
+'-v[Show verbose information including config.yaml]' \
+'--verbose[Show verbose information including config.yaml]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(mcp)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':server:_default' \
+&& ret=0
+;;
+(acp)
+_arguments "${_arguments_options[@]}" : \
+'*--with-builtin=[Add builtin extensions by name (e.g., '\''developer'\'' or multiple\: '\''developer,github'\'')]:NAME:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(session)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'--max-tool-repetitions=[Maximum number of consecutive identical tool calls allowed]:NUMBER:_default' \
+'--max-turns=[Maximum number of turns allowed without user input (default\: 1000)]:NUMBER:_default' \
+'--container=[Docker container ID to run extensions inside]:CONTAINER_ID:_default' \
+'*--with-extension=[Add stdio extensions (can be specified multiple times)]:COMMAND:_default' \
+'*--with-streamable-http-extension=[Add streamable HTTP extensions (can be specified multiple times)]:URL:_default' \
+'*--with-builtin=[Add builtin extensions by name (e.g., '\''developer'\'' or multiple\: '\''developer,github'\'')]:NAME:_default' \
+'-r[Resume a previous session (last used or specified by --name/--session-id)]' \
+'--resume[Resume a previous session (last used or specified by --name/--session-id)]' \
+'--fork[Fork a previous session (creates new session with copied history)]' \
+'--history[Show previous messages when resuming a session]' \
+'--debug[Enable debug output mode with full content and no truncation]' \
+'--no-profile[Don'\''t load your default extensions, only use CLI-specified extensions]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_goose__session_commands" \
+"*::: :->session" \
+&& ret=0
+
+    case $state in
+    (session)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-session-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'-f+[Output format (text, json)]:FORMAT:_default' \
+'--format=[Output format (text, json)]:FORMAT:_default' \
+'-w+[Filter sessions by working directory]:WORKING_DIR:_files' \
+'--working_dir=[Filter sessions by working directory]:WORKING_DIR:_files' \
+'-l+[Limit the number of results]:LIMIT:_default' \
+'--limit=[Limit the number of results]:LIMIT:_default' \
+'--ascending[Sort by date in ascending order (oldest first)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'-r+[Regex for removing matched sessions (optional)]:REGEX:_default' \
+'--regex=[Regex for removing matched sessions (optional)]:REGEX:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(export)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'-o+[Output file path (default\: stdout)]:OUTPUT:_files' \
+'--output=[Output file path (default\: stdout)]:OUTPUT:_files' \
+'--format=[Output format (markdown, json, yaml)]:FORMAT:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(diagnostics)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'-o+[Output path for the diagnostics zip file (optional, defaults to current directory)]:OUTPUT:_files' \
+'--output=[Output path for the diagnostics zip file (optional, defaults to current directory)]:OUTPUT:_files' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__session__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-session-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(export)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(diagnostics)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(s)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'--max-tool-repetitions=[Maximum number of consecutive identical tool calls allowed]:NUMBER:_default' \
+'--max-turns=[Maximum number of turns allowed without user input (default\: 1000)]:NUMBER:_default' \
+'--container=[Docker container ID to run extensions inside]:CONTAINER_ID:_default' \
+'*--with-extension=[Add stdio extensions (can be specified multiple times)]:COMMAND:_default' \
+'*--with-streamable-http-extension=[Add streamable HTTP extensions (can be specified multiple times)]:URL:_default' \
+'*--with-builtin=[Add builtin extensions by name (e.g., '\''developer'\'' or multiple\: '\''developer,github'\'')]:NAME:_default' \
+'-r[Resume a previous session (last used or specified by --name/--session-id)]' \
+'--resume[Resume a previous session (last used or specified by --name/--session-id)]' \
+'--fork[Fork a previous session (creates new session with copied history)]' \
+'--history[Show previous messages when resuming a session]' \
+'--debug[Enable debug output mode with full content and no truncation]' \
+'--no-profile[Don'\''t load your default extensions, only use CLI-specified extensions]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_goose__session_commands" \
+"*::: :->session" \
+&& ret=0
+
+    case $state in
+    (session)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-session-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'-f+[Output format (text, json)]:FORMAT:_default' \
+'--format=[Output format (text, json)]:FORMAT:_default' \
+'-w+[Filter sessions by working directory]:WORKING_DIR:_files' \
+'--working_dir=[Filter sessions by working directory]:WORKING_DIR:_files' \
+'-l+[Limit the number of results]:LIMIT:_default' \
+'--limit=[Limit the number of results]:LIMIT:_default' \
+'--ascending[Sort by date in ascending order (oldest first)]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'-r+[Regex for removing matched sessions (optional)]:REGEX:_default' \
+'--regex=[Regex for removing matched sessions (optional)]:REGEX:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(export)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'-o+[Output file path (default\: stdout)]:OUTPUT:_files' \
+'--output=[Output file path (default\: stdout)]:OUTPUT:_files' \
+'--format=[Output format (markdown, json, yaml)]:FORMAT:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(diagnostics)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'-o+[Output path for the diagnostics zip file (optional, defaults to current directory)]:OUTPUT:_files' \
+'--output=[Output path for the diagnostics zip file (optional, defaults to current directory)]:OUTPUT:_files' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__session__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-session-help-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(export)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(diagnostics)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(project)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(p)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(projects)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(ps)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+'(-t --text --recipe)-i+[Path to instruction file containing commands. Use - for stdin.]:FILE:_default' \
+'(-t --text --recipe)--instructions=[Path to instruction file containing commands. Use - for stdin.]:FILE:_default' \
+'(-i --instructions --recipe)-t+[Input text to provide to goose directly]:TEXT:_default' \
+'(-i --instructions --recipe)--text=[Input text to provide to goose directly]:TEXT:_default' \
+'(-i --instructions -t --text)--recipe=[Recipe name to get recipe file or the full path of the recipe file (use --explain to see recipe details)]:RECIPE_NAME or FULL_PATH_TO_RECIPE_FILE:_default' \
+'(--recipe)--system=[Additional system prompt to customize agent behavior]:TEXT:_default' \
+'*--params=[Dynamic parameters (e.g., --params username=alice --params channel_name=goose-channel)]:KEY=VALUE:_default' \
+'*--sub-recipe=[Sub-recipe name or file path (can be specified multiple times)]:RECIPE:_default' \
+'-n+[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--name=[Name for the chat session (e.g., '\''project-x'\'')]:NAME:_default' \
+'--session-id=[Session ID (e.g., '\''20250921_143022'\'')]:SESSION_ID:_default' \
+'--path=[Legacy\: Path for the chat session]:PATH:_files' \
+'--scheduled-job-id=[ID of the scheduled job that triggered this execution (internal use)]:ID:_default' \
+'--max-tool-repetitions=[Maximum number of consecutive identical tool calls allowed]:NUMBER:_default' \
+'--max-turns=[Maximum number of turns allowed without user input (default\: 1000)]:NUMBER:_default' \
+'--container=[Docker container ID to run extensions inside]:CONTAINER_ID:_default' \
+'*--with-extension=[Add stdio extensions (can be specified multiple times)]:COMMAND:_default' \
+'*--with-streamable-http-extension=[Add streamable HTTP extensions (can be specified multiple times)]:URL:_default' \
+'*--with-builtin=[Add builtin extensions by name (e.g., '\''developer'\'' or multiple\: '\''developer,github'\'')]:NAME:_default' \
+'--output-format=[Output format (text, json, stream-json)]:FORMAT:(text json stream-json)' \
+'--provider=[Specify the LLM provider to use (e.g., '\''openai'\'', '\''anthropic'\'')]:PROVIDER:_default' \
+'--model=[Specify the model to use (e.g., '\''gpt-4o'\'', '\''claude-sonnet-4-20250514'\'')]:MODEL:_default' \
+'--explain[Show the recipe title, description, and parameters]' \
+'--render-recipe[Print the rendered recipe instead of running it.]' \
+'-s[Continue in interactive mode after processing initial input]' \
+'--interactive[Continue in interactive mode after processing initial input]' \
+'(-r --resume -n --name --path)--no-session[Run without storing a session file]' \
+'-r[Resume from a previous run]' \
+'--resume[Resume from a previous run]' \
+'--debug[Enable debug output mode with full content and no truncation]' \
+'--no-profile[Don'\''t load your default extensions, only use CLI-specified extensions]' \
+'-q[Quiet mode. Suppress non-response output, printing only the model response to stdout]' \
+'--quiet[Quiet mode. Suppress non-response output, printing only the model response to stdout]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(recipe)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_goose__recipe_commands" \
+"*::: :->recipe" \
+&& ret=0
+
+    case $state in
+    (recipe)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-recipe-command-$line[1]:"
+        case $line[1] in
+            (validate)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':recipe_name -- recipe name to get recipe file or full path to the recipe file to validate:_default' \
+&& ret=0
+;;
+(deeplink)
+_arguments "${_arguments_options[@]}" : \
+'*-p+[Recipe parameter in key=value format (can be specified multiple times)]:KEY=VALUE:_default' \
+'*--param=[Recipe parameter in key=value format (can be specified multiple times)]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':recipe_name -- recipe name to get recipe file or full path to the recipe file to generate deeplink:_default' \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+'*-p+[Recipe parameter in key=value format (can be specified multiple times)]:KEY=VALUE:_default' \
+'*--param=[Recipe parameter in key=value format (can be specified multiple times)]:KEY=VALUE:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':recipe_name -- recipe name or full path to the recipe file:_default' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'--format=[Output format (text, json)]:FORMAT:_default' \
+'-v[Show verbose information including recipe descriptions]' \
+'--verbose[Show verbose information including recipe descriptions]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__recipe__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-recipe-help-command-$line[1]:"
+        case $line[1] in
+            (validate)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(deeplink)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(schedule)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_goose__schedule_commands" \
+"*::: :->schedule" \
+&& ret=0
+
+    case $state in
+    (schedule)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-schedule-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[Unique ID for the recurring scheduled job]:SCHEDULE_ID:_default' \
+'--cron=[Cron expression for the schedule]:CRON:_default' \
+'--recipe-source=[Recipe source (path to file, or base64 encoded recipe string)]:RECIPE_SOURCE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[ID of the scheduled job to remove (removes the recurring schedule)]:SCHEDULE_ID:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(sessions)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[ID of the schedule]:SCHEDULE_ID:_default' \
+'-l+[Maximum number of sessions to return]:LIMIT:_default' \
+'--limit=[Maximum number of sessions to return]:LIMIT:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(run-now)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[ID of the schedule to run]:SCHEDULE_ID:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(services-status)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(services-stop)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(cron-help)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__schedule__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-schedule-help-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(sessions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run-now)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(services-status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(services-stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(cron-help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(sched)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_goose__schedule_commands" \
+"*::: :->schedule" \
+&& ret=0
+
+    case $state in
+    (schedule)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-schedule-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[Unique ID for the recurring scheduled job]:SCHEDULE_ID:_default' \
+'--cron=[Cron expression for the schedule]:CRON:_default' \
+'--recipe-source=[Recipe source (path to file, or base64 encoded recipe string)]:RECIPE_SOURCE:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[ID of the scheduled job to remove (removes the recurring schedule)]:SCHEDULE_ID:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(sessions)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[ID of the schedule]:SCHEDULE_ID:_default' \
+'-l+[Maximum number of sessions to return]:LIMIT:_default' \
+'--limit=[Maximum number of sessions to return]:LIMIT:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(run-now)
+_arguments "${_arguments_options[@]}" : \
+'--schedule-id=[ID of the schedule to run]:SCHEDULE_ID:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(services-status)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(services-stop)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(cron-help)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__schedule__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-schedule-help-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(sessions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run-now)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(services-status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(services-stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(cron-help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(gateway)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_goose__gateway_commands" \
+"*::: :->gateway" \
+&& ret=0
+
+    case $state in
+    (gateway)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-gateway-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(start)
+_arguments "${_arguments_options[@]}" : \
+'--bot-token=[Bot token for the gateway platform]:BOT_TOKEN:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':gateway_type -- Gateway type (e.g., '\''telegram'\''):_default' \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':gateway_type -- Gateway type to stop (e.g., '\''telegram'\''):_default' \
+&& ret=0
+;;
+(pair)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':gateway_type -- Gateway type to generate pairing code for:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__gateway__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-gateway-help-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(start)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(pair)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(gw)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_goose__gateway_commands" \
+"*::: :->gateway" \
+&& ret=0
+
+    case $state in
+    (gateway)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-gateway-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(start)
+_arguments "${_arguments_options[@]}" : \
+'--bot-token=[Bot token for the gateway platform]:BOT_TOKEN:_default' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':gateway_type -- Gateway type (e.g., '\''telegram'\''):_default' \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':gateway_type -- Gateway type to stop (e.g., '\''telegram'\''):_default' \
+&& ret=0
+;;
+(pair)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':gateway_type -- Gateway type to generate pairing code for:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__gateway__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-gateway-help-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(start)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(pair)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+'-c[Update to canary version]' \
+'--canary[Update to canary version]' \
+'-r[Enforce to re-configure goose during update]' \
+'--reconfigure[Enforce to re-configure goose during update]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(web)
+_arguments "${_arguments_options[@]}" : \
+'-p+[Port to run the web server on]:PORT:_default' \
+'--port=[Port to run the web server on]:PORT:_default' \
+'--host=[Host to bind the web server to]:HOST:_default' \
+'--auth-token=[Authentication token to secure the web interface]:AUTH_TOKEN:_default' \
+'--open[Open browser automatically when server starts]' \
+'--no-auth[Skip auth requirement when exposed on the network (unsafe)]' \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(term)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+":: :_goose__term_commands" \
+"*::: :->term" \
+&& ret=0
+
+    case $state in
+    (term)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-term-command-$line[1]:"
+        case $line[1] in
+            (init)
+_arguments "${_arguments_options[@]}" : \
+'-n+[Name for the terminal session]:NAME:_default' \
+'--name=[Name for the terminal session]:NAME:_default' \
+'--default[Make goose the default handler for unknown commands]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+':shell -- Shell type (bash, zsh, fish, powershell):(bash zsh fish powershell)' \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':command -- The command that was executed:_default' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'*::prompt -- The prompt to send to goose (multiple words allowed without quotes):_default' \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__term__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-term-help-command-$line[1]:"
+        case $line[1] in
+            (init)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(local-models)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_goose__local-models_commands" \
+"*::: :->local-models" \
+&& ret=0
+
+    case $state in
+    (local-models)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-local-models-command-$line[1]:"
+        case $line[1] in
+            (search)
+_arguments "${_arguments_options[@]}" : \
+'-l+[Maximum number of results]:LIMIT:_default' \
+'--limit=[Maximum number of results]:LIMIT:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':query -- Search query:_default' \
+&& ret=0
+;;
+(download)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':spec -- Model spec in user/repo\:quantization format:_default' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(delete)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':id -- Model ID to delete:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__local-models__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-local-models-help-command-$line[1]:"
+        case $line[1] in
+            (search)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(download)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(delete)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(lm)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+":: :_goose__local-models_commands" \
+"*::: :->local-models" \
+&& ret=0
+
+    case $state in
+    (local-models)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-local-models-command-$line[1]:"
+        case $line[1] in
+            (search)
+_arguments "${_arguments_options[@]}" : \
+'-l+[Maximum number of results]:LIMIT:_default' \
+'--limit=[Maximum number of results]:LIMIT:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':query -- Search query:_default' \
+&& ret=0
+;;
+(download)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':spec -- Model spec in user/repo\:quantization format:_default' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+&& ret=0
+;;
+(delete)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':id -- Model ID to delete:_default' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__local-models__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-local-models-help-command-$line[1]:"
+        case $line[1] in
+            (search)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(download)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(delete)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(completion)
+_arguments "${_arguments_options[@]}" : \
+'--bin-name=[Provide a custom binary name]:BIN_NAME:_default' \
+'-h[Print help]' \
+'--help[Print help]' \
+':shell:(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(validate-extensions)
+_arguments "${_arguments_options[@]}" : \
+'-h[Print help]' \
+'--help[Print help]' \
+':file -- Path to the bundled-extensions.json file:_files' \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__help_commands" \
+"*::: :->help" \
+&& ret=0
+
+    case $state in
+    (help)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-help-command-$line[1]:"
+        case $line[1] in
+            (configure)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(mcp)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(acp)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(session)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__help__session_commands" \
+"*::: :->session" \
+&& ret=0
+
+    case $state in
+    (session)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-help-session-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(export)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(diagnostics)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(project)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(projects)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(recipe)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__help__recipe_commands" \
+"*::: :->recipe" \
+&& ret=0
+
+    case $state in
+    (recipe)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-help-recipe-command-$line[1]:"
+        case $line[1] in
+            (validate)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(deeplink)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(schedule)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__help__schedule_commands" \
+"*::: :->schedule" \
+&& ret=0
+
+    case $state in
+    (schedule)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-help-schedule-command-$line[1]:"
+        case $line[1] in
+            (add)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(sessions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run-now)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(services-status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(services-stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(cron-help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(gateway)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__help__gateway_commands" \
+"*::: :->gateway" \
+&& ret=0
+
+    case $state in
+    (gateway)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-help-gateway-command-$line[1]:"
+        case $line[1] in
+            (status)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(start)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(pair)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(web)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(term)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__help__term_commands" \
+"*::: :->term" \
+&& ret=0
+
+    case $state in
+    (term)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-help-term-command-$line[1]:"
+        case $line[1] in
+            (init)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(info)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(local-models)
+_arguments "${_arguments_options[@]}" : \
+":: :_goose__help__local-models_commands" \
+"*::: :->local-models" \
+&& ret=0
+
+    case $state in
+    (local-models)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:goose-help-local-models-command-$line[1]:"
+        case $line[1] in
+            (search)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(download)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(delete)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(completion)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(validate-extensions)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(help)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_goose_commands] )) ||
+_goose_commands() {
+    local commands; commands=(
+'configure:Configure goose settings' \
+'info:Display goose information' \
+'mcp:Run one of the mcp servers bundled with goose' \
+'acp:Run goose as an ACP agent server on stdio' \
+'session:Start or resume interactive chat sessions' \
+'s:Start or resume interactive chat sessions' \
+'project:Open the last project directory' \
+'p:Open the last project directory' \
+'projects:List recent project directories' \
+'ps:List recent project directories' \
+'run:Execute commands from an instruction file or stdin' \
+'recipe:Recipe utilities for validation and deeplinking' \
+'schedule:Manage scheduled jobs' \
+'sched:Manage scheduled jobs' \
+'gateway:Manage gateways for external platform integrations' \
+'gw:Manage gateways for external platform integrations' \
+'update:Update the goose CLI version' \
+'web:Experimental\: Start a web server with a chat interface' \
+'term:Terminal-integrated goose session' \
+'local-models:Manage local inference models' \
+'lm:Manage local inference models' \
+'completion:Generate the autocompletion script for the specified shell' \
+'validate-extensions:Validate a bundled-extensions.json file' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose commands' commands "$@"
+}
+(( $+functions[_goose__acp_commands] )) ||
+_goose__acp_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose acp commands' commands "$@"
+}
+(( $+functions[_goose__completion_commands] )) ||
+_goose__completion_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose completion commands' commands "$@"
+}
+(( $+functions[_goose__configure_commands] )) ||
+_goose__configure_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose configure commands' commands "$@"
+}
+(( $+functions[_goose__gateway_commands] )) ||
+_goose__gateway_commands() {
+    local commands; commands=(
+'status:Show gateway status' \
+'start:Start a gateway' \
+'stop:Stop a running gateway' \
+'pair:Generate a pairing code for a gateway' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose gateway commands' commands "$@"
+}
+(( $+functions[_goose__gateway__help_commands] )) ||
+_goose__gateway__help_commands() {
+    local commands; commands=(
+'status:Show gateway status' \
+'start:Start a gateway' \
+'stop:Stop a running gateway' \
+'pair:Generate a pairing code for a gateway' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose gateway help commands' commands "$@"
+}
+(( $+functions[_goose__gateway__help__help_commands] )) ||
+_goose__gateway__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway help help commands' commands "$@"
+}
+(( $+functions[_goose__gateway__help__pair_commands] )) ||
+_goose__gateway__help__pair_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway help pair commands' commands "$@"
+}
+(( $+functions[_goose__gateway__help__start_commands] )) ||
+_goose__gateway__help__start_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway help start commands' commands "$@"
+}
+(( $+functions[_goose__gateway__help__status_commands] )) ||
+_goose__gateway__help__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway help status commands' commands "$@"
+}
+(( $+functions[_goose__gateway__help__stop_commands] )) ||
+_goose__gateway__help__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway help stop commands' commands "$@"
+}
+(( $+functions[_goose__gateway__pair_commands] )) ||
+_goose__gateway__pair_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway pair commands' commands "$@"
+}
+(( $+functions[_goose__gateway__start_commands] )) ||
+_goose__gateway__start_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway start commands' commands "$@"
+}
+(( $+functions[_goose__gateway__status_commands] )) ||
+_goose__gateway__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway status commands' commands "$@"
+}
+(( $+functions[_goose__gateway__stop_commands] )) ||
+_goose__gateway__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose gateway stop commands' commands "$@"
+}
+(( $+functions[_goose__help_commands] )) ||
+_goose__help_commands() {
+    local commands; commands=(
+'configure:Configure goose settings' \
+'info:Display goose information' \
+'mcp:Run one of the mcp servers bundled with goose' \
+'acp:Run goose as an ACP agent server on stdio' \
+'session:Start or resume interactive chat sessions' \
+'project:Open the last project directory' \
+'projects:List recent project directories' \
+'run:Execute commands from an instruction file or stdin' \
+'recipe:Recipe utilities for validation and deeplinking' \
+'schedule:Manage scheduled jobs' \
+'gateway:Manage gateways for external platform integrations' \
+'update:Update the goose CLI version' \
+'web:Experimental\: Start a web server with a chat interface' \
+'term:Terminal-integrated goose session' \
+'local-models:Manage local inference models' \
+'completion:Generate the autocompletion script for the specified shell' \
+'validate-extensions:Validate a bundled-extensions.json file' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose help commands' commands "$@"
+}
+(( $+functions[_goose__help__acp_commands] )) ||
+_goose__help__acp_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help acp commands' commands "$@"
+}
+(( $+functions[_goose__help__completion_commands] )) ||
+_goose__help__completion_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help completion commands' commands "$@"
+}
+(( $+functions[_goose__help__configure_commands] )) ||
+_goose__help__configure_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help configure commands' commands "$@"
+}
+(( $+functions[_goose__help__gateway_commands] )) ||
+_goose__help__gateway_commands() {
+    local commands; commands=(
+'status:Show gateway status' \
+'start:Start a gateway' \
+'stop:Stop a running gateway' \
+'pair:Generate a pairing code for a gateway' \
+    )
+    _describe -t commands 'goose help gateway commands' commands "$@"
+}
+(( $+functions[_goose__help__gateway__pair_commands] )) ||
+_goose__help__gateway__pair_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help gateway pair commands' commands "$@"
+}
+(( $+functions[_goose__help__gateway__start_commands] )) ||
+_goose__help__gateway__start_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help gateway start commands' commands "$@"
+}
+(( $+functions[_goose__help__gateway__status_commands] )) ||
+_goose__help__gateway__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help gateway status commands' commands "$@"
+}
+(( $+functions[_goose__help__gateway__stop_commands] )) ||
+_goose__help__gateway__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help gateway stop commands' commands "$@"
+}
+(( $+functions[_goose__help__help_commands] )) ||
+_goose__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help help commands' commands "$@"
+}
+(( $+functions[_goose__help__info_commands] )) ||
+_goose__help__info_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help info commands' commands "$@"
+}
+(( $+functions[_goose__help__local-models_commands] )) ||
+_goose__help__local-models_commands() {
+    local commands; commands=(
+'search:Search HuggingFace for GGUF models' \
+'download:Download a GGUF model (e.g. bartowski/Llama-3.2-1B-Instruct-GGUF\:Q4_K_M)' \
+'list:List downloaded local models' \
+'delete:Delete a downloaded local model' \
+    )
+    _describe -t commands 'goose help local-models commands' commands "$@"
+}
+(( $+functions[_goose__help__local-models__delete_commands] )) ||
+_goose__help__local-models__delete_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help local-models delete commands' commands "$@"
+}
+(( $+functions[_goose__help__local-models__download_commands] )) ||
+_goose__help__local-models__download_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help local-models download commands' commands "$@"
+}
+(( $+functions[_goose__help__local-models__list_commands] )) ||
+_goose__help__local-models__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help local-models list commands' commands "$@"
+}
+(( $+functions[_goose__help__local-models__search_commands] )) ||
+_goose__help__local-models__search_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help local-models search commands' commands "$@"
+}
+(( $+functions[_goose__help__mcp_commands] )) ||
+_goose__help__mcp_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help mcp commands' commands "$@"
+}
+(( $+functions[_goose__help__project_commands] )) ||
+_goose__help__project_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help project commands' commands "$@"
+}
+(( $+functions[_goose__help__projects_commands] )) ||
+_goose__help__projects_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help projects commands' commands "$@"
+}
+(( $+functions[_goose__help__recipe_commands] )) ||
+_goose__help__recipe_commands() {
+    local commands; commands=(
+'validate:Validate a recipe' \
+'deeplink:Generate a deeplink for a recipe' \
+'open:Open a recipe in Goose Desktop' \
+'list:List available recipes' \
+    )
+    _describe -t commands 'goose help recipe commands' commands "$@"
+}
+(( $+functions[_goose__help__recipe__deeplink_commands] )) ||
+_goose__help__recipe__deeplink_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help recipe deeplink commands' commands "$@"
+}
+(( $+functions[_goose__help__recipe__list_commands] )) ||
+_goose__help__recipe__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help recipe list commands' commands "$@"
+}
+(( $+functions[_goose__help__recipe__open_commands] )) ||
+_goose__help__recipe__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help recipe open commands' commands "$@"
+}
+(( $+functions[_goose__help__recipe__validate_commands] )) ||
+_goose__help__recipe__validate_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help recipe validate commands' commands "$@"
+}
+(( $+functions[_goose__help__run_commands] )) ||
+_goose__help__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help run commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule_commands] )) ||
+_goose__help__schedule_commands() {
+    local commands; commands=(
+'add:Add a new scheduled job' \
+'list:List all scheduled jobs' \
+'remove:Remove a scheduled job by ID' \
+'sessions:List sessions created by a specific schedule' \
+'run-now:Run a scheduled job immediately' \
+'services-status:\[Deprecated\] Check status of scheduler services' \
+'services-stop:\[Deprecated\] Stop scheduler services' \
+'cron-help:Show cron expression examples and help' \
+    )
+    _describe -t commands 'goose help schedule commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__add_commands] )) ||
+_goose__help__schedule__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule add commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__cron-help_commands] )) ||
+_goose__help__schedule__cron-help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule cron-help commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__list_commands] )) ||
+_goose__help__schedule__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule list commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__remove_commands] )) ||
+_goose__help__schedule__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule remove commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__run-now_commands] )) ||
+_goose__help__schedule__run-now_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule run-now commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__services-status_commands] )) ||
+_goose__help__schedule__services-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule services-status commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__services-stop_commands] )) ||
+_goose__help__schedule__services-stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule services-stop commands' commands "$@"
+}
+(( $+functions[_goose__help__schedule__sessions_commands] )) ||
+_goose__help__schedule__sessions_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help schedule sessions commands' commands "$@"
+}
+(( $+functions[_goose__help__session_commands] )) ||
+_goose__help__session_commands() {
+    local commands; commands=(
+'list:List all available sessions' \
+'remove:Remove sessions. Runs interactively if no ID, name, or regex is provided.' \
+'export:Export a session' \
+'diagnostics:' \
+    )
+    _describe -t commands 'goose help session commands' commands "$@"
+}
+(( $+functions[_goose__help__session__diagnostics_commands] )) ||
+_goose__help__session__diagnostics_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help session diagnostics commands' commands "$@"
+}
+(( $+functions[_goose__help__session__export_commands] )) ||
+_goose__help__session__export_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help session export commands' commands "$@"
+}
+(( $+functions[_goose__help__session__list_commands] )) ||
+_goose__help__session__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help session list commands' commands "$@"
+}
+(( $+functions[_goose__help__session__remove_commands] )) ||
+_goose__help__session__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help session remove commands' commands "$@"
+}
+(( $+functions[_goose__help__term_commands] )) ||
+_goose__help__term_commands() {
+    local commands; commands=(
+'init:Print shell initialization script' \
+'log:Log a shell command to the session' \
+'run:Run a prompt in the terminal session' \
+'info:Print session info for prompt integration' \
+    )
+    _describe -t commands 'goose help term commands' commands "$@"
+}
+(( $+functions[_goose__help__term__info_commands] )) ||
+_goose__help__term__info_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help term info commands' commands "$@"
+}
+(( $+functions[_goose__help__term__init_commands] )) ||
+_goose__help__term__init_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help term init commands' commands "$@"
+}
+(( $+functions[_goose__help__term__log_commands] )) ||
+_goose__help__term__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help term log commands' commands "$@"
+}
+(( $+functions[_goose__help__term__run_commands] )) ||
+_goose__help__term__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help term run commands' commands "$@"
+}
+(( $+functions[_goose__help__update_commands] )) ||
+_goose__help__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help update commands' commands "$@"
+}
+(( $+functions[_goose__help__validate-extensions_commands] )) ||
+_goose__help__validate-extensions_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help validate-extensions commands' commands "$@"
+}
+(( $+functions[_goose__help__web_commands] )) ||
+_goose__help__web_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose help web commands' commands "$@"
+}
+(( $+functions[_goose__info_commands] )) ||
+_goose__info_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose info commands' commands "$@"
+}
+(( $+functions[_goose__local-models_commands] )) ||
+_goose__local-models_commands() {
+    local commands; commands=(
+'search:Search HuggingFace for GGUF models' \
+'download:Download a GGUF model (e.g. bartowski/Llama-3.2-1B-Instruct-GGUF\:Q4_K_M)' \
+'list:List downloaded local models' \
+'delete:Delete a downloaded local model' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose local-models commands' commands "$@"
+}
+(( $+functions[_goose__local-models__delete_commands] )) ||
+_goose__local-models__delete_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models delete commands' commands "$@"
+}
+(( $+functions[_goose__local-models__download_commands] )) ||
+_goose__local-models__download_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models download commands' commands "$@"
+}
+(( $+functions[_goose__local-models__help_commands] )) ||
+_goose__local-models__help_commands() {
+    local commands; commands=(
+'search:Search HuggingFace for GGUF models' \
+'download:Download a GGUF model (e.g. bartowski/Llama-3.2-1B-Instruct-GGUF\:Q4_K_M)' \
+'list:List downloaded local models' \
+'delete:Delete a downloaded local model' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose local-models help commands' commands "$@"
+}
+(( $+functions[_goose__local-models__help__delete_commands] )) ||
+_goose__local-models__help__delete_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models help delete commands' commands "$@"
+}
+(( $+functions[_goose__local-models__help__download_commands] )) ||
+_goose__local-models__help__download_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models help download commands' commands "$@"
+}
+(( $+functions[_goose__local-models__help__help_commands] )) ||
+_goose__local-models__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models help help commands' commands "$@"
+}
+(( $+functions[_goose__local-models__help__list_commands] )) ||
+_goose__local-models__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models help list commands' commands "$@"
+}
+(( $+functions[_goose__local-models__help__search_commands] )) ||
+_goose__local-models__help__search_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models help search commands' commands "$@"
+}
+(( $+functions[_goose__local-models__list_commands] )) ||
+_goose__local-models__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models list commands' commands "$@"
+}
+(( $+functions[_goose__local-models__search_commands] )) ||
+_goose__local-models__search_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose local-models search commands' commands "$@"
+}
+(( $+functions[_goose__mcp_commands] )) ||
+_goose__mcp_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose mcp commands' commands "$@"
+}
+(( $+functions[_goose__project_commands] )) ||
+_goose__project_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose project commands' commands "$@"
+}
+(( $+functions[_goose__projects_commands] )) ||
+_goose__projects_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose projects commands' commands "$@"
+}
+(( $+functions[_goose__recipe_commands] )) ||
+_goose__recipe_commands() {
+    local commands; commands=(
+'validate:Validate a recipe' \
+'deeplink:Generate a deeplink for a recipe' \
+'open:Open a recipe in Goose Desktop' \
+'list:List available recipes' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose recipe commands' commands "$@"
+}
+(( $+functions[_goose__recipe__deeplink_commands] )) ||
+_goose__recipe__deeplink_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe deeplink commands' commands "$@"
+}
+(( $+functions[_goose__recipe__help_commands] )) ||
+_goose__recipe__help_commands() {
+    local commands; commands=(
+'validate:Validate a recipe' \
+'deeplink:Generate a deeplink for a recipe' \
+'open:Open a recipe in Goose Desktop' \
+'list:List available recipes' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose recipe help commands' commands "$@"
+}
+(( $+functions[_goose__recipe__help__deeplink_commands] )) ||
+_goose__recipe__help__deeplink_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe help deeplink commands' commands "$@"
+}
+(( $+functions[_goose__recipe__help__help_commands] )) ||
+_goose__recipe__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe help help commands' commands "$@"
+}
+(( $+functions[_goose__recipe__help__list_commands] )) ||
+_goose__recipe__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe help list commands' commands "$@"
+}
+(( $+functions[_goose__recipe__help__open_commands] )) ||
+_goose__recipe__help__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe help open commands' commands "$@"
+}
+(( $+functions[_goose__recipe__help__validate_commands] )) ||
+_goose__recipe__help__validate_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe help validate commands' commands "$@"
+}
+(( $+functions[_goose__recipe__list_commands] )) ||
+_goose__recipe__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe list commands' commands "$@"
+}
+(( $+functions[_goose__recipe__open_commands] )) ||
+_goose__recipe__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe open commands' commands "$@"
+}
+(( $+functions[_goose__recipe__validate_commands] )) ||
+_goose__recipe__validate_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose recipe validate commands' commands "$@"
+}
+(( $+functions[_goose__run_commands] )) ||
+_goose__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose run commands' commands "$@"
+}
+(( $+functions[_goose__schedule_commands] )) ||
+_goose__schedule_commands() {
+    local commands; commands=(
+'add:Add a new scheduled job' \
+'list:List all scheduled jobs' \
+'remove:Remove a scheduled job by ID' \
+'sessions:List sessions created by a specific schedule' \
+'run-now:Run a scheduled job immediately' \
+'services-status:\[Deprecated\] Check status of scheduler services' \
+'services-stop:\[Deprecated\] Stop scheduler services' \
+'cron-help:Show cron expression examples and help' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose schedule commands' commands "$@"
+}
+(( $+functions[_goose__schedule__add_commands] )) ||
+_goose__schedule__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule add commands' commands "$@"
+}
+(( $+functions[_goose__schedule__cron-help_commands] )) ||
+_goose__schedule__cron-help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule cron-help commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help_commands] )) ||
+_goose__schedule__help_commands() {
+    local commands; commands=(
+'add:Add a new scheduled job' \
+'list:List all scheduled jobs' \
+'remove:Remove a scheduled job by ID' \
+'sessions:List sessions created by a specific schedule' \
+'run-now:Run a scheduled job immediately' \
+'services-status:\[Deprecated\] Check status of scheduler services' \
+'services-stop:\[Deprecated\] Stop scheduler services' \
+'cron-help:Show cron expression examples and help' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose schedule help commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__add_commands] )) ||
+_goose__schedule__help__add_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help add commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__cron-help_commands] )) ||
+_goose__schedule__help__cron-help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help cron-help commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__help_commands] )) ||
+_goose__schedule__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help help commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__list_commands] )) ||
+_goose__schedule__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help list commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__remove_commands] )) ||
+_goose__schedule__help__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help remove commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__run-now_commands] )) ||
+_goose__schedule__help__run-now_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help run-now commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__services-status_commands] )) ||
+_goose__schedule__help__services-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help services-status commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__services-stop_commands] )) ||
+_goose__schedule__help__services-stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help services-stop commands' commands "$@"
+}
+(( $+functions[_goose__schedule__help__sessions_commands] )) ||
+_goose__schedule__help__sessions_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule help sessions commands' commands "$@"
+}
+(( $+functions[_goose__schedule__list_commands] )) ||
+_goose__schedule__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule list commands' commands "$@"
+}
+(( $+functions[_goose__schedule__remove_commands] )) ||
+_goose__schedule__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule remove commands' commands "$@"
+}
+(( $+functions[_goose__schedule__run-now_commands] )) ||
+_goose__schedule__run-now_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule run-now commands' commands "$@"
+}
+(( $+functions[_goose__schedule__services-status_commands] )) ||
+_goose__schedule__services-status_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule services-status commands' commands "$@"
+}
+(( $+functions[_goose__schedule__services-stop_commands] )) ||
+_goose__schedule__services-stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule services-stop commands' commands "$@"
+}
+(( $+functions[_goose__schedule__sessions_commands] )) ||
+_goose__schedule__sessions_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose schedule sessions commands' commands "$@"
+}
+(( $+functions[_goose__session_commands] )) ||
+_goose__session_commands() {
+    local commands; commands=(
+'list:List all available sessions' \
+'remove:Remove sessions. Runs interactively if no ID, name, or regex is provided.' \
+'export:Export a session' \
+'diagnostics:' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose session commands' commands "$@"
+}
+(( $+functions[_goose__session__diagnostics_commands] )) ||
+_goose__session__diagnostics_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session diagnostics commands' commands "$@"
+}
+(( $+functions[_goose__session__export_commands] )) ||
+_goose__session__export_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session export commands' commands "$@"
+}
+(( $+functions[_goose__session__help_commands] )) ||
+_goose__session__help_commands() {
+    local commands; commands=(
+'list:List all available sessions' \
+'remove:Remove sessions. Runs interactively if no ID, name, or regex is provided.' \
+'export:Export a session' \
+'diagnostics:' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose session help commands' commands "$@"
+}
+(( $+functions[_goose__session__help__diagnostics_commands] )) ||
+_goose__session__help__diagnostics_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session help diagnostics commands' commands "$@"
+}
+(( $+functions[_goose__session__help__export_commands] )) ||
+_goose__session__help__export_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session help export commands' commands "$@"
+}
+(( $+functions[_goose__session__help__help_commands] )) ||
+_goose__session__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session help help commands' commands "$@"
+}
+(( $+functions[_goose__session__help__list_commands] )) ||
+_goose__session__help__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session help list commands' commands "$@"
+}
+(( $+functions[_goose__session__help__remove_commands] )) ||
+_goose__session__help__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session help remove commands' commands "$@"
+}
+(( $+functions[_goose__session__list_commands] )) ||
+_goose__session__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session list commands' commands "$@"
+}
+(( $+functions[_goose__session__remove_commands] )) ||
+_goose__session__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose session remove commands' commands "$@"
+}
+(( $+functions[_goose__term_commands] )) ||
+_goose__term_commands() {
+    local commands; commands=(
+'init:Print shell initialization script' \
+'log:Log a shell command to the session' \
+'run:Run a prompt in the terminal session' \
+'info:Print session info for prompt integration' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose term commands' commands "$@"
+}
+(( $+functions[_goose__term__help_commands] )) ||
+_goose__term__help_commands() {
+    local commands; commands=(
+'init:Print shell initialization script' \
+'log:Log a shell command to the session' \
+'run:Run a prompt in the terminal session' \
+'info:Print session info for prompt integration' \
+'help:Print this message or the help of the given subcommand(s)' \
+    )
+    _describe -t commands 'goose term help commands' commands "$@"
+}
+(( $+functions[_goose__term__help__help_commands] )) ||
+_goose__term__help__help_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term help help commands' commands "$@"
+}
+(( $+functions[_goose__term__help__info_commands] )) ||
+_goose__term__help__info_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term help info commands' commands "$@"
+}
+(( $+functions[_goose__term__help__init_commands] )) ||
+_goose__term__help__init_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term help init commands' commands "$@"
+}
+(( $+functions[_goose__term__help__log_commands] )) ||
+_goose__term__help__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term help log commands' commands "$@"
+}
+(( $+functions[_goose__term__help__run_commands] )) ||
+_goose__term__help__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term help run commands' commands "$@"
+}
+(( $+functions[_goose__term__info_commands] )) ||
+_goose__term__info_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term info commands' commands "$@"
+}
+(( $+functions[_goose__term__init_commands] )) ||
+_goose__term__init_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term init commands' commands "$@"
+}
+(( $+functions[_goose__term__log_commands] )) ||
+_goose__term__log_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term log commands' commands "$@"
+}
+(( $+functions[_goose__term__run_commands] )) ||
+_goose__term__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose term run commands' commands "$@"
+}
+(( $+functions[_goose__update_commands] )) ||
+_goose__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose update commands' commands "$@"
+}
+(( $+functions[_goose__validate-extensions_commands] )) ||
+_goose__validate-extensions_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose validate-extensions commands' commands "$@"
+}
+(( $+functions[_goose__web_commands] )) ||
+_goose__web_commands() {
+    local commands; commands=()
+    _describe -t commands 'goose web commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_goose" ]; then
+    _goose "$@"
+else
+    compdef _goose goose
+fi
