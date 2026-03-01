@@ -18,7 +18,7 @@ local list=(
 
   "sync-advscan"
   "ping -c1 dvessel-ds.local &>/dev/null"
-  "~/Games/Support/AdvanceScan/backup/*"
+  "~/Games/Support/AdvanceScan/mamezip/*"
   "dvessel-ds.local:/volume1/storage/Emulation/MAME"
 )
 
