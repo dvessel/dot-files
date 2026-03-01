@@ -5,8 +5,6 @@ brew "bandcamp-dl"
 brew "block-goose-cli"
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
-# Monitor a directory for changes and run a shell command
-brew "fswatch"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Library for querying compressed XML metadata
@@ -33,6 +31,8 @@ brew "rqbit"
 brew "setweblocthumb"
 # Official tldr client written in Rust
 brew "tlrc"
+# Filesystem watcher, works anywhere, simple, efficient and friendly
+brew "watcher"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Operating system maintenance and cleaning utility
