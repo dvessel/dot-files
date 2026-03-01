@@ -7,8 +7,6 @@ brew "block-goose-cli"
 brew "fileicon"
 # Monitor a directory for changes and run a shell command
 brew "fswatch"
-# Pixel-by-pixel image difference tool
-brew "imgdiff"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Library for querying compressed XML metadata
