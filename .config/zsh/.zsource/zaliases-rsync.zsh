@@ -27,7 +27,7 @@ while (( $i < ${#list[@]} )); do
   presets+="$list[$i]"
   alias "$list[$i]"="$list[$i+1] && {
     printf \"\e[1;15m%s\e[0m\n\" \"Syncing… $list[$i+2] -> $list[$i+3]\"
-    rsync-synchronize -L --exclude={'.romlist','.sorted'} $list[$i+2] $list[$i+3]
+    rsync-synchronize -L --exclude='.*' $list[$i+2] $list[$i+3]
   }"
   i=$((i+4))
 done
