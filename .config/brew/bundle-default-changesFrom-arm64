@@ -1,8 +1,4 @@
 # changesFrom from 'bundle-default-arm64':
-# Simple python script to download Bandcamp albums
-brew "bandcamp-dl"
-# Open source, extensible AI agent that goes beyond code suggestions
-brew "block-goose-cli"
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
 # Lightweight and flexible command-line JSON processor
