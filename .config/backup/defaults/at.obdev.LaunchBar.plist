@@ -14,7 +14,7 @@
 	<key>PasteClipboardHistoryHotKey</key>
 	<string>4352@9</string>
 	<key>RetypeDelay</key>
-	<real>0.90000000000000002</real>
+	<real>1</real>
 	<key>SelectFromClipboardHistoryHotKey</key>
 	<string>4352@4</string>
 	<key>SettingsIndex</key>
@@ -31,6 +31,6 @@
 	<key>ShowClipboardHistoryHotKey</key>
 	<string>4864@4</string>
 	<key>ShowItemListAfterDelay</key>
-	<integer>0</integer>
+	<integer>2</integer>
 </dict>
 </plist>
