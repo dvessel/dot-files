@@ -30,7 +30,7 @@
 		<key>(null) - 86385BD0-5E7E-4F71-8AEC-618D2A47F5E9 - runShortcutAsService</key>
 		<dict>
 			<key>key_equivalent</key>
-			<string>$</string>
+			<string></string>
 		</dict>
 		<key>(null) - B2826BA2-E914-46BA-8424-4F7210359380 - runShortcutAsService</key>
 		<dict>
@@ -40,12 +40,12 @@
 		<key>(null) - C6DB1838-1C62-4B0C-8512-EC16316B9C32 - runShortcutAsService</key>
 		<dict>
 			<key>key_equivalent</key>
-			<string>$</string>
+			<string></string>
 		</dict>
 		<key>(null) - DA6B1724-F40D-4158-ABBB-01292C8C8407 - runShortcutAsService</key>
 		<dict>
 			<key>key_equivalent</key>
-			<string>$</string>
+			<string></string>
 		</dict>
 		<key>(null) - Finder 2 Column View - runWorkflowAsService</key>
 		<dict>
