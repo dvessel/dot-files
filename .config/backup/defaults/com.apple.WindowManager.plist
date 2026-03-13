@@ -7,7 +7,7 @@
 	<key>AppWindowGroupingBehavior</key>
 	<integer>0</integer>
 	<key>EnableStandardClickToShowDesktop</key>
-	<true/>
+	<false/>
 	<key>EnableTiledWindowMargins</key>
 	<true/>
 	<key>HideDesktop</key>
