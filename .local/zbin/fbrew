@@ -2,8 +2,6 @@
 
 set -e
 
-_brew_check fzf || return 1
-
 local pkgdef _pkgdef
 zparseopts -D -E - {-formula,-formulae,-cask}=_pkgdef
 
