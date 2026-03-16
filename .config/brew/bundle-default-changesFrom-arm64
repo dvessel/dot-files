@@ -1,4 +1,6 @@
 # changesFrom from 'bundle-default-arm64':
+# Utility to configure multi-display resolutions and arrangements
+brew "displayplacer"
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
 # Lightweight and flexible command-line JSON processor
