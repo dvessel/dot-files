@@ -10,7 +10,6 @@ if test -d /opt/homebrew/opt/antidote; then
   local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
 
   export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
-  zstyle ':antidote:bundle' use-friendly-names 'yes'
   zstyle ':antidote:bundle' file $zplugins
   zstyle ':antidote:static' file $zpstatic
   zstyle ':antidote:*' zcompile 'yes'
