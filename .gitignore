@@ -6,16 +6,12 @@ iCloudDocs
 .cache
 .CFUserTextEncoding
 .conda
-# vscodium->markdown preview
-.config/crossnote
 .config/docker
-.config/goose/config.yaml.bak*
 .config/litecli/*
 !.config/litecli/config
 .config/lnav
 .config/macmon.json
 .config/swiftpm
-.config/tmux/plugins
 .config/vscodium/*
 !.config/vscodium/installed-extensions.txt
 !.config/vscodium/keybindings.json
@@ -23,8 +19,6 @@ iCloudDocs
 !.config/vscodium/snippets
 .continue/*
 !.continue/config.yaml
-.diffusionbee
-.lesshst
 .local/bin
 .local/include
 .local/lib
