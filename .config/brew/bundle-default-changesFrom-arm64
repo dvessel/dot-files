@@ -3,6 +3,8 @@
 brew "displayplacer"
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
+# Duplicate file finder and an enhanced fork of 'fdupes'
+brew "jdupes"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Library for querying compressed XML metadata
