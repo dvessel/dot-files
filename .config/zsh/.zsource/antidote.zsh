@@ -12,7 +12,7 @@ if test -d /opt/homebrew/opt/antidote; then
   export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
   zstyle ':antidote:bundle' file $zplugins
   zstyle ':antidote:static' file $zpstatic
-  zstyle ':antidote:*' zcompile 'yes'
+  zstyle ':antidote:*' zcompile 'no'
 
   test -f $zplugins || touch $zplugins
 
