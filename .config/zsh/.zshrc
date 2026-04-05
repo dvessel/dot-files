@@ -6,9 +6,8 @@
 # 3. ~/.config/zsh/.zshrc <-
 # 4. ~/.config/zsh/.zlogin
 
-# Powerlevel10k instant prompt.
-test ! -f $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh \
-|| source $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh
+# Autoloading zfunctions and zcompletions.
+export ZFUNCDIR=${ZFUNCDIR:-$HOME/.local/zfunctions}
 
 # Add local paths, keep [-U]nique.
 typeset -gU  path=( ~/.local/{bin,zbin} $path )
