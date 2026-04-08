@@ -1,7 +1,4 @@
 {
-  "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
-  },
   "continue.enableTabAutocomplete": true,
   "continue.pauseTabAutocompleteOnBattery": true,
   "diffEditor.experimental.showMoves": true,
@@ -14,13 +11,11 @@
   "editor.fontFamily": "Lilex Nerd Font",
   "editor.fontLigatures": true,
   "editor.fontSize": 15,
-  "editor.largeFileOptimizations": false,
   "editor.minimap.enabled": false,
   "editor.minimap.showSlider": "always",
   "editor.occurrencesHighlight": "off",
   "editor.padding.bottom": 10,
   "editor.padding.top": 10,
-  "editor.quickSuggestionsDelay": 200,
   "editor.renderLineHighlight": "all",
   "editor.rulers": [
     50,
@@ -32,7 +27,6 @@
   "editor.scrollbar.verticalScrollbarSize": 10,
   "editor.smoothScrolling": true,
   "editor.stickyTabStops": true,
-  "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
@@ -59,7 +53,6 @@
   "git.blame.statusBarItem.template": "${subject} ${authorDateAgo}",
   "github.gitProtocol": "ssh",
   "markdown.preview.fontSize": 15,
-  "redhat.telemetry.enabled": false,
   "security.promptForLocalFileProtocolHandling": false,
   "terminal.external.osxExec": "Ghostty.app",
   "terminal.integrated.cursorBlinking": true,
@@ -89,6 +82,5 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.view.showQuietly": {
     "workbench.panel.output": true
-  },
-  "xml.server.workDir": "~/.cache/lemminx"
+  }
 }
