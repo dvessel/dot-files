@@ -90,5 +90,8 @@
   "workbench.preferredDarkColorTheme": "GitHub Dark",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.startupEditor": "newUntitledFile",
+  "workbench.view.showQuietly": {
+    "workbench.panel.output": true
+  },
   "xml.server.workDir": "~/.cache/lemminx"
 }
