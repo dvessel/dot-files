@@ -1,4 +1,14 @@
 #!/usr/bin/env zsh
 #function finder-comment {
-  osascript -e 'on run {f, c}' -e 'tell app "Finder" to set comment of (POSIX file f as alias) to c' -e 'end' file:///$1:a $2 > /dev/null
+  local file_path=$1:a xattr
+  shift
+  if [[ -n $@ ]]
+  then
+    osascript -e 'on run {f, c}' -e 'tell app "Finder" to set comment of (POSIX file f as alias) to c' -e 'end' file:///$file_path ${(j: :)@} > /dev/null
+  elif xattr=`xattr -xp com.apple.metadata:kMDItemFinderComment $file_path 2>/dev/null` 
+  then
+    echo $xattr | xxd -r -p | plutil -p - 2> /dev/null
+  else
+    return 1
+  fi
 #}
