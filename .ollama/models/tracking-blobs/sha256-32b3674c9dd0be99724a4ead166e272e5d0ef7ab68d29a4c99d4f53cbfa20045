@@ -1,1 +1,0 @@
-{"model_format":"safetensors","model_family":"","model_families":null,"model_type":"","file_type":"","renderer":"qwen3.5","parser":"qwen3.5","requires":"0.19.0","capabilities":["completion","vision","thinking"],"architecture":"","os":"","rootfs":{"type":"","diff_ids":null}}
