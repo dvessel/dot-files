@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+#function aria2c_pick {
+  ids=(`aria2c -S $1 | sed -En "s/^ *([0-9]+).*\/(.*.zip)/\1\t\2/p" | fzf -m | cut -f 1`)
+  if [[ -n $ids ]]
+  then
+    aria2c --select-file=${(j:,:)ids} --seed-ratio=2 --seed-time=20 $1 -d ${2:-.}
+  fi
+#}
