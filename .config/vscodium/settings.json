@@ -30,6 +30,7 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
+  "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "explorer.excludeGitIgnore": true,
   "extensions.experimental.affinity": {
