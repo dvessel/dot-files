@@ -55,6 +55,7 @@
   "github.gitProtocol": "ssh",
   "markdown.preview.fontSize": 15,
   "security.promptForLocalFileProtocolHandling": false,
+  "telemetry.feedback.enabled": false,
   "terminal.external.osxExec": "Ghostty.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorWidth": 2,
