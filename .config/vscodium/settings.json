@@ -3,6 +3,7 @@
   "continue.pauseTabAutocompleteOnBattery": true,
   "diffEditor.experimental.showMoves": true,
   "diffEditor.renderSideBySide": false,
+  "editor.accessibilitySupport": "off",
   "editor.autoIndentOnPaste": true,
   "editor.cursorBlinking": "phase",
   "editor.cursorSmoothCaretAnimation": "on",
