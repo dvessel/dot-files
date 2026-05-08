@@ -19,6 +19,7 @@ iCloudDocs
 !.config/vscodium/snippets
 .continue/*
 !.continue/config.yaml
+.lldb
 .local/bin
 .local/include
 .local/lib
