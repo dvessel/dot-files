@@ -1587,7 +1587,7 @@
 			<key>gridOffsetY</key>
 			<real>0.0</real>
 			<key>gridSpacing</key>
-			<real>85</real>
+			<real>1</real>
 			<key>iconSize</key>
 			<real>156</real>
 			<key>labelOnBottom</key>
