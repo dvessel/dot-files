@@ -13,9 +13,14 @@ window-padding-x = 10,0
 window-padding-y = 0
 window-padding-color = extend
 
-# Centering for 2056×1329 (More Space) given the above values.
-window-position-x = 636
-window-position-y = 355
+# Centering for 1728 X 1117 given the above values.
+window-position-x = 494
+window-position-y = 267
+
+window-step-resize = true
+
+quick-terminal-position = center
+quick-terminal-space-behavior = remain
 
 macos-titlebar-style = tabs
 macos-icon = blueprint
@@ -23,12 +28,17 @@ macos-icon = blueprint
 initial-window = false
 mouse-hide-while-typing = true
 
-quick-terminal-position = center
-quick-terminal-space-behavior = remain
+working-directory = home
+window-inherit-working-directory = false
+tab-inherit-working-directory = true
+split-inherit-working-directory = true
+
+bell-features = no-attention,no-title,system,border
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = notify
+notify-on-command-finish-after = 20s
 
 # Limit in bytes. Default 10MB, set to 500MB.
 scrollback-limit = 500000000
-
-bell-features = no-attention
 
 config-file = keybinds

@@ -1,7 +1,7 @@
 
-background-opacity = 0.9
-background-blur    = 10
-unfocused-split-opacity = 0.6
+background-opacity = 0.96
+background-opacity-cells = true
+background-blur = true
 
 adjust-cursor-thickness = 3
 cursor-style = bar
@@ -29,6 +29,9 @@ cursor-color = #ff0000
 cursor-text  = #ffffff
 selection-background = #880000
 selection-foreground = #ffcccc
+
+palette-generate = true
+palette-harmonious = true
 
 # neovide style cursor trails.
 custom-shader = themes/cursor_trails.glsl
