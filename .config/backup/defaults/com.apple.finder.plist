@@ -1386,7 +1386,7 @@
 			<key>ShowPreviewPane</key>
 			<true/>
 			<key>ShowTitles</key>
-			<true/>
+			<false/>
 		</dict>
 	</dict>
 	<key>StandardViewSettings</key>
