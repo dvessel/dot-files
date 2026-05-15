@@ -1,13 +1,19 @@
 
 keybind = global:ctrl+shift+q=toggle_quick_terminal
+keybind = global:cmd+ctrl+shift+n=new_window
 
 # HACK: ctrl-m = CR, ctrl-i = Tab, ctrl-[ = Esc
 keybind = ctrl+m=text:\x0D
 keybind = ctrl+i=text:\x09
 keybind = ctrl+[=text:\x1B
 
-keybind = super+ctrl+j=jump_to_prompt:1
-keybind = super+ctrl+k=jump_to_prompt:-1
+keybind = opt+j=jump_to_prompt:1
+keybind = opt+k=jump_to_prompt:-1
 
-keybind = super+s>o=write_screen_file:open
-keybind = super+s>p=write_screen_file:paste
+keybind = ctrl+`=goto_split:next
+keybind = ctrl+shift+`=goto_split:previous
+keybind = ctrl+enter=toggle_split_zoom
+
+keybind = super+s>o=write_screen_file:open,plain
+keybind = super+s>c=write_screen_file:copy,plain
+keybind = super+s>p=write_screen_file:paste,plain
