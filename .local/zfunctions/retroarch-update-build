@@ -69,6 +69,7 @@
     print "Project doesn't exist: $project" >&2
     return 1
   fi
+  xcodebuild clean -project $project
   for config in $builds; do
     if ! xcodebuild -target RetroArch -configuration $config -project $project; then
       print "xcode build failed for '-configuration $config'." >&2
