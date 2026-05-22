@@ -13,8 +13,6 @@
 	<integer>23</integer>
 	<key>PasteClipboardHistoryHotKey</key>
 	<string>4352@9</string>
-	<key>RetypeDelay</key>
-	<real>1</real>
 	<key>SelectFromClipboardHistoryHotKey</key>
 	<string>4352@4</string>
 	<key>SettingsIndex</key>
@@ -23,7 +21,6 @@
 		<string>LaunchBarHotKey</string>
 		<string>ModifierTapInstantSend</string>
 		<string>PasteClipboardHistoryHotKey</string>
-		<string>RetypeDelay</string>
 		<string>SelectFromClipboardHistoryHotKey</string>
 		<string>ShowClipboardHistoryHotKey</string>
 		<string>ShowItemListAfterDelay</string>
