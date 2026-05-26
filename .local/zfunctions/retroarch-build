@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-#function retroarch-update-build {
-  local zall zforce
-  zparseopts -D -F - -all=zall -force-build=zforce || return 1
+#function retroarch-build {
+  local zall zforce zupdate
+  zparseopts -D -F - -all=zall -force=zforce -update=zupdate || return 1
 
   local configs=( Release Debug )
   if [[ -n ${@:|configs} ]]; then
@@ -24,33 +24,35 @@
   local updates=0
   local stashed=()
 
-  for repo in $repos; do
-    if ! () {
-      cd $base_dir/$repo || return 1
-      let cdi++
-      print "Updating repo: $repo"
-    }; then
-      return 1
-    elif ! git fetch; then
-      print "fetch failed." >&2
-      return 1
-    elif (( $( git rev-list --count HEAD..@{u} ) > 0 )); then
-      let updates++
-      if git stash | grep -q '^Saved working directory'; then
-        stashed+=$repo
-      fi
-      if ! git pull; then
-        print "pull failed." >&2
+  if (( ${#zupdate} )); then
+    for repo in $repos; do
+      if ! () {
+        cd $base_dir/$repo || return 1
+        let cdi++
+        print "Updating repo: $repo"
+      }; then
         return 1
-      fi
-      if [[ -n $( git submodule status ) ]] &&
-        ! git submodule update --init --recursive
-      then
-        print "submodule update failed." >&2
+      elif ! git fetch; then
+        print "fetch failed." >&2
         return 1
+      elif (( $( git rev-list --count HEAD..@{u} ) > 0 )); then
+        let updates++
+        if git stash | grep -q '^Saved working directory'; then
+          stashed+=$repo
+        fi
+        if ! git pull; then
+          print "pull failed." >&2
+          return 1
+        fi
+        if [[ -n $( git submodule status ) ]] &&
+          ! git submodule update --init --recursive
+        then
+          print "submodule update failed." >&2
+          return 1
+        fi
       fi
-    fi
-  done
+    done
+  fi
 
   if (( updates > 0 || ${#zforce} )); then
     # stash for self-signing required for local build.
