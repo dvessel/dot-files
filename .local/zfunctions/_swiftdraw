@@ -1,0 +1,26 @@
+#compdef swiftdraw
+
+# zsh completions for 'swiftdraw'
+# automatically generated with http://github.com/RobSis/zsh-completion-generator
+local arguments
+
+arguments=(
+  '--format[format to output image: png | pdf | jpeg | swift | sfsymbol]'
+  '--size[size of output image: 100x200]'
+  '--scale[scale of output image: 1x | 2x | 3x]'
+  '--insets[crop inset of output image: top,left,bottom,right]'
+  '--precision[maximum number of decimal places]'
+  '--output[optional path of output file]'
+  '--hide-unsupported-filters[hide elements with unsupported filters.]'
+  '--api[api of generated code:  swiftui | appkit | uikit]'
+  '--insets[alignment of regular variant: top,left,bottom,right | auto]'
+  '--size[size category to generate: small, medium large. (default is small)]'
+  '--ultralight[svg file of ultralight variant]'
+  '--ultralight-insets[alignment of ultralight variant: top,left,bottom,right | auto]'
+  '--black[svg file of black variant]'
+  '--black-insets[alignment of black variant: top,left,bottom,right | auto]'
+  '--legacy[use the original, less precise alignment logic from earlier swiftdraw versions.]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
