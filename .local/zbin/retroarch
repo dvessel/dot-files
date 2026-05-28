@@ -1,31 +1,29 @@
 #!/usr/bin/env zsh
 
 zparseopts -D -E - \
-  {x,-x86}=x86 -metal-hud=metal_hud \
-  {-features,h,-help,V,-version}=cargs
+  {-arm64,-x86_64}=arch -metal-hud::=metal_hud \
 
-# Call directly for help since `open` does not stream to stdout.
-if [[ -n $cargs ]]; then
-  if app_dir=`mdfind kMDItemCFBundleIdentifier = com.libretro.dist.RetroArch | head -n 1`; then
-    $app_dir/Contents/MacOS/RetroArch $cargs
-  fi
-  exit
-fi
-
-if [[ -n $args ]]; then
-  args=( --args $args )
-fi
-
-if [[ -n $x86 ]]; then
-  args=( --arch x86_64 $args )
-fi
-
-if [[ -n $metal_hud ]]; then
-  args=(
-    --env MTL_HUD_ENABLED=1
-    --env MTL_HUD_CONFIG_FILE=$HOME/.config/metal-hud/default.plist
-    $args
+aargs=(
+  ${arch:---arm64}
+)
+if (( ${#metal_hud} ))
+then
+  aargs+=(
+    -e MTL_HUD_ENABLED=1
+    -e MTL_HUD_CONFIG_FILE=$HOME/.config/metal-hud/${${${metal_hud#--metal-hud}#=}:-default}.plist
   )
 fi
 
-open -b com.libretro.dist.RetroArch $args
+if (( `mdfind -count kMDItemCFBundleIdentifier = com.libretro.dist.RetroArch` > 0 ))
+then
+  if appdir=`mdfind kMDItemCFBundleIdentifier = com.libretro.dist.RetroArch | fzf --select-1`
+  then
+    arch $aargs $appdir/Contents/MacOS/RetroArch $@
+  else
+    print "None selected." >&2
+    exit 1
+  fi
+else
+  print "RetroArch not found." >&2
+  exit 1
+fi
