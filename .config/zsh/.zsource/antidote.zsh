@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
 if test -d /opt/homebrew/opt/antidote; then
+
+  # - dvessel/zsh-completion-generator (preload)
+  export GENCOMPL_FPATH=$ZFUNCDIR
+
   # Lazy-load antidote from its functions directory.
   fpath+=/opt/homebrew/opt/antidote/share/antidote/functions
   autoload -Uz antidote
@@ -12,7 +16,7 @@ if test -d /opt/homebrew/opt/antidote; then
   export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
   zstyle ':antidote:bundle' file $zplugins
   zstyle ':antidote:static' file $zpstatic
-  zstyle ':antidote:*' zcompile 'no'
+  zstyle ':antidote:*' zcompile 'yes'
 
   test -f $zplugins || touch $zplugins
 
@@ -30,9 +34,6 @@ if test -d /opt/homebrew/opt/antidote; then
   # - mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
   zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
-
-  # - dvessel/zsh-completion-generator
-  export GENCOMPL_FPATH=$ZFUNCDIR
 
   # - jeffreytse/zsh-vi-mode
   ZVM_SYSTEM_CLIPBOARD_ENABLED=true
