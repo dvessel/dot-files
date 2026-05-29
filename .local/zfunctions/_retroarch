@@ -6,6 +6,9 @@ local arguments
 arguments=(
   '--x86_64[run in x86 through Rosetta translation.]'
   '--metal-hud[heads up display for Metal performance metrics.]'
+  '--build[build from source.]'
+  '--update[update source for --build.]'
+  '--all[Release and Debug for --build.]'
   {-h,--help}'[show this help message.]'
   {-v,--verbose}'[verbose logging.]'
   '--log-file[log messages to FILE.]'
