@@ -1,7 +1,13 @@
 #!/usr/bin/env zsh
 
 zparseopts -D -E - \
-  {-arm64,-x86_64}=arch -metal-hud::=metal_hud \
+  {-arm64,-x86_64}=arch -metal-hud::=metal_hud -build=build \
+
+if (( ${#build} ))
+then
+  retroarch-build $@
+  return $?
+fi
 
 aargs=(
   ${arch:---arm64}
