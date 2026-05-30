@@ -39,21 +39,8 @@ then
 
   # - jeffreytse/zsh-vi-mode
   ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-  function zvm_after_init() {
-    # Unbind the default backward/forward search.
-    bindkey -r -M viins '^R'
-    bindkey -r -M viins '^S'
-    # Restore Aloxaf/fzf-tab history search.
-    if type fzf-history-widget &>/dev/null
-    then
-      zvm_bindkey viins '^R' fzf-history-widget
-    fi
-    zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
-    zvm_bindkey vicmd '?' history-incremental-pattern-search-forward
-    # Active ctrl-[r|s] in interactive search mode triggered by vicmd search.
-    zvm_bindkey isearch '^R' history-incremental-pattern-search-backward
-    zvm_bindkey isearch '^S' history-incremental-pattern-search-forward
-  }
+  bindkey -M vicmd '/' history-incremental-pattern-search-backward
+  bindkey -M vicmd '?' history-incremental-pattern-search-forward
 
   # - marlonrichert/zsh-hist
   #  https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
@@ -80,9 +67,8 @@ then
   if type hist &>/dev/null
   then
     zle -N fzf-delete-history-widget
-    # ctrl-opt-r to trigger widget.
+    # ctrl-opt-r in vi command mode to trigger widget.
     bindkey -M vicmd '^[^R' fzf-delete-history-widget
-    bindkey -M viins '^[^R' fzf-delete-history-widget
   fi
 
 fi
