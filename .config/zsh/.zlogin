@@ -7,7 +7,8 @@
 # 4. ~/.config/zsh/.zlogin <-
 
 # Store persistent dirstack.
-if [[ -f $XDG_CACHE_HOME/zdirs && ${#dirstack} < 1 ]]; then
+if [[ -f $XDG_CACHE_HOME/zdirs && ${#dirstack} < 1 ]]
+then
   dirstack=( ${(uf)"$( < $XDG_CACHE_HOME/zdirs )"} )
 fi
 function chpwd {
@@ -16,6 +17,7 @@ function chpwd {
 
 # Disable session persistence when running Terminal.app.
 # It leaves behind .zsh_sessions which can turn to bloat.
-if [[ $TERM_PROGRAM == Apple_Terminal ]]; then
+if [[ $TERM_PROGRAM == Apple_Terminal ]]
+then
   export SHELL_SESSIONS_DISABLE=1
 fi

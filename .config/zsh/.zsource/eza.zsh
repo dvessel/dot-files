@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-if ! type eza &>/dev/null; then
+if ! type eza &>/dev/null
+then
   path+=/opt/homebrew/opt/eza/bin
 fi
 

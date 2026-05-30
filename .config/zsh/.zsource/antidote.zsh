@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-if test -d /opt/homebrew/opt/antidote; then
+if test -d /opt/homebrew/opt/antidote
+then
 
   # - dvessel/zsh-completion-generator (preload)
   export GENCOMPL_FPATH=$ZFUNCDIR
@@ -20,7 +21,8 @@ if test -d /opt/homebrew/opt/antidote; then
 
   test -f $zplugins || touch $zplugins
 
-  if test ! $zpstatic -nt $zplugins; then
+  if test ! $zpstatic -nt $zplugins
+  then
     # Generate new static file when zplugins is updated.
     mkdir -p $zpstatic:h
     antidote load
@@ -42,7 +44,8 @@ if test -d /opt/homebrew/opt/antidote; then
     bindkey -r -M viins '^R'
     bindkey -r -M viins '^S'
     # Restore Aloxaf/fzf-tab history search.
-    if type fzf-history-widget &>/dev/null; then
+    if type fzf-history-widget &>/dev/null
+    then
       zvm_bindkey viins '^R' fzf-history-widget
     fi
     zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
@@ -67,13 +70,15 @@ if test -d /opt/homebrew/opt/antidote; then
       ) $(__fzfcmd)
     ))
     local ret=$?
-    if [[ -n "$selected[*]" ]]; then
+    if [[ -n "$selected[*]" ]]
+    then
       hist delete $selected[*]
     fi
     zle reset-prompt
     return $ret
   }
-  if type hist &>/dev/null; then
+  if type hist &>/dev/null
+  then
     zle -N fzf-delete-history-widget
     # ctrl-opt-r to trigger widget.
     bindkey -M vicmd '^[^R' fzf-delete-history-widget

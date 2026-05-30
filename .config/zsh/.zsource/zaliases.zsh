@@ -1,13 +1,15 @@
 #!/usr/bin/env zsh
 
 # Tripple dash appended to a command will pipe to a pager.
-if test -f /opt/homebrew/bin/bat; then
+if test -f /opt/homebrew/bin/bat
+then
   alias -g -- ---='2>&1 | /opt/homebrew/bin/bat --plain'
 else
   alias -g -- ---='2>&1 | less'
 fi
 
-if type eza &>/dev/null; then
+if type eza &>/dev/null
+then
   alias l='eza --no-quotes --icons --hyperlink'
   alias a='l -a'
   alias l.='l -d .*'
@@ -50,6 +52,7 @@ alias decimal2hex='printf "0x0%x\n"'
 alias zcc='rm -rf $XDG_CACHE_HOME/zsh && echo zsh\ caches\ cleared.'
 
 # Install brew and all dependent plugins.
-if ! type brew &>/dev/null; then
+if ! type brew &>/dev/null
+then
   alias initial-setup='~/.local/zscripts/setup.zsh'
 fi

@@ -6,7 +6,8 @@ zparseopts -D -E - rompath:=rompath help=help || {
   return 1
 }
 
-if [[ -n $help ]]; then
+if [[ -n $help ]]
+then
 cat <<- --------
 Presents a friendly list of full names for fuzzy search. fzf is required.
 
@@ -38,35 +39,44 @@ fi
 
 scandir=${${${rompath[-1]:a}:-`eval print $(mame -showconfig|awk '$1=="rompath" {$1="";print $0}')`}}
 
-if [[ ! -d $scandir ]]; then
+if [[ ! -d $scandir ]]
+then
   printf "rom path not found:%s\n" "$scandir" >&2
   return 1
 fi
 
-if [[ -f $scandir/.romlist && $scandir -nt $scandir/.romlist ]]; then
+if [[ -f $scandir/.romlist && $scandir -nt $scandir/.romlist ]]
+then
   rm $scandir/.romlist
 fi
 
-if [[ ! -f $scandir/.romlist ]]; then
+if [[ ! -f $scandir/.romlist ]]
+then
   print "Generating list..."
 
   typeset -A listselect
   typeset file files=( $scandir/*.(chd|7z|zip)(N) )
 
-  if [[ -n $files ]]; then
-    while read l; do if [[ $l =~ ^([0-9a-z_]*)[^\"]*\"(.*)\"$ ]]; then
-      # skip files tagged as bios/devices and incomplete.
-      file=$files[$files[(I)*/$match[1].(chd|7z|zip)]]
-      [[ `tag -n $file` =~ "MAME (BIOS|Device|Incomplete)" ]] && continue
+  if [[ -n $files ]]
+  then
+    while read l
+    do
+      if [[ $l =~ ^([0-9a-z_]*)[^\"]*\"(.*)\"$ ]]
+      then
+        # skip files tagged as bios/devices and incomplete.
+        file=$files[$files[(I)*/$match[1].(chd|7z|zip)]]
+        [[ `tag -n $file` =~ "MAME (BIOS|Device|Incomplete)" ]] && continue
 
-      listselect[$match[1]]=$match[2]
-    fi; done < <( mame -listfull $files:t:r | sed 1,1d )
+        listselect[$match[1]]=$match[2]
+      fi
+    done < <( mame -listfull $files:t:r | sed 1,1d )
   else
     print "No qualifying files found to scan. Supported extensions: zip,7z,chd." >&2
     return 1
   fi
 
-  if [[ -n $listselect ]]; then
+  if [[ -n $listselect ]]
+  then
     printf "%s\t%s\n" ${(kv)listselect} | sort -k 2 > $scandir/.romlist
   else
     print "No qualifying files detected." >&2
@@ -78,22 +88,26 @@ local headers prefix fzargs=() accepts_multi
 headers=( )
 
 # -listmidi and -listnetwork completely unrelated. Do not prefix.
-if [[ -n $1 && $1 =~ ^(-(list[^(midi|network)]|verify)[a-z]+) ]]; then
+if [[ -n $1 && $1 =~ ^(-(list[^(midi|network)]|verify)[a-z]+) ]]
+then
   prefix=$match[1]
   shift
   fzargs+=--prompt=" $prefix "
   accepts_multi=( -listxml -listfull -listsource -listcrc -listroms -verifyroms )
-  if [[ -n ${prefix:*accepts_multi} ]]; then
+  if [[ -n ${prefix:*accepts_multi} ]]
+  then
     fzargs+=--multi
     headers+=multi-select
   fi
 fi
-if [[ -n $1 && ${1[1]} != - ]]; then
+if [[ -n $1 && ${1[1]} != - ]]
+then
   fzargs+=( --select-1 --query="$1" )
   shift
 fi
 
-if [[ -n $@ ]]; then
+if [[ -n $@ ]]
+then
   headers=( $headers "${(j[ ])@}" )
 fi
 fzargs+=--header="${(j[ | ])headers}"
@@ -101,8 +115,10 @@ fzargs+=--header="${(j[ | ])headers}"
 local selected names
 selected=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $fzargs`
 
-if [[ -n $selected ]]; then
-  if [[ -z $prefix ]]; then
+if [[ -n $selected ]]
+then
+  if [[ -z $prefix ]]
+  then
     printf "\e[1m%s\e[0m\n" "`print $selected | cut -f2`"
   fi
   names=( `print $selected | cut -f1` )

@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-if type displayplacer &>/dev/null; then
+if type displayplacer &>/dev/null
+then
 
   alias dpmore:120hz='displayplacer     "id:1 mode:72"'
   alias dpmore:60hz='displayplacer      "id:1 mode:73"'

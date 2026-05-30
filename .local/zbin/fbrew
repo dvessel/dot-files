@@ -29,18 +29,22 @@ local cask_incompatible=(
   link ln unlink gist-logs migrate missing options bottle formula linkage test
   pin unpin unbottled unpack --prefix --cellar
 )
-if [[ $pkgdef == --cask ]]; then
+if [[ $pkgdef == --cask ]]
+then
   brew_commands=( ${brew_commands:|cask_incompatible} )
 fi
 # Single select commands for fzf single select mode.
 local no_multi=( log gist-logs migrate )
 
 local brew_args
-if (( $brew_commands[(I)$1] )); then
+if (( $brew_commands[(I)$1] ))
+then
   brew_args=( $@ )
-elif [[ $1 == (--formula|--cask) && -z ${(@)argv:*brew_commands} || -z $@ ]]; then
+elif [[ $1 == (--formula|--cask) && -z ${(@)argv:*brew_commands} || -z $@ ]]
+then
   brew_args=( info $@ )
-elif [[ -n ${(@)argv:*brew_commands} ]]; then
+elif [[ -n ${(@)argv:*brew_commands} ]]
+then
   printf "Did you mean \`%s\`?\n" "${(@)argv:*brew_commands} $pkgdef" >&2
   return 1
 else
@@ -55,17 +59,20 @@ local fzf_list=`brew --cache`/fzf${pkgdef}-list-`uname -m`.txt
 # - delete fzf_list to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
 # - delete the new names older than 3 days.
-if [[ -f $names.$0:t-before.txt && -f $names.txt ]]; then
+if [[ -f $names.$0:t-before.txt && -f $names.txt ]]
+then
   local new_keys=( `comm -1 -3 $names.$0:t-before.txt $names.txt` )
   local names_new=$names.$0:t-new-`print -- $new_keys[@] | md5`.txt
-  if [[ ${#new_keys} > 0 && ! -f $names_new ]]; then
+  if [[ ${#new_keys} > 0 && ! -f $names_new ]]
+  then
     printf "%s\n" $new_keys > $names_new
     rm -f $fzf_list
   fi
   # clear new entries older than 3 days.
   for f in $names.$0:t-new-*.txt(Nm+3); rm $f
 fi
-if [[ -f $names.txt ]]; then
+if [[ -f $names.txt ]]
+then
   cp -f $names.txt $names.$0:t-before.txt
 fi
 
@@ -74,16 +81,20 @@ local context=(
   $names.${0:t}-new-*(N:t:r)
   $(brew $(c.pkgdef --cellar --caskroom))/*(N:t)
 )
-if [[ $pkgdef == --formula ]]; then
+if [[ $pkgdef == --formula ]]
+then
   context+=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
 fi
 local state=`print -- $context[@] | md5`
 
-if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
+if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]
+then
   typeset -aU deps reqs pins new
 
-  if [[ $pkgdef == --formula ]]; then
-    while read -r l ; do
+  if [[ $pkgdef == --formula ]]
+  then
+    while read -r l
+    do
       case ${l/*:/} in
         *dependency)  deps+=${l/:*/} ;;
         *request)     reqs+=${l/:*/} ;;
@@ -91,7 +102,8 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
       # calling `brew ls --installed-*` isn't cheap. combine calls and sort it out.
     done < <( brew ls --installed-on-request --installed-as-dependency )
     pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
-  elif [[ $pkgdef == --cask ]]; then
+  elif [[ $pkgdef == --cask ]]
+  then
     reqs=( `brew ls --cask`)
   fi
   new=( `cat $names.$0:t-new-*.txt(N)` )
@@ -101,12 +113,14 @@ if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]; then
   # it would be smarter to limit based on bytes.
   local limit=100
   local maxcount=0 a=1 z=$limit
-  for n in ${#reqs} ${#deps} ${#new}; do
+  for n in ${#reqs} ${#deps} ${#new}
+  do
     (( $n < $maxcount )) || maxcount=$n
   done
 
   local lsdesc=`brew desc $pkgdef --eval-all --name "/.+/"`
-  repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`; do
+  repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`
+  do
     # ${xyz//\+/\\\\+} used to escape '+' which can be part of the name.
     lsdesc=`print -- $lsdesc | \
       sed -uE "s/^(${(j[|])deps[$a,$z]//\+/\\\\+}):(.*)/\1:🌾 dependency.\2/" | \
@@ -133,7 +147,8 @@ case $brew_args[1] in
   unpin)
     # List only pinned formulae to unpin.
     pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
-    if [[ ${#pins} == 0 ]]; then
+    if (( ${#pins} == 0 ))
+    then
       print "Nothing to unpin." >&2
       return 1
     fi
@@ -142,10 +157,13 @@ case $brew_args[1] in
 esac
 
 # list installed formulae or casks for commands targeting them.
-if (( $brew_commands_installed[(I)$brew_args[1]] )); then
+if (( $brew_commands_installed[(I)$brew_args[1]] ))
+then
   typeset -a __lsdesc=( "==> Installed $(c.pkgdef Formulae Casks)" )
-  while read -r l; do
-    if [[ ${l/*:/} =~ "^(📌|🍺|🌾).*" ]]; then
+  while read -r l
+  do
+    if [[ ${l/*:/} =~ "^(📌|🍺|🌾).*" ]]
+    then
       __lsdesc+=$l
     fi
   done < <( print -- $lsdesc )
@@ -156,7 +174,8 @@ local selected=(
   `print -- $lsdesc | fzf --header-lines=1 --prompt="brew $brew_args " \
   $( (( $no_multi[(I)$brew_args[1]] )) || printf --multi ) | grep -oE "^[^:]+"`
 )
-if [[ ! -z $selected ]]; then
+if [[ ! -z $selected ]]
+then
   # Write into history the command that would have been run directly.
   # Formatted with `setopt extended_history` in mind.
   printf ": %s:0;%s\n" `date -j +%s` "brew $brew_args $selected" >> $HISTFILE

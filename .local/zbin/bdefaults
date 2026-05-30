@@ -36,7 +36,8 @@ Full Disk Access required for the terminal to access preferences in containers.
 # $2 key
 # $3 output 1 = domain or 2 = key
 function op.backup {
-  if ! s.sourceDomainExists $1; then
+  if ! s.sourceDomainExists $1
+  then
     print "? $1 - `s.error source domain does not exist!`" >&2
     return 1
   fi
@@ -46,17 +47,21 @@ function op.backup {
   if value="`defaults export $1 - |
     plutil -extract "${2//\./\\.}" xml1 -o - -- - 2>/dev/null`"
   then
-    if [[ ! -f $plist ]]; then
+    if [[ ! -f $plist ]]
+    then
       plutil -create xml1 $plist
     fi
     # Escape dots or plutil will drill into submembers.
-    if plutil -replace "${2//\./\\.}" -xml $value $plist; then
+    if plutil -replace "${2//\./\\.}" -xml $value $plist
+    then
       print "  $@[$3] - `s.ok saved`"
       # Hold keys to list later. No other way to do it AFAIK.
-      if ! plutil -type SettingsIndex $plist &>/dev/null; then
+      if ! plutil -type SettingsIndex $plist &>/dev/null
+      then
         plutil -insert SettingsIndex -array $plist
       fi
-      if ! s.getSettingsIndex $1 | grep -qx $2; then
+      if ! s.getSettingsIndex $1 | grep -qx $2
+      then
         plutil -insert SettingsIndex -string $2 -append $plist
       fi
     fi
@@ -70,7 +75,8 @@ function op.backup {
 # $2 key
 # $3 output 1 = domain or 2 = key
 function op.restore {
-  if ! s.sourceDomainExists $1; then
+  if ! s.sourceDomainExists $1
+  then
     print "? $1 - `s.warn restore target does not exist!`" >&2
     return 1
   fi
@@ -91,7 +97,8 @@ function op.restore {
 # $2 key
 # $3 output 1 = domain or 2 = key
 function op.delete {
-  if l=`s.getSettingsIndex $1 | grep -nx $2`; then
+  if l=`s.getSettingsIndex $1 | grep -nx $2`
+  then
     plutil -remove SettingsIndex.$((${l/:*} - 1)) $bdpath/$1.plist
     plutil -remove "${2//\./\\.}" $bdpath/$1.plist &&
       print "  $@[$3] - `s.ok deleted`"
@@ -99,7 +106,8 @@ function op.delete {
     print "!!$@[$3] - `s.error backup key does not exist!`" >&2
     return 1
   fi
-  if [[ -z `s.getSettingsIndex $1` ]]; then
+  if [[ -z `s.getSettingsIndex $1` ]]
+  then
     rm $bdpath/$1.plist
   fi
 }
@@ -120,7 +128,8 @@ function s.backupKeyExists {
 # $1 domain
 function s.sourceDomainExists {
   typeset -g defaultsDomains
-  if [[ -z $defaultsDomains ]]; then
+  if [[ -z $defaultsDomains ]]
+  then
     defaultsDomains="NSGlobalDomain\n`defaults domains | sed 's/, /\n/g'`"
   fi
   print $defaultsDomains | grep -qix $1
@@ -129,7 +138,8 @@ function s.sourceDomainExists {
 # $1 domain
 function s.getSettingsIndex {
   c=`plutil -extract SettingsIndex raw $bdpath/$1.plist`
-  if [[ $c > 0 ]]; then
+  if (( c > 0 ))
+  then
     for n in {0..$((c-1))}; plutil -extract SettingsIndex.$n raw $bdpath/$1.plist
   fi
 }
@@ -164,24 +174,34 @@ function {
     {p,-path}:=bdpath \
     {h,-help}=help || s.help 1
 
-  if [[ ${#@} > 0 ]]; then
-    op=$1; shift
+  if (( ${#@} > 0 ))
+  then
+    op=$1
+    shift
   fi
-  if [[ -n $search ]]; then
+  if [[ -n $search ]]
+  then
     search=$search[-1]
   fi
-  if [[ -n $domain ]]; then
+  if [[ -n $domain ]]
+  then
     domain=${(@)domain:#(-d|--domain)}
-  elif [[ ${#@} > 0 ]]; then
-    domain=$1; shift
+  elif (( ${#@} > 0 ))
+  then
+    domain=$1
+    shift
   fi
-  if [[ -n $key ]]; then
+  if [[ -n $key ]]
+  then
     key=( "${(@)key:#(-k|--key)}" )
-  elif [[ ${@} > 0 ]]; then
-    key=$1; shift
+  elif (( ${@} > 0 ))
+  then
+    key=$1
+    shift
   fi
 
-  if [[ -n $help ]]; then
+  if [[ -n $help ]]
+  then
     s.help
   fi
 
@@ -200,49 +220,59 @@ function {
   [[ -n $domain && -n $all ]] && errmsg+=(
     "`s.error $all conflicts with domain: $domain`"
   )
-  [[ ${#@} > 0 ]] && errmsg+=(
+  (( ${#@} > 0 )) && errmsg+=(
     "`s.error Unknown arguments: $@`"
   )
 
   bdpath=${bdpath[-1]:-${XDG_CONFIG_HOME:-~/.config}/backup/defaults}
-  if [[ ! -d $bdpath ]]; then
+  if [[ ! -d $bdpath ]]
+  then
     case $op in
       backup)               mkdir -p $bdpath ;;
       restore|list|delete)  errmsg+=("`s.error No backups found in path: $bdpath`") ;;
     esac
   fi
 
-  if [[ -n $errmsg ]]; then
+  if [[ -n $errmsg ]]
+  then
     printf "%s\n" $errmsg
     s.help 1
   fi
 
-  if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null ; then
+  if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null
+  then
     s.warn This script requires your terminal app to have Full Disk Access.
   fi
 
   domain=${domain/-(globalDomain|g)/NSGlobalDomain}
   # Domains are case sensitive. Correct when possible.
-  if test ! -z $domain && s.sourceDomainExists $domain; then
-    if [[ $domain != `print $defaultsDomains | grep -ix $domain` ]]; then
+  if test ! -z $domain && s.sourceDomainExists $domain
+  then
+    if [[ $domain != `print $defaultsDomains | grep -ix $domain` ]]
+    then
       domain=`print $defaultsDomains | grep -ix $domain`
       print "`s.warn Domain is case sensitive. Using $domain.`"
     fi
   fi
 
-  if [[ -n $search ]]; then
+  if [[ -n $search ]]
+  then
 
     s.header "Searching active domains for $search:"
     # [backup|list] from search.
-    while read -r l; do
-      if [[ $l =~ "^Found [0-9]+ keys in domain '([^']*)': {$" ]]; then
+    while read -r l
+    do
+      if [[ $l =~ "^Found [0-9]+ keys in domain '([^']*)': {$" ]]
+      then
         _mdomain=${match[1]//Apple Global Domain/NSGlobalDomain}
         # domain filtering. Is case insensitive.
-        if [[ -z $domain || $_mdomain:l == $domain:l ]]; then
+        if [[ -z $domain || $_mdomain:l == $domain:l ]]
+        then
           _matchhold=1
         fi
       # If previously matched a domain, verify it's for the right search key.
-      elif [[ -n $_matchhold && $l =~ "^\"?$search\"? =" ]]; then
+      elif [[ -n $_matchhold && $l =~ "^\"?$search\"? =" ]]
+      then
         op.$op $_mdomain $search 1
         unset _matchhold
       fi
@@ -254,13 +284,17 @@ function {
     # - specific key in specific domain when --domain and --key is set.
     # - all keys within a domain when --domain is set but --key is not.
     # - all keys across all domains when --all is set.
-    while read -r d; do
-      while read -r k; do
-        if [[ -n $domain && $domain != $d || -n $key && $key != $k ]]; then
+    while read -r d
+    do
+      while read -r k
+      do
+        if [[ -n $domain && $domain != $d || -n $key && $key != $k ]]
+        then
           continue
         fi
 
-        if [[ -n $key ]]; then
+        if [[ -n $key ]]
+        then
           test -z $_heademitted && s.header "$op domains for $key:"
           # list by domain.
           op.$op $d $k 1

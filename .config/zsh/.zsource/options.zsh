@@ -34,13 +34,16 @@ unalias run-help 2>/dev/null
 autoload run-help
 
 # Make available in x86 Rosetta.
-if ! type nvim &>/dev/null; then
+if ! type nvim &>/dev/null
+then
   path+=/opt/homebrew/opt/nvim/bin
 fi
-if ! type neovide &>/dev/null; then
+if ! type neovide &>/dev/null
+then
   path+=/opt/homebrew/opt/neovide/bin
 fi
-if ! type bat &>/dev/null; then
+if ! type bat &>/dev/null
+then
   path+=/opt/homebrew/opt/bat/bin
 fi
 

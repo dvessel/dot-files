@@ -16,9 +16,11 @@
   existing=( ${formulae:*argv} )
   missing=( ${argv:|existing} )
 
-  if [[ -z $missing ]]; then
+  if [[ -z $missing ]]
+  then
     return 0
-  elif [[ -n $silent ]]; then
+  elif [[ -n $silent ]]
+  then
     return 1
   else
     printf "Required homebrew formulae not installed: %s\n" "${(j[ ])missing}" >&2

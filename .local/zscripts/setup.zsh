@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-if ! test -f ~/Library/Keybindings/DefaultKeyBinding.dict; then
+if ! test -f ~/Library/Keybindings/DefaultKeyBinding.dict
+then
   print "Hard linking DefaultKeyBinding.dict to ~/Library/KeyBindings."
   mkdir -p ~/Library/KeyBindings
   ln ${XDG_CONFIG_HOME:-~/.config}/KeyBindings/DefaultKeyBinding.dict ~/Library/KeyBindings/
@@ -11,7 +12,8 @@ case `sysctl -n sysctl.proc_translated` in
   1) __brew_path=/usr/local/bin/brew ;;
 esac
 
-if ! test -f $__brew_path; then
+if ! test -f $__brew_path
+then
   print "Installing homebrew.sh…"
 else
   print "homebrew is already installed." >&2
