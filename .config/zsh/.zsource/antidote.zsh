@@ -39,8 +39,12 @@ then
 
   # - jeffreytse/zsh-vi-mode
   ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-  bindkey -M vicmd '/' history-incremental-pattern-search-backward
-  bindkey -M vicmd '?' history-incremental-pattern-search-forward
+  function zvm_after_init() {
+    zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
+    zvm_bindkey vicmd '?' history-incremental-pattern-search-forward
+    zvm_bindkey viins '^R' history-incremental-pattern-search-backward
+    zvm_bindkey viins '^S' history-incremental-pattern-search-forward
+  }
 
   # - marlonrichert/zsh-hist
   #  https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
