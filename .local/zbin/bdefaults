@@ -194,7 +194,7 @@ function {
   if [[ -n $key ]]
   then
     key=( "${(@)key:#(-k|--key)}" )
-  elif (( ${@} > 0 ))
+  elif (( ${#@} > 0 ))
   then
     key=$1
     shift
