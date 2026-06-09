@@ -19,7 +19,7 @@
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{404, 296}, {920, 492}}</string>
 		</dict>
@@ -83,7 +83,7 @@
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{404, 296}, {920, 492}}</string>
 		</dict>
@@ -102,13 +102,14 @@
 			<string>com.apple.finder.ACTN</string>
 			<string>NSToolbarSpaceItem</string>
 			<string>com.apple.finder.SRCH</string>
+			<string>com.apple.finder.SIRI</string>
 		</array>
 		<key>TB Display Mode</key>
 		<integer>2</integer>
 		<key>TB Icon Size Mode</key>
 		<integer>1</integer>
 		<key>TB Is Shown</key>
-		<false/>
+		<true/>
 		<key>TB Item Identifiers</key>
 		<array/>
 		<key>TB Size Mode</key>
@@ -146,7 +147,7 @@
 			<key>ShowTabView</key>
 			<false/>
 			<key>ShowToolbar</key>
-			<false/>
+			<true/>
 			<key>WindowBounds</key>
 			<string>{{404, 296}, {920, 492}}</string>
 		</dict>
