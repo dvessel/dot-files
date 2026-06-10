@@ -111,7 +111,9 @@
 		<key>TB Is Shown</key>
 		<true/>
 		<key>TB Item Identifiers</key>
-		<array/>
+		<array>
+			<string>com.apple.finder.SRCH</string>
+		</array>
 		<key>TB Size Mode</key>
 		<integer>1</integer>
 	</dict>
