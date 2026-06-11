@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>NavigateShow Next Location in History</key>
+		<string>^x</string>
+		<key>NavigateShow Next Location in History in Next Editor Pane</key>
+		<string>~^$x</string>
+		<key>NavigateShow Next Location in History using Tab</key>
+		<string>~^x</string>
+		<key>NavigateShow Previous Location in History</key>
+		<string>^z</string>
+		<key>NavigateShow Previous Location in History in Next Editor Pane</key>
+		<string>~^$z</string>
+		<key>NavigateShow Previous Location in History using Tab</key>
+		<string>~^z</string>
+		<key>ViewInspectorsHide Inspector</key>
+		<string>@^d</string>
+		<key>ViewInspectorsShow Inspector</key>
+		<string>@^d</string>
+		<key>ViewNavigatorsHide Navigator</key>
+		<string>@^s</string>
+		<key>ViewNavigatorsShow Navigator</key>
+		<string>@^s</string>
+	</dict>
+	<key>SettingsIndex</key>
+	<array>
+		<string>NSUserKeyEquivalents</string>
+	</array>
+</dict>
+</plist>
