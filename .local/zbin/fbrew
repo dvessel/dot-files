@@ -89,23 +89,10 @@ local state=`print -- $context[@] | md5`
 
 if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]
 then
-  typeset -aU deps reqs pins new
+  typeset -aU installed pins new
 
-  if [[ $pkgdef == --formula ]]
-  then
-    while read -r l
-    do
-      case ${l/*:/} in
-        *dependency)  deps+=${l/:*/} ;;
-        *request)     reqs+=${l/:*/} ;;
-      esac
-      # calling `brew ls --installed-*` isn't cheap. combine calls and sort it out.
-    done < <( brew ls --installed-on-request --installed-as-dependency )
-    pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
-  elif [[ $pkgdef == --cask ]]
-  then
-    reqs=( `brew ls --cask`)
-  fi
+  installed=( `brew ls $pkgdef` )
+  pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
   new=( `cat $names.$0:t-new-*.txt(N)` )
 
   # this works around regex capture limits in sed. limit each loop to 100 names.
@@ -113,18 +100,17 @@ then
   # it would be smarter to limit based on bytes.
   local limit=100
   local maxcount=0 a=1 z=$limit
-  for n in ${#reqs} ${#deps} ${#new}
+  for n in ${#installed} ${#new}
   do
     (( $n < $maxcount )) || maxcount=$n
   done
 
-  local lsdesc=`brew desc $pkgdef --eval-all --name "/.+/"`
+  local lsdesc=`brew desc $pkgdef --name "/.+/"`
   repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`
   do
     # ${xyz//\+/\\\\+} used to escape '+' which can be part of the name.
     lsdesc=`print -- $lsdesc | \
-      sed -uE "s/^(${(j[|])deps[$a,$z]//\+/\\\\+}):(.*)/\1:🌾 dependency.\2/" | \
-      sed -uE "s/^(${(j[|])reqs[$a,$z]//\+/\\\\+}):(.*)/\1:🍺 installed.\2/" | \
+      sed -uE "s/^(${(j[|])installed[$a,$z]//\+/\\\\+}):(.*)/\1:🍺 installed.\2/" | \
       sed -uE "s/^(${(j[|])new[$a,$z]//\+/\\\\+}):(.*)/\1:⏰ new.\2/" | \
       sed -uE "s/^(${(j[|])pins[$a,$z]//\+/\\\\+}):(.*)/\1:📌\2/"`
     a=$(( $a + $limit )) z=$(( $z + $limit ))
