@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 url=`plutil -p $1 | sed -En 's/.*"(.*)"$/\1/p'`
-title="`curl -s --location $url | /opt/homebrew/bin/pup 'head title text{}' |
+title="`curl -s --location $url | /Users/joon/.local/zbin/pup 'head title text{}' |
 	python3 -c "import sys, html; print(html.unescape(sys.stdin.read()))" | tr -s ' '`"
 
 if [[ -n $title ]]

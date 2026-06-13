@@ -1,0 +1,62 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "name": "SBOM-SPDX-pup-0.4.0",
+  "creationInfo": {
+    "created": "2026-02-20T18:03:20Z",
+    "creators": [
+      "Tool: https://github.com/Homebrew/brew@5.0.14"
+    ]
+  },
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://formulae.brew.sh/spdx/pup-0.4.0.json",
+  "documentDescribes": [
+    "SPDXRef-Archive-pup-src",
+    "SPDXRef-Compiler"
+  ],
+  "files": [],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Archive-pup-src",
+      "name": "pup",
+      "versionInfo": "0.4.0",
+      "filesAnalyzed": false,
+      "licenseDeclared": "NOASSERTION",
+      "builtDate": "2016-07-23 04:52:15 UTC",
+      "licenseConcluded": "MIT",
+      "downloadLocation": "https://github.com/ericchiang/pup/archive/refs/tags/v0.4.0.tar.gz",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0d546ab78588e07e1601007772d83795495aa329b19bd1c3cde589ddb1c538b0"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Compiler",
+      "name": "clang",
+      "versionInfo": "26.2",
+      "filesAnalyzed": false,
+      "licenseDeclared": "NOASSERTION",
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "checksums": [],
+      "externalRefs": []
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-File-pup",
+      "relationshipType": "PACKAGE_OF",
+      "relatedSpdxElement": "SPDXRef-Archive-pup-src"
+    },
+    {
+      "spdxElementId": "SPDXRef-Compiler",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-pup-src"
+    }
+  ]
+}
