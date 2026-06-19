@@ -54,9 +54,9 @@ else
 fi
 
 local names=`brew --cache`/api/`c.pkgdef formula_names cask_names`
-local fzf_list=`brew --cache`/fzf${pkgdef}-list-`uname -m`.txt
+local fzf_list_txt=`brew --cache`/fzf${pkgdef}-list-`uname -m`.txt
 
-# - delete fzf_list to rebuild listing.
+# - delete fzf_list_txt to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
 # - delete the new names older than 3 days.
 if [[ -f $names.$0:t-before.txt && -f $names.txt ]]
@@ -66,7 +66,7 @@ then
   if [[ ${#new_keys} > 0 && ! -f $names_new ]]
   then
     printf "%s\n" $new_keys > $names_new
-    rm -f $fzf_list
+    rm -f $fzf_list_txt
   fi
   # clear new entries older than 3 days.
   for f in $names.$0:t-new-*.txt(Nm+3); rm $f
@@ -79,56 +79,61 @@ fi
 # hash the names of files holding the `new` state and dir listings that would affect the list.
 local context=(
   $names.${0:t}-new-*(N:t:r)
-  $(brew $(c.pkgdef --cellar --caskroom))/*(N:t)
+  `brew $(c.pkgdef --cellar --caskroom)`/*(N:t)
+  `brew --prefix`/var/homebrew/`c.pkgdef pinned pinned_casks`/*(N:t)
 )
-if [[ $pkgdef == --formula ]]
-then
-  context+=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
-fi
 local state=`print -- $context[@] | md5`
 
-if [[ ! -f $fzf_list || $state != `sed '1!d' $fzf_list` ]]
+if [[ ! -f $fzf_list_txt || $state != `sed '1!d' $fzf_list_txt` ]]
 then
-  typeset -aU installed pins new
+  # Use associative arrays for O(1) lookup speed
+  typeset -A map_installed map_new map_pinned
+  local -a installed_all installed dependencies
 
-  installed=( `brew ls $pkgdef` )
+  if [[ $pkgdef == --formula ]]
+  then
+    installed_all=( `brew ls --formula` )
+    installed=( `brew ls --installed-on-request` )
+    dependencies=( ${installed_all:|installed} )
+  else
+    installed=( `brew ls --cask` )
+  fi
+
+  local -a pins new
   pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
   new=( `cat $names.$0:t-new-*.txt(N)` )
-
-  # this works around regex capture limits in sed. limit each loop to 100 names.
-  # it can still fail if many names are very long, e.g., font migration to casks.
-  # it would be smarter to limit based on bytes.
-  local limit=100
-  local maxcount=0 a=1 z=$limit
-  for n in ${#installed} ${#new}
-  do
-    (( $n < $maxcount )) || maxcount=$n
-  done
+  for i in $pins; map_pinned[$i]=📌
+  for i in $new; map_new[$i]=⏰new.
+  for i in $installed; map_installed[$i]=🍺installed.
+  for i in $dependencies; map_installed[$i]=🌾dependency.
 
   local lsdesc=`brew desc $pkgdef --name "/.+/"`
-  repeat `bc -le "ceil($(( $maxcount / $limit.0 )),0)"`
-  do
-    # ${xyz//\+/\\\\+} used to escape '+' which can be part of the name.
-    lsdesc=`print -- $lsdesc | \
-      sed -uE "s/^(${(j[|])installed[$a,$z]//\+/\\\\+}):(.*)/\1:🍺 installed.\2/" | \
-      sed -uE "s/^(${(j[|])new[$a,$z]//\+/\\\\+}):(.*)/\1:⏰ new.\2/" | \
-      sed -uE "s/^(${(j[|])pins[$a,$z]//\+/\\\\+}):(.*)/\1:📌\2/"`
-    a=$(( $a + $limit )) z=$(( $z + $limit ))
-  done
+  local processed_desc=""
 
-  printf "%s\n%s\n" $state $lsdesc > $fzf_list
-else
-  local lsdesc=`cat $fzf_list | sed 1,1d`
+  # Process descriptions line by line efficiently
+  while IFS= read -r line; do
+    if [[ $line =~ ^.+: ]]
+    then
+      local name=${line%%:*}
+      local desc=${line#*:}
+      processed_desc+="$name:${map_pinned[$name]}${map_new[$name]}${map_installed[$name]}$desc\n"
+    else
+      processed_desc+="$line\n"
+    fi
+  done <<< "$lsdesc"
+  printf "%s\n%s" $state "${processed_desc%'\n'}" > $fzf_list_txt
 fi
+
+local fzf_list=`sed '1d' $fzf_list_txt`
 
 case $brew_args[1] in
   install)
     # Omit installed and dependencies when installing.
-    lsdesc=`print -- $lsdesc | grep -vE "(🍺 installed|🌾 dependency)\."`
+    fzf_list=`print -- $fzf_list | grep -vE "(🍺installed|🌾dependency)\."`
   ;;
   uninstall)
     # Can't uninstall a dependency.
-    lsdesc=`print -- $lsdesc | grep -vE "🌾 dependency\."`
+    fzf_list=`print -- $fzf_list | grep -vE "🌾dependency\."`
   ;;
   unpin)
     # List only pinned formulae to unpin.
@@ -138,29 +143,29 @@ case $brew_args[1] in
       print "Nothing to unpin." >&2
       return 1
     fi
-    lsdesc=`print -- $lsdesc | sed -nuE "/^(${(j[|])pins}):.*/p"`
+    fzf_list=`print -- $fzf_list | sed -nuE "/^(${(j[|])pins}):.*/p"`
   ;;
 esac
 
 # list installed formulae or casks for commands targeting them.
 if (( $brew_commands_installed[(I)$brew_args[1]] ))
 then
-  typeset -a __lsdesc=( "==> Installed $(c.pkgdef Formulae Casks)" )
+  typeset -a __fzf_list=( "==> Installed $(c.pkgdef Formulae Casks)" )
   while read -r l
   do
     if [[ ${l/*:/} =~ "^(📌|🍺|🌾).*" ]]
     then
-      __lsdesc+=$l
+      __fzf_list+=$l
     fi
-  done < <( print -- $lsdesc )
-  lsdesc=${(j[\n])__lsdesc}
+  done < <( print -- $fzf_list )
+  fzf_list=${(j[\n])__fzf_list}
 fi
 
 local selected=(
-  `print -- $lsdesc | fzf --header-lines=1 --prompt="brew $brew_args " \
+  `print -- $fzf_list | fzf --header-lines=1 --prompt="brew $brew_args " \
   $( (( $no_multi[(I)$brew_args[1]] )) || printf --multi ) | grep -oE "^[^:]+"`
 )
-if [[ ! -z $selected ]]
+if [[ -n $selected ]]
 then
   # Write into history the command that would have been run directly.
   # Formatted with `setopt extended_history` in mind.
