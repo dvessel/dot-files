@@ -53,7 +53,7 @@
 			<key>labelOnBottom</key>
 			<false/>
 			<key>showIconPreview</key>
-			<false/>
+			<true/>
 			<key>showItemInfo</key>
 			<true/>
 			<key>textSize</key>
