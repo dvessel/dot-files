@@ -1,5 +1,7 @@
 # https://ghostty.org/docs/config.
 
+auto-update-channel = tip
+
 theme = light:lightness,dark:darkness
 
 # 2nd font-family set for CJK fallback.
