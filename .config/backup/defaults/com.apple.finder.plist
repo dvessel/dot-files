@@ -1547,7 +1547,7 @@
 			<key>scrollPositionY</key>
 			<real>0.0</real>
 			<key>showIconPreview</key>
-			<false/>
+			<true/>
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
@@ -1720,7 +1720,7 @@
 			<key>scrollPositionY</key>
 			<real>0.0</real>
 			<key>showIconPreview</key>
-			<false/>
+			<true/>
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
