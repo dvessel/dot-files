@@ -1,6 +1,4 @@
 # changesFrom from 'bundle-default-arm64':
-# Utility to configure multi-display resolutions and arrangements
-brew "displayplacer"
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
 # Duplicate file finder and an enhanced fork of 'fdupes'
