@@ -1,12 +1,8 @@
 # changesFrom from 'bundle-default-arm64':
 # macOS CLI for managing custom icons for files and folders
 brew "fileicon"
-# Duplicate file finder and an enhanced fork of 'fdupes'
-brew "jdupes"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Library for querying compressed XML metadata
-brew "libxmlb"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
 # Sudoless performance monitoring for Apple Silicon processors
@@ -21,17 +17,11 @@ brew "p7zip"
 brew "pandoc"
 # PNG image optimizing utility
 brew "pngquant"
-# Parse HTML at the command-line
-brew "pup"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
 # Official tldr client written in Rust
 brew "tlrc"
 # Filesystem watcher, works anywhere, simple, efficient and friendly
 brew "watcher"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
-# Operating system maintenance and cleaning utility
-cask "maintenance"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
