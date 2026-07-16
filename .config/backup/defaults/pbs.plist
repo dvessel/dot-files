@@ -119,20 +119,6 @@
 				<false/>
 			</dict>
 		</dict>
-		<key>com.alienator88.Pearcleaner - Uninstall with Pearcleaner - handleServiceRequest</key>
-		<dict>
-			<key>enabled_context_menu</key>
-			<false/>
-			<key>enabled_services_menu</key>
-			<false/>
-			<key>presentation_modes</key>
-			<dict>
-				<key>ContextMenu</key>
-				<false/>
-				<key>ServicesMenu</key>
-				<false/>
-			</dict>
-		</dict>
 		<key>com.apple.ChineseTextConverterService - Convert Text from Simplified to Traditional Chinese - convertTextToTraditionalChinese</key>
 		<dict>
 			<key>enabled_context_menu</key>
