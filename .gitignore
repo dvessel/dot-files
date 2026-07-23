@@ -16,6 +16,7 @@ iCloudDocs
 !.config/vscodium/keybindings.json
 !.config/vscodium/settings.json
 !.config/vscodium/snippets
+.config/zsh/.zsh_sessions
 .continue/*
 !.continue/config.yaml
 .lldb
