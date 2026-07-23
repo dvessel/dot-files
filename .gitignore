@@ -9,7 +9,7 @@ iCloudDocs
 .config/docker
 .config/homebrew/trust.json.lock
 .config/lnav
-.config/macmon.json
+.config/mactop
 .config/swiftpm
 .config/vscodium/*
 !.config/vscodium/installed-extensions.txt

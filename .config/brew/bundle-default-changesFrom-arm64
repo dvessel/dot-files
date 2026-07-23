@@ -5,8 +5,6 @@ brew "fileicon"
 brew "jq"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
-# Sudoless performance monitoring for Apple Silicon processors
-brew "macmon"
 # Create, run, and share large language models (LLMs)
 brew "ollama", restart_service: :changed
 # Performant, and portable jq wrapper to support formats other than JSON
