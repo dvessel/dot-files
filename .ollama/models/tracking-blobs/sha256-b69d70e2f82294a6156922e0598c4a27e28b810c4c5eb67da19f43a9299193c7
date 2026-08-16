@@ -1,0 +1,1 @@
+{"architecture":"amd64","base_name":"gemma4:31b","capabilities":["completion","thinking","tools","vision"],"context_length":262144,"embedding_length":5376,"file_type":"BF16","model_type":"32.7B","os":"linux","remote_host":"https://ollama.com","remote_model":"gemma4:31b","rootfs":{"diff_ids":[],"type":"layers"}}
