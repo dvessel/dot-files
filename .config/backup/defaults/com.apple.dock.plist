@@ -26,7 +26,7 @@
 	<key>show-process-indicators</key>
 	<false/>
 	<key>show-recents</key>
-	<false/>
+	<true/>
 	<key>tilesize</key>
 	<real>48</real>
 </dict>
