@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+#function convert-symlink2files {
+zparseopts -D -E -F - -preview=zpreview
+
+if (( ${#zpreview} ))
+then
+  find ${1:-./} -type l -exec zsh -c '
+    for link do
+      source=`readlink $link`
+
+      if [[ ! -e $link ]]
+      then
+        echo "missing: $link -> $source" >&2
+      elif [[ -f $source ]]
+      then
+        echo "preview: $link -> $source"
+      else
+        echo "not supported: $link" >&2
+      fi
+    done' zsh {} +
+else
+  find $1 -type l -exec zsh -c '
+    for link do
+      source=`readlink $link`
+
+      if [[ ! -e $link ]]
+      then
+        echo "missing: $link -> $source" >&2
+      elif [[ -f $source ]]
+      then
+        rm $link
+        cp -v $source $link
+      else
+        echo "not supported: $link" >&2
+      fi
+    done' zsh {} +
+fi
+#}
