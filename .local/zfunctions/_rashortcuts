@@ -9,6 +9,7 @@ arguments=(
   {-p,--playlist}'[path/to/playlist.lpl]'
   '--process-all[process all entries for a given playlist]'
   '--process-existing[like all but process existing in the output directory]'
+  '--link[core and game files are symlinked. (default)]'
   '--self-contain[copy the core and game files into the shortcut.]'
   {-t,--template}'[path/to/template-folder]'
   {-h,--help}'[view help.]'
