@@ -16,8 +16,8 @@ window-padding-y = 0
 window-padding-color = extend
 
 # Centering for 1728 X 1117 given the above values.
-window-position-x = 494
-window-position-y = 267
+window-position-x = 471
+window-position-y = 252
 
 window-step-resize = true
 
