@@ -2,6 +2,30 @@ name: local
 version: v1
 schema: v1
 models:
+  - name: gemma4:26b-mlx
+    provider: ollama
+    model: gemma4:26b-mlx
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: gemma4:31b-cloud
+    provider: ollama
+    model: gemma4:31b-cloud
+    roles:
+      - chat
+      - edit
+      - apply
+
+  - name: qwen3.8:27b-mlx
+    provider: ollama
+    model: qwen3.8:27b-mlx
+    roles:
+      - chat
+      - edit
+      - apply
+
   - name: codegemma:2b-code
     provider: ollama
     model: codegemma:2b-code
@@ -14,12 +38,8 @@ models:
     roles:
       - autocomplete
 
-  - name: qwen3-embedding
+  - name: qwen3-embedding:0.6b
     provider: ollama
     model: qwen3-embedding:0.6b
     roles:
       - embed
-
-  - name: Ollama Autodetect
-    provider: ollama
-    model: AUTODETECT
