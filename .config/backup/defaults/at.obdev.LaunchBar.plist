@@ -10,11 +10,11 @@
 	<key>LaunchBarHotKey</key>
 	<string>4096@49</string>
 	<key>ModifierTapInstantSend</key>
-	<integer>23</integer>
+	<integer>24</integer>
 	<key>PasteClipboardHistoryHotKey</key>
 	<string>4352@9</string>
 	<key>SelectFromClipboardHistoryHotKey</key>
-	<string>4352@4</string>
+	<string>4096@37</string>
 	<key>SettingsIndex</key>
 	<array>
 		<string>ClipboardHistoryIgnoreApplications</string>
@@ -26,7 +26,7 @@
 		<string>ShowItemListAfterDelay</string>
 	</array>
 	<key>ShowClipboardHistoryHotKey</key>
-	<string>4864@4</string>
+	<string>4352@37</string>
 	<key>ShowItemListAfterDelay</key>
 	<integer>0</integer>
 </dict>
