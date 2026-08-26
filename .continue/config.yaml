@@ -2,6 +2,12 @@ name: local
 version: v1
 schema: v1
 models:
+  - name: codegemma:2b-code
+    provider: ollama
+    model: codegemma:2b-code
+    roles:
+      - autocomplete
+
   - name: qwen2.5-coder:1.5b-base
     provider: ollama
     model: qwen2.5-coder:1.5b-base
