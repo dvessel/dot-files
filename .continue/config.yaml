@@ -2,6 +2,12 @@ name: local
 version: v1
 schema: v1
 models:
+  - name: qwen2.5-coder.1.5b-mlx
+    provider: ollama
+    model: oamazonasgabriel/qwen2.5-coder.1.5b-mlx:f16-8gbGPU
+    roles:
+      - autocomplete
+
   - name: codegemma:2b-code
     provider: ollama
     model: codegemma:2b-code
