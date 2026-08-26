@@ -8,6 +8,12 @@ models:
     roles:
       - autocomplete
 
+  - name: qwen3-embedding
+    provider: ollama
+    model: qwen3-embedding:0.6b
+    roles:
+      - embed
+
   - name: nomic-embed-text
     provider: ollama
     model: nomic-embed-text:latest
