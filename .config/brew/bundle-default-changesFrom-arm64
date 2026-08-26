@@ -21,5 +21,7 @@ brew "setweblocthumb"
 brew "tlrc"
 # Filesystem watcher, works anywhere, simple, efficient and friendly
 brew "watcher"
+# Blazingly fast Zsh syntax highlighter
+brew "zsh-patina"
 # Binary releases of VS Code without MS branding/telemetry/licensing
 cask "vscodium"
