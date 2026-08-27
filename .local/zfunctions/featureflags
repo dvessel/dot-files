@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+# enable hidden features starting in macOS 27.
+#function featureflags {
+  op=$1
+  shift
+  local ffdir=/Library/Preferences/FeatureFlags/Domain
+  case $op in
+    read)
+      defaults read $ffdir/$@
+      ;;
+    write)
+      sudo mkdir -p $ffdir
+      sudo defaults write $ffdir/$@
+      ;;
+    delete)
+      sudo defaults delete $ffdir/$@
+      ;;
+    *)
+      echo "read, write or delete a dictionary." >&2
+      return 1
+      ;;
+  esac
+#}
