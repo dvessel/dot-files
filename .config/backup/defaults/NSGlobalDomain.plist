@@ -34,6 +34,25 @@
 	<real>20</real>
 	<key>KeyRepeat</key>
 	<real>1</real>
+	<key>NSAppleMenuAllowedItems</key>
+	<array>
+		<integer>0</integer>
+		<integer>1936680564</integer>
+		<integer>1634760558</integer>
+		<integer>1702390132</integer>
+		<integer>1819239265</integer>
+		<integer>1819239275</integer>
+		<integer>1819240303</integer>
+		<integer>1919706991</integer>
+		<integer>1919118964</integer>
+		<integer>1920103284</integer>
+		<integer>1919251316</integer>
+		<integer>1920164974</integer>
+		<integer>1936225652</integer>
+		<integer>1936483696</integer>
+		<integer>1936749167</integer>
+		<integer>1937339251</integer>
+	</array>
 	<key>NSApplicationShowExceptions</key>
 	<true/>
 	<key>NSAutomaticWindowAnimationsEnabled</key>
@@ -109,6 +128,7 @@
 		<string>AppleIconAppearanceTintColor</string>
 		<string>AppleDisableTagBasedIconTinting</string>
 		<string>NSAutomaticWindowAnimationsEnabled</string>
+		<string>NSAppleMenuAllowedItems</string>
 	</array>
 	<key>com.apple.mouse.doubleClickThreshold</key>
 	<real>0.5</real>
