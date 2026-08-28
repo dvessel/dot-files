@@ -4,9 +4,15 @@
 <dict>
 	<key>AppleMenuBarVisibleInFullscreen</key>
 	<false/>
+	<key>NSUserKeyEquivalents</key>
+	<dict>
+		<key>Start Big Picture Mode</key>
+		<string>^↩</string>
+	</dict>
 	<key>SettingsIndex</key>
 	<array>
 		<string>AppleMenuBarVisibleInFullscreen</string>
+		<string>NSUserKeyEquivalents</string>
 	</array>
 </dict>
 </plist>
