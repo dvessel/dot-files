@@ -1,0 +1,1 @@
+{"architecture":"amd64","base_name":"nemotron-3-ultra","capabilities":["completion","thinking","tools"],"context_length":262144,"embedding_length":4096,"file_type":"","model_type":"550B","os":"linux","remote_host":"https://ollama.com","remote_model":"nemotron-3-ultra","rootfs":{"diff_ids":[],"type":"layers"}}
