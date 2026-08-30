@@ -32,12 +32,6 @@ models:
     roles:
       - autocomplete
 
-  - name: qwen2.5-coder.1.5b-mlx
-    provider: ollama
-    model: oamazonasgabriel/qwen2.5-coder.1.5b-mlx:f16-8gbGPU
-    roles:
-      - autocomplete
-
   - name: qwen2.5-coder:1.5b
     provider: ollama
     model: qwen2.5-coder:1.5b-base-q8_0
