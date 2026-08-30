@@ -38,6 +38,12 @@ models:
     roles:
       - autocomplete
 
+  - name: qwen2.5-coder:1.5b
+    provider: ollama
+    model: qwen2.5-coder:1.5b-base-q8_0
+    roles:
+      - autocomplete
+
   - name: qwen3-embedding:0.6b
     provider: ollama
     model: qwen3-embedding:0.6b
