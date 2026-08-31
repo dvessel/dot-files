@@ -141,5 +141,10 @@
   {
     "key": "ctrl+l",
     "command": "editor.action.inlineSuggest.acceptNextLine"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "panelVisible"
   }
 ]
