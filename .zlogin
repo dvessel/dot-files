@@ -2,9 +2,9 @@
 
 # Load order of dotfiles:
 # 1. ~/.zshenv
-# 2. ~/.config/zsh/.zprofile
-# 3. ~/.config/zsh/.zshrc
-# 4. ~/.config/zsh/.zlogin <-
+# 2. ~/.zprofile
+# 3. ~/.zshrc
+# 4. ~/.zlogin <-
 
 # Store persistent dirstack.
 if [[ -f $XDG_CACHE_HOME/zdirs && ${#dirstack} < 1 ]]
