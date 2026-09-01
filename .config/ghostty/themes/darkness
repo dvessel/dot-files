@@ -35,3 +35,5 @@ palette-harmonious = true
 
 # neovide style cursor trails.
 custom-shader = themes/cursor_trails.glsl
+custom-shader = themes/glow-rgbsplit-twitchy.glsl
+custom-shader = themes/bettercrt.glsl
