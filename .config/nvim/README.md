@@ -278,6 +278,19 @@ sudo pacman -S --noconfirm --needed gcc make git ripgrep fd tree-sitter-cli unzi
 ```
 </details>
 
+<details><summary>Alpine Install Steps</summary>
+
+> [!CAUTION]
+> Neovim works fine on Alpine, but some tooling appears incompatible with musl
+> (lua-language-server, etc., check `:Mason` or `:MasonLog`).
+> Quickfix Lua-LSP-Support: `:%s/lua_ls/emmylua_ls`
+
+```shell
+sudo apk add gcc make git fd ripgrep tree-sitter-cli unzip bash gzip curl musl-dev neovim-doc neovim
+```
+
+</details>
+
 ### Alternative neovim installation methods
 
 For some systems it is not unexpected that the [package manager installation
