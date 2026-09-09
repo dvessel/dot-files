@@ -17,6 +17,8 @@ brew "pandoc"
 brew "pngquant"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
+# Autoformat shell script source code
+brew "shfmt"
 # Official tldr client written in Rust
 brew "tlrc"
 # Filesystem watcher, works anywhere, simple, efficient and friendly

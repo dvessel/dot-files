@@ -85,5 +85,10 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.view.showQuietly": {
     "workbench.panel.output": true
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "mkhl.shfmt",
+    "editor.detectIndentation": true,
+    "editor.insertSpaces": true
   }
 }
