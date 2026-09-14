@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+#function create-rom-patch {
+  local ztrash
+  zparseopts -D -E - {f,-format}:=zformat {t,-trash}=ztrash
+  if multipatch --create $1 $2 $1:r.${zformat[-1]:-ips}
+  then
+    if (( ${#ztrash} ))
+    then
+      trash $1 $2
+    fi
+  fi
+#}
