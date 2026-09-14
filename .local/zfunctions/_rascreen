@@ -1,0 +1,22 @@
+#compdef rascreen
+
+# zsh completions for 'rascreen'
+local arguments
+
+arguments=(
+  '--set-hz[set refresh rate (waits for RetroArch to close)]'
+  '--match-hz[print the closest supported rate to <rate>]'
+  '--serial[print the display serial number]'
+  '--id[print the display ID]'
+  '--resolution[print current resolution]'
+  '--hz[print current refresh rate]'
+  '--all-hz[print all available refresh rates]'
+  '--mode[print current display mode ID]'
+  '--all-modes[print all available display mode IDs]'
+  '--all-screens[list all displays with serial and ID]'
+  '--get-screen[\[displayID\]  Specify a display by serial number]'
+  '--tolerance[10k>      Set max deviation (default: 500)]'
+  '--no-harmonics[disable harmonic matching]'
+)
+
+_arguments -s $arguments
