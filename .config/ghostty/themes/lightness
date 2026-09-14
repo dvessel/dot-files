@@ -3,9 +3,6 @@ background-opacity = 0.96
 background-opacity-cells = true
 background-blur = true
 
-adjust-cursor-thickness = 3
-cursor-style = bar
-
 window-colorspace = display-p3
 palette =  0 = #000000
 palette =  1 = #aa1100
@@ -33,5 +30,6 @@ selection-foreground = #553333
 palette-generate = true
 palette-harmonious = true
 
-# neovide style cursor trails.
-custom-shader = themes/cursor_trails.glsl
+adjust-cursor-thickness = 3
+cursor-opacity = 0.1
+custom-shader = themes/cursor_glide.glsl
