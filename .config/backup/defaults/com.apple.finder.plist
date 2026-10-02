@@ -112,6 +112,7 @@
 		<true/>
 		<key>TB Item Identifiers</key>
 		<array>
+			<string>com.apple.finder.BACK</string>
 			<string>com.apple.finder.SRCH</string>
 		</array>
 		<key>TB Size Mode</key>
@@ -1355,8 +1356,11 @@
 		<string>ShowMountedServersOnDesktop</string>
 		<string>PreviewPaneSettings</string>
 		<string>DisableAllAnimations</string>
+		<string>ShowPathbar</string>
 	</array>
 	<key>ShowMountedServersOnDesktop</key>
+	<true/>
+	<key>ShowPathbar</key>
 	<true/>
 	<key>StandardViewOptions</key>
 	<dict>
