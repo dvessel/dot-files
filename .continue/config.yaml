@@ -8,7 +8,6 @@ models:
     roles:
       - chat
       - edit
-      - apply
 
   - name: gemma4:31b-cloud
     provider: ollama
@@ -16,7 +15,6 @@ models:
     roles:
       - chat
       - edit
-      - apply
 
   - name: qwen3.8:27b-mlx
     provider: ollama
@@ -24,6 +22,17 @@ models:
     roles:
       - chat
       - edit
+
+  - name: qwen3.8:27b-mlx-apply
+    provider: ollama
+    model: qwen3.8:27b-mlx
+    promptTemplates:
+      apply: |
+        Original: {{{original_code}}}
+        New: {{{new_code}}}
+
+        Please generate the final code without any markers or explanations.
+    roles:
       - apply
 
   - name: qwen2.5-coder:1.5b
