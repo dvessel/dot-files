@@ -1,24 +1,53 @@
 #!/usr/bin/env zsh
 
 url=`plutil -p $1 | sed -En 's/.*"(.*)"$/\1/p'`
-title="`curl -s --location $url | /Users/joon/.local/zbin/pup 'head title text{}' |
-	python3 -c "import sys, html; print(html.unescape(sys.stdin.read()))" | tr -s ' '`"
+title=$( python3 -c "
+import sys
+import urllib.request
+from html.parser import HTMLParser
+
+class TitleParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.in_title = False
+        self.title = ''
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'title':
+            self.in_title = True
+
+    def handle_data(self, data):
+        if self.in_title:
+            self.title += data
+
+    def handle_endtag(self, tag):
+        if tag == 'title':
+            self.in_title = False
+
+try:
+    # Some sites block default python user-agent
+    req = urllib.request.Request(sys.argv[1], headers={'User-Agent': 'Mozilla/5.0'})
+    with urllib.request.urlopen(req, timeout=10) as response:
+        html = response.read().decode('utf-8', errors='ignore')
+
+    parser = TitleParser()
+    parser.feed(html)
+    print(parser.title.strip())
+except Exception as e:
+    print(f'Error: {e}', file=sys.stderr)
+    sys.exit(1)
+" $url )
 
 if [[ -n $title ]]
 then
-	# Make label file system safe.
-	# - replace '(: |:)' with '：' [Unicode U+FF1A]
-	# - replace '/' with '᜵'  [Unicode U+1735]
-	new1=$1:h/${${${title//: /：}//:/：}//\//᜵}.webloc
-	mv $1 $new1
-	# hide extension.
-	SetFile -a E $new1
-	1=$new1
+  # Make label file system safe.
+  # - replace '(: |:)' with '：' [Unicode U+FF1A]
+  # - replace '/' with '᜵'  [Unicode U+1735]
+  rename=$1:h/${${${title//: /：}//:/：}//\//᜵}.webloc
+  mv $1 $rename
+  # hide extension.
+  SetFile -a E $rename
+  1=$rename
 fi
-
-osascript \
-	-e 'on run {f, c}' \
-	-e 'tell app "Finder" to set comment of (POSIX file f as alias) to c' \
-	-e 'end' file:///$1:a $url
 
 /opt/homebrew/bin/setWeblocThumb $1
