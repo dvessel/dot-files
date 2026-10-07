@@ -26,20 +26,14 @@ models:
       - edit
       - apply
 
-  - name: codegemma:2b-code
-    provider: ollama
-    model: codegemma:2b-code
-    roles:
-      - autocomplete
-
   - name: qwen2.5-coder:1.5b
     provider: ollama
     model: qwen2.5-coder:1.5b-base-q8_0
     roles:
       - autocomplete
 
-  - name: qwen3-embedding:0.6b
+  - name: embeddinggemma
     provider: ollama
-    model: qwen3-embedding:0.6b
+    model: embeddinggemma-2:270m-mxfp8-text
     roles:
       - embed
