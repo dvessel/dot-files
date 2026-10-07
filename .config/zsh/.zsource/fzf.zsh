@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if ! type fzf &>/dev/null
+if [[ -z $commands[fzf] && -d /opt/homebrew/opt/fzf ]]
 then
   path+=/opt/homebrew/opt/fzf/bin
 fi

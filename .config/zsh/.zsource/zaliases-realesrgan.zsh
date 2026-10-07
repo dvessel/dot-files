@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if type realesrgan &>/dev/null
+if [[ -n $commands[realesrgan] ]]
 then
   for m in $HOME/.local/share/realesrgan-ncnn-vulkan/models/*.param
   do

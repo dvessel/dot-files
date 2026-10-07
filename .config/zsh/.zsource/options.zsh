@@ -33,20 +33,6 @@ export HELPDIR=/usr/share/zsh/`zsh --version | cut -d ' ' -f2`/help
 unalias run-help 2>/dev/null
 autoload run-help
 
-# Make available in x86 Rosetta.
-if ! type nvim &>/dev/null
-then
-  path+=/opt/homebrew/opt/nvim/bin
-fi
-if ! type neovide &>/dev/null
-then
-  path+=/opt/homebrew/opt/neovide/bin
-fi
-if ! type bat &>/dev/null
-then
-  path+=/opt/homebrew/opt/bat/bin
-fi
-
 export EDITOR=nvim
 export PAGER=bat
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -lman'"
