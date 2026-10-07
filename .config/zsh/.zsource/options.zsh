@@ -21,7 +21,7 @@ setopt hist_ignore_space      # Remove record an event starting with a space.
 setopt hist_find_no_dups      # Do not display a previously found event.
 setopt hist_verify            # Do not execute immediately upon history expansion.
 
-export HISTFILE=$XDG_DATA_HOME/zhistory
+export HISTFILE=$XDG_STATE_HOME/zhistory
 export HISTSIZE=1000000
 export SAVEHIST=833333    # 833333 x 1.2 = 999,999.6 | Stay under HISTSIZE.
                           # With `share_history` enabled, the history file will be
