@@ -35,6 +35,7 @@ for i ({1..5}) alias "$i"="cd +$i"
 
 alias cl='/usr/bin/clear -x'
 alias lb='open -b at.obdev.LaunchBar'
+alias lg='lazygit'
 alias ql='qlmanage -p &>/dev/null'
 alias vs='codium'
 
