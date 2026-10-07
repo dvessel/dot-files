@@ -1,0 +1,1 @@
+{"model_format":"safetensors","model_family":"qwen3_5","model_families":["qwen3_5"],"model_type":"9.0B","file_type":"nvfp4","renderer":"qwen3.5","parser":"qwen3.5","requires":"0.40.0","capabilities":["decision"],"capabilities_explicit":true}
