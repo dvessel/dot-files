@@ -29,7 +29,7 @@ else
 fi
 
 alias d='pwd'
-alias dh='cd +${$(dirs -v | fzf | cut -f1):-0}'
+alias dh='cd-history'
 alias ho='cd $HOME'
 for i ({1..5}) alias "$i"="cd +$i"
 

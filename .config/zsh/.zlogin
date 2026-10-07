@@ -6,12 +6,13 @@
 # 3. ~/.config/zsh/.zshrc
 # 4. ~/.config/zsh/.zlogin <-
 
-# Store persistent dirstack.
-if [[ -f $XDG_CACHE_HOME/zdirs && ${#dirstack} < 1 ]]
+# Load dirstack.
+if [[ -f $XDG_STATE_HOME/zdirstack && ${#dirstack} < 1 ]]
 then
-  dirstack=( ${(uf)"$( < $XDG_CACHE_HOME/zdirs )"} )
+  dirstack=( ${(uf)"$( < $XDG_STATE_HOME/zdirstack )"} )
 fi
+# zsh hook function called on cd. Writes to persistent dirstack.
 function chpwd {
-  dirs -pl >! $XDG_CACHE_HOME/zdirs
+  print -l -- ${(fu)"$( dirs -pl )"} >! $XDG_STATE_HOME/zdirstack
 }
 
