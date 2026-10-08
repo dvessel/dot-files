@@ -16,12 +16,31 @@ models:
       - chat
       - edit
 
+  - name: qwen3.6:35b-mlx
+    provider: ollama
+    model: qwen3.6:35b-mlx
+    roles:
+      - chat
+      - edit
+
   - name: qwen3.8:27b-mlx
     provider: ollama
     model: qwen3.8:27b-mlx
     roles:
       - chat
       - edit
+
+  - name: qwen3.6:35b-mlx-apply
+    provider: ollama
+    model: qwen3.6:35b-mlx
+    promptTemplates:
+      apply: |
+        Original: {{{original_code}}}
+        New: {{{new_code}}}
+
+        Please generate the final code without any markers or explanations.
+    roles:
+      - apply
 
   - name: qwen3.8:27b-mlx-apply
     provider: ollama
