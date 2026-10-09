@@ -2,11 +2,12 @@
 local arguments
 
 arguments=(
-  '--x86_64[run in x86 through Rosetta translation.]'
   '--update-cores[update all installed cores.]'
   '--build[build from source.]'
   '--clean[clean incremental build files before --build.]'
   '--update[update source for --build.]'
+  '--arm64[--build for arm64. runs in arm64 by default.]'
+  '--x86_64[run in x86 or --build for it.]'
   {-debug-arm64,-debug-x86_64}'[debug --build for a specific arch.]'
   {-h,--help}'[show this help message.]'
   {-v,--verbose}'[verbose logging.]'
