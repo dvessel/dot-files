@@ -1,7 +1,4 @@
 #compdef binmerge
-
-# zsh completions for 'binmerge'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(

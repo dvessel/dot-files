@@ -1,7 +1,4 @@
 #compdef wit
-
-# zsh completions for 'wit'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(

@@ -1,7 +1,4 @@
 #compdef afconvert
-
-# zsh completions for 'afconvert'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(
@@ -10,6 +7,10 @@ arguments=(
   '--no-filler[dont page-align audio data in the output file]'
   '--soundcheck-generate[analyze audio, add SoundCheck data to the output file]'
   '--media-kind[kind string"]'
+  '--content-type-read[copy any ISO content box from source to destination(s)]'
+  '--content-type[make ISO content box with this content type (optionally including version and flags)]'
+  '--content-type-version[]'
+  '--content-type-flags[]'
   '--anchor-loudness[set a single precision floating point value to]'
   '--soundcheck-generate[is also enabled.]'
   '--anchor-generate[analyze audio and add dialogue anchor level data to output file]'
@@ -30,6 +31,9 @@ arguments=(
   '--gapless-after[file coming after the current input file of a gapless album]'
   '-o[specify an (additional) output file.]'
   '--condensed-framing[specify storage size in bits for externally framed packet sizes.]'
+  '--config-interval[specify interval between occurrences of AudioSpecificConfigs]'
+  '--audio-mux-version[specify the version of AudioMuxElement to write to LATM/LOAS.]'
+  '--use-program-config-element[specifies that a program config element should be written to]'
   '*:filename:_files'
 )
 

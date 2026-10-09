@@ -1,7 +1,4 @@
 #compdef open
-
-# zsh completions for 'open'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(

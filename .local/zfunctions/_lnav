@@ -1,7 +1,4 @@
 #compdef lnav
-
-# zsh completions for 'lnav'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(
@@ -12,6 +9,8 @@ arguments=(
   '-u[update formats installed from git repositories.]'
   '-d[write debug messages to the given file.]'
   '-V[print version information.]'
+  {-S,--since}'[index log content since this time.]'
+  {-U,--until}'[index log content until this time.]'
   '-r[recursively load files from the given directory hierarchies.]'
   '-R[load older rotated log files as well.]'
   '-c[execute a command after the files have been loaded.]'

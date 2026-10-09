@@ -1,7 +1,4 @@
 #compdef upscayl
-
-# zsh completions for 'upscayl'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(

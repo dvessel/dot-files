@@ -1,14 +1,13 @@
 #compdef retroarch
-
-# zsh completions for 'retroarch'
 local arguments
 
 arguments=(
   '--x86_64[run in x86 through Rosetta translation.]'
-  '--metal-hud[heads up display for Metal performance metrics.]'
+  '--update-cores[update all installed cores.]'
   '--build[build from source.]'
+  '--clean[clean incremental build files before --build.]'
   '--update[update source for --build.]'
-  '--all[Release and Debug for --build.]'
+  {-debug-arm64,-debug-x86_64}'[debug --build for a specific arch.]'
   {-h,--help}'[show this help message.]'
   {-v,--verbose}'[verbose logging.]'
   '--log-file[log messages to FILE.]'
@@ -20,6 +19,7 @@ arguments=(
   '--subsystem[use a subsystem of the libretro core. Multiple content]'
   {-L,--libretro}'[path to libretro implementation. Overrides any config setting.]'
   '--scan[import content from path.]'
+  '--cloudsync[run a cloud sync, then exit.]'
   {-f,--fullscreen}'[start the program in fullscreen regardless of config setting.]'
   '--set-shader[path to a shader (preset) that will be loaded each time content is loaded.]'
   {-N,--nodevice}'[disconnects controller device connected to PORT (1 to 16).]'

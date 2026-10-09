@@ -1,7 +1,4 @@
 #compdef cuttlefish
-
-# zsh completions for 'cuttlefish'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(
@@ -16,6 +13,9 @@ arguments=(
   {-I,--input-list}'[file     specify a file with a list of image paths:]'
   {-r,--resize}'[h \[filter\]     resizes the image:]'
   {-m,--mipmap}'[\[filter\] generate mipmaps:]'
+  {-M,--custom-mip}'[\[depth\] \[face\] \[replace\] file]'
+  '-z[; defaults to +x to accommodate non-]'
+  '--custom-mip-list[custom mip overrides provided in a file; each]'
   '--flipx[flip the images in the X direction]'
   '--flipy[flip the images in the Y direction]'
   '--rotate[rotate by an angle]'

@@ -1,7 +1,4 @@
 #compdef advscan
-
-# zsh completions for 'advscan'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(

@@ -1,7 +1,4 @@
 #compdef realesrgan
-
-# zsh completions for 'realesrgan'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(

@@ -1,0 +1,3 @@
+#compdef rsyncy
+#autoload
+_rsync

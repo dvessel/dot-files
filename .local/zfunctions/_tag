@@ -1,7 +1,4 @@
 #compdef tag
-
-# zsh completions for 'tag'
-# automatically generated with http://github.com/RobSis/zsh-completion-generator
 local arguments
 
 arguments=(

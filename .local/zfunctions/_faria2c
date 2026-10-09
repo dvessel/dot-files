@@ -1,0 +1,3 @@
+#compdef faria2c
+#autoload
+_aria2c

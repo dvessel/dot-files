@@ -1,0 +1,3 @@
+#compdef lmame
+#autoload
+_mame
