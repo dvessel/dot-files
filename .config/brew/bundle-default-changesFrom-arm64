@@ -15,6 +15,8 @@ brew "p7zip"
 brew "pandoc"
 # PNG image optimizing utility
 brew "pngquant"
+# Status/progress bar for rsync
+brew "rsyncy"
 # Assigns custom icons to webloc files
 brew "setweblocthumb"
 # Autoformat shell script source code
