@@ -10,8 +10,6 @@ brew "fd"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
-# Distributed revision control system
-brew "git"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Powerful, lightweight programming language
