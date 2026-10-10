@@ -6,7 +6,6 @@ iCloudDocs
 .cache
 .CFUserTextEncoding
 .conda
-.config/docker
 .config/homebrew/trust.json.lock
 .config/lnav
 .config/mactop
@@ -23,8 +22,6 @@ iCloudDocs
 .local/bin
 .local/include
 .local/lib
-# go packages
-.local/pkg
 .local/share
 .local/state
 # CrossOver .mailcap, .mime.types
@@ -36,11 +33,9 @@ iCloudDocs
 !.ollama/models
 !.ollama/models/manifests
 !.ollama/models/tracking-blobs
-.orbstack
 .ssh
 .sqlite_history
 .swiftpm
 .Trash
 .viminfo
 .vscode*
-.wget-hsts
