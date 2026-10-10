@@ -2,9 +2,9 @@
 
 # Load order of dotfiles:
 # 1. ~/.zshenv
-# 2. ~/.config/zsh/.zprofile <-
-# 3. ~/.config/zsh/.zshrc
-# 4. ~/.config/zsh/.zlogin
+# 2. ~/.config/.zprofile <-
+# 3. ~/.config/.zshrc
+# 4. ~/.config/.zlogin
 
 # Powerlevel10k instant prompt.
 test ! -f $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh \

@@ -52,6 +52,5 @@ alias zcc='rm -rf $XDG_CACHE_HOME/zsh && echo zsh\ caches\ cleared.'
 
 # Install brew and all dependent plugins.
 if [[ -z $commands[brew] ]]
-then
-  alias initial-setup='~/.local/zscripts/setup.zsh'
+then alias initial-setup='~/.local/zscripts/setup.zsh'
 fi

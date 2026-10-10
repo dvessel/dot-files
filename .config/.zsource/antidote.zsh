@@ -34,8 +34,8 @@ then
   # Plug-in options. @see .zplugins
 
   # - mattmc3/ez-compinit
-  zstyle ':plugin:ez-compinit' 'compstyle' 'zshzoo'
-  zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
+  zstyle ':plugin:ez-compinit' compstyle zshzoo
+  zstyle ':plugin:ez-compinit' use-cache no
 
   # - jeffreytse/zsh-vi-mode
   ZVM_SYSTEM_CLIPBOARD_ENABLED=true

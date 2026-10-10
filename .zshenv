@@ -2,12 +2,12 @@
 
 # Load order of dotfiles:
 # 1. ~/.zshenv <-
-# 2. ~/.config/zsh/.zprofile
-# 3. ~/.config/zsh/.zshrc
-# 4. ~/.config/zsh/.zlogin
+# 2. ~/.config/.zprofile
+# 3. ~/.config/.zshrc
+# 4. ~/.config/.zlogin
 
 # zsh dotfile directory.
-export ZDOTDIR=${ZDOTDIR:-$HOME/.config/zsh}
+export ZDOTDIR=${ZDOTDIR:-$HOME/.config}
 
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
