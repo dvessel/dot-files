@@ -4,8 +4,8 @@
 
 // --- CONFIGURATION ---
 const float DURATION   = 0.20;  // seconds for one glide
-const float BG_OPACITY = 0.80;  // your background-opacity (text-under-cursor mask threshold)
-const float AA         = 3.0;   // edge antialiasing in pixels
+const float BG_OPACITY = 0.66;  // your background-opacity (text-under-cursor mask threshold)
+const float AA         = 0.5;   // edge antialiasing in pixels
 
 // sRGB -> linear: uniforms arrive as sRGB, iChannel0 and the output are linear.
 vec3 sRGBToLinear(vec3 c) {

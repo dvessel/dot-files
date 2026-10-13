@@ -1,35 +1,35 @@
 
-background-opacity = 0.96
 background-opacity-cells = true
-background-blur = true
+background-opacity = 0.66
+background-blur = macos-glass-regular
 
 window-colorspace = display-p3
-palette =  0 = #000000
-palette =  1 = #aa1100
-palette =  2 = #008844
-palette =  3 = #bb8833
-palette =  4 = #0077cc
-palette =  5 = #5533aa
-palette =  6 = #007777
-palette =  7 = #bbbbbb
-palette =  8 = #999999
-palette =  9 = #dd2222
-palette = 10 = #22aa66
-palette = 11 = #ddaa55
-palette = 12 = #2299aa
-palette = 13 = #7755cc
-palette = 14 = #229999
-palette = 15 = #dddddd
-background   = #f9f9f9
-foreground   = #000000
+palette =  0 = #1d1d1f
+palette =  1 = #92000b
+palette =  2 = #00521b
+palette =  3 = #763200
+palette =  4 = #0035bb
+palette =  5 = #6a238a
+palette =  6 = #004a6e
+palette =  7 = #c7c7cc
+palette =  8 = #605f64
+palette =  9 = #c30006
+palette = 10 = #007019
+palette = 11 = #765d00
+palette = 12 = #005cc5
+palette = 13 = #902fbd
+palette = 14 = #00678d
+palette = 15 = #e5e5ea
+background   = #f5f5f7
+foreground   = #1d1d1f
 cursor-color = #ff0000
 cursor-text  = #ffffff
-selection-background = #ffcccc
-selection-foreground = #553333
+selection-background = #bad7f9
+selection-foreground = #1d1d1f
 
 palette-generate = true
 palette-harmonious = true
 
 adjust-cursor-thickness = 3
-cursor-opacity = 0.1
+cursor-opacity = 0.2
 custom-shader = themes/cursor_glide.glsl
