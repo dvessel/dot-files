@@ -2,7 +2,7 @@ colourful: true
 
 filekinds:
   normal: {foreground: Default}
-  directory: {foreground: Blue, is_bold: false}
+  directory: {foreground: Default, is_bold: false}
   symlink: {foreground: Cyan, is_underline: true}
   pipe: {foreground: Yellow}
   block_device: {foreground: Yellow, is_bold: true}
@@ -25,7 +25,7 @@ perms:
   other_execute: {foreground: Red}
   special_user_file: {foreground: Purple}
   special_other: {foreground: Purple}
-  attribute: {foreground: Default}
+  attribute: {foreground: Yellow}
 
 size:
   major: {foreground: Blue, is_bold: false}
@@ -37,12 +37,12 @@ size:
   number_huge: {foreground: Red, is_bold: true}
 
 users:
-  user_you: {foreground: Blue, is_bold: false}
+  user_you: {foreground: Default, is_bold: false}
   user_root: {foreground: Red}
-  user_other: {foreground: Default, is_dimmed: true}
-  group_yours: {foreground: Blue, is_bold: false}
+  user_other: {foreground: Yellow, is_dimmed: true}
+  group_yours: {foreground: Default, is_bold: false}
   group_root: {foreground: Red}
-  group_other: {foreground: Default, is_dimmed: true}
+  group_other: {foreground: Yellow, is_dimmed: true}
 
 links:
   normal: {foreground: Blue, is_bold: false}
@@ -84,7 +84,7 @@ file_type:
   source: {foreground: Yellow, is_bold: false, is_italic: true}
 
 punctuation: {foreground: Default, is_bold: false, is_dimmed: true}
-date: {foreground: Blue}
+date: {foreground: Default}
 inode: {foreground: Purple}
 blocks: {foreground: Cyan}
 header: {foreground: Blue, is_bold: true, is_dimmed: true, is_underline: true}
