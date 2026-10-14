@@ -38,14 +38,13 @@ Full Disk Access required for the terminal to access preferences in containers.
 function op.backup {
   if ! s.sourceDomainExists $1
   then
-    print "? $1 - `s.error source domain does not exist!`" >&2
+    echo "? $1 - $( s.error source domain does not exist! )" >&2
     return 1
   fi
 
   local value plist=$bdpath/$1.plist
 
-  if value="`defaults export $1 - |
-    plutil -extract "${2//\./\\.}" xml1 -o - -- - 2>/dev/null`"
+  if value=$( defaults export $1 - | plutil -extract "${2//\./\\.}" xml1 -o - -- - 2>/dev/null )
   then
     if [[ ! -f $plist ]]
     then
@@ -54,7 +53,7 @@ function op.backup {
     # Escape dots or plutil will drill into submembers.
     if plutil -replace "${2//\./\\.}" -xml $value $plist
     then
-      print "  $@[$3] - `s.ok saved`"
+      echo "  $@[$3] - $( s.ok saved )"
       # Hold keys to list later. No other way to do it AFAIK.
       if ! plutil -type SettingsIndex $plist &>/dev/null
       then
@@ -66,7 +65,7 @@ function op.backup {
       fi
     fi
   else
-    print "? $@[$3] - `s.error source key does not exist!`" >&2
+    echo "? $@[$3] - $( s.error source key does not exist! )" >&2
     return 1
   fi
 }
@@ -77,18 +76,18 @@ function op.backup {
 function op.restore {
   if ! s.sourceDomainExists $1
   then
-    print "? $1 - `s.warn restore target does not exist!`" >&2
+    echo "? $1 - $( s.warn restore target does not exist! )" >&2
     return 1
   fi
 
   local value
 
-  if value=`plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null`
+  if value=$( plutil -extract "${2//\./\\.}" xml1 -o - $bdpath/$1.plist 2>/dev/null )
   then
     defaults write $1 $2 "$value" &&
-      print "  $@[$3] - `s.ok restored`"
+      echo "  $@[$3] - $( s.ok restored )"
   else
-    print "!!$@[$3] - `s.error failed reading backup!`" >&2
+    echo "!!$@[$3] - $( s.error failed reading backup! )" >&2
     return 1
   fi
 }
@@ -97,16 +96,16 @@ function op.restore {
 # $2 key
 # $3 output 1 = domain or 2 = key
 function op.delete {
-  if l=`s.getSettingsIndex $1 | grep -nx $2`
+  if l=$( s.getSettingsIndex $1 | grep -nx $2 )
   then
     plutil -remove SettingsIndex.$((${l/:*} - 1)) $bdpath/$1.plist
     plutil -remove "${2//\./\\.}" $bdpath/$1.plist &&
-      print "  $@[$3] - `s.ok deleted`"
+      echo "  $@[$3] - $( s.ok deleted )"
   else
-    print "!!$@[$3] - `s.error backup key does not exist!`" >&2
+    echo "!!$@[$3] - $( s.error backup key does not exist! )" >&2
     return 1
   fi
-  if [[ -z `s.getSettingsIndex $1` ]]
+  if [[ -z $( s.getSettingsIndex $1 ) ]]
   then
     rm $bdpath/$1.plist
   fi
@@ -116,7 +115,7 @@ function op.delete {
 # $2 key
 # $3 output 1 = domain or 2 = key
 function op.list {
-  print "  $@[$3]"
+  echo "  $@[$3]"
 }
 
 # $1 domain
@@ -130,14 +129,14 @@ function s.sourceDomainExists {
   typeset -g defaultsDomains
   if [[ -z $defaultsDomains ]]
   then
-    defaultsDomains="NSGlobalDomain\n`defaults domains | sed 's/, /\n/g'`"
+    defaultsDomains="NSGlobalDomain\n$( defaults domains | sed 's/, /\n/g' )"
   fi
-  print $defaultsDomains | grep -qix $1
+  echo $defaultsDomains | grep -qix $1
 }
 
 # $1 domain
 function s.getSettingsIndex {
-  c=`plutil -extract SettingsIndex raw $bdpath/$1.plist`
+  c=$( plutil -extract SettingsIndex raw $bdpath/$1.plist )
   if (( c > 0 ))
   then
     for n in {0..$((c-1))}; plutil -extract SettingsIndex.$n raw $bdpath/$1.plist
@@ -145,21 +144,21 @@ function s.getSettingsIndex {
 }
 
 function s.getBackupDomains {
-  for d in $bdpath/*.plist(N); print $d:r:t
+  for d in $bdpath/*.plist(N); echo $d:r:t
 }
 
 function s.header {
   # Uppercase first character.
-  printf "\e[1;30m%s\e[0m\n" "${(C)1::1}${1:1}"
+  print -P -- "%B${(C)1::1}${1:1}%b"
 }
 function s.error {
-  printf "\e[0;31m%s\e[0m" "${(j[ ])@}"
+  print -P -- "%F{red}${(j/ /)@}%f"
 }
 function s.ok {
-  printf "\e[0;32m%s\e[0m" "${(j[ ])@}"
+  print -P -- "%F{green}${(j/ /)@}%f"
 }
 function s.warn {
-  printf "\e[0;33m%s\e[0m" "${(j[ ])@}"
+  print -P -- "%F{yellow}${(j/ /)@}%f"
 }
 
 function {
@@ -206,22 +205,22 @@ function {
   fi
 
   [[ $op != (backup|restore|list|delete) ]] && errmsg+=(
-    "`s.error Required action was omitted.`"
+    "$( s.error Required action was omitted. )"
   )
   [[ $op == (backup|restore|delete) && ! -n $key$domain$all$search ]] && errmsg+=(
-    "`s.error $op requires a domain, key or --all.`"
+    "$( s.error $op requires a domain, key or --all. )"
   )
   [[ -n $search && $op == (restore|delete) ]] && errmsg+=(
-    "`s.error Cannot $op with search.`"
+    "$( s.error Cannot $op with search. )"
   )
   [[ $op == list && -n $domain && -n $key ]] && errmsg+=(
-    "`s.error Cannot list with $domain and $key!`"
+    "$( s.error Cannot list with $domain and $key! )"
   )
   [[ -n $domain && -n $all ]] && errmsg+=(
-    "`s.error $all conflicts with domain: $domain`"
+    "$( s.error $all conflicts with domain: $domain )"
   )
   (( ${#@} > 0 )) && errmsg+=(
-    "`s.error Unknown arguments: $@`"
+    "$( s.error Unknown arguments: $@ )"
   )
 
   bdpath=${bdpath[-1]:-${XDG_CONFIG_HOME:-~/.config}/backup/defaults}
@@ -229,13 +228,13 @@ function {
   then
     case $op in
       backup)               mkdir -p $bdpath ;;
-      restore|list|delete)  errmsg+=("`s.error No backups found in path: $bdpath`") ;;
+      restore|list|delete)  errmsg+=("$( s.error No backups found in path: $bdpath )") ;;
     esac
   fi
 
   if [[ -n $errmsg ]]
   then
-    printf "%s\n" $errmsg
+    print -l -- $errmsg >&2
     s.help 1
   fi
 
@@ -248,17 +247,17 @@ function {
   # Domains are case sensitive. Correct when possible.
   if test ! -z $domain && s.sourceDomainExists $domain
   then
-    if [[ $domain != `print $defaultsDomains | grep -ix $domain` ]]
+    if [[ $domain != $( echo $defaultsDomains | grep -ix $domain ) ]]
     then
-      domain=`print $defaultsDomains | grep -ix $domain`
-      print "`s.warn Domain is case sensitive. Using $domain.`"
+      domain=$( echo $defaultsDomains | grep -ix $domain )
+      s.warn Domain is case sensitive. Using $domain.
     fi
   fi
 
   if [[ -n $search ]]
   then
 
-    s.header "Searching active domains for $search:"
+    s.header Searching active domains for $search:
     # [backup|list] from search.
     while read -r l
     do
@@ -305,10 +304,10 @@ function {
         fi
         _heademitted=1
 
-      done < <( [[ -n $key ]] && print $key || s.getSettingsIndex $d )
+      done < <( [[ -n $key ]] && echo $key || s.getSettingsIndex $d )
       test -z $key && unset _heademitted
 
-    done < <( [[ -n $domain ]] && print $domain || s.getBackupDomains )
+    done < <( [[ -n $domain ]] && echo $domain || s.getBackupDomains )
 
   fi
 } $@
