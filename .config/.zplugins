@@ -12,6 +12,7 @@ romkatv/powerlevel10k path:powerlevel10k.zsh-theme
 # zsh auto completions.
 mattmc3/ez-compinit
 nilsonholger/osx-zsh-completions kind:fpath
+conda-incubator/conda-zsh-completion kind:fpath
 ocodo/ollama_zsh_completion kind:fpath
 zsh-users/zsh-completions path:src kind:fpath
 dvessel/zsh-completion-generator
