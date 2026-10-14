@@ -11,13 +11,13 @@ font-size   = 14
 
 window-width = 90
 window-height = 30
-window-padding-x = 10,0
-window-padding-y = 0
+window-padding-x = 10,4
+window-padding-y = 10,0
 window-padding-color = extend
 
 # Centering for 1728 X 1117 given the above values.
-window-position-x = 471
-window-position-y = 252
+window-position-x = 468
+window-position-y = 242
 
 window-step-resize = true
 
