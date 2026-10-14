@@ -2,32 +2,30 @@
 
 if test -d /opt/homebrew/opt/antidote
 then
-
-  # - dvessel/zsh-completion-generator (preload)
-  export GENCOMPL_FPATH=$ZFUNCDIR
-
   # Lazy-load antidote from its functions directory.
   fpath+=/opt/homebrew/opt/antidote/share/antidote/functions
   autoload -Uz antidote
 
-  # Core plug-in options. @see man antidote
   local zplugins=$ZDOTDIR/.zplugins
   local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
 
-  export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
+  # Core plug-in options. @see man antidote
+  zstyle ':antidote:bundle' path-style short
   zstyle ':antidote:bundle' file $zplugins
   zstyle ':antidote:static' file $zpstatic
-  zstyle ':antidote:*' zcompile 'yes'
+  zstyle ':antidote:*' zcompile yes
+
+  # - dvessel/zsh-completion-generator (before zpstatic loads.)
+  export GENCOMPL_FPATH=$ZFUNCDIR
 
   test -f $zplugins || touch $zplugins
-
+  # Update zpstatic when zplugins is updated, source otherwise.
   if test ! $zpstatic -nt $zplugins
   then
-    # Generate new static file when zplugins is updated.
+    export ANTIDOTE_HOME=$XDG_DATA_HOME/antidote
     mkdir -p $zpstatic:h
     antidote load
   else
-    # Manually source when antidote doesn't need to load.
     source $zpstatic
   fi
 
@@ -38,41 +36,44 @@ then
   zstyle ':plugin:ez-compinit' use-cache no
 
   # - jeffreytse/zsh-vi-mode
-  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-  function zvm_after_init() {
-    zvm_bindkey vicmd '/' history-incremental-pattern-search-backward
-    zvm_bindkey vicmd '?' history-incremental-pattern-search-forward
+  if type zvm_bindkey &>/dev/null
+  then
+    ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+    zvm_bindkey vicmd '/'  history-incremental-pattern-search-backward
+    zvm_bindkey vicmd '?'  history-incremental-pattern-search-forward
     zvm_bindkey viins '^R' history-incremental-pattern-search-backward
     zvm_bindkey viins '^S' history-incremental-pattern-search-forward
-  }
+  fi
 
   # - marlonrichert/zsh-hist
-  #  https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
-  function fzf-delete-history-widget() {
-    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
-    fc -pa $HISTFILE
-    local selected=($(
-      printf '%s\t%s\000' "${(kv)history[@]}" |
-      perl -0 -ne 'if (!$seen{(/^\s*[0-9]+\**\t(.*)/s, $1)}++) { s/\n/\n\t/g; print; }' |
-      FZF_DEFAULT_OPTS=$(
-        __fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort
-        --wrap-sign '\t↳ ' ${FZF_CTRL_R_OPTS-} --prompt='! ' --query=${(qqq)LBUFFER}
-        +m --multi --read0 --bind 'enter:become(echo {+1})'"
-      ) $(__fzfcmd)
-    ))
-    local ret=$?
-    if [[ -n "$selected[*]" ]]
-    then
-      hist delete $selected[*]
-    fi
-    zle reset-prompt
-    return $ret
-  }
   if type hist &>/dev/null
   then
+    # https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
+    fzf-delete-history-widget() {
+      setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+      local selected=($(
+        fc -rl 1 |
+        awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
+        FZF_DEFAULT_OPTS="
+          ${FZF_DEFAULT_OPTS-}
+          ${FZF_CTRL_R_OPTS-}
+          --header 'delete history'
+          --height ${FZF_TMUX_HEIGHT:-70%}
+          --bind=ctrl-r:toggle-sort,ctrl-z:ignore
+          --query=${(qqq)LBUFFER}
+          -n2..,..
+          --multi
+          --bind 'enter:become(echo {+1})'" $(__fzfcmd)
+      ))
+      local ret=$?
+      if (( #selected > 0 ))
+      then hist delete $selected
+      fi
+      zle reset-prompt
+      return $ret
+    }
     zle -N fzf-delete-history-widget
-    # ctrl-opt-r in vi command mode to trigger widget.
-    bindkey -M vicmd '^[^R' fzf-delete-history-widget
+    bindkey -M vicmd '^E' fzf-delete-history-widget
   fi
 
 fi
