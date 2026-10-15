@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 #function brew-bundle {
   local name set changesFrom
-  zparseopts -D -E - {n,-name}:=name {-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set {c,-changes-from}:=changesFrom || return 1
+  zparseopts -D -E - \
+    {n,-name}:=name \
+    {-all,-formula,-brews,-cask,-casks,-tap,-taps,-vscode}=set \
+    {c,-changes-from}:=changesFrom || return 1
+
   if [[ -z $name && -z $set ]]
   then
     name=default
@@ -30,8 +34,7 @@
       while read l
       do
         if ! grep -Fq $l $base
-        then
-          print -- $l
+        then print -- $l
         fi
       done < <( cat $temp ) >> $bundle
       rm $temp

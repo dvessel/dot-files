@@ -7,18 +7,12 @@
     echo "Usage: trash <files>" >&2
     return 1
   fi
-  if [[ $OSTYPE != darwin* ]]
-  then
-    print -ru2 -- "trash: macOS not detected."
-    return 1
-  fi
-  local file
-  local -a files
+  local file files=()
   for file in $@
   do
     if [[ -e $file ]]
     then
-      files+=("the POSIX file \"${file:A}\"") 
+      files+=("the POSIX file \"${file:A}\"")
     else
       print -ru2 -- "trash: No such file or directory '$file'."
       return 1

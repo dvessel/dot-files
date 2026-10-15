@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-#function rtag-github {
+#function rgit-tag-github {
   if _brew_check tag
   then
     while read -r p

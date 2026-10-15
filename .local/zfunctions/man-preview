@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # read man page with Preview.app
-#function manp {
+#function man-preview {
   if ! (( $# ))
   then
     echo 'manp: You must specify the manual page you want' >&2

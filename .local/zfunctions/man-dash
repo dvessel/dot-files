@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Read man page with Dash.app.
-#function mand {
+#function man-dash {
   local -a o_docset=(manpages)
   zmodload zsh/zutil
   zparseopts -D -F -K -- {d,-docset}:=o_docset || return 1
