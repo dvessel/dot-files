@@ -1,18 +1,19 @@
 #!/usr/bin/env zsh
 
 # Tripple dash appended to a command will pipe to a pager.
-if [[ -n $commands[bat] ]]
+if (( $+commands[bat] ))
 then alias -g -- ---='2>&1 | bat --plain'
 else alias -g -- ---='2>&1 | less'
 fi
 
-if [[ -n $commands[eza] ]]
+if (( $+commands[eza] ))
 then
   alias l='eza --no-quotes --icons --hyperlink'
   alias a='l -a'
-  alias l.='l -d .*'
+  alias a.='(){ a -d ${1:-$PWD}/.*(:t) }'
   alias ll='l -l --time-style "+%D %l:%M%p" --links --dereference'
   alias la='a -l --time-style "+%D %l:%M%p" --links'
+  alias la.='(){ la -d ${1:-$PWD}/.*(:t) }'
   alias lt='l --tree'
   alias gi='ll --git --git-repos --git-ignore -aa'
   alias gl='ll --git --git-repos'
@@ -21,20 +22,22 @@ then
 else
   alias l='ls --color=auto'
   alias a='ls -A --color=auto'
-  alias l.='ls -d --color=auto .*'
+  alias a.='(){ a -d ${1:-$PWD}/.*(:t) }'
   alias ll='ls -l --color=auto'
   alias la='ls -lA --color=auto'
+  alias la.='(){ la -d ${1:-$PWD}/.*(:t) }'
 fi
 
 alias d='pwd'
 alias dh='cd-history'
 alias ho='cd $HOME'
-for i ({1..5}) alias "$i"="cd +$i"
+for i ({1..3}) alias "$i"="cd +$i"
 
-alias cl='/usr/bin/clear -x'
 alias lb='open -b at.obdev.LaunchBar'
 alias lg='lazygit'
 alias ql='qlmanage -p &>/dev/null'
+alias nv='nvim'
+alias ni='neovide'
 alias vs='codium'
 
 alias hide='chflags hidden'

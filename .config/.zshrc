@@ -20,9 +20,9 @@ autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 acsource zsh-aggregate \
   /opt/homebrew/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
   /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh \
-  $ZDOTDIR/.zsource/{options,antidote,p10k-config,*}.zsh
+  $ZDOTDIR/.zsource/{options,p10k-config,antidote,*}.zsh
 
-# Normally handled by antidote plugin: .zplugins->mattmc3/ez-compinit
+# Normally handled by antidote plugin:.zplugins->mattmc3/ez-compinit
 if ! type compinit &>/dev/null
 then
   autoload -Uz compinit

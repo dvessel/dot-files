@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# Make available to x86_64 environment.
 if [[ -z $commands[fzf] && -d /opt/homebrew/opt/fzf ]]
 then path+=/opt/homebrew/opt/fzf/bin
 fi
@@ -20,8 +21,7 @@ then
   )
   # @see .zplugins->Aloxaf/fzf-tab
   zstyle ':fzf-tab:complete:*' fzf-flags $opts
-  
+
   export FZF_DEFAULT_OPTS=${opts[@]}
   export FZF_COMPLETION_TRIGGER='..'
 fi
-
