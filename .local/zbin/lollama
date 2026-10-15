@@ -1,12 +1,11 @@
 #!/usr/bin/env zsh
 
-local cmd=${1:-run} supported_cmd=( run stop show cp rm )
+local cmd=${1:-run} supported_cmd=( run stop show cp rm update )
 
 if (( $supported_cmd[(I)$cmd] ))
 then
   if [[ -n $1 ]]
-  then
-    shift
+  then shift
   fi
 
   local list fzf_args
@@ -15,19 +14,23 @@ then
   case $cmd in
     run)
       # ignore embedding models when running directly.
-      list=`ollama ls | grep -vi "-embed"`
+      list=$( ollama ls | grep -vi "-embed" )
     ;;
     stop)
-      list=`ollama ps`
-      fzf_args+=--multi
-    ;;
-    rm)
       list=`ollama ls`
       fzf_args+=--multi
     ;;
-    pull)
-      # TODO: pull from this unofficial source.
-      # https://craigahobbs.github.io/ollama-chat/models/models.json
+    rm)
+      list=$( ollama ls )
+      fzf_args+=--multi
+    ;;
+    update)
+      ollama ls | awk '(NR > 1) {print $1}' | while read model
+      do
+        print -- "Updating $model."
+        ollama pull $model
+      done
+      return $?
     ;;
     *)
       list=`ollama ls`

@@ -53,16 +53,16 @@ else
   return 1
 fi
 
-local names=`brew --cache`/api/`c.pkgdef formula_names cask_names`
-local fzf_list_txt=`brew --cache`/fzf${pkgdef}-list-`uname -m`.txt
+local names=$( brew --cache )/api/$( c.pkgdef formula_names cask_names )
+local fzf_list_txt=$( brew --cache )/fzf${pkgdef}-list-$( uname -m ).txt
 
 # - delete fzf_list_txt to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
 # - delete the new names older than 3 days.
 if [[ -f $names.$0:t-before.txt && -f $names.txt ]]
 then
-  local new_keys=( `comm -1 -3 $names.$0:t-before.txt $names.txt` )
-  local names_new=$names.$0:t-new-`print -- $new_keys[@] | md5`.txt
+  local new_keys=($( comm -1 -3 $names.$0:t-before.txt $names.txt ))
+  local names_new=$names.$0:t-new-$( print -- $new_keys[@] | md5 ).txt
   if [[ ${#new_keys} > 0 && ! -f $names_new ]]
   then
     printf "%s\n" $new_keys > $names_new
@@ -79,12 +79,12 @@ fi
 # hash the names of files holding the `new` state and dir listings that would affect the list.
 local context=(
   $names.${0:t}-new-*(N:t:r)
-  `brew $(c.pkgdef --cellar --caskroom)`/*(N:t)
-  `brew --prefix`/var/homebrew/`c.pkgdef pinned pinned_casks`/*(N:t)
+  $( brew $(c.pkgdef --cellar --caskroom))/*(N:t)
+  $( brew --prefix )/var/homebrew/$( c.pkgdef pinned pinned_casks )/*(N:t)
 )
-local state=`print -- $context[@] | md5`
+local state=$( print -- $context[@] | md5 )
 
-if [[ ! -f $fzf_list_txt || $state != `sed '1!d' $fzf_list_txt` ]]
+if [[ ! -f $fzf_list_txt || $state != $( sed '1!d' $fzf_list_txt ) ]]
 then
   # Use associative arrays for O(1) lookup speed
   typeset -A map_installed map_new map_pinned
@@ -92,22 +92,22 @@ then
 
   if [[ $pkgdef == --formula ]]
   then
-    installed_all=( `brew ls --formula` )
-    installed=( `brew ls --installed-on-request` )
+    installed_all=($( brew ls --formula ))
+    installed=($( brew ls --installed-on-request ))
     dependencies=( ${installed_all:|installed} )
   else
-    installed=( `brew ls --cask` )
+    installed=($( brew ls --cask ))
   fi
 
   local -a pins new
-  pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
-  new=( `cat $names.$0:t-new-*.txt(N)` )
+  pins=($( brew --prefix )/var/homebrew/pinned/*(N:t) )
+  new=($( cat $names.$0:t-new-*.txt(N) ))
   for i in $pins; map_pinned[$i]=📌
   for i in $new; map_new[$i]=⏰new.
   for i in $installed; map_installed[$i]=🍺installed.
   for i in $dependencies; map_installed[$i]=🌾dependency.
 
-  local lsdesc=`brew desc $pkgdef --name "/.+/"`
+  local lsdesc=$( brew desc $pkgdef --name "/.+/" )
   local processed_desc=""
 
   # Process descriptions line by line efficiently
@@ -124,26 +124,26 @@ then
   printf "%s\n%s" $state "${processed_desc%'\n'}" > $fzf_list_txt
 fi
 
-local fzf_list=`sed '1d' $fzf_list_txt`
+local fzf_list=$( sed '1d' $fzf_list_txt )
 
 case $brew_args[1] in
   install)
     # Omit installed and dependencies when installing.
-    fzf_list=`print -- $fzf_list | grep -vE "(🍺installed|🌾dependency)\."`
+    fzf_list=$( print -- $fzf_list | grep -vE "(🍺installed|🌾dependency)\." )
   ;;
   uninstall)
     # Can't uninstall a dependency.
-    fzf_list=`print -- $fzf_list | grep -vE "🌾dependency\."`
+    fzf_list=$( print -- $fzf_list | grep -vE "🌾dependency\." )
   ;;
   unpin)
     # List only pinned formulae to unpin.
-    pins=( `brew --prefix`/var/homebrew/pinned/*(N:t) )
+    pins=($( brew --prefix )/var/homebrew/pinned/*(N:t) )
     if (( ${#pins} == 0 ))
     then
       print "Nothing to unpin." >&2
       return 1
     fi
-    fzf_list=`print -- $fzf_list | sed -nuE "/^(${(j[|])pins}):.*/p"`
+    fzf_list=$( print -- $fzf_list | sed -nuE "/^(${(j[|])pins}):.*/p" )
   ;;
 esac
 
@@ -161,15 +161,15 @@ then
   fzf_list=${(j[\n])__fzf_list}
 fi
 
-local selected=(
-  `print -- $fzf_list | fzf --header-lines=1 --prompt="brew $brew_args " \
-  $( (( $no_multi[(I)$brew_args[1]] )) || printf --multi ) | grep -oE "^[^:]+"`
-)
+local selected=($(
+  print -- $fzf_list | fzf --header-lines=1 --prompt="brew $brew_args " \
+  $( (( $no_multi[(I)$brew_args[1]] )) || printf --multi ) | grep -oE "^[^:]+"
+))
 if [[ -n $selected ]]
 then
   # Write into history the command that would have been run directly.
   # Formatted with `setopt extended_history` in mind.
-  printf ": %s:0;%s\n" `date -j +%s` "brew $brew_args $selected" >> $HISTFILE
+  printf ": %s:0;%s\n" $( date -j +%s ) "brew $brew_args $selected" >> $HISTFILE
   printf "\033[4m%s\033[0m\n" "brew $brew_args $selected"
   brew $brew_args $selected
 fi

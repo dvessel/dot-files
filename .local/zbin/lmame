@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
-local rompath help
-zparseopts -D -E - rompath:=rompath help=help || {
+local zrompath zhelp
+zparseopts -D -E - rompath:=zrompath help=zhelp || {
   print "see -help" >&2
-  return 1
+  exit 1
 }
 
-if [[ -n $help ]]
+if (( #zhelp ))
 then
 cat <<- --------
 Presents a friendly list of full names for fuzzy search. fzf is required.
@@ -34,65 +34,71 @@ result, it will be automatically selected.
 
 See 'mame -showusage' for more information.
 --------
-  return
+  exit
 fi
 
-scandir=${${${rompath[-1]:a}:-`eval print $(mame -showconfig|awk '$1=="rompath" {$1="";print $0}')`}}
+scandir=${${${zrompath[-1]:a}:-$(
+  eval print $( mame -showconfig|awk '$1=="rompath" {$1="";print $0}' )
+)}}
 
 if [[ ! -d $scandir ]]
 then
   printf "rom path not found:%s\n" "$scandir" >&2
-  return 1
+  exit 1
 fi
 
-if [[ -f $scandir/.romlist && $scandir -nt $scandir/.romlist ]]
-then
-  rm $scandir/.romlist
+romlist=$scandir/.romlist
+
+if [[ -f $romlist && $scandir -nt $romlist ]]
+then rm $romlist
 fi
 
-if [[ ! -f $scandir/.romlist ]]
+if [[ ! -f $romlist ]]
 then
   print "Generating list..."
 
   typeset -A listselect
-  typeset file files=( $scandir/*.(chd|7z|zip)(N) )
+  typeset file files=( $scandir/*.(zip|7z)(N) ) ignore
 
   if [[ -n $files ]]
   then
+    # Tagged files to ignore. Requires tag command.
+    if (( $+commands[tag] ))
+    then ignore=( ${${(f)"$( for t (BIOS Device Ignore); tag -m $t $files )"}:t:r} )
+    fi
+
     while read l
     do
       if [[ $l =~ ^([0-9a-z_]*)[^\"]*\"(.*)\"$ ]]
       then
-        # skip files tagged as bios/devices and incomplete.
-        file=$files[$files[(I)*/$match[1].(chd|7z|zip)]]
-        [[ `tag -n $file` =~ "MAME (BIOS|Device|Incomplete)" ]] && continue
-
+        if [[ ${ignore[(r)$match[1]]} ]]
+        then continue
+        fi
         listselect[$match[1]]=$match[2]
       fi
     done < <( mame -listfull $files:t:r | sed 1,1d )
   else
-    print "No qualifying files found to scan. Supported extensions: zip,7z,chd." >&2
-    return 1
+    print "No qualifying files found to scan. Supported extensions: zip,7z." >&2
+    exit 1
   fi
 
   if [[ -n $listselect ]]
   then
-    printf "%s\t%s\n" ${(kv)listselect} | sort -k 2 > $scandir/.romlist
+    printf "%s\t%s\n" ${(kv)listselect} | sort -k 2 > $romlist
   else
     print "No qualifying files detected." >&2
-    return 1
+    exit 1
   fi
 fi
 
-local headers prefix fzargs=() accepts_multi
-headers=( )
+local headers=() prefix fzargs=() accepts_multi
 
 # -listmidi and -listnetwork completely unrelated. Do not prefix.
 if [[ -n $1 && $1 =~ ^(-(list[^(midi|network)]|verify)[a-z]+) ]]
 then
   prefix=$match[1]
   shift
-  fzargs+=--prompt=" $prefix "
+  headers+=$prefix
   accepts_multi=( -listxml -listfull -listsource -listcrc -listroms -verifyroms )
   if [[ -n ${prefix:*accepts_multi} ]]
   then
@@ -107,19 +113,19 @@ then
 fi
 
 if [[ -n $@ ]]
-then
-  headers=( $headers "${(j[ ])@}" )
+then headers=( $headers "${(j[ ])@}" )
 fi
-fzargs+=--header="${(j[ | ])headers}"
+if [[ -n $headers ]]
+then fzargs+=--header="${(j[ | ])headers}"
+fi
 
 local selected names
-selected=`cat $scandir/.romlist | fzf --delimiter='\t' --with-nth=2 $fzargs`
+selected=`cat $romlist | fzf --delimiter='\t' --with-nth=2 $fzargs`
 
 if [[ -n $selected ]]
 then
   if [[ -z $prefix ]]
-  then
-    printf "\e[1m%s\e[0m\n" "`print $selected | cut -f2`"
+  then printf "\e[1m%s\e[0m\n" "`print $selected | cut -f2`"
   fi
   names=( `print $selected | cut -f1` )
   mame $prefix ${names[@]} $@ -rompath $scandir

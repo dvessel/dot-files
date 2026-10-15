@@ -7,24 +7,19 @@
 #
 # Add as many formulae as needed. Status code 1 (error) and stderr
 # message on failed checks unless --silent is passed.
-() {
 
-  zparseopts -D -E -F - {s,-silent}=silent || return 1
-  typeset -a formulae existing missing
+zparseopts -D -E -F - {s,-silent}=silent || return 1
+typeset -a formulae existing missing
 
-  formulae=( `brew list --formulae` )
-  existing=( ${formulae:*argv} )
-  missing=( ${argv:|existing} )
+local formulae=( `brew list --formulae` )
+local existing=( ${formulae:*argv} )
+local missing=( ${argv:|existing} )
 
-  if [[ -z $missing ]]
-  then
-    return 0
-  elif [[ -n $silent ]]
-  then
-    return 1
-  else
-    printf "Required homebrew formulae not installed: %s\n" "${(j[ ])missing}" >&2
-    return 1
-  fi
-
-} $@
+if [[ -z $missing ]]
+then return 0
+elif [[ -n $silent ]]
+then return 1
+else
+  printf "Required homebrew formulae not installed: %s\n" "${(j/, /)missing}" >&2
+  return 1
+fi
