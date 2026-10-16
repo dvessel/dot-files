@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+#function cd-projects {
+  cd "$( rgit-paths ~/Projects | sort | fzf )"
+#}

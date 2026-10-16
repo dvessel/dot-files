@@ -30,6 +30,7 @@ fi
 
 alias d='pwd'
 alias dh='cd-history'
+alias dp='cd-projects'
 alias ho='cd $HOME'
 for i ({1..3}) alias "$i"="cd +$i"
 
