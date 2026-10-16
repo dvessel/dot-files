@@ -29,7 +29,9 @@ alias la.='(){ la -d ${1:-$PWD}/.*(:t) }'
 alias  d='pwd'
 alias dh='cd-history'
 alias dp='cd-projects'
-alias ho='cd $HOME'
+alias ho='cd ~'
+alias dt='cd ~/Desktop'
+alias dl='cd ~/Downloads'
 for i ({1..3}) alias "$i"="cd +$i"
 
 alias lb='open -b at.obdev.LaunchBar'
