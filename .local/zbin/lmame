@@ -64,7 +64,7 @@ then
   then
     # Tagged files to ignore. Requires tag command.
     if (( $+commands[tag] ))
-    then ignore=( ${${(f)"$( for t (BIOS Device Ignore); tag -m $t $files )"}:t:r} )
+    then ignore=( ${${(f)"$( for t (BIOS Device Ignore) tag -m $t $files )"}:t:r} )
     fi
 
     while read l
