@@ -1,0 +1,14 @@
+gui:
+  shrinkSidePanelsToContent: true
+  sidePanels:
+    - [files, submodules, stash]
+    - [commits, reflog, branches]
+    - [status, remotes]
+  timeFormat: 01/02/06
+  showRootItemInFileTree: false
+  fileTreeSortCaseSensitive: false
+  showPanelJumps: false
+  commitAuthorLongLength: 14
+  showDivergenceFromBaseBranch: arrowAndNumber
+  statusPanelView: allBranchesLog
+  switchTabsWithPanelJumpKeys: true
