@@ -1,12 +1,15 @@
 #!/usr/bin/env zsh
 
 printf "\e[0;31m%s\e[0m" "WARNING! "
-read -q "REPLY?Do you want to uninstall homebrew.sh? (y/n): " || return 1
+read -q "REPLY?Do you want to uninstall homebrew.sh? (y/n): " || exit 1
 printf "\n\e[1;30m%s\e[0m\n" "Uninstalling homebrew.sh…"
 
 if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 then
-  __delete=( ${XDG_CACHE_HOME:-~/.cache}/{antidote,gitstatus,p10k-*,zsh}(N) )
+  __delete=(
+    ${XDG_CACHE_HOME:-~/.cache}/{gitstatus,p10k-*,zsh}(N)
+    ${$XDG_DATA_HOME:-~/.local/share}/antidote
+  )
   printf "\n\e[1;30m%s\e[0m\n" "Cleaning up…"
   printf "%s\n" $__delete
   rm -fr $__delete

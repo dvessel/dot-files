@@ -17,7 +17,7 @@ then
   print "Installing homebrew.sh…"
 else
   print "homebrew is already installed." >&2
-  return 1
+  exit 1
 fi
 
 if /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
