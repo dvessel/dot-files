@@ -2,10 +2,11 @@
 #function chd-create {
   _brew_check rom-tools || return 1
 
-  local zoutput output ztrash_source p tmpdir
+  local zoutput output ztrash_source
   zparseopts -D -E -F - \
     {o,-output}:=zoutput \
-    {t,-trash-source}=ztrash_source
+    {t,-trash-source}=ztrash_source || return 1
+
   output=${zoutput[-1]}
   if [[ -n $output && ! -d $output ]]
   then
@@ -14,32 +15,30 @@
   fi
   trap '[[ -d $tmpdir ]] && rm -rf $tmpdir; return 1' INT TERM QUIT
 
-  for p in $@
+  local input name idir tmpdir
+
+  for input in $@
   do
-    tmpdir=$( mktemp -dt ${p:t:r} )
-    if file $p | grep -q 'UDF'
+    name=${input:t:r}
+    idir=${input:h}
+    tmpdir=$( mktemp -dt $name )
+
+    if file $input | grep -q 'UDF'
+    then createtype=createdvd
+    else createtype=createcd
+    fi
+    if chdman $createtype -i $input -o $tmpdir/$name.chd
     then
-      if chdman createdvd -i $p -o $tmpdir/${p:t:r}.chd
+      if [[ ${input:e} == (cue|gdi) ]]
       then
-        if mv -f $tmpdir/${p:t:r}.chd ${output:-${p:h}}/${p:t:r}.chd
-        then (( #ztrash_source )) && trash $p
+        if mv -f $tmpdir/$name.chd ${output:-${idir:h}}
+        then (( #ztrash_source )) && trash $idir
         fi
-      fi
-    else
-      if chdman createcd -i $p -o $tmpdir/${p:t:r}.chd
-      then
-        if [[ ${p:e} == cue ]]
-        then
-          if mv -f $tmpdir/${p:t:r}.chd ${output:-${p:h:h}}
-          then (( #ztrash_source )) && trash ${p:h}
-          fi
-        else
-          if mv -f $tmpdir/${p:t:r}.chd ${output:-${p:h}}/${p:t:r}.chd
-          then (( #ztrash_source )) && trash $p
-          fi
+      else
+        if mv -f $tmpdir/$name.chd ${output:-$idir}/$name.chd
+        then (( #ztrash_source )) && trash $input; rm -rf $tmpdir
         fi
       fi
     fi
-    rm -rf $tmpdir
   done
 #}

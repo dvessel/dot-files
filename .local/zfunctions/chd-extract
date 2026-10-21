@@ -2,10 +2,11 @@
 #function chd-extract {
   _brew_check rom-tools || return 1
 
-  local zoutput output ztrash_source p tmpdir
+  local zoutput output ztrash_source
   zparseopts -D -E -F - \
     {o,-output}:=zoutput \
-    {t,-trash-source}=ztrash_source
+    {t,-trash-source}=ztrash_source || return 1
+
   output=${zoutput[-1]}
   if [[ -n $output && ! -d $output ]]
   then
@@ -14,25 +15,43 @@
   fi
   trap '[[ -d $tmpdir ]] && rm -rf $tmpdir; return 1' INT TERM QUIT
 
-  for p in $@
+  # MAME chd's are not supported.
+  typeset -A types=(
+    CHT2  cue
+    CHGD  gdi
+    DVD   iso
+  )
+  local input name idir tmpdir tag ext
+
+  for input in $@
   do
-    tmpdir=$( mktemp -dt ${f:t:r} )
-    if chdman info -i $p | grep -q "Tag='DVD '"
-    then
-      if chdman extractdvd -i $p -o $tmpdir/${p:t:r}.iso
+    name=${input:t:r}
+    idir=${input:h}
+    tmpdir=$( mktemp -dt $name )
+
+    for tag ext in ${(kv)types}
+    do
+      if ! chdman dumpmeta -t $tag -i $input &>/dev/null
+      then continue
+      fi
+      if [[ $tag == DVD ]]
+      then extracttype=extractdvd
+      else extracttype=extractcd
+      fi
+      if chdman $extracttype -i $input -o $tmpdir/$name.$ext
       then
-        if mv -f $tmpdir/${p:t:r}.iso ${output:-${p:h}}/${p:t:r}.iso
-        then (( #ztrash_source )) && trash $p
-          rm -rf $tmpdir
+        if [[ $ext == (cue|gdi) ]]
+        then
+          if mv -f $tmpdir ${output:-$idir}/$name
+          then (( #ztrash_source )) && trash $input
+          fi
+        else
+          if mv -f $tmpdir/$name.$ext ${output:-$idir}/$name.$ext
+          then (( #ztrash_source )) && trash $input; rm -rf $tmpdir
+          fi
         fi
       fi
-    else
-      if chdman extractcd -i $p -o $tmpdir/${p:t:r}.cue
-      then
-        if mv -f $tmpdir ${output:-${p:h}}/${p:t:r}
-        then (( #ztrash_source )) && trash $p
-        fi
-      fi
-    fi
+      break
+    done
   done
 #}
