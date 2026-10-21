@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+#function chd-extract {
+  _brew_check rom-tools || return 1
+
+  local zoutput output ztrash_source p tmpdir
+  zparseopts -D -E -F - \
+    {o,-output}:=zoutput \
+    {t,-trash-source}=ztrash_source
+  output=${zoutput[-1]}
+  if [[ -n $output && ! -d $output ]]
+  then
+    printf "Output directory \`%s\` does not exist.\n" $output >&2
+    return 1
+  fi
+  trap '[[ -d $tmpdir ]] && rm -rf $tmpdir; return 1' INT TERM QUIT
+
+  for p in $@
+  do
+    tmpdir=$( mktemp -dt ${f:t:r} )
+    if chdman info -i $p | grep -q "Tag='DVD '"
+    then
+      if chdman extractdvd -i $p -o $tmpdir/${p:t:r}.iso
+      then
+        if mv -f $tmpdir/${p:t:r}.iso ${output:-${p:h}}/${p:t:r}.iso
+        then (( #ztrash_source )) && trash $p
+          rm -rf $tmpdir
+        fi
+      fi
+    else
+      if chdman extractcd -i $p -o $tmpdir/${p:t:r}.cue
+      then
+        if mv -f $tmpdir ${output:-${p:h}}/${p:t:r}
+        then (( #ztrash_source )) && trash $p
+        fi
+      fi
+    fi
+  done
+#}

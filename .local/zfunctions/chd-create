@@ -1,0 +1,45 @@
+#!/usr/bin/env zsh
+#function chd-create {
+  _brew_check rom-tools || return 1
+
+  local zoutput output ztrash_source p tmpdir
+  zparseopts -D -E -F - \
+    {o,-output}:=zoutput \
+    {t,-trash-source}=ztrash_source
+  output=${zoutput[-1]}
+  if [[ -n $output && ! -d $output ]]
+  then
+    printf "Output directory \`%s\` does not exist.\n" $output >&2
+    return 1
+  fi
+  trap '[[ -d $tmpdir ]] && rm -rf $tmpdir; return 1' INT TERM QUIT
+
+  for p in $@
+  do
+    tmpdir=$( mktemp -dt ${p:t:r} )
+    if file $p | grep -q 'UDF'
+    then
+      if chdman createdvd -i $p -o $tmpdir/${p:t:r}.chd
+      then
+        if mv -f $tmpdir/${p:t:r}.chd ${output:-${p:h}}/${p:t:r}.chd
+        then (( #ztrash_source )) && trash $p
+        fi
+      fi
+    else
+      if chdman createcd -i $p -o $tmpdir/${p:t:r}.chd
+      then
+        if [[ ${p:e} == cue ]]
+        then
+          if mv -f $tmpdir/${p:t:r}.chd ${output:-${p:h:h}}
+          then (( #ztrash_source )) && trash ${p:h}
+          fi
+        else
+          if mv -f $tmpdir/${p:t:r}.chd ${output:-${p:h}}/${p:t:r}.chd
+          then (( #ztrash_source )) && trash $p
+          fi
+        fi
+      fi
+    fi
+    rm -rf $tmpdir
+  done
+#}
