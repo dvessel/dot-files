@@ -12,7 +12,7 @@
   esac
   if [[ `launchctl getenv MTL_HUD_ENABLED` == 1 ]]
   then
-    config_path=$HOME/.config/metal-hud/${2:-default}.plist
+    local config_path=$HOME/.config/metal-hud/${2:-default}.plist
     if [[ -f $config_path ]]
     then
       launchctl setenv MTL_HUD_CONFIG_FILE $config_path

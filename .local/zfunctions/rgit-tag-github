@@ -1,11 +1,10 @@
 #!/usr/bin/env zsh
 #function rgit-tag-github {
-  if _brew_check tag
-  then
-    while read -r p
-    do
-      printf "\e[1;30m%s\e[0m\n" $p
-      tag -a "GitHub Repo" "$p"
-    done < <( rgit-paths )
-  fi
+  _brew_check tag || return 1
+  local git_path
+  while read -r git_path
+  do
+    echo $git_path
+    tag -a "GitHub Repo" $git_path
+  done < <( rgit-paths )
 #}

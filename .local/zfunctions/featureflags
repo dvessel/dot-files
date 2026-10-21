@@ -1,9 +1,8 @@
 #!/usr/bin/env zsh
 # enable hidden features starting in macOS 27.
 #function featureflags {
-  op=$1
+  local op=$1 ffdir=/Library/Preferences/FeatureFlags/Domain
   shift
-  local ffdir=/Library/Preferences/FeatureFlags/Domain
   case $op in
     read)
       defaults read $ffdir/$@

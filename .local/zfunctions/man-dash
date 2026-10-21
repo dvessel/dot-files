@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 # Read man page with Dash.app.
 #function man-dash {
-  local -a o_docset=(manpages)
+  local zdocset dashcmd
   zmodload zsh/zutil
-  zparseopts -D -F -K -- {d,-docset}:=o_docset || return 1
-  dashcmd="dash://${o_docset[-1]}%3A$1"
+  zparseopts -D -F -K -- {d,-docset}:=zdocset || return 1
+  dashcmd="dash://${zdocset[-1]:-manpages}%3A$1"
   open -a Dash.app $dashcmd 2> /dev/null
   if test $? -ne 0
   then

@@ -5,7 +5,7 @@
   if [[ -n $@ ]]
   then
     osascript -e 'on run {f, c}' -e 'tell app "Finder" to set comment of (POSIX file f as alias) to c' -e 'end' file:///$file_path ${(j: :)@} > /dev/null
-  elif xattr=`xattr -xp com.apple.metadata:kMDItemFinderComment $file_path 2>/dev/null` 
+  elif xattr=$( xattr -xp com.apple.metadata:kMDItemFinderComment $file_path 2>/dev/null )
   then
     echo $xattr | xxd -r -p | plutil -p - 2> /dev/null
   else

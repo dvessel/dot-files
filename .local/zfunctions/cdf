@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 # Change to the current Finder directory.
 #function cdf {
-  cd "$(pfd)"
+  cd "$( pfd )"
 #}

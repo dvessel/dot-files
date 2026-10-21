@@ -2,8 +2,7 @@
 # concat losslessly. Beware of keyframes.
 #function ff-concat {
   _brew_check ffmpeg || return 1
-  local tmp=`mktemp`
-  local out=$argv[-1]
+  local tmp=$( mktemp ) out=$argv[-1]
   shift -p
   printf "file '%s'\n" $@ > $tmp
   ffmpeg -f concat -i $tmp -c copy $out

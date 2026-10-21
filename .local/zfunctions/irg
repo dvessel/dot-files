@@ -2,6 +2,7 @@
 #function irg {
   # https://junegunn.github.io/fzf/tips/ripgrep-integration/
   # ripgrep->fzf->nvim [QUERY]
+  local RELOAD OPENER
   RELOAD='reload:rg --column --color=always --smart-case {q} || :'
   OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
             nvim {1} +{2}     # No selection. Open the current line in Vim.
@@ -15,6 +16,6 @@
       --bind 'alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview' \
       --delimiter : \
       --preview 'bat --style=full,-header,-header-filesize,-grid --color=always --highlight-line {2} {1}' \
-      --preview-window '~4,+{2}+4/3,<80(up)' \
+      --preview-window '~4,+{2}+4/2,<80(up)' \
       --query "$*"
 #}

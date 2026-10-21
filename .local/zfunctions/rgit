@@ -1,11 +1,11 @@
 #!/usr/bin/env zsh
 #function rgit {
-  local basepath=`pwd`
+  local basepath=$PWD
   while read -r p
   do
     printf "\n\e[1;15m%s\e[0m\n" $p
-    cd "$basepath/$p"
+    cd $basepath/$p
     git $@
   done < <( rgit-paths )
-  cd "$basepath"
+  cd $basepath
 #}

@@ -5,10 +5,14 @@
 # use -frames:v NUM instead of -t/-to if the video is too short. Must come after -i.
 #function ff-trim {
   _brew_check ffmpeg || return 1
-  zparseopts -D -E -F - {s,-start}:=start {l,-length}:=length || return 1
-  if [[ -n $start && -n $length && ${#@} = 2 ]]
+  local zstart zlength
+  zparseopts -D -E -F - \
+    {s,-start}:=zstart \
+    {l,-length}:=zlength || return 1
+
+  if [[ -n $zstart && -n $zlength && ${#@} = 2 ]]
   then
-    ffmpeg -ss $start -t $length -i $1 -c copy $2
+    ffmpeg -ss ${zstart[-1]} -t ${zlength[-1]} -i $1 -c copy $2
   else
     print "Usage: $0 --start N --length N input.mov output.mov" >&2
     return 1

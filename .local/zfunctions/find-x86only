@@ -5,27 +5,27 @@
 # -k, --kind can be set more than once.
 #
 #function find-x86only {
-  zparseopts -D -E -- {k,-kind}+:=kind || return 1
+  local zkind
+  zparseopts -D -E -- {k,-kind}+:=zkind || return 1
 
-  # Define directories containing the Mach-O binary. Use `.` if the find
-  # result is an immediate parent for the binary. If it's not defined
-  # here, then it checks the find results.
-  typeset -A inpath=(
-    [app]=Contents/MacOS
-    [appex]=Contents/MacOS
-    [bundle]=Contents/MacOS
-    [xpc]=Contents/MacOS
-    [framework]=.
-  )
-
-  local found parentpath names dname=( -name "*.app") filter=( -k --kind )
-
-  for k in ${kind:|filter}; names+=($(
+  local k names=() filter=( -k --kind )
+  for k in ${zkind:|filter}; names+=($(
     [[ -n $names ]] &&
       print -- -or
       print -- -name "*.$k"
   ))
 
+  # Define directories containing the Mach-O binary. Use `.` if the find
+  # result is an immediate parent for the binary. If it's not defined
+  # here, then it checks the find results.
+  typeset -A inpath=(
+    app       Contents/MacOS
+    appex     Contents/MacOS
+    bundle    Contents/MacOS
+    xpc       Contents/MacOS
+    framework .
+  )
+  local dname=( -name "*.app") found bin parentpath
   find ${@:-.} ${names:-$dname} | while read -r found
   do
     if [[ ! -z ${inpath[${found:e}]} ]]

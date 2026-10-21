@@ -2,7 +2,7 @@
 #function extract {
   local trash archive
   zparseopts -D -E -F - {t,-trash-archive}=trash || return 1
-  for archive in "$@"
+  for archive in $@
   do
     if [[ -f $archive ]]
     then

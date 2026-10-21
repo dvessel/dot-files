@@ -5,5 +5,5 @@
     print "Formula required." >&2
     return 1
   fi
-  brew unlink --dry-run $@ | grep "`brew --prefix`/bin/.*" | cut -d/ -f5
+  brew unlink --dry-run $@ | grep "$( brew --prefix )/bin/.*" | cut -d/ -f5
 #}

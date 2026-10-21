@@ -1,27 +1,30 @@
 #!/usr/bin/env zsh
 # https://github.com/mattmc3/zephyr/tree/main/plugins/zfunctions
 #function zfunction {
-  zparseopts -D -E -F - {e,-edit,n,-new}:=edit {r,-refresh}=refresh || return 1
-  local zfdir=${ZFUNCDIR:-~/.local/zfunctions}
+  local zedit zreload zfunctions zfdir=${ZFUNCDIR:-~/.local/zfunctions}
+  zparseopts -D -E -F - {e,-edit,n,-new}:=zedit {r,-reload-all}=zreload || return 1
   if [[ ! -d $zfdir ]]
   then
     echo "Directory not found '$zfdir'." >&2
     return 1
   fi
-  if [[ -n $refresh ]]
+  if (( #zreload ))
   then
-    if [[ -n `printf "%s" $zfdir/[^_]*(N.:t)` ]]
+    zfunctions=( $zfdir/[^_]*(N.:t) )
+    if (( #zfunctions ))
     then
-      unfunction $zfdir/[^_]*(N.:t)
-      autoload -Uz $zfdir/[^_]*(N.:t)
+      unfunction $zfunctions
+      autoload -Uz $zfunctions
+      echo "reloaded: $zfunctions"
+      return 0
     else
-      echo "Nothing to refresh." >&2
+      echo "Nothing to reload." >&2
       return 1
     fi
-  elif [[ -n $edit ]]
+  elif (( #zedit ))
   then
-    local name=$edit[-1]
-    if [[ ! -f $zfdir/$name || $edit[1] == (-n|--new) ]]
+    local name=$zedit[-1]
+    if [[ ! -f $zfdir/$name || $zedit[1] == (-n|--new) ]]
     then
       local -a content
       if type $name &> /dev/null
@@ -41,7 +44,7 @@
     unfunction $name
     autoload -Uz $name
   else
-    echo "Requires --[new|edit] <name> or --refresh." >&2
+    echo "Requires --[new|edit] <name> or --reload." >&2
     return 1
   fi
 #}

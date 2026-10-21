@@ -3,12 +3,12 @@
   zparseopts -D -E -F - {d:,-diff-command:}=diff_command {t:,-timer:}=timer || return 1
   if [[ -z $_dbefore ]]
   then
-    _domain=$1 
+    _domain=$1
     if [[ -z $_domain ]]
     then
       print "Warning! Domain was not set. All settings will be monitored for changes."
     fi
-    _dbefore=`mktemp` 
+    _dbefore=`mktemp`
     defaults read $_domain > $_dbefore
     if [[ $? == 0 ]]
     then
@@ -26,11 +26,11 @@
   else
     if [[ -n $diff_command ]]
     then
-      _diff=(${(z)diff_command[-1]}) 
+      _diff=(${(z)diff_command[-1]})
     else
-      _diff=(diff -u --color=auto) 
+      _diff=(diff -u --color=auto)
     fi
-    _dafter=`mktemp` 
+    _dafter=`mktemp`
     defaults read $_domain > $_dafter
     $_diff $_dbefore $_dafter
     rm $_dbefore $_dafter

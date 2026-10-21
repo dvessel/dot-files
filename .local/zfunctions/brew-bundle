@@ -23,7 +23,7 @@
   local configdir=${XDG_CONFIG_HOME:-~/.config}/brew
   if [[ -n $changesFrom ]]
   then
-    local base temp bundle
+    local base temp bundle l
     base=$configdir/bundle-$changesFrom[-1]-`uname -m`
     if [[ -f $base ]]
     then

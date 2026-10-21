@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 #function cd-history {
+  local d
   # Filter out missing directories.
   for d in $dirstack
   do [[ -d $d ]] || dirstack=(${dirstack:#$d})
