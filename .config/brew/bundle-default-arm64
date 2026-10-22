@@ -33,8 +33,6 @@ cask "font-lilex-nerd-font"
 cask "ghostty@tip"
 # Desktop automation application
 cask "hammerspoon"
-# Minimal installer for conda
-cask "miniconda"
 # Neovim Client
 cask "neovide-app"
 # Extremely fast Python package installer and resolver, written in Rust

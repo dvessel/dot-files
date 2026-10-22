@@ -19,7 +19,6 @@ autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 # Shell integrations and aggregated .zsource/*.zsh. Maintain order for set names.
 acsource zsh-aggregate \
   /opt/homebrew/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
-  /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh \
   $ZDOTDIR/.zsource/{options,p10k-config,antidote,*}.zsh
 
 # Normally handled by antidote plugin:.zplugins->mattmc3/ez-compinit
