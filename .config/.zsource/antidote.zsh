@@ -20,13 +20,11 @@ then
 
   test -f $zplugins || touch $zplugins
   # Update zpstatic when zplugins is updated, source otherwise.
-  if test ! $zpstatic -nt $zplugins
+  if test ! $zpstatic -nt $zplugins || ! source $zpstatic 2>/dev/null
   then
     export ANTIDOTE_HOME=$XDG_DATA_HOME/antidote
     mkdir -p $zpstatic:h
     antidote load
-  else
-    source $zpstatic
   fi
 
   # Plug-in options. @see .zplugins
