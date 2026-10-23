@@ -33,6 +33,7 @@ iCloudDocs
 !.ollama/models
 !.ollama/models/manifests
 !.ollama/models/tracking-blobs
+.rapid-mlx
 .ssh
 .sqlite_history
 .swiftpm
