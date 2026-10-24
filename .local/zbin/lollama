@@ -17,7 +17,7 @@ then
       list=$( ollama ls | grep -vi "-embed" )
     ;;
     stop)
-      list=`ollama ls`
+      list=`ollama ps`
       fzf_args+=--multi
     ;;
     rm)
