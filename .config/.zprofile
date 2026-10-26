@@ -6,33 +6,31 @@
 # 3. ~/.config/.zshrc
 # 4. ~/.config/.zlogin
 
+# Create XDG directories.
+for xdg (XDG_{CONFIG,CACHE,DATA,STATE}_HOME) mkdir -p ${(P)xdg}
+unset xdg
+
 # Powerlevel10k instant prompt.
-test ! -f $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh \
-|| source $XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh
+instantprompt=$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh
+[[ -f $instantprompt ]] && source $instantprompt
+unset instantprompt
 
-# Homebrew options.
-export HOMEBREW_NO_ENV_HINTS=1
-export HOMEBREW_AUTO_UPDATE_SECS=3600
-
-() {
-  local xdg
-  for xdg in $@; [[ -d ${(P)xdg} ]] || mkdir -p ${(P)xdg}
-} XDG_{CONFIG,CACHE,DATA,STATE}_HOME
-
-() {
-  local prefix
-  # Initialize Homebrew.
-  #   0) Native ARM.
-  #   1) Translated x86.
-  case `sysctl -n sysctl.proc_translated` in
-    0) prefix=/opt/homebrew ;;
-    1) prefix=/usr/local ;;
-  esac
-  # Rebuild from `brew shellenv` when shellenv.sh is newer.
-  if test ! $1 -nt $prefix/Library/Homebrew/cmd/shellenv.sh
-  then
-    mkdir -p $1:h
-    $prefix/bin/brew shellenv 2>&1 >| $1
-  fi
-  source $1
-} $XDG_CACHE_HOME/zsh/brew-shellenv-`uname -m`.zsh
+# Recommended post-install step for homebrew shell integration (through eval)
+# replaced for arch switching and speed through direct sourcing.
+#
+# Initialize Homebrew.
+#   0) Native ARM.
+#   1) Translated x86.
+brewshellenv=$XDG_CACHE_HOME/zsh/brew-shellenv.zsh
+case $( sysctl -n sysctl.proc_translated ) in
+  0) brewprefix=/opt/homebrew ;;
+  1) brewprefix=/usr/local brewshellenv=${brewshellenv:r}-x86_64.zsh ;;
+esac
+# Rebuild from `brew shellenv` when shellenv.sh is newer.
+if [[ ! $brewshellenv -nt $brewprefix/Library/Homebrew/cmd/shellenv.sh ]]
+then
+  mkdir -p ${brewshellenv:h}
+  $brewprefix/bin/brew shellenv >| $brewshellenv
+fi
+source $brewshellenv
+unset brewprefix brewshellenv
