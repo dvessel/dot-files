@@ -2,7 +2,6 @@
 
 _brew_check tag libxmlb || exit 1
 
-local tag_valid
 zparseopts -D -E -F - {t,-tag-valid}=tag_valid || exit 1
 
 while read i

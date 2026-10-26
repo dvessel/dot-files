@@ -5,7 +5,7 @@
 # - first argument can be a path.
 # - if it's not, pass all arguments to lmame.
 
-local rompath=$PWD
+rompath=$PWD
 # first parameter can be ambigous. assume directory if it exists.
 if [[ -d ${1:a} ]]
 then rompath=${1:a}; shift

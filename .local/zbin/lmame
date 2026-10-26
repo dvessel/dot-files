@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-local zrompath zhelp
 zparseopts -D -E - rompath:=zrompath help=zhelp || {
   print "see -help" >&2
   exit 1
@@ -91,7 +90,7 @@ then
   fi
 fi
 
-local headers=() prefix fzargs=() accepts_multi
+headers=() fzargs=()
 
 # -listmidi and -listnetwork completely unrelated. Do not prefix.
 if [[ -n $1 && $1 =~ ^(-(list[^(midi|network)]|verify)[a-z]+) ]]
@@ -119,7 +118,6 @@ if [[ -n $headers ]]
 then fzargs+=--header="${(j[ | ])headers}"
 fi
 
-local selected names
 selected=`cat $romlist | fzf --delimiter='\t' --with-nth=2 $fzargs`
 
 if [[ -n $selected ]]

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-local cmd=${1:-run} supported_cmd=( run stop show cp rm update )
+cmd=${1:-run} supported_cmd=( run stop show cp rm update )
 
 if (( $supported_cmd[(I)$cmd] ))
 then
@@ -8,7 +8,6 @@ then
   then shift
   fi
 
-  local list fzf_args
   fzf_args=( --prompt="❯ ollama $cmd " --header-lines=1 )
 
   case $cmd in
@@ -30,14 +29,14 @@ then
         print -- "Updating $model."
         ollama pull $model
       done
-      return $?
+      exit $?
     ;;
     *)
       list=`ollama ls`
     ;;
   esac
 
-  local model=($( print -- $list | sort -V | fzf $fzf_args | cut -d ' ' -f1 ))
+  model=($( print -- $list | sort -V | fzf $fzf_args | cut -d ' ' -f1 ))
 
   if [[ -n $model ]]
   then
@@ -46,5 +45,5 @@ then
   fi
 else
   print "Unsupported command. $0:t only accepts the following:\n $supported_cmd" >&2
-  return 1
+  exit 1
 fi

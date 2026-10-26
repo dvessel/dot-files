@@ -2,7 +2,6 @@
 
 set -e
 
-local pkgdef _pkgdef
 zparseopts -D -E - {-formula,-formulae,-cask}=_pkgdef
 
 # conditional output based on the homebrew package definition being worked on.
@@ -14,18 +13,18 @@ function c.pkgdef {
 # will be either --formula or --cask.
 pkgdef=${${_pkgdef:---formula}/--formulae/--formula}
 
-local brew_commands_any=(
+brew_commands_any=(
   install info uses deps desc fetch cleanup options home homepage log
   audit cat formula livecheck style unbottled unpack
 )
-local brew_commands_installed=(
+brew_commands_installed=(
   reinstall uninstall remove rm outdated upgrade postinstall missing
   list ls link ln unlink pin unpin edit migrate gist-logs bottle linkage test
   --prefix --cellar --cache
 )
-local brew_commands=( $brew_commands_any $brew_commands_installed )
+brew_commands=( $brew_commands_any $brew_commands_installed )
 
-local cask_incompatible=(
+cask_incompatible=(
   link ln unlink gist-logs migrate missing options bottle formula linkage test
   pin unpin unbottled unpack --prefix --cellar
 )
@@ -34,9 +33,8 @@ then
   brew_commands=( ${brew_commands:|cask_incompatible} )
 fi
 # Single select commands for fzf single select mode.
-local no_multi=( log gist-logs migrate )
+no_multi=( log gist-logs migrate )
 
-local brew_args
 if (( $brew_commands[(I)$1] ))
 then
   brew_args=( $@ )
@@ -46,23 +44,23 @@ then
 elif [[ -n ${(@)argv:*brew_commands} ]]
 then
   printf "Did you mean \`%s\`?\n" "${(@)argv:*brew_commands} $pkgdef" >&2
-  return 1
+  exit 1
 else
   printf "Supported \`%s\` commands:\n%s [See brew --help]\n" \
     "$pkgdef" "${(j[, ])brew_commands}" >&2
-  return 1
+  exit 1
 fi
 
-local names=$( brew --cache )/api/$( c.pkgdef formula_names cask_names )
-local fzf_list_txt=$( brew --cache )/fzf${pkgdef}-list-$( uname -m ).txt
+names=$( brew --cache )/api/$( c.pkgdef formula_names cask_names )
+fzf_list_txt=$( brew --cache )/fzf${pkgdef}-list-$( uname -m ).txt
 
 # - delete fzf_list_txt to rebuild listing.
 # - save new formulae/casks names to present later in fzf.
 # - delete the new names older than 3 days.
 if [[ -f $names.$0:t-before.txt && -f $names.txt ]]
 then
-  local new_keys=($( comm -1 -3 $names.$0:t-before.txt $names.txt ))
-  local names_new=$names.$0:t-new-$( print -- $new_keys[@] | md5 ).txt
+  new_keys=($( comm -1 -3 $names.$0:t-before.txt $names.txt ))
+  names_new=$names.$0:t-new-$( print -- $new_keys[@] | md5 ).txt
   if [[ ${#new_keys} > 0 && ! -f $names_new ]]
   then
     printf "%s\n" $new_keys > $names_new
@@ -77,18 +75,17 @@ then
 fi
 
 # hash the names of files holding the `new` state and dir listings that would affect the list.
-local context=(
+context=(
   $names.${0:t}-new-*(N:t:r)
   $( brew $(c.pkgdef --cellar --caskroom))/*(N:t)
   $( brew --prefix )/var/homebrew/$( c.pkgdef pinned pinned_casks )/*(N:t)
 )
-local state=$( print -- $context[@] | md5 )
+state=$( print -- $context[@] | md5 )
 
 if [[ ! -f $fzf_list_txt || $state != $( sed '1!d' $fzf_list_txt ) ]]
 then
   # Use associative arrays for O(1) lookup speed
   typeset -A map_installed map_new map_pinned
-  local -a installed_all installed dependencies
 
   if [[ $pkgdef == --formula ]]
   then
@@ -99,7 +96,6 @@ then
     installed=($( brew ls --cask ))
   fi
 
-  local -a pins new
   pins=($( brew --prefix )/var/homebrew/pinned/*(N:t) )
   new=($( cat $names.$0:t-new-*.txt(N) ))
   for i in $pins; map_pinned[$i]=📌
@@ -107,15 +103,15 @@ then
   for i in $installed; map_installed[$i]=🍺installed.
   for i in $dependencies; map_installed[$i]=🌾dependency.
 
-  local lsdesc=$( brew desc $pkgdef --name "/.+/" )
-  local processed_desc=""
+  lsdesc=$( brew desc $pkgdef --name "/.+/" )
+  processed_desc=""
 
   # Process descriptions line by line efficiently
   while IFS= read -r line; do
     if [[ $line =~ ^.+: ]]
     then
-      local name=${line%%:*}
-      local desc=${line#*:}
+      name=${line%%:*}
+      desc=${line#*:}
       processed_desc+="$name:${map_pinned[$name]}${map_new[$name]}${map_installed[$name]}$desc\n"
     else
       processed_desc+="$line\n"
@@ -124,7 +120,7 @@ then
   printf "%s\n%s" $state "${processed_desc%'\n'}" > $fzf_list_txt
 fi
 
-local fzf_list=$( sed '1d' $fzf_list_txt )
+fzf_list=$( sed '1d' $fzf_list_txt )
 
 case $brew_args[1] in
   install)
@@ -141,7 +137,7 @@ case $brew_args[1] in
     if (( ${#pins} == 0 ))
     then
       print "Nothing to unpin." >&2
-      return 1
+      exit 1
     fi
     fzf_list=$( print -- $fzf_list | sed -nuE "/^(${(j[|])pins}):.*/p" )
   ;;
@@ -161,7 +157,7 @@ then
   fzf_list=${(j[\n])__fzf_list}
 fi
 
-local selected=($(
+selected=($(
   print -- $fzf_list | fzf --header-lines=1 --prompt="brew $brew_args " \
   $( (( $no_multi[(I)$brew_args[1]] )) || printf --multi ) | grep -oE "^[^:]+"
 ))
