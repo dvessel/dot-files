@@ -16,13 +16,13 @@ typeset -gU fpath=( $ZFUNCDIR $fpath /{usr/local,opt/homebrew}/share/zsh/site-fu
 # Autoload zfunctions from $ZFUNCDIR.
 autoload -Uz $ZFUNCDIR/[^_]*(N.:t) &>/dev/null
 
-# Shell integrations and aggregated .zsource/*.zsh. Maintain order for set names.
+# Shell integrations and aggregated zsource/*.zsh. Maintain order for set names.
 acsource zsh-aggregate \
   /opt/homebrew/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
-  $ZDOTDIR/.zsource/{options,p10k-config,antidote,*}.zsh
+  $ZDOTDIR/zsource/{options,p10k-config,antidote,*}.zsh
 
-# Normally handled by antidote plugin:.zplugins->mattmc3/ez-compinit
-if ! type compinit &>/dev/null
+# Normally handled by antidote zplugins->mattmc3/ez-compinit
+if ! (( $+functions[compinit] ))
 then
   autoload -Uz compinit
   compinit -d $XDG_CACHE_HOME/zsh/zcompdump

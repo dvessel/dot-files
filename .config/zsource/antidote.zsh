@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
-if test -d /opt/homebrew/opt/antidote
+if [[ -d /opt/homebrew/opt/antidote ]]
 then
   # Lazy-load antidote from its functions directory.
   fpath+=/opt/homebrew/opt/antidote/share/antidote/functions
   autoload -Uz antidote
 
-  local zplugins=$ZDOTDIR/.zplugins
+  local zplugins=$ZDOTDIR/zplugins
   local zpstatic=$XDG_CACHE_HOME/zsh/zplugins.zsh
 
   # Core plug-in options. @see man antidote
@@ -15,29 +15,26 @@ then
   zstyle ':antidote:static' file $zpstatic
   zstyle ':antidote:*' zcompile yes
 
-  # - dvessel/zsh-completion-generator (before zpstatic loads.)
-  export GENCOMPL_FPATH=$ZFUNCDIR
-
-  test -f $zplugins || touch $zplugins
+  [[ -f $zplugins ]] || touch $zplugins
   # Update zpstatic when zplugins is updated, source otherwise.
-  if test ! $zpstatic -nt $zplugins || ! source $zpstatic 2>/dev/null
+  if [[ ! $zpstatic -nt $zplugins ]] || ! source $zpstatic 2>/dev/null
   then
     export ANTIDOTE_HOME=$XDG_DATA_HOME/antidote
     mkdir -p $zpstatic:h
     antidote load
   fi
 
-  # Plug-in options. @see .zplugins
+  # Plug-in options. @see zplugins
 
   # - mattmc3/ez-compinit
   zstyle ':plugin:ez-compinit' compstyle zshzoo
-  zstyle ':plugin:ez-compinit' use-cache no
+  zstyle ':plugin:ez-compinit' use-cache yes
 
   # - romkatv/powerlevel10k
-  POWERLEVEL9K_CONFIG_FILE=$ZDOTDIR/.zsource/p10k-config.zsh
+  POWERLEVEL9K_CONFIG_FILE=$ZDOTDIR/zsource/p10k-config.zsh
 
   # - jeffreytse/zsh-vi-mode
-  if type zvm_bindkey &>/dev/null
+  if (( $+functions[zvm_bindkey] ))
   then
     ZVM_SYSTEM_CLIPBOARD_ENABLED=true
     zvm_bindkey vicmd '/'  history-incremental-pattern-search-backward
@@ -47,7 +44,7 @@ then
   fi
 
   # - marlonrichert/zsh-hist
-  if type hist &>/dev/null
+  if (( $+functions[hist] ))
   then
     # https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
     fzf-delete-history-widget() {
@@ -61,7 +58,7 @@ then
           --bind 'ctrl-r:toggle-sort,ctrl-z:ignore'
           --bind 'enter:become(echo {+1})'" $(__fzfcmd) ))
       local ret=$?
-      if (( #selected > 0 ))
+      if (( $#selected > 0 ))
       then hist delete $selected
       fi
       zle reset-prompt
