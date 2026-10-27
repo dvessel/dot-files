@@ -15,11 +15,12 @@ then
   zstyle ':antidote:static' file $zpstatic
   zstyle ':antidote:*' zcompile yes
 
+  export ANTIDOTE_HOME=$XDG_DATA_HOME/antidote
+
   [[ -f $zplugins ]] || touch $zplugins
   # Update zpstatic when zplugins is updated, source otherwise.
   if [[ ! $zpstatic -nt $zplugins ]] || ! source $zpstatic 2>/dev/null
   then
-    export ANTIDOTE_HOME=$XDG_DATA_HOME/antidote
     mkdir -p $zpstatic:h
     antidote load
   fi
