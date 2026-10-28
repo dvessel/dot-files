@@ -6,12 +6,12 @@ zstyle ':plugin:ez-compinit' compstyle zshzoo
 zstyle ':plugin:ez-compinit' use-cache yes
 
 # - romkatv/powerlevel10k
-POWERLEVEL9K_CONFIG_FILE=$ZDOTDIR/zsource/p10k-config.zsh
+export POWERLEVEL9K_CONFIG_FILE=$ZDOTDIR/zsource/p10k-config.zsh
 
 # - jeffreytse/zsh-vi-mode
 if (( $+functions[zvm_bindkey] ))
 then
-  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+  export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
   zvm_bindkey vicmd '/'  history-incremental-pattern-search-backward
   zvm_bindkey vicmd '?'  history-incremental-pattern-search-forward
   zvm_bindkey viins '^R' history-incremental-pattern-search-backward

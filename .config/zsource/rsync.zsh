@@ -37,4 +37,5 @@ do
   }"
   i=$((i+4))
 done
+
 alias sync-all="${(j[;echo;])presets}"

@@ -2,9 +2,8 @@
 
 if (( $+commands[realesrgan] ))
 then
-  for m in $XDG_DATA_HOME/realesrgan-ncnn-vulkan/models/*.param
-  do
-    alias "realesrgan.${m:t:r}"="realesrgan -n ${m:t:r}"
-    compdef realesrgan.${m:t:r} _realesrgan
+  local model
+  for model in $XDG_DATA_HOME/realesrgan-ncnn-vulkan/models/*.param(:t:r.N)
+  do alias "realesrgan.$model"="realesrgan -n $model"
   done
 fi

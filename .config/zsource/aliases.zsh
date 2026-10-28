@@ -32,7 +32,7 @@ alias dp='cd-projects'
 alias ho='cd ~'
 alias dt='cd ~/Desktop'
 alias dl='cd ~/Downloads'
-for i ({1..3}) alias "$i"="cd +$i"
+local i; for i ({1..3}) alias "$i"="cd +$i"
 
 alias lb='open -b at.obdev.LaunchBar'
 alias lg='lazygit'
