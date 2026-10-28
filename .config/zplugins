@@ -7,19 +7,22 @@
 #
 # Example: https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
 
+# load early.
 romkatv/powerlevel10k path:powerlevel10k.zsh-theme
+jeffreytse/zsh-vi-mode
+mattmc3/ez-compinit
 
 # zsh auto completions.
-mattmc3/ez-compinit
 nilsonholger/osx-zsh-completions kind:fpath
 ocodo/ollama_zsh_completion kind:fpath
 zsh-users/zsh-completions path:src kind:fpath
-dvessel/zsh-completion-generator
 
+# helpers
 Aloxaf/fzf-tab
-jeffreytse/zsh-vi-mode
+dvessel/zsh-completion-generator
 marlonrichert/zsh-hist
 mattmc3/zman
 
+# load late.
 zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions

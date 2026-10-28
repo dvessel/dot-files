@@ -22,7 +22,7 @@ typeset -gU fpath=( $ZFUNCDIR $fpath )
 # Shell integrations and aggregated zsource/*.zsh. Maintain order for set names.
 acsource zsh-aggregate \
   /opt/homebrew/opt/fzf/shell/{key-bindings,completion}.zsh(N) \
-  $ZDOTDIR/zsource/{options,p10k-config,antidote,*}.zsh
+  $ZDOTDIR/zsource/{options,antidote,*}.zsh
 
 # Normally handled by antidote zplugins->mattmc3/ez-compinit
 if ! (( $+functions[compinit] ))
