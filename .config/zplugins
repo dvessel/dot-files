@@ -9,7 +9,7 @@
 
 # load early.
 romkatv/powerlevel10k path:powerlevel10k.zsh-theme
-jeffreytse/zsh-vi-mode
+jeffreytse/zsh-vi-mode post:zsh-vi-mode-options
 mattmc3/ez-compinit
 
 # zsh auto completions.
@@ -20,7 +20,7 @@ zsh-users/zsh-completions path:src kind:fpath
 # helpers
 Aloxaf/fzf-tab
 dvessel/zsh-completion-generator
-marlonrichert/zsh-hist
+marlonrichert/zsh-hist post:zsh-hist-options
 mattmc3/zman
 
 # load late.
