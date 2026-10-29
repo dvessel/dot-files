@@ -2,9 +2,8 @@
 
 # Load order of dotfiles:
 # 1. ~/.zshenv <-
-# 2. ~/.config/.zprofile
-# 3. ~/.config/.zshrc
-# 4. ~/.config/.zlogin
+# 2. ~/.config/.zshrc
+# 3. ~/.config/.zlogin
 
 # zsh dotfile directory.
 export ZDOTDIR=${ZDOTDIR:-$HOME/.config}

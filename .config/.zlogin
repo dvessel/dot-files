@@ -2,9 +2,8 @@
 
 # Load order of dotfiles:
 # 1. ~/.zshenv
-# 2. ~/.config/.zprofile
-# 3. ~/.config/.zshrc
-# 4. ~/.config/.zlogin <-
+# 2. ~/.config/.zshrc
+# 3. ~/.config/.zlogin <-
 
 # Load dirstack.
 if [[ -f $XDG_STATE_HOME/zdirstack && ${#dirstack} < 1 ]]
@@ -14,4 +13,3 @@ fi
 function chpwd {
   print -l -- ${(fu)"$( dirs -pl )"} >! $XDG_STATE_HOME/zdirstack
 }
-
