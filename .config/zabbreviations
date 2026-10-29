@@ -1,0 +1,13 @@
+regular cl clear
+regular dl cd ~/Downloads
+regular dt cd ~/Desktop
+regular ho cd ~
+regular lg lazygit
+regular ni neovide
+regular nv nvim
+regular odiff opendiff
+regular rabf retroarch --build
+regular rabu retroarch --build --update
+regular rax retroarch --x86_64
+regular vs codium
+global ras ~/Games/Support/RetroArch/scripts

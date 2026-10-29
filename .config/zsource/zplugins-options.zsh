@@ -40,3 +40,8 @@ zsh-hist-fzf-delete-widget() {
   zle reset-prompt
   return $ret
 }
+
+# - yachtida/zsh-abbr-plugin
+zsh-abbr-plugin-options() {
+  export ZSH_ABBR_USER_FILE=$ZDOTDIR/zabbreviations
+}

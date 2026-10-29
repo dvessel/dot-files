@@ -22,6 +22,7 @@ Aloxaf/fzf-tab
 dvessel/zsh-completion-generator
 marlonrichert/zsh-hist post:zsh-hist-options
 mattmc3/zman
+yachtida/zsh-abbr-plugin pre:zsh-abbr-plugin-options
 
 # load late.
 zdharma-continuum/fast-syntax-highlighting
