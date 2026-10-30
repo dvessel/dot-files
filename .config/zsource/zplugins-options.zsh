@@ -5,12 +5,12 @@
 zstyle ':plugin:ez-compinit' compstyle zshzoo
 zstyle ':plugin:ez-compinit' use-cache yes
 
-# - romkatv/powerlevel10k
-export POWERLEVEL9K_CONFIG_FILE=$ZDOTDIR/zsource/p10k-config.zsh
+# - yachtida/zsh-abbr-plugin
+export ZSH_ABBR_USER_FILE=$ZDOTDIR/zabbreviations
 
 # - jeffreytse/zsh-vi-mode
-zsh-vi-mode-options() {
-  export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+function zsh-vi-mode-options {
   zvm_bindkey vicmd '/'  history-incremental-pattern-search-backward
   zvm_bindkey vicmd '?'  history-incremental-pattern-search-forward
   zvm_bindkey viins '^R' history-incremental-pattern-search-backward
@@ -18,12 +18,12 @@ zsh-vi-mode-options() {
 }
 
 # - marlonrichert/zsh-hist
-zsh-hist-options() {
+function zsh-hist-options {
   zle -N zsh-hist-fzf-delete-widget
   bindkey -M vicmd '^E' zsh-hist-fzf-delete-widget
 }
 # https://github.com/junegunn/fzf/issues/3522#issuecomment-1871374030
-zsh-hist-fzf-delete-widget() {
+function zsh-hist-fzf-delete-widget {
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
   local selected=($( fc -rl 1 |
     awk '{ cmd=$0; sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd); if (!seen[cmd]++) print $0 }' |
@@ -39,9 +39,4 @@ zsh-hist-fzf-delete-widget() {
   fi
   zle reset-prompt
   return $ret
-}
-
-# - yachtida/zsh-abbr-plugin
-zsh-abbr-plugin-options() {
-  export ZSH_ABBR_USER_FILE=$ZDOTDIR/zabbreviations
 }

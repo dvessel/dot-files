@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 #
-# zplugins - antidote plugins file
+# zplugins  - antidote plugins file
+#           - options: $ZDOTDIR/zsource/zplugins-options.zsh
 #
 # This file is used by antidote to configure Zsh bundles. Bundles are just a
 # fancy way of referring to Zsh utilities, frameworks, prompts, or plugins.
@@ -8,9 +9,9 @@
 # Example: https://github.com/getantidote/zdotdir/blob/main/.zsh_plugins.txt
 
 # load early.
-romkatv/powerlevel10k path:powerlevel10k.zsh-theme
-jeffreytse/zsh-vi-mode post:zsh-vi-mode-options
 mattmc3/ez-compinit
+romkatv/powerlevel10k
+jeffreytse/zsh-vi-mode post:zsh-vi-mode-options
 
 # zsh auto completions.
 nilsonholger/osx-zsh-completions kind:fpath
@@ -22,7 +23,7 @@ Aloxaf/fzf-tab
 dvessel/zsh-completion-generator
 marlonrichert/zsh-hist post:zsh-hist-options
 mattmc3/zman
-yachtida/zsh-abbr-plugin pre:zsh-abbr-plugin-options
+yachtida/zsh-abbr-plugin
 
 # load late.
 zdharma-continuum/fast-syntax-highlighting
