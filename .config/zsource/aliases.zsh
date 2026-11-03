@@ -2,7 +2,7 @@
 
 # Tripple dash appended to a command will pipe to a pager.
 if (( $+commands[bat] ))
-then alias -g -- ---='2>&1 | bat --plain'
+then alias -g -- ---='2>&1 | bat'
 else alias -g -- ---='2>&1 | less'
 fi
 
