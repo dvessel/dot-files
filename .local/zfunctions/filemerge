@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+#function filemerge {
+  zparseopts -D -E -F - ancestor:=zancestor || return 1
+  if (( $#@ < 2 ))
+  then
+    echo "usage: $0 file1.txt file2.txt [-ancestor ancestor.txt]" >&2
+    return 1
+  fi
+  if [[ -n $zancestor ]]
+  then opendiff $1 $2 -ancestor ${zancestor[-1]} -merge $2
+  else opendiff $1 $2 -merge $2
+  fi
+#}
