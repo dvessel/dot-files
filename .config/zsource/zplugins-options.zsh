@@ -5,6 +5,9 @@
 zstyle ':plugin:ez-compinit' compstyle zshzoo
 zstyle ':plugin:ez-compinit' use-cache yes
 
+# - dvessel/zsh-completion-generator
+export GENCOMPL_FPATH=$ZFUNCDIR
+
 # - yachtida/zsh-abbr-plugin
 export ZSH_ABBR_USER_FILE=$ZDOTDIR/zabbreviations
 
