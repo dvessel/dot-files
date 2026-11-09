@@ -1,9 +1,12 @@
 #!/usr/bin/env zsh
 #function cd-history {
-  local d
+local d fargs=()
   # Filter out missing directories.
   for d in $dirstack
   do [[ -d $d ]] || dirstack=(${dirstack:#$d})
   done
-  cd +${$( dirs -v | fzf | cut -f1 ):-0}
+  if [[ -n $@ ]]
+  then fargs+=( --query "$@" -1 )
+  fi
+  cd +${$( dirs -v | fzf $fargs | cut -f1 ):-0}
 #}

@@ -1,4 +1,8 @@
 #!/usr/bin/env zsh
 #function cd-projects {
-  cd "$( rgit-paths ~/Projects | sort | fzf )"
+  typeset -a fargs
+  if [[ -n $@ ]]
+  then fargs+=( --query "$@" -1 )
+  fi
+  cd "$( rgit-paths ~/Projects | sort | fzf $fargs )"
 #}
