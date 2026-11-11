@@ -2,7 +2,14 @@
 #function create-rom-patch {
   local zformat ztrash
   zparseopts -D -E - {f,-format}:=zformat {t,-trash}=ztrash
-  if multipatch --create $1 $2 $1:r.${zformat[-1]:-ips}
+  # .ips: Oldest most common format. ROM is never checked and can break it.
+  # .ups: Checks ROM. Often used for Game Boy Advance.
+  # .bps: Modern format. Checks the ROM and the result. Recommended default.
+  # .delta,.dat: Used for large files, for example some Nintendo DS translations.
+  # .bsdiff,.bdf:
+  # .ppf:
+  # .rup:
+  if multipatch --create $1 $2 $1:r.${zformat[-1]:-bps}
   then
     if (( #ztrash ))
     then trash $1 $2
