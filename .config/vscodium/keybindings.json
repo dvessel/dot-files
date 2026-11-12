@@ -146,5 +146,9 @@
     "key": "cmd+k cmd+p",
     "command": "workbench.action.toggleMaximizedPanel",
     "when": "panelVisible"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-continue.focusContinueInputWithoutClear"
   }
 ]
