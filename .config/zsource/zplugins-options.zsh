@@ -5,6 +5,11 @@
 zstyle ':plugin:ez-compinit' compstyle zshzoo
 zstyle ':plugin:ez-compinit' use-cache yes
 
+# - dvessel/auto_venv
+function auto-venv-activate {
+  auto_venv $PWD
+}
+
 # - dvessel/zsh-completion-generator
 export GENCOMPL_FPATH=$ZFUNCDIR
 

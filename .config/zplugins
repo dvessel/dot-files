@@ -20,6 +20,7 @@ zsh-users/zsh-completions path:src kind:fpath
 
 # helpers
 Aloxaf/fzf-tab
+dvessel/auto-venv post:auto-venv-activate
 dvessel/zsh-completion-generator
 marlonrichert/zsh-hist post:zsh-hist-options
 mattmc3/zman
