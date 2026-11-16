@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+#function nxupdate-build {
+  local __dir=$PWD
+  if cd ~/Projects/gaming/nxnative
+  then
+    source .venv/bin/activate
+  else
+    return 1
+  fi
+  if ! git pull
+  then
+    return 1
+  fi
+  local options=( --platform mac-app $@ )
+  if [[ -f ${1:h}/icon.png ]]
+  then
+    options+=( --fallback-icon ${1:h}/icon.png )
+  fi
+  if python scripts/build_ipa_from_nsp.py $options
+  then
+    local app=( ${1:A:h}/*.app )
+    if (( $#app == 1 ))
+    then
+      ln -sf $app ~/Games/Shortcuts/Other
+    else
+      echo "Application not linked." >&2
+      return 1
+    fi
+  fi
+  cd $__dir
+#}
