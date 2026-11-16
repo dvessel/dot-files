@@ -1,0 +1,18 @@
+#compdef superscale
+local arguments
+
+arguments=(
+  '--clear-cache[Clear compiled model cache (forces recompilation on next use)]'
+  '--height[Confined height in pixesl]'
+  '--width[Confined width in pixesl]'
+  '--stretch[Stretch to exact dimensions]'
+  '--list-models[List available models (including face enhancement status)]'
+  '--download-face-model[Download GFPGAN face enhancement]'
+  '--no-face-enhance[Skip face enhancement if face model is downloaded]'
+  '-m[Override model selection]'
+  '-s[Specify scale factor]'
+  '-o[Output directory]'
+  '*:filename:_files'
+)
+
+_arguments -s $arguments
