@@ -26,6 +26,8 @@
       echo "Application not linked." >&2
       return 1
     fi
+  else
+    return $?
   fi
   cd $__dir
 #}
