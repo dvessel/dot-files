@@ -1,0 +1,23 @@
+schema_version = 1
+
+[general]
+download_path = "/Users/joon/Downloads"
+download_in_external_client = false
+theme = "ansi-dark"
+timeout = 10
+max_retries = 3
+use_cache = true
+cache_ttl = 300
+default_sort = "relevance"
+default_sort_order = "auto"
+min_seeders = 0
+update_check = true
+
+[speed_limit]
+upload_limit = "10 KB/s"
+download_limit = "10 KB/s"
+enabled = false
+
+[seeding]
+default_max_ratio = 1.0
+default_max_time = 1h
