@@ -18,7 +18,7 @@
   ],
   "image_token": "<|image|>",
   "is_local": true,
-  "local_files_only": false,
+  "local_files_only": true,
   "mask_token": "<mask>",
   "model_max_length": 1000000000000000019884624838656,
   "model_specific_special_tokens": {
@@ -42,7 +42,7 @@
     "think_token": "<|think|>",
     "video_token": "<|video|>"
   },
-  "pad_token": "<pad>",
+  "pad_token": "<eos>",
   "padding_side": "right",
   "processor_class": "EmbeddingGemma2Processor",
   "soc_token": "<|channel>",

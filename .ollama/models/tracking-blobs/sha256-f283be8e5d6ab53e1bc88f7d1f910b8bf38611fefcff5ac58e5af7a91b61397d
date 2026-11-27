@@ -1,0 +1,18 @@
+{
+    "producer": {
+        "name": "modelopt",
+        "version": "0.0.1.dev1+ge5b63320a"
+    },
+    "quantization": {
+        "quant_algo": "NVFP4",
+        "kv_cache_quant_algo": "FP8",
+        "group_size": 16,
+        "exclude_modules": [
+            "audio_tower*",
+            "embed_audio*",
+            "embed_vision*",
+            "language_model.embedding_projection",
+            "vision_tower*"
+        ]
+    }
+}

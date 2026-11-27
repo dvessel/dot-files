@@ -46,8 +46,8 @@ models:
     roles:
       - autocomplete
 
-  - name: embeddinggemma-2:270m-mxfp8-text
+  - name: embeddinggemma-2:270m-nvfp4-text
     provider: ollama
-    model: embeddinggemma-2:270m-mxfp8-text
+    model: embeddinggemma-2:270m-nvfp4-text
     roles:
       - embed

@@ -92,5 +92,44 @@
   "transformers_version": "5.18.0.dev0",
   "video_token_id": 258884,
   "vision_config": null,
-  "vision_soft_tokens_per_image": 280
+  "vision_soft_tokens_per_image": 280,
+  "quantization_config": {
+    "config_groups": {
+      "group_0": {
+        "input_activations": {
+          "dynamic": false,
+          "num_bits": 4,
+          "type": "float",
+          "group_size": 16
+        },
+        "weights": {
+          "dynamic": false,
+          "num_bits": 4,
+          "type": "float",
+          "group_size": 16
+        },
+        "targets": [
+          "Linear"
+        ]
+      }
+    },
+    "ignore": [
+      "audio_tower*",
+      "embed_audio*",
+      "embed_vision*",
+      "language_model.embedding_projection",
+      "vision_tower*"
+    ],
+    "quant_algo": "NVFP4",
+    "kv_cache_scheme": {
+      "dynamic": false,
+      "num_bits": 8,
+      "type": "float"
+    },
+    "producer": {
+      "name": "modelopt",
+      "version": "0.0.1.dev1+ge5b63320a"
+    },
+    "quant_method": "modelopt"
+  }
 }
